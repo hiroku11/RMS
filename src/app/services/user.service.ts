@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-import { CanActivate } from "@angular/router/src/interfaces";
+import { CanActivate, CanLoad } from "@angular/router/src/interfaces";
 import { Router } from "@angular/router";
 import { Injector } from "@angular/core";
 
 @Injectable()
-export class UserService implements CanActivate {
+export class UserService implements CanActivate, CanLoad {
     userDetails: any;
     authToken: any;
     constructor(private injector: Injector) {
@@ -45,6 +45,15 @@ export class UserService implements CanActivate {
              router.navigate(["login"]);
     }
     canActivate() {
+        if (this.userDetails) {
+            return true;
+        } else {
+            let router = this.injector.get(Router);
+             router.navigate(["login"]);
+            return false;
+        }
+    }
+    canLoad(){
         if (this.userDetails) {
             return true;
         } else {

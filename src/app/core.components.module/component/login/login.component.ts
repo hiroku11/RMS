@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //https://b2897cdb.ngrok.io/rmsrest
-    if(this.userService){
+    if(this.userService.userDetails){
       let router = this.injector.get(Router);
-        router.navigate(["cms"]);
+        router.navigate(["home"]);
     }
   }
   loginUser(){
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('rmsAuthToken',data.XAuthToken);
         let router = this.injector.get(Router);
         this.userService.userDetails = this.userService.decryptToken(data.XAuthToken);
-        router.navigate(["cms"]);
+        router.navigate(["home"]);
       },
       (error)=>{
         console.log(error);

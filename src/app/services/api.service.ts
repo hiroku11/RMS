@@ -59,6 +59,7 @@ export class ApiService {
         return this._http
             .get(this.apiUrl + url, {headers: headers})
             .map((res: any) => {
+                //debugger
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;

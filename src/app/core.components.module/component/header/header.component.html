@@ -1,13 +1,14 @@
-
 <div class="row zero-margin header">
     <div class="col-lg-4 col-sm-12">
-      <h2 class="logo">
-          <a href="#"><img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" /></a>
-      </h2>
-      <div class="sm-navbar-container hidden-lg" >
-           <span style="font-size:20px" data-elem ="smallMenu" class="glyphicon glyphicon-menu-hamburger"></span>
-      </div>
-      <!-- <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
+        <h2 class="logo">
+            <a href="#">
+                <img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" />
+            </a>
+        </h2>
+        <div class="sm-navbar-container hidden-lg">
+            <span style="font-size:20px" data-elem="smallMenu" class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <!-- <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
               <li ng-class="{active:thisView=='dashboard'}" data-elem ="smallMenu" ng-if="isAdminRole">
                   <a ui-sref="dashboard" title="" data-elem ="smallMenu">
                       <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
@@ -49,30 +50,35 @@
               </li>
           </ul> -->
     </div>
-    <div class="col-lg-4 col-sm-12 text-center pt-2">
-      <h4 class="welcome">Welcome {{userDetails?.firstName}} {{userDetails?.lastName==null?"":userDetails?.lastName}}</h4>
+    <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="userDetails">
+        <h4 class="welcome">Welcome {{userDetails?.firstName}} {{userDetails?.lastName==null?"":userDetails?.lastName}}</h4>
     </div>
-    <div class="col-lg-4 col-sm-12">
-      <div class="text-right pt-2">
-          <div class="nav-item dropdown" >
-              <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
-                  <img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" /> {{userDetails.roles[0].roleName}}</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Profile</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="logOut()">Logout</a>
-              </div>
-          </div>
-          <!-- | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->
-      </div>
-      <!-- <div class="user-details">
+    <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="!userDetails">
+            <h4 class="welcome">Welcome to Risk Management System</h4>
+        </div>
+    <div class="col-lg-4 col-sm-12" *ngIf="userDetails">
+        <div class="text-right pt-2">
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" /> {{userDetails.roles[0].roleName}}</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/home">Home</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logOut()">Logout</a>
+                </div>
+            </div>
+            <!-- | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->
+        </div>
+        <!-- <div class="user-details">
           <span class="user-circle">
               <i class="glyphicon glyphicon-user"></i>
           </span> Logged in as <a href="" id="user">{{loggedInUser.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a>
       </div> -->
     </div>
-  </div>
-  <!-- <script>
+</div>
+<!-- <script>
     $(document).on("click",function(event){
         //event.preventDefault();
         event.stopPropagation();

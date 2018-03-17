@@ -1,3 +1,4 @@
+import { HomeComponent } from './component/home/home.component';
 import { HttpActionDirective } from './directives/http-action.directive';
 import { HeaderComponent } from './component/header/header.component';
 import { AjaxLoaderComponent } from './component/ajax-loader/ajax-loader.component';
@@ -13,12 +14,13 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 
+
 @NgModule({
     imports: [CommonModule, FormsModule, RouterModule],
     exports: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe],
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent],
     declarations: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent
     ],
     entryComponents:[SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent]
 })

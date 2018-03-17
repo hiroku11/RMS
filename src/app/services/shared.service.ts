@@ -34,10 +34,8 @@ export class SharedService {
     ];
     public dropDownsService = new Subject();
     constructor(private _apiService: ApiService) {
-        setTimeout(()=>{
-            this.getAllDropdownData();
-        },3000)
-        
+        this.getAllDropdownData();
+
     }
 
     getTabstoShow(tabConditions: any) {
@@ -71,29 +69,22 @@ export class SharedService {
         });
     }
 
-    // addTab(tabName:string){
-
-    // }
-
-    // removeTab(){
-
-    // }
     getAssetType() {
         this._apiService
             .get("/table-maintenance/asset-type/asset-types")
             .subscribe(
-            data => {
-                this.dropDownsData.assetTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.assetTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
     getAllDropdownData() {
-       // this.getAssetConditionList();
+        // this.getAssetConditionList();
         this.getRentOrLeaseType();
         this.getAssetStatusList();
         this.getRenewalTypeList();
@@ -112,13 +103,13 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/organization/organizations")
             .subscribe(
-            data => {
-                this.dropDownsData.organizationList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.organizationList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
@@ -126,13 +117,13 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/department/departments")
             .subscribe(
-            data => {
-                this.dropDownsData.departmentList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.departmentList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
@@ -140,45 +131,45 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/policy-type/policy-types")
             .subscribe(
-            data => {
-                this.dropDownsData.policyTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.policyTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
     getVehicleDamageTypeList() {
         this._apiService
             .get(
-            "/table-maintenance/vehicle-damage-type/vehicle-damage-types"
+                "/table-maintenance/vehicle-damage-type/vehicle-damage-types"
             )
             .subscribe(
-            data => {
-                this.dropDownsData.vehicleDamageTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.vehicleDamageTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
     getFireExtinguisherTypeList() {
         this._apiService
             .get(
-            "/table-maintenance/fire-extinguisher-type/fire-extinguisher-types"
+                "/table-maintenance/fire-extinguisher-type/fire-extinguisher-types"
             )
             .subscribe(
-            data => {
-                this.dropDownsData.fireExtinguisherTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.fireExtinguisherTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
@@ -186,28 +177,26 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/asset-category/asset-categories")
             .subscribe(
-            data => {
-                this.dropDownsData.assetCategoriesList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                (data) => {
+                    this.dropDownsData.assetCategoriesList = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
             );
     }
     getRentOrLeaseType() {
         this._apiService
-            .get(
-            "/table-maintenance/rental-or-lease-type/rental-or-lease-types"
-            )
+            .get("/table-maintenance/rental-or-lease-type/rental-or-lease-types")
             .subscribe(
-            data => {
-                this.dropDownsData.rentOrLeaseTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                (data) => {
+                    this.dropDownsData.rentOrLeaseTypeList = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
             );
     }
 
@@ -215,13 +204,13 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/asset-condition/asset-conditions")
             .subscribe(
-            data => {
-                this.dropDownsData.assetConditionList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.assetConditionList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
@@ -229,13 +218,13 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/asset-status/asset-statuses")
             .subscribe(
-            data => {
-                this.dropDownsData.assetStatusList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.assetStatusList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
@@ -243,13 +232,13 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/renewal-type/renewal-types")
             .subscribe(
-            data => {
-                this.dropDownsData.renewalTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                (data) => {
+                    this.dropDownsData.renewalTypeList = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
             );
     }
 
@@ -257,26 +246,26 @@ export class SharedService {
         this._apiService
             .get("/table-maintenance/vehicle-type/vehicle-types")
             .subscribe(
-            data => {
-                this.dropDownsData.vehicleTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.vehicleTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
     getMonthTypeList() {
         this._apiService
             .get("/table-maintenance/month-type/month-types")
             .subscribe(
-            data => {
-                this.dropDownsData.monthTypeList = data;
-                this.propagateNewData();
-            },
-            error => {
-                console.log(error);
-            }
+                data => {
+                    this.dropDownsData.monthTypeList = data;
+                    this.propagateNewData();
+                },
+                error => {
+                    console.log(error);
+                }
             );
     }
 
