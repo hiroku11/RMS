@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <span class="fa fa-building"></span> Building(s) |
+      <button class="btn btn-info btn-sm" [routerLink]="'add-building'">
+        <span class="fa fa-plus"></span> Add</button>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+      <span class="fa fa-search"></span> Advance Search</button>
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+
+  </div>
+</div>
+<table class="table table-bordered" >
+  <thead>
+    <th>
+      Building ID
+    </th>
+    <th>
+      Building Name
+    </th>
+    <th>
+      Organization
+    </th>
+    <th>
+      Department
+    </th>
+    <th>
+      Reg. Authority
+    </th>
+    <th></th>
+  </thead>
+  <tbody *ngIf="buildingList.length">
+    <tr *ngFor="let building of buildingList | searchFilter: searchText">
+      <td>
+        <a [routerLink]="['edit-building', building.id]">{{building.buildingId}}</a>
+      </td>
+      <td>
+        {{building.buildingName}}
+      </td>
+      <td>
+        {{building.organization?.description}}
+      </td>
+      <td>
+        {{building.department?.description}}
+      </td>
+      <td>
+        {{building.regulatoryAuthorityName}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteBuilding(building)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>

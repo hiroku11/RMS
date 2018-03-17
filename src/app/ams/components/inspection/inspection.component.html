@@ -1,0 +1,383 @@
+<div class="tab-content">
+  <h5>Inspection Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection Number</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionNumber" name="inspectionNumber" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Name</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyName" name="inspectionCompanyName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Phone</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyPhone" name="inspectionCompanyPhone" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Email</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyEmail" name="inspectionCompanyEmail" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Company Description</label>
+      <textarea class="form-control" [(ngModel)]="inspection.inspectionCompanyDescription" name="inspectionCompanyDescription"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Contact Person Name</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionCompanyContactPerson" name="inspectionCompanyContactPerson"
+      />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection Due Date</label>
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="inspection.inspectionDueDate" name="inspectionDueDate"
+      />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection Done By</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionDoneBy" name="inspectionDoneBy" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection Done Date Time</label>
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="inspection.inspectionDoneDateTime"
+        name="inspectionDoneDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Inspection Duration in hrs</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionDurationInHours" name="inspectionDurationInHours" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Inspection Amount</label>
+      <input class="form-control" [(ngModel)]="inspection.inspectionAmount" name="inspectionAmount" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Next Inspection Date</label>
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="inspection.nextInspectionDueDate"
+        name="nextInspectionDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Comments/Observations</label>
+      <textarea class="form-control" [(ngModel)]="inspection.comments" name="comments"></textarea>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right" data-toggle="modal" data-target="#lookUp">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Inspection #</th>
+        <th>Due Date</th>
+        <th>Done By</th>
+        <th>Done Date</th>
+        <th>Duration in hrs</th>
+        <th>Amount</th>
+        <th>Next Insp. Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inspection of asset.inspections">
+        <td>{{inspection.inspectionNumber}}</td>
+        <td>{{inspection.inspectionDueDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{inspection.inspectionDoneBy}}</td>
+        <td>{{inspection.inspectionDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{inspection.inspectionDurationInHours}}</td>
+        <td>{{inspection.inspectionAmount}}</td>
+        <td>{{inspection.nextInspectionDueDate | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editThisInspection(inspection)">
+          </span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeInspectionFromAsset(inspection)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents [docsObject]="inspection" [addTo]="'inspection'"></app-supporting-documents>
+
+  <div class="modal" tabindex="-1" role="dialog" id="lookUp">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Inspection Lookup</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Inspection #</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.inspectionNumber.value" (change)="lookupFieldChange(lookupOptions.inspectionNumber)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.inspectionNumber)" [(ngModel)]="lookupOptions.inspectionNumber.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.inspectionNumber.sort" (change)="lookupSortChange(lookupOptions.inspectionNumber)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.inspectionNumber)" [(ngModel)]="lookupOptions.inspectionNumber.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Inspection Name</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" />
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <select class="form-control">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+          </div> -->
+          <!-- <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Inspection Description</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" />
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <select class="form-control">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Company Name</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.inspectionCompanyName.value" (change)="lookupFieldChange(lookupOptions.inspectionCompanyName)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.inspectionCompanyName)" [(ngModel)]="lookupOptions.inspectionCompanyName.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.inspectionCompanyName.sort" (change)="lookupSortChange(lookupOptions.inspectionCompanyName)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.inspectionCompanyName)" [(ngModel)]="lookupOptions.inspectionCompanyName.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Company Contact Person</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.inspectionCompanyContactPerson.value" (change)="lookupFieldChange(lookupOptions.inspectionCompanyContactPerson)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.inspectionCompanyContactPerson)" [(ngModel)]="lookupOptions.inspectionCompanyContactPerson.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.inspectionCompanyContactPerson.sort" (change)="lookupSortChange(lookupOptions.inspectionCompanyContactPerson)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.inspectionCompanyContactPerson)" [(ngModel)]="lookupOptions.inspectionCompanyContactPerson.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Done By</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.inspectionDoneBy.value" (change)="lookupFieldChange(lookupOptions.inspectionDoneBy)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.inspectionDoneBy)" [(ngModel)]="lookupOptions.inspectionDoneBy.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.inspectionDoneBy.sort" (change)="lookupSortChange(lookupOptions.inspectionDoneBy)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.inspectionDoneBy)" [(ngModel)]="lookupOptions.inspectionDoneBy.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Done Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.inspectionDoneDateTime.value" (dateTimeChange)="lookupFieldChange(lookupOptions.inspectionDoneDateTime)"/>
+              <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.inspectionDoneDateTime)" [(ngModel)]="lookupOptions.inspectionDoneDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.inspectionDoneDateTime.sort" (change)="lookupSortChange(lookupOptions.inspectionDoneDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.inspectionDoneDateTime)" [(ngModel)]="lookupOptions.inspectionDoneDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Due Date</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.inspectionDueDate.value" (dateTimeChange)="lookupFieldChange(lookupOptions.inspectionDueDate)"/>
+              <owl-date-time [pickerType]="'calendar'"  #dtd></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.inspectionDueDate)" [(ngModel)]="lookupOptions.inspectionDueDate.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.inspectionDueDate.sort" (change)="lookupSortChange(lookupOptions.inspectionDueDate)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.inspectionDueDate)" [(ngModel)]="lookupOptions.inspectionDueDate.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Next Due Date</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control"[owlDateTime]="dtn" [owlDateTimeTrigger]="dtn" [(ngModel)]="lookupOptions.nextInspectionDueDate.value" (dateTimeChange)="lookupFieldChange(lookupOptions.nextInspectionDueDate)"/>
+              <owl-date-time [pickerType]="'calendar'" #dtn></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.nextInspectionDueDate)" [(ngModel)]="lookupOptions.nextInspectionDueDate.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.nextInspectionDueDate.sort" (change)="lookupSortChange(lookupOptions.nextInspectionDueDate)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.nextInspectionDueDate)" [(ngModel)]="lookupOptions.nextInspectionDueDate.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+         
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Inspection #</th>
+                <th>Due Date</th>
+                <th>Done By</th>
+                <th>Done Date</th>
+                <th>Amount</th>
+                <th>Next Insp. Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="lookupItems">
+              <tr *ngFor="let insp of lookupItems.inspections">
+                <td>{{insp.inspectionNumber}}</td>
+                <td>{{insp.inspectionDueDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{insp.inspectionDoneBy}}</td>
+                <td>{{insp.inspectionDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td>{{insp.inspectionAmount}}</td>
+                <td>{{insp.nextInspectionDueDate | date:'dd/MM/yyyy'}}</td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingInspectionToAsset(insp)"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupInspection($event)"></ng-pagination>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary float-right" (click)="lookupInspection()">Search</button>
+          <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

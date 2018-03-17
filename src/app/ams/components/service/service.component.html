@@ -1,0 +1,409 @@
+<div class="tab-content">
+  <h5>Service Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Service #</label>
+      <input class="form-control" [(ngModel)]="service.serviceNumber" name="serviceNumber" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Name</label>
+      <input class="form-control" [(ngModel)]="service.serviceCompanyName" name="serviceCompanyName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Phone</label>
+      <input class="form-control" [(ngModel)]="service.serviceCompanyPhone" name="serviceCompanyPhone" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Company Email</label>
+      <input class="form-control" [(ngModel)]="service.serviceCompanyEmail" name="serviceCompanyEmail" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Company Description</label>
+      <textarea class="form-control" [(ngModel)]="service.serviceCompanyDescription" name="serviceCompanyDescription"></textarea>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Company Contact Person</label>
+      <input class="form-control" [(ngModel)]="service.serviceCompanyContactPerson" name="serviceCompanyContactPerson" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service Due Date</label>
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+      [(ngModel)]="service.serviceDueDate" name="serviceDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>   
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service Done By</label>
+      <input class="form-control" [(ngModel)]="service.serviceDoneBy" name="serviceDoneBy" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service Done Date Time</label>
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      [(ngModel)]="service.serviceDoneDateTime" name="serviceDoneDateTime" />
+      <owl-date-time [pickerType]="'calendar'" [showSecondsTimer]="true" #dt2></owl-date-time>   
+    </div>
+  </div>
+
+
+
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Service Amount</label>
+      <input class="form-control" [(ngModel)]="service.serviceAmount" name="serviceAmount" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Service Duration in hrs</label>
+      <input class="form-control" [(ngModel)]="service.serviceDurationInHours" name="serviceDurationInHours" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Next Service Date</label>
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      [(ngModel)]="service.nextServiceDueDate" name="nextServiceDueDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>   
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="service.comments" name="comments"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right" data-toggle="modal" data-target="#lookUp">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Service #</th>
+        <th>Due Date</th>
+        <th>Done By</th>
+        <th>Done Date</th>
+        <th>Duration in hrs</th>
+        <th>Amount</th>
+        <th>Next Service Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of asset.services">
+        <td>
+          {{service.serviceNumber}}
+        </td>
+        <td>
+          {{service.serviceDueDate | date:'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{service.serviceDoneBy}}
+        </td>
+        <td>
+          {{service.serviceDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{service.serviceDurationInHours}}
+        </td>
+        <td>
+          {{service.serviceAmount}}
+        </td>
+        <td>
+          {{service.nextServiceDueDate | date:'dd/MM/yyyy'}}
+        </td>
+        <td>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editService(service)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeServiceFromAsset(service)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents [docsObject]="service" [addTo]="'service'"></app-supporting-documents>
+  <div class="modal" tabindex="-1" role="dialog" id="lookUp">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Inspection Lookup</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Service #</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.serviceNumber.value" (change)="lookupFieldChange(lookupOptions.serviceNumber)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.serviceNumber)" [(ngModel)]="lookupOptions.serviceNumber.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.serviceNumber.sort" (change)="lookupSortChange(lookupOptions.serviceNumber)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serviceNumber)" [(ngModel)]="lookupOptions.serviceNumber.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Service Company</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.serviceCompanyName.value" (change)="lookupFieldChange(lookupOptions.serviceCompanyName)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.serviceCompanyName)" [(ngModel)]="lookupOptions.serviceCompanyName.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.serviceCompanyName.sort" (change)="lookupSortChange(lookupOptions.serviceCompanyName)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serviceCompanyName)" [(ngModel)]="lookupOptions.serviceCompanyName.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Company Description</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.serviceCompanyDescription.value" (change)="lookupFieldChange(lookupOptions.serviceCompanyDescription)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.serviceCompanyDescription)" [(ngModel)]="lookupOptions.serviceCompanyDescription.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.serviceCompanyDescription.sort" (change)="lookupSortChange(lookupOptions.serviceCompanyDescription)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.serviceCompanyDescription)" [(ngModel)]="lookupOptions.serviceCompanyDescription.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Company Contact Person</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.serviceCompanyContactPerson.value" (change)="lookupFieldChange(lookupOptions.serviceCompanyContactPerson)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.serviceCompanyContactPerson)" [(ngModel)]="lookupOptions.serviceCompanyContactPerson.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.serviceCompanyContactPerson.sort" (change)="lookupSortChange(lookupOptions.serviceCompanyContactPerson)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serviceCompanyContactPerson)" [(ngModel)]="lookupOptions.serviceCompanyContactPerson.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Service Done By</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.serviceDoneBy.value" (change)="lookupFieldChange(lookupOptions.serviceDoneBy)"/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control"(change)="lookupFieldChange(lookupOptions.serviceDoneBy)" [(ngModel)]="lookupOptions.serviceDoneBy.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.serviceDoneBy.sort" (change)="lookupSortChange(lookupOptions.serviceDoneBy)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serviceDoneBy)" [(ngModel)]="lookupOptions.serviceDoneBy.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Done Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control"[owlDateTime]="dtn" [owlDateTimeTrigger]="dtn" [(ngModel)]="lookupOptions.serviceDoneDateTime.value" (dateTimeChange)="lookupFieldChange(lookupOptions.serviceDoneDateTime)"/>
+              <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtn></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.serviceDoneDateTime)" [(ngModel)]="lookupOptions.serviceDoneDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.serviceDoneDateTime.sort" (change)="lookupSortChange(lookupOptions.serviceDoneDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.serviceDoneDateTime)" [(ngModel)]="lookupOptions.serviceDoneDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Next Due Date</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.nextServiceDueDate.value" (dateTimeChange)="lookupFieldChange(lookupOptions.nextServiceDueDate)"/>
+              <owl-date-time [pickerType]="'calendar'" #dtdt></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.nextServiceDueDate)" [(ngModel)]="lookupOptions.nextServiceDueDate.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.nextServiceDueDate.sort" (change)="lookupSortChange(lookupOptions.nextServiceDueDate)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.nextServiceDueDate)" [(ngModel)]="lookupOptions.nextServiceDueDate.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Due Date</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.serviceDueDate.value" (dateTimeChange)="lookupFieldChange(lookupOptions.serviceDueDate)"/>
+              <owl-date-time [pickerType]="'calendar'"  #dtd></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.serviceDueDate)" [(ngModel)]="lookupOptions.serviceDueDate.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox"[(ngModel)]="lookupOptions.serviceDueDate.sort" (change)="lookupSortChange(lookupOptions.serviceDueDate)"> Sort
+              </span>
+              <select class="form-control d-inline w-50"(change)="lookupSortChange(lookupOptions.serviceDueDate)" [(ngModel)]="lookupOptions.serviceDueDate.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          
+         
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Service #</th>
+                <th>Due Date</th>
+                <th>Done By</th>
+                <th>Done Date</th>
+                <th>Duration in hrs</th>
+                <th>Amount</th>
+                <th>Next Service Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="lookupItems">
+              <tr *ngFor="let service of lookupItems.services">
+                <td>
+                  {{service.serviceNumber}}
+                </td>
+                <td>
+                  {{service.serviceDueDate | date:'dd/MM/yyyy'}}
+                </td>
+                <td>
+                  {{service.serviceDoneBy}}
+                </td>
+                <td>
+                  {{service.serviceDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+                </td>
+                <td>
+                  {{service.serviceDurationInHours}}
+                </td>
+                <td>
+                  {{service.serviceAmount}}
+                </td>
+                <td>
+                  {{service.nextServiceDueDate | date:'dd/MM/yyyy'}}
+                </td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-success" (click)="addExistingServiceToAsset(service)"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupService($event)"></ng-pagination>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary float-right" (click)="lookupService()">Search</button>
+          <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <span class="fa fa-folder-open"></span> Other(s) |
+      <button class="btn btn-info btn-sm" [routerLink]="'add-other-asset'">
+        <span class="fa fa-plus"></span> Add</button>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+      <span class="fa fa-search"></span> Advance Search</button>
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <th>
+      Asset ID
+    </th>
+    <th>
+      Asset Name
+    </th>
+    <th>
+      Organization
+    </th>
+    <th>
+      Department
+    </th>
+
+    <th>
+      Reg. Authority
+    </th>
+    <th></th>
+  </thead>
+  <tbody *ngIf="otherAssetList.length">
+    <tr *ngFor="let other of otherAssetList | searchFilter : searchText">
+      <td>
+        <a [routerLink]="['edit-other-asset', other.id]">{{other.assetTypeOtherId}}</a>
+      </td>
+      <td>
+        {{other.assetTypeOtherName}}
+      </td>
+      <td>
+        {{other.organization?.description}}
+      </td>
+      <td>
+        {{other.department?.description}}
+      </td>
+      <td>
+        {{other.regulatoryAuthorityName}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteAsset(other)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>

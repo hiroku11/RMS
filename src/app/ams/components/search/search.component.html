@@ -1,0 +1,1031 @@
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Advanced Search</h3>
+                <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="assetType == 'building'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building ID</label>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingId)" [(ngModel)]="lookupOptions.buildingId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingId.value" (change)="lookupFieldChange(lookupOptions.buildingId)" name="buildingId" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.buildingId.sort" (change)="lookupSortChange(lookupOptions.buildingId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingId)" [(ngModel)]="lookupOptions.buildingId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingName.value" (change)="lookupFieldChange(lookupOptions.buildingName)" name="buildingName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.buildingName.sort" (change)="lookupSortChange(lookupOptions.buildingName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building Description</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingDescription)" [(ngModel)]="lookupOptions.buildingDescription.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingDescription.value" (change)="lookupFieldChange(lookupOptions.buildingDescription)" name="buildingDescription">
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.buildingDescription.sort" (change)="lookupSortChange(lookupOptions.buildingDescription)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingDescription)" [(ngModel)]="lookupOptions.buildingDescription.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="assetType == 'equipment'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentId)" [(ngModel)]="lookupOptions.equipmentId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="equipmentId" (change)="lookupFieldChange(lookupOptions.equipmentId)" name="equipmentid" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentId.sort" (change)="lookupSortChange(lookupOptions.equipmentId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentId)" [(ngModel)]="lookupOptions.equipmentId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentName)" [(ngModel)]="lookupOptions.equipmentName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentName.value" (change)="lookupFieldChange(lookupOptions.equipmentName)" name="equipmentname" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentName.sort" (change)="lookupSortChange(lookupOptions.equipmentName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentName)" [(ngModel)]="lookupOptions.equipmentName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment Tag</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3" (change)="lookupFieldChange(lookupOptions.equipmentTag)" [(ngModel)]="lookupOptions.equipmentTag.operator">
+                            <select class="form-control" [(ngModel)]="lookupOptions.equipmentTag.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentTag.value" (change)="lookupFieldChange(lookupOptions.equipmentTag)"/>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentTag.sort" (change)="lookupSortChange(lookupOptions.equipmentTag)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentTag)" [(ngModel)]="lookupOptions.equipmentTag.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentMake)" [(ngModel)]="lookupOptions.equipmentMake.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentMake.value" (change)="lookupFieldChange(lookupOptions.equipmentMake)" name="equipmentMake" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentMake.sort" (change)="lookupSortChange(lookupOptions.equipmentMake)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentMake)" [(ngModel)]="lookupOptions.equipmentMake.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentModel)" [(ngModel)]="lookupOptions.equipmentModel.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentModel.value" (change)="lookupFieldChange(lookupOptions.equipmentModel)" name="equipmentModel" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentModel.sort" (change)="lookupSortChange(lookupOptions.equipmentModel)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentModel)" [(ngModel)]="lookupOptions.equipmentModel.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Order No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.orderNumber)" [(ngModel)]="lookupOptions.orderNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.orderNumber.value" (change)="lookupFieldChange(lookupOptions.orderNumber)" name="orderNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.orderNumber.sort" (change)="lookupSortChange(lookupOptions.orderNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.orderNumber)" [(ngModel)]="lookupOptions.orderNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Invoice No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.invoiceNumber)" [(ngModel)]="lookupOptions.invoiceNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.invoiceNumber.value" (change)="lookupFieldChange(lookupOptions.invoiceNumber)"  name="invoiceNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.invoiceNumber.sort" (change)="lookupSortChange(lookupOptions.invoiceNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.invoiceNumber)" [(ngModel)]="lookupOptions.invoiceNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Serial No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.serialNumber)" [(ngModel)]="lookupOptions.serialNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.serialNumber.value" (change)="lookupFieldChange(lookupOptions.serialNumber)" name="serialNumber" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.serialNumber.sort" (change)="lookupSortChange(lookupOptions.serialNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.serialNumber)" [(ngModel)]="lookupOptions.serialNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="assetType == 'vehicle'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Vehicle Reg ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" [(ngModel)]="lookupOptions.vehicleRegistrationId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="lookupOptions.vehicleRegistrationId.value" (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" name="vehicleRegistrationId" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.vehicleRegistrationId.sort" (change)="lookupSortChange(lookupOptions.vehicleRegistrationId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.vehicleRegistrationId)" [(ngModel)]="lookupOptions.vehicleRegistrationId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Engine No</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.engineNumber)" [(ngModel)]="lookupOptions.engineNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.engineNumber)" [(ngModel)]="lookupOptions.engineNumber.value" name="engineNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.engineNumber.sort" (change)="lookupSortChange(lookupOptions.engineNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.engineNumber)" [(ngModel)]="lookupOptions.engineNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Chassis No</label>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-6 col-md-2">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-md-6">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.value" name="chasisNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.chasisNumber.sort" (change)="lookupSortChange(lookupOptions.chasisNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.make)" [(ngModel)]="lookupOptions.make.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" [(ngModel)]="make" (change)="lookupFieldChange(lookupOptions.make)" name="make" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.make.sort" (change)="lookupSortChange(lookupOptions.make)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.make)" [(ngModel)]="lookupOptions.make.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.model)" [(ngModel)]="lookupOptions.model.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.model)" [(ngModel)]="lookupOptions.model.value" name="model" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.model.sort" (change)="lookupSortChange(lookupOptions.model)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.model)" [(ngModel)]="lookupOptions.model.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Month of Manufacturing.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.monthOfManufacturing)" [(ngModel)]="lookupOptions.monthOfManufacturing.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.monthOfManufacturing)" [(ngModel)]="lookupOptions.monthOfManufacturing.value">
+                                <option value="null"></option>
+                                <option *ngFor="let month of dropDownsData.monthTypeList" [ngValue]="month.description">{{month.description}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.monthOfManufacturing.sort" (change)="lookupSortChange(lookupOptions.monthOfManufacturing)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.monthOfManufacturing)" [(ngModel)]="lookupOptions.monthOfManufacturing.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Year of Manufacturing</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [(ngModel)]="lookupOptions.yearOfManufacturing.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [(ngModel)]="lookupOptions.yearOfManufacturing.value" name="yearOfManufacturing" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.yearOfManufacturing.sort" (change)="lookupSortChange(lookupOptions.yearOfManufacturing)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.yearOfManufacturing)" [(ngModel)]="lookupOptions.yearOfManufacturing.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>MOT Obtained Date</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [(ngModel)]="lookupOptions.motObtainedDate.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="lookupOptions.motObtainedDate.value"
+                                name="motObtainedDate" />
+                            <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.motObtainedDate.sort" (change)="lookupSortChange(lookupOptions.motObtainedDate)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.motObtainedDate)" [(ngModel)]="lookupOptions.motObtainedDate.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="assetType == 'asset-type-other'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherId)" [(ngModel)]="lookupOptions.assetTypeOtherId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherId)" [(ngModel)]="lookupOptions.assetTypeOtherId.value" name="assetTypeOtherId" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetTypeOtherId.sort" (change)="lookupSortChange(lookupOptions.assetTypeOtherId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetTypeOtherId)" [(ngModel)]="lookupOptions.assetTypeOtherId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherName)" [(ngModel)]="lookupOptions.assetTypeOtherName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherName)" [(ngModel)]="lookupOptions.assetTypeOtherName.value" name="assetTypeOtherName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetTypeOtherName.sort" (change)="lookupSortChange(lookupOptions.assetTypeOtherName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetTypeOtherName)" [(ngModel)]="lookupOptions.assetTypeOtherName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Description</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" [(ngModel)]="lookupOptions.assetTypeOtherDescription.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" [(ngModel)]="lookupOptions.assetTypeOtherDescription.value" name="assetTypeOtherDescription"
+                            />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetTypeOtherDescription.sort" (change)="lookupSortChange(lookupOptions.assetTypeOtherDescription)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetTypeOtherDescription)" [(ngModel)]="lookupOptions.assetTypeOtherDescription.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Asset Tag</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetTag)" [(ngModel)]="lookupOptions.assetTag.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetTag)" [(ngModel)]="lookupOptions.assetTag.value" name="assetTag" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetTag.sort" (change)="lookupSortChange(lookupOptions.assetTag)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetTag)" [(ngModel)]="lookupOptions.assetTag.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="ol-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetMake)" [(ngModel)]="lookupOptions.assetMake.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetMake)" [(ngModel)]="lookupOptions.assetMake.value" name="assetMake" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetMake.sort" (change)="lookupSortChange(lookupOptions.assetMake)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetMake)" [(ngModel)]="lookupOptions.assetMake.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetModel)" [(ngModel)]="lookupOptions.assetModel.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetModel)" [(ngModel)]="lookupOptions.assetModel.value" name="assetModel" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetModel.sort" (change)="lookupSortChange(lookupOptions.assetModel)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetModel)" [(ngModel)]="lookupOptions.assetModel.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Serial No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetSerialNumber)" [(ngModel)]="lookupOptions.assetSerialNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.assetSerialNumber)" [(ngModel)]="lookupOptions.assetSerialNumber.value" name="assetSerialNumber" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.assetSerialNumber.sort" (change)="lookupSortChange(lookupOptions.assetSerialNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetSerialNumber)" [(ngModel)]="lookupOptions.assetSerialNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Purchased date</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.purchasedDate)" [(ngModel)]="lookupOptions.purchasedDate.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.purchasedDate)" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="lookupOptions.purchasedDate.value"
+                                name="purchasedDate" />
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" [(ngModel)]="lookupOptions.purchasedDate.sort" (change)="lookupSortChange(lookupOptions.purchasedDate)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.purchasedDate)" [(ngModel)]="lookupOptions.purchasedDate.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Department</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" [(ngModel)]="lookupOptions.department.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="lookupOptions.department.value">
+                            <option value="null"></option>
+                            <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department.description">{{department.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.department.sort" (change)="lookupSortChange(lookupOptions.department)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.department)" [(ngModel)]="lookupOptions.department.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Asset Condition</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" [(ngModel)]="lookupOptions.assetCondition.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetCondition.value">
+                            <option value="null"></option>
+                            <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition.description">{{condition.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.assetCondition.sort" (change)="lookupSortChange(lookupOptions.assetCondition)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetCondition)" [(ngModel)]="lookupOptions.assetCondition.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Asset Status</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" [(ngModel)]="lookupOptions.assetStatus.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetStatus.value">
+                            <option value="null"></option>
+                            <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status.description">{{status.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.assetStatus.sort" (change)="lookupSortChange(lookupOptions.assetStatus)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetStatus)" [(ngModel)]="lookupOptions.assetStatus.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Asset Type</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" [(ngModel)]="lookupOptions.assetType.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetType.value">
+                            <option value="null"></option>
+                            <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type.description">{{type.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.assetType.sort" (change)="lookupSortChange(lookupOptions.assetType)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.assetType)" [(ngModel)]="lookupOptions.assetType.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>Regulatory</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.regulatoryCompliance.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>AMC</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.amcPresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Insurance</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.insurancePresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>Loan</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.loanPresent.value">
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>License</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.licensePresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12  col-md-4 ">
+                        <label>Warranty</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.warrantyPresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <label>Inspection</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.inspectionPresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Service</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.servicePresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Rental or Lease</label>
+                        <select class="form-control" [(ngModel)]="lookupOptions.rentalOrLeasePresent.value">
+                            <option value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="searchAsset()">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="initSearchParams(true)">Clear</button>
+                <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

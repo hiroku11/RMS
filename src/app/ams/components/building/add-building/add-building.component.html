@@ -1,0 +1,291 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-building"></span> Add Building</h4>
+  </div>
+</div>
+
+<ul class="row nav nav-tabs mb-2">
+  <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+    <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
+  </li>
+</ul>
+<div class="tab-content" *ngIf="currentTab.tab == 1">
+  <h5>Building Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Building ID</label>
+      <input class="form-control" [(ngModel)]="building.buildingId" name="buildingid" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Building Name</label>
+      <input class="form-control" [(ngModel)]="building.buildingName" name="buildingName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>No. Of Floors</label>
+      <input class="form-control" [(ngModel)]="building.numberOfFloors" name="numberOfFloors" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Building Size</label>
+      <input class="form-control" [(ngModel)]="building.buildingSize" name="buildingSize" />
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Asset Category</label>
+      <select class="form-control" [compareWith]="selectCompareFunction" disabled [(ngModel)]="building.assetCategory">
+        <option value="null"></option>
+        <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category">{{category.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Organization</label>
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="building.organization">
+        <option value="null"></option>
+        <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Department</label>
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="building.department">
+        <option value="null"></option>
+        <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Building Description</label>
+      <textarea class="form-control" [(ngModel)]="building.buildingDescription" name="buildingDescription"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Regulatory Compliance</label>
+      <select class="form-control" [(ngModel)]="building.regulatoryCompliance">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Regulatory Authority</label>
+      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Compliance Obtained Date</label>
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="building.regulatoryCompliance != 'Y'"
+       [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exits</label>
+      <select class="form-control" [(ngModel)]="building.fireExits">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exit Location</label>
+      <input class="form-control" [disabled]="building.fireExits != 'Y'" [(ngModel)]="building.fireExitsLoc" name="fireExitsLoc"
+      />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Exitinguishers Present</label>
+      <select class="form-control" [(ngModel)]="building.fireExtinguishers">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher</label>
+      <ngx-select-dropdown [ngClass]="{'disabled':building.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
+        [multiple]="true" [config]="multiselectConfig" [(value)]="building.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Fire Extinguisher Location</label>
+      <input class="form-control" [disabled]="building.fireExtinguishers != 'Y'" [(ngModel)]="building.fireExtinguisherLoc" name="fireExtinguisherLoc"
+      />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Annual Maintenance Contract</label>
+      <select class="form-control" [(ngModel)]="building.amcPresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Inspection</label>
+      <select class="form-control" [(ngModel)]="building.inspectionPresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License</label>
+      <select class="form-control" [(ngModel)]="building.licensePresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Loan</label>
+      <select class="form-control" [(ngModel)]="building.loanPresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy</label>
+      <select class="form-control" [(ngModel)]="building.insurancePresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Rental/Lease</label>
+      <select class="form-control" [(ngModel)]="building.rentalOrLeasePresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Service</label>
+      <select class="form-control" [(ngModel)]="building.servicePresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Warranty</label>
+      <select class="form-control" [(ngModel)]="building.warrantyPresent" (change)="updateTabs()">
+        <option value="null"></option>
+        <option value="N">No</option>
+        <option value="Y">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Condition</label>
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetCondition">
+        <option value="null"></option>
+        <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [disabled]="!building.assetCondition || building.assetCondition.id != 'OTHER'" [(ngModel)]="building.assetConditionOther"
+        name="assetConditionOther" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Status</label>
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetStatus">
+        <option value="null"></option>
+        <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [disabled]="!building.assetStatus || building.assetStatus.id != 'OTHER'" [(ngModel)]="building.assetStatusOther"
+        name="assetStatusOther" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Asset Type</label>
+      <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetType">
+        <option value="null"></option>
+        <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>If Other Specify</label>
+      <input class="form-control" [disabled]="!building.assetType || building.assetType.id != 'OTHER'" [(ngModel)]="building.assetTypeOther"
+        name="description" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      Assigned To:
+      <button class="btn btn-primary btn-sm" (click)="userLookup()">Lookup</button>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Login Id
+      </th>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let assignee of building.assignees">
+        
+        <td>{{assignee.loginId}}
+        </td>
+        <td>{{assignee.firstName}}</td>
+        <td>{{assignee.lastName}}</td>
+        <td>
+          <span class="fa fa-trash btn btn-sm btn-outline-success" (click)="deleteAssignee(assignee)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Notes</label>
+      <textarea class="form-control" [(ngModel)]="building.notes"></textarea>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+      <!-- <button class="btn btn-success float-right">Next</button> -->
+    </div>
+  </div>
+</div>
+<app-maintenance *ngIf="currentTab.tab==2" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-maintenance>
+<app-inspection *ngIf="currentTab.tab==3" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-inspection>
+<app-license *ngIf="currentTab.tab==4" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-license>
+<app-loan *ngIf="currentTab.tab==5" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-loan>
+<app-policy *ngIf="currentTab.tab==6" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-policy>
+<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-rent-or-lease>
+<app-service *ngIf="currentTab.tab==8" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-service>
+<app-warranty *ngIf="currentTab.tab==9" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-warranty>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="building" [addTo]="'building'"></app-supporting-documents>
+<asset-summary [asset]="building" *ngIf="currentTab.tab==11"></asset-summary>

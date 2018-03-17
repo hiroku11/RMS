@@ -1,0 +1,263 @@
+<div class="row pb-3">
+    <div class="col-md-12">
+      <h4>
+        <span class="fa fa-folder"></span> Add Document</h4>
+    </div>
+  </div>
+  
+ 
+  <div class="tab-content">
+    <h5>Document Details</h5>
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Document ID</label>
+        <input class="form-control" />
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Title</label>
+        <input class="form-control" [(ngModel)]="documnet.documnetName" name="documnetName" />
+      </div>
+   
+      <div class="col-sm-12 col-md-4">
+        <label>Status</label>
+        <select class="form-control"  [(ngModel)]="documnet.assetCategory.id">
+            <option value="null"></option>
+            <option>New</option>
+          </select>      
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col-sm-12">
+            <label>Description</label>
+            <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+          </div>
+    </div>
+  
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Document Classification</label>
+        <select class="form-control" [(ngModel)]="documnet.assetCategory.id">
+          <option value="null"></option>
+          <option>Internal</option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Published</label>
+        <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="documnet.organization">
+          <option value="null"></option>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Published Date</label>
+        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="documnet.regulatoryCompliance != 'Y'"
+        [(ngModel)]="documnet.regCompObtainedDate" name="regCompObtainedDate" />
+       <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Publish Comments</label>
+        <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>LMS Notified</label>
+        <select class="form-control" [(ngModel)]="documnet.regulatoryCompliance">
+          <option value="null"></option>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>LMS Notified by</label>
+        <input class="form-control" [disabled]="documnet.regulatoryCompliance != 'Y'" [(ngModel)]="documnet.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>LMS Notified Date</label>
+        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="documnet.regulatoryCompliance != 'Y'"
+         [(ngModel)]="documnet.regCompObtainedDate" name="regCompObtainedDate" />
+        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      </div>
+      
+    </div>
+
+    <div class="row pb-2">
+        <div class="col-sm-12">
+          <label>LMS Notification Comments</label>
+          <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+        </div>
+      </div>
+
+  
+  
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Expiry Date</label>
+        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="documnet.regulatoryCompliance != 'Y'"
+         [(ngModel)]="documnet.regCompObtainedDate" name="regCompObtainedDate" />
+        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Never Expires</label>
+        <select class="form-control" [(ngModel)]="documnet.fireExtinguishers">
+          <option value="null"></option>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Approval Level</label>
+        <select class="form-control" [(ngModel)]="documnet.fireExtinguishers">
+            <option value="null"></option>
+            <option>Level 3</option>
+            <option>Leval 2</option>
+            <option>Leval 1</option>
+          </select>
+      </div>
+     
+    </div>
+    <div class="row pb-2">
+        <div class="col-sm-12">
+          <button class="btn btn-primary" (click)="save()">Save</button>
+        </div>
+      </div>
+    
+      <h5>Upload File</h5>
+      <div class="row pb-2">
+          <div class="col-sm-12 col-md-8">
+              <label>File Name</label>
+              <input type="text" class="form-control"/>
+          </div>
+      <div class="col-sm-12 col-md-4">
+          <label>File</label>
+          <input class="form-control" type="file" />
+      </div>
+     </div>
+        <div class="row pb-2">
+            <div class="col-sm-12">
+                <label>File Description</label>
+                <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-12 col-md-6">
+                <label>Status</label>
+                <select class="form-control" [(ngModel)]="documnet.fireExtinguishers">
+                    <option value="null"></option>
+                    <option>Approved</option>
+                    <option>Rejected</option>
+                    
+                  </select>           
+                </div>
+            <div class="col-sm-12 col-md-6">
+                <label>Comments</label>
+                <input type="text" class="form-control"/>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-12">
+              <button class="btn btn-primary" (click)="save()">Save</button>
+            </div>
+          </div>
+          <h5>Version History</h5>
+          <table class="table table-bordered" >
+              <thead>
+                <th>
+                   File Name
+                </th>
+                <th>
+                   Description
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                    Size
+                  </th>
+                <th>
+                  Version
+                </th>
+              
+                <th>
+                  Status 
+                 </th>
+                 <th>
+                   Added By
+                 </th>
+                 <th>
+                    Added Date
+                  </th>
+                 <th>
+                   Reviewd By
+                 </th>
+                 <th>
+                   Reviewd Date
+                 </th>
+                 <th>
+                    Approved By
+                  </th>
+                  <th>
+                    Approved Date
+                  </th>
+                
+                <th style="width:200px"></th>
+              </thead>
+              <tbody>
+                <tr>
+                 <td>
+                  HR_Policy_document
+                  </td>
+                  <td>
+                  HR Policy
+                  </td>
+                  <td>
+                    PDF
+                  </td>
+                  <td>
+                    15 mb
+                  </td>
+                  <td>
+                     1
+                    </td>
+                  
+                  <td>
+                    Draft
+                  </td>
+                  <td>
+                   Smith
+                  </td>
+                  <td>
+                    01/01/2017
+                  </td>
+                  <td>
+                    Karthik
+                  </td>
+                  <td>
+                   01/01/2017
+                  </td>
+                  <td>
+                    Smith
+                  </td>
+                  <td>
+                    01/01/2017
+                  </td>
+                  <td>
+                    <button class="fa fa-file btn btn-icon" [routerLink]="'publish-email'"></button>
+                    <button class="fa fa-bell btn btn-icon" [routerLink]="'notify-admin'"></button>
+                    <button class="fa fa-envelope btn btn-icon" [routerLink]="'send-email'"></button>
+                    <button class="fa fa-download btn btn-icon" ></button>
+                    <button class="fa fa-trash btn btn-icon" ></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+  </div>
+  

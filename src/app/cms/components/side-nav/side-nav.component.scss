@@ -1,0 +1,48 @@
+@import "./../../../../_common";
+
+.navbar {
+    height: 100%;
+    position: relative;
+    align-items: initial;
+    @extend .zero-padding;
+    ul {
+        list-style: none;
+        @extend .zero-margin;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 100%;
+        li {
+            cursor: pointer;
+            background-color: #2e2e2e;
+            border-bottom: 2px solid white;
+            font-size: 13px;
+            &.active {
+                a {
+                    background-color: $amsColor;
+                    color: #fff;
+                }
+            }
+            &:hover {
+                a {
+                    background-color: $amsColor;
+                    color: #fff;
+                }
+            }
+            a {
+                display: block;
+                padding: 10px;
+                font-size: 1.1em;
+                color: #d2d2d2;
+            }
+        }
+    }
+}
+
+.user-image{
+        width: 50px;
+}
+
+.user-role{
+min-width: 100px;
+@extend .text-overflow;
+}

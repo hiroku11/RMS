@@ -1,0 +1,183 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "./_common";
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #ecedf0;
+    overflow: hidden;
+}
+
+.container-fluid {
+    @extend .zero-padding;
+    height: 100%;
+}
+
+.content {
+    padding-top: 15px;
+    overflow: auto;
+    border-top: 15px solid $amsColor;
+    min-height: 100%;
+}
+.table {
+    background: white;
+}
+
+.row.view {
+    @extend .zero-margin;
+    height: calc(100% - 100px);
+}
+
+h5 {
+    border-bottom: 2px dotted #2e2e2e;
+}
+thead {
+    background-color: $amsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
+        background-color: $amsColor;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn-sm {
+    min-height: 30px;
+}
+.btn-icon{
+    padding: 0;
+    background: none;
+    &:hover{
+        background-color: none;
+    }
+}
+
+.input-group.search {
+    .input-group-addon{
+        padding: 0.2rem .75rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25;
+        color: #464a4c;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 0 20px 20px 0;
+        border-left: none;
+    }
+    input {
+        border-right: 0;
+        border-radius: 20px 0 0 20px;
+    }
+    width: 184px;
+    max-height: 30px;
+    span {
+        background-color: white;
+        border-radius: 0 20px 20px 0;
+    }
+}
+
+
+.nav-tabs {
+    border-bottom: 1px solid $amsColor;
+    .nav-link {
+        border-color: $amsColor;
+        color:  $amsColor;
+        &:hover, &.active{
+            color:white !important;
+            background-color: $amsColor;
+            border-color: $amsColor;
+        }
+       
+       
+    }
+}
+
+
+.col-sm-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.col-sm-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.alert{
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width:500px;
+    text-align: center;
+    z-index: 105;
+}
+label{
+    font-weight:bold;
+}
+.disabled{
+    cursor: not-allowed;
+    pointer-events: none !important;
+    
+}
+.modal{
+    z-index:100;
+}
+.modal-backdrop {
+    z-index: 99;
+}
+
+.table td, .table th {
+    padding: .5rem;
+}
+
+@media (min-width: 992px){
+    .modal-lg {
+        max-width: 1200px;
+    }
+}
+
+thead.owl-dt-calendar-header{
+    background-color: #fff;
+}
+ngx-select-dropdown{
+    &.disabled{
+        /deep/.ngx-dorpdown-container{
+            /deep/button.ngx-dropdown-button{
+                cursor: not-allowed !important;
+                background-color: #eceeef !important;
+            }
+        }
+    }
+    
+}
+
+.ngx-dorpdown-container{
+    /deep/ul.selected-items{
+           margin-top: 1rem;
+           margin-bottom: 1rem;
+           
+    }
+    ul{
+        li{
+            white-space: normal !important;
+           }
+    }
+    /deep/button.ngx-dropdown-button{
+           padding: 7px 12px !important;
+    }
+}

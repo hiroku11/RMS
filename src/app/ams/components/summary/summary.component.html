@@ -1,0 +1,1053 @@
+<div class="tab-content">
+  <h5>Summary</h5>
+
+  <div class="tab-content" *ngIf="asset.assetCategory.id == 'BUILDING'">
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Building ID</label>: {{asset.buildingId}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Building Name</label>: {{asset.buildingName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>No. Of Floors</label>: {{asset.numberOfFloors}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Building Size</label>: {{asset.buildingSize}}
+      </div>
+    </div>
+
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Asset Category</label>: {{asset.assetCategory?.description}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Organization</label>: {{asset.organization?.description}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Department</label>: {{asset.department?.description}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Building Description</label>: {{asset.buildingDescription}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Authority</label>: {{asset.regulatoryAuthorityName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exits</label>: {{asset.fireExits}}
+      </div>
+    </div>
+
+
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exitinguishers Present</label>: {{asset.fireExtinguishers}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher</label>: {{getFireExtinguishersDisplay(asset.fireExtinguisherTypes)}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher Location</label>: {{asset.fireExtinguisherLoc}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Inspection</label>: {{asset.inspectionPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>License</label>: {{asset.licensePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Loan</label>: {{asset.loanPresent}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Policy</label>: {{asset.insurancePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Rental/Lease</label>:{{asset.rentalOrLeasePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Service</label>: {{asset.servicePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Warranty</label>: {{asset.warrantyPresent}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition</label>: {{asset.assetCondition}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status</label>: {{asset.assetStatus}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status Other</label>{{asset.assetStatusOther}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type</label>: {{asset.assetType?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type Other</label>: {{asset.assetTypeOther}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Notes</label>: {{asset.notes}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" *ngIf="asset.assetCategory.id == 'EQUIPMENT'">
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Equipment ID</label>: {{asset.equipmentId}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Equipment Name</label>: {{asset.equipmentName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Equipment Details</label>: {{asset.equipmentDetails}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Equipment Tag</label>: {{asset.equipmentTag}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Category</label>: {{asset.assetCategory?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Organization</label>: {{asset.organization?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Department</label>: {{asset.department?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Equipment Cost</label>: {{asset.equipmentCost}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Length</label>: {{asset.equipmentLength}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Width</label>: {{asset.equipmentWidth}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Height</label>: {{asset.equipmentHeight}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Weight</label>: {{asset.equipmentWeight}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Quantity</label>: {{asset.equipmentQuantity}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Serial #</label>: {{asset.serialNumber}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Make</label>: {{asset.equipmentMake}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Model</label>: {{asset.equipmentModel}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Purchased Date</label>: {{asset.equipmentPurchasedDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Purchased From</label>: {{asset.equipmentPurchasedFrom}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Company Phone</label>: {{asset.equipmentCompanyPhone}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Company Email</label>: {{asset.equipmentCompanyEmail}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Contact Person</label>: {{asset.equipmentCompanyContactPerson}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Order #</label>: {{asset.orderNumber}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Invoice #</label>: {{asset.invoiceNumber}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Purchase Comments</label>: {{asset.equipmentCompanyComments}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Equipment Returned</label>: {{asset.equipmentReturned}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Return Date</label>: {{asset.equipmentReturnedDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Refund Amount</label>: {{asset.refundAmount}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Return Reason</label>: {{asset.equipmentReturnedReason}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Authority</label>: {{asset.regulatoryAuthorityName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exits</label>: {{asset.fireExits}}
+      </div>
+    </div>
+  
+  
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exitinguishers Present</label>: {{asset.fireExtinguishers}}
+      </div>
+  
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher</label>: {{getFireExtinguishersDisplay(asset.fireExtinguisherTypes)}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher Location</label>: {{asset.fireExtinguisherLoc}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Inspection</label>: {{asset.inspectionPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>License</label>: {{asset.licensePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Loan</label>: {{asset.loanPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Policy</label>: {{asset.insurancePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Rental/Lease</label>: {{asset.rentalOrLeasePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Service</label>: {{asset.servicePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Warranty</label>: {{asset.warrantyPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition</label>: {{asset.assetCondition?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status</label>: {{asset.assetStatus?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status Other</label>: {{asset.assetStatusOther}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type</label>: {{asset.assetType?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type Other</label>: {{asset.assetTypeOther}}
+      </div>
+    </div>  
+    
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Damage Description</label>: {{asset.equipmentDamageDesc}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" *ngIf="asset.assetCategory.id == 'OTHER'">
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Asset ID</label>: {{asset.assetTypeOtherId}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Name</label>: {{asset.assetTypeOtherName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Description</label>: {{asset.assetTypeOtherDescription}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Tag</label>: {{asset.assetTag}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Category</label>: {{asset.assetCategory?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Organization</label>: {{asset.organization?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Department</label>: {{asset.department?.description}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Asset Cost</label>: {{asset.assetCost}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Length</label>: {{asset.assetLength}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Height</label>: {{asset.assetHeight}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Width</label>: {{asset.assetWidth}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Weight</label>: {{asset.assetWeight}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Quantity</label>: {{asset.assetQuantity}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Serial #</label>: {{asset.assetSerialNumber}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Make</label>: {{asset.assetMake}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Model</label>: {{asset.assetModel}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Purchase Date</label>: {{asset.purchasedDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Company Name</label>: {{asset.purchasedFrom}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Company Phone</label>: {{asset.purchaseCompanyPhone}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Company Email</label>: {{asset.purchaseCompanyEmail}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Company Contact Person</label>: {{asset.purchaseCompanyContactPerson}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Order #</label>: {{asset.orderNumber}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Invoice #</label>: {{asset.invoiceNumber}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Purchase Comments</label>: {{asset.purchaseComments}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Asset Returned</label>: {{asset.assetReturned}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Return Date</label> : {{asset.assetReturnedDate|date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Refund Amount</label>: {{asset.refundAmount}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Return Reason</label>: {{asset.assetReturnReason}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Damage Description</label>: {{asset.assetDamageDescription}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-">
+        <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Authority</label>: {{asset.regulatoryAuthorityName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate|date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exits</label>: {{asset.fireExits}}
+      </div>
+    </div>
+  
+  
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exitinguishers Present</label>: {{asset.fireExtinguishers}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher</label>: {{getFireExtinguishersDisplay(asset.fireExtinguisherTypes)}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher Location</label>: {{asset.fireExtinguisherLoc}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Inspection</label>: {{asset.inspectionPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>License</label>: {{asset.licensePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Loan</label>: {{asset.loanPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Policy</label>: {{asset.insurancePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Rental/Lease</label>: {{asset.rentalOrLeasePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Service</label>: {{asset.servicePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Warranty</label>: {{asset.warrantyPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition</label>: {{asset.assetCondition?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status</label>: {{asset.assetStatus?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status Other</label>: {{asset.assetStatusOther}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type</label>: {{asset.assetType?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type Other</label>: {{asset.assetTypeOther}}
+      </div>
+    </div>
+
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Notes</label>: {{asset.notes}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" *ngIf="asset.assetCategory.id == 'VEHICLE'">
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Vehicle Reg. No.</label>: {{asset.vehicleRegistrationId}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Engine #</label>: {{asset.engineNumber}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Chasis #</label>: {{asset.chasisNumber}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>Asset Category</label>: {{asset.assetCategory?.description}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Organization</label>: {{asset.organization?.description}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>Department</label>: {{asset.department?.description}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Make</label>: {{asset.make}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Model</label>: {{asset.model}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Year Of Manufacturing</label>: {{asset.yearOfManufacturing}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Month Of Manufacturing</label>: {{asset.monthOfManufacturing?.description}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Vehicle Type</label>: {{asset.vehicleType?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type Other</label>: {{asset.vehicleTypeOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Tax</label>: {{asset.taxApplicable}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Tax Amount</label>: {{asset.taxAmount}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Tax Start Date Time</label>: {{asset.taxStartDateTime| date:'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Tax End Date Time</label>: {{asset.taxEndDateTime| date:'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>MOT</label>: {{asset.motApplicable}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>MOT Authority Name</label>: {{asset.motAuthorityName}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>MOT Place</label>: {{asset.motPlace}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+        <label>MOT Start Date Time</label>: {{asset.motStartDateTime | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>MOT End Date Time</label>: {{asset.motEndDateTime | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <label>MOT Obtained Date</label>: {{asset.motObtainedDate | date: 'dd/MM/yyyy'}}
+      </div>
+    </div>
+  
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Vehicle Damage Type</label>: {{getFireExtinguishersDisplay(asset.vehicleDamageTypes)}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Vehicle Damage Type Other</label> : {{asset.vehicleDamageTypeOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Regulatory Authority</label>: {{asset.regulatoryAuthorityName}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate| date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exits</label>: {{asset.fireExits}}
+      </div>
+    </div>
+  
+  
+  
+    <div class="row pb-2">
+  
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Exitinguishers Present</label>: {{asset.fireExtinguishers}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher</label>:{{getFireExtinguishersDisplay(asset.fireExtinguisherTypes)}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Fire Extinguisher Location</label>:{{asset.fireExtinguisherLoc}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Inspection</label>: {{asset.inspectionPresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>License</label>: {{asset.licensePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Loan</label>: {{asset.loanPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-3">
+        <label>Policy</label>: {{asset.insurancePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Rental/Lease</label>: {{asset.rentalOrLeasePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Service</label>: {{asset.servicePresent}}
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <label>Warranty</label>: {{asset.warrantyPresent}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition</label>: {{asset.assetCondition?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status</label>: {{asset.assetStatus?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Status Other</label>: {{asset.assetStatusOther}}
+      </div>
+    </div>
+    <div class="row pb-2">
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type</label>: {{vehicle.assetType?.description}}
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label>Asset Type Other</label>: {{asset.assetTypeOther}}
+      </div>
+    </div>
+  
+    <div class="row pb-2">
+      <div class="col-sm-12">
+        <label>Comment/Description</label>: {{asset.commentDescription}}
+      </div>
+    </div>
+  </div>
+
+  <label>Assignees</label>
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Login Id
+      </th>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let assignee of asset.assignees">
+
+        <td>{{assignee.loginId}}
+        </td>
+        <td>{{assignee.firstName}}</td>
+        <td>{{assignee.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Inspections</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Inspection #</th>
+        <th>Due Date</th>
+        <th>Done By</th>
+        <th>Done Date</th>
+        <th>Duration in hrs</th>
+        <th>Amount</th>
+        <th>Next Insp. Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inspection of asset.inspections">
+        <td>{{inspection.inspectionNumber}}</td>
+        <td>{{inspection.inspectionDueDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{inspection.inspectionDoneBy}}</td>
+        <td>{{inspection.inspectionDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{inspection.inspectionDurationInHours}}</td>
+        <td>{{inspection.inspectionAmount}}</td>
+        <td>{{inspection.nextInspectionDueDate | date:'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Licenses</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>License #</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Renewal Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let license of asset.licenses">
+        <td>{{license.licenseNumber}}</td>
+        <td>{{license.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{license.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{license.renewalDate | date:'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Loans</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of asset.loanAgreements">
+        <td>
+          {{loan.agreementId}}
+        </td>
+        <td>
+          {{loan.agreementName}}
+        </td>
+        <td>
+          {{loan.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{loan.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{loan.loanAmount}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>AMC Contracts</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let amc of asset.annualMaintenanceContracts">
+        <td>
+          {{amc.agreementId}}
+        </td>
+        <td>
+          {{amc.agreementName}}
+        </td>
+        <td>
+          {{amc.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{amc.endDateTime| date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{amc.amcAmount}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Pilicies</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Policy #</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Cover Amount</th>
+        <th>Policy Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of asset.insurancePolicies">
+        <td>
+          {{policy.policyNumber}}
+        </td>
+        <td>
+          {{policy.policyName}}
+        </td>
+        <td>
+          {{policy.policyStartDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{policy.policyEndDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{policy.policyCoverAmount}}
+        </td>
+        <td>
+          {{policy.policyType?.id}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Rent or Lease Agreements</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Agreement ID</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th>Rental/Lease Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rol of asset.rentalOrLeaseAgreements">
+        <td>
+          {{rol.agreementId}}
+        </td>
+        <td>
+          {{rol.agreementName}}
+        </td>
+        <td>
+          {{rol.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{rol.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{rol.agreementAmount}}
+        </td>
+        <td>
+          {{rol.rentalOrLeaseType?.description}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Services</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Service #</th>
+        <th>Due Date</th>
+        <th>Done By</th>
+        <th>Done Date</th>
+        <th>Duration in hrs</th>
+        <th>Amount</th>
+        <th>Next Service Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of asset.services">
+        <td>
+          {{service.serviceNumber}}
+        </td>
+        <td>
+          {{service.serviceDueDate | date:'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{service.serviceDoneBy}}
+        </td>
+        <td>
+          {{service.serviceDoneDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{service.serviceDurationInHours}}
+        </td>
+        <td>
+          {{service.serviceAmount}}
+        </td>
+        <td>
+          {{service.nextServiceDueDate | date:'dd/MM/yyyy'}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Warranties</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Warranty #</th>
+        <th>Provided By</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th>Renewal Date</th>
+        <th>Renewal Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let warranty of asset.warrantyAgreements">
+        <td>
+          {{warranty.warrantyNumber}}
+        </td>
+        <td>
+          {{warranty.warrantyName}}
+        </td>
+        <td>
+          {{warranty.warrantyStartDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{warranty.warrantyEndDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{warranty.warrantyAmount}}
+        </td>
+        <td>
+          {{warranty.warrantyRenewalDate | date:'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{warranty.warrantyRenewalAmount}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label>Supporting Documnets</label>
+  <table class="table table-bordered" *ngIf="asset.id">
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>File Description</th>
+        <th>File Content Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doc of asset.documents; let i = index;">
+        <td>
+          {{doc.fileName || ""}}
+        </td>
+        <td>
+          {{doc.fileDescription || ""}}
+        </td>
+        <td>
+          {{doc.fileContentType || ""}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

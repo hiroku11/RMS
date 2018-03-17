@@ -1,0 +1,11 @@
+@import './../../../../_common';
+.row{
+        @extend .zero-margin;
+        height: calc(100% - 100px);
+}
+
+.dashboard{
+        img{
+                height: 200px;
+        }
+}

@@ -1,0 +1,90 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-file"></span> Send Email</h4>
+  </div>
+</div>
+
+
+<div class="tab-content">
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Document ID</label>
+      <input class="form-control" />
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Title</label>
+      <input class="form-control" [(ngModel)]="documnet.documnetName" name="documnetName" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Status</label>
+      <select class="form-control" [(ngModel)]="documnet.assetCategory.id">
+        <option value="null"></option>
+        <option>New</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Document Classification</label>
+      <select class="form-control" [(ngModel)]="documnet.assetCategory.id">
+        <option value="null"></option>
+        <option>Internal</option>
+      </select>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <label>File Name</label>
+      <input class="form-control" />
+    </div>
+    <div class="col-sm-6">
+      <label>Version Number</label>
+      <input class="form-control" />
+    </div>
+
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <label>Version Status</label>
+      <input class="form-control" />
+    </div>
+    <div class="col-sm-6">
+      <label>Approved By</label>
+      <input class="form-control" />
+    </div>
+
+  </div>
+  <h5></h5>
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <label>Sent Date</label>
+      <input class="form-control" />
+    </div>
+    <div class="col-sm-6">
+      <label>From</label>
+      <input class="form-control" />
+    </div>
+
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Sender Comments</label>
+      <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Selected users</label>
+      <button class="btn btn-primary btn-sm">Lookup</button>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="save()">Save</button>
+
+
+      <button class="btn btn-danger" (click)="save()">Cancel</button>
+    </div>
+  </div>

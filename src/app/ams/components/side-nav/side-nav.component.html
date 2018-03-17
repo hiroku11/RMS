@@ -1,0 +1,45 @@
+<div class="row pr-1 pb-3 pt-3 zero-margin">
+    <div class="col-sm-3" style="vertical-align:middle">
+        <img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image"/>
+    </div>
+    <div class="col-sm-6" style="vertical-align:middle;">
+        <span>{{userDetails.roles[0].roleName}}</span><br>
+        <span class="fa fa-circle text-success" > Online</span>
+    </div>
+    <div class="col-sm-3">
+        <button class="btn float-right btn-info btn-sm" style="vertical-align:middle" (click)="logOut()">
+            <span class="fa fa-power-off "></span>
+        </button>
+        
+    </div>
+</div>
+<div class="navbar">
+    <ul>
+        <li [ngClass]="{active:thisView=='dashboard'}">
+            <a [routerLink]="['/ams/dashboard']" title="">
+                <i class="fa fa-tasks"></i> Dashboard
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='building'}">
+            <a [routerLink]="['/ams/buildings']" title="">
+                <i class="fa fa-building"></i> Building
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='equipment'}">
+            <a [routerLink]="['/ams/equipments']" title="">
+                <i class="fa fa-print"></i> Equipment
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='vehicle'}">
+            <a [routerLink]="['/ams/vehicles']" title="">
+                <i class="fa fa-bus"></i> Vehicle
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='other'}">
+            <a [routerLink]="['/ams/others']" title="">
+                <i class="fa fa-folder-open"></i> Other
+            </a>
+        </li>
+    </ul>
+
+</div>

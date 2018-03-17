@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <span class="fa fa-print"></span>Equipment(s) |
+      <button class="btn btn-info btn-sm" [routerLink]="'add-equipment'">
+        <span class="fa fa-plus"></span> Add</button>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+      <span class="fa fa-search"></span> Advance Search</button>
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+  </div>
+</div>
+<table class="table table-bordered" >
+  <thead>
+    <th>
+      Equipment ID
+    </th>
+    <th>
+      Equipment Name
+    </th>
+    <th>
+      Organization
+    </th>
+    <th>
+      Department
+    </th>
+    <th>
+      Reg. Authority
+    </th>
+    <th></th>
+  </thead>
+  <tbody *ngIf="equipmentList.length">
+    <tr *ngFor="let equipment of equipmentList | searchFilter: searchText">
+      <td>
+        <a [routerLink]="['edit-equipment', equipment.id]">{{equipment.equipmentId}}</a>
+      </td>
+      <td>
+        {{equipment.equipmentName}}
+      </td>
+      <td>
+        {{equipment.organization?.description}}
+      </td>
+      <td>
+        {{equipment.department?.description}}
+      </td>
+      <td>
+        {{equipment.regulatoryAuthorityName}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteEquipment(equipment)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>

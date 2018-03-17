@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <span class="fa fa-bus"></span> Vehicle(s) |
+      <button class="btn btn-info btn-sm" [routerLink]="'add-vehicle'">
+        <span class="fa fa-plus"></span> Add</button>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+      <span class="fa fa-search"></span> Advance Search</button>
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <th>
+      Vehicle Reg #
+    </th>
+    <th>
+      Make
+    </th>
+    <th>
+      Model
+    </th>
+    <th>
+      Engine #
+    </th>
+    <th>
+      Chasis #
+    </th>
+    <th></th>
+  </thead>
+  <tbody *ngIf="vehicleList.length">
+    <tr *ngFor="let vehicle of vehicleList | searchFilter : searchText">
+      <td>
+        <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.vehicleRegistrationId}}</a>
+      </td>
+      <td>
+        {{vehicle.assettype?.make}}
+      </td>
+      <td>
+        {{vehicle.assettype?.model}}
+      </td>
+      <td>
+        {{vehicle.assettype?.engineNumber}}
+      </td>
+      <td>
+        {{vehicle.assettype?.chasisNumber}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteVehicle(vehicle)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>

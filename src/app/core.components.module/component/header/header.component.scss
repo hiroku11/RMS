@@ -1,0 +1,21 @@
+@import './../../../../_common';
+
+.header {
+        background-color: #fff;
+        min-height: 100px;
+        .logo img {
+                margin-top: 10px;
+                width: 96px;
+            }
+    }
+    img{
+            width: 40px;
+    }
+    .dropdown{
+            float: right;
+            left: 0px;
+            min-width: 200px;
+            .dropdown-menu{
+                min-width: 200px;
+            }
+    }

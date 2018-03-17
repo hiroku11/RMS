@@ -1,0 +1,20 @@
+$amsColor : rgb(11,77,138)!global;
+
+.zero-margin{
+        margin: 0 !important;
+}
+
+.zero-padding{
+        padding: 0 !important;
+}
+
+.center-block{
+    display: block;
+    margin: auto;
+}
+
+.text-overflow{
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}

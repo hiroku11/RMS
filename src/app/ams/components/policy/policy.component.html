@@ -1,0 +1,415 @@
+<div class="tab-content">
+  <h5>Policy Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy #</label>
+      <input class="form-control" [(ngModel)]="policy.policyNumber" name="policyNumber" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Name</label>
+      <input class="form-control" [(ngModel)]="policy.policyName" name="policyName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Cover Amount</label>
+      <input class="form-control" [(ngModel)]="policy.policyCoverAmount" name="policyCoverAmount" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Premium Amount</label>
+      <input class="form-control" [(ngModel)]="policy.policyPremiumAmount" name="policyPremiumAmount" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Policy Description</label>
+      <textarea class="form-control" [(ngModel)]="policy.policyDescription" name="policyDescription"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Start Date Time</label>
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="policy.policyStartDateTime" name="policyStartDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy End Date Time</label>
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="policy.policyEndDateTime" name="policyEndDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Date Time</label>
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="policy.graceDateTime" name="graceDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Grace Period In Months</label>
+      <input class="form-control" [(ngModel)]="policy.gracePeriodInMonths" name="gracePeriodInMonths" />
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Type</label>
+      <select class="form-control" [(ngModel)]="policy.policyType" name="policyType">
+        <option value="null"></option>
+        <option *ngFor="let type of dropDownsData.policyTypeList" [ngValue]="type">{{type.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Type Other</label>
+      <input class="form-control" [disabled]="!policy.policyType || policy.policyType.id != 'OTHER'" [(ngModel)]="policy.policyTypeOther"
+        name="policyTypeOther" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Renewal Type</label>
+      <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType">
+        <option value="null"></option>
+        <option *ngFor="let renew of dropDownsData.renewalTypeList" [ngValue]="renew">{{renew.description}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Policy Renewal Type Other</label>
+      <input class="form-control" [disabled]="!policy.policyRenewalType || policy.policyRenewalType.id != 'OTHER'" [(ngModel)]="policy.policyRenewalTypeOther"
+        name="policyRenewalTypeOther" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Name</label>
+      <input class="form-control" [(ngModel)]="policy.providerName" name="providerName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Phone</label>
+      <input class="form-control" [(ngModel)]="policy.providerPhone" name="providerPhone" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Email</label>
+      <input class="form-control" [(ngModel)]="policy.providerEmail" name="providerEmail" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Contact Person</label>
+      <input class="form-control" [(ngModel)]="policy.providerContactPerson" name="providerContactPerson" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>Provider Description</label>
+      <textarea class="form-control" [(ngModel)]="policy.providerDescription" name="providerDescription"></textarea>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="policy.comments" name="comments"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right" data-toggle="modal" data-target="#lookUp">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Policy #</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Cover Amount</th>
+        <th>Policy Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of asset.insurancePolicies">
+        <td>
+          {{policy.policyNumber}}
+        </td>
+        <td>
+          {{policy.policyName}}
+        </td>
+        <td>
+          {{policy.policyStartDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{policy.policyEndDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+        </td>
+        <td>
+          {{policy.policyCoverAmount}}
+        </td>
+        <td>
+          {{policy.policyType?.id}}
+        </td>
+        <td>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editPolicy(policy)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removePolicyFromAsset(policy)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents [docsObject]="policy" [addTo]="'policy'"></app-supporting-documents>
+  <div class="modal" tabindex="-1" role="dialog" id="lookUp">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Inspection Lookup</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Policy #</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.policyNumber.value" (change)="lookupFieldChange(lookupOptions.policyNumber)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.policyNumber)" [(ngModel)]="lookupOptions.policyNumber.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.policyNumber.sort" (change)="lookupSortChange(lookupOptions.policyNumber)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.policyNumber)" [(ngModel)]="lookupOptions.policyNumber.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Policy Name</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.policyName.value" (change)="lookupFieldChange(lookupOptions.policyName)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.policyName)" [(ngModel)]="lookupOptions.policyName.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.policyName.sort" (change)="lookupSortChange(lookupOptions.policyName)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.policyName)" [(ngModel)]="lookupOptions.policyName.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Policy Description</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.policyDescription.value" (change)="lookupFieldChange(lookupOptions.policyDescription)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.policyDescription)" [(ngModel)]="lookupOptions.policyDescription.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.policyDescription.sort" (change)="lookupSortChange(lookupOptions.policyDescription)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.policyDescription)" [(ngModel)]="lookupOptions.policyDescription.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Provider Name</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.providerName.value" (change)="lookupFieldChange(lookupOptions.providerName)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.providerName)" [(ngModel)]="lookupOptions.providerName.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.providerName.sort" (change)="lookupSortChange(lookupOptions.providerName)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.providerName)" [(ngModel)]="lookupOptions.providerName.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Provider Description</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.providerDescription.value" (change)="lookupFieldChange(lookupOptions.providerDescription)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.providerDescription)" [(ngModel)]="lookupOptions.providerDescription.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.providerDescription.sort" (change)="lookupSortChange(lookupOptions.providerDescription)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.providerDescription)" [(ngModel)]="lookupOptions.providerDescription.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Start Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.policyStartDateTime.value"
+                (dateTimeChange)="lookupFieldChange(lookupOptions.policyStartDateTime)" />
+              <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.policyStartDateTime)" [(ngModel)]="lookupOptions.policyStartDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.policyStartDateTime.sort" (change)="lookupSortChange(lookupOptions.policyStartDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.policyStartDateTime)" [(ngModel)]="lookupOptions.policyStartDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>End Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.policyEndDateTime.value"
+                (dateTimeChange)="lookupFieldChange(lookupOptions.policyEndDateTime)" />
+              <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtd></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.policyEndDateTime)" [(ngModel)]="lookupOptions.policyEndDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.policyEndDateTime.sort" (change)="lookupSortChange(lookupOptions.policyEndDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.policyEndDateTime)" [(ngModel)]="lookupOptions.policyEndDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+         
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Policy #</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Cover Amount</th>
+                <th>Policy Type</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="lookupItems">
+              <tr *ngFor="let pol of lookupItems.policies">
+                <td>
+                  {{pol.policyNumber}}
+                </td>
+                <td>
+                  {{pol.policyName}}
+                </td>
+                <td>
+                  {{pol.policyStartDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+                </td>
+                <td>
+                  {{pol.policyEndDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+                </td>
+                <td>
+                  {{pol.policyCoverAmount}}
+                </td>
+                <td>
+                  {{pol.policyType?.id}}
+                </td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingPolicyToAsset(pol)"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupPolicy($event)"></ng-pagination>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary float-right" (click)="lookupPolicy()">Search</button>
+          <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

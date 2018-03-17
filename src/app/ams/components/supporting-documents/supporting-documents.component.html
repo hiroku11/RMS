@@ -1,0 +1,46 @@
+<h5 *ngIf="docsObject.id">Supporting Documents</h5>
+<div class="row pb-4" *ngIf="docsObject.id">
+  <div class="col-sm-12 col-md-3">
+    <label>File Name</label>
+    <input class="form-control" [(ngModel)]="fileName" name="fileName" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>File Description</label>
+    <input class="form-control" [(ngModel)]="fileDescription" name="fileDescription" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>File</label>
+    <input class="form-control" [disabled]="!fileName || !fileDescription" (change)="documentSelected($event)" style="padding-top:5px;padding-bottom:5px;"
+      type="file" name="description" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <button class="btn btn-primary" [disabled]="!fileName || !fileDescription" style="margin-top:32px;" (click)="addDocuments()">Add</button>
+  </div>
+</div>
+<table class="table table-bordered" *ngIf="docsObject.id">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>File Description</th>
+      <th>File Content Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of docsObject.documents; let i = index;">
+      <td>
+        {{doc.fileName || ""}}
+      </td>
+      <td>
+        {{doc.fileDescription || ""}}
+      </td>
+      <td>
+        {{doc.fileContentType || ""}}
+      </td>
+      <td>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocument(doc,i)"></span>
+        <span class="fa fa-download btn btn-sm btn-outline-success" (click)="downloadDocument(doc)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

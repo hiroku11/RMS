@@ -1,0 +1,414 @@
+<div class="tab-content">
+  <h5>License Details</h5>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>License Number</label>
+      <input class="form-control" [(ngModel)]="license.licenseNumber" name="licenseNumber" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Name</label>
+      <input class="form-control" [(ngModel)]="license.licenseHolderName" name="licenseHolderName" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Company</label>
+      <input class="form-control" [(ngModel)]="license.licenseHoldingCompany" name="licenseHoldingCompany" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Email</label>
+      <input class="form-control" [(ngModel)]="license.licenseHolderEmail" name="licenseHolderEmail" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>License Holder Phone</label>
+      <input class="form-control" [(ngModel)]="license.licenseHolderPhone" name="licenseHolderPhone" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provided By</label>
+      <input class="form-control" [(ngModel)]="license.licenseProvidedBy" name="licenseProvidedBy" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Phone</label>
+      <input class="form-control" [(ngModel)]="license.licenseProviderPhone" name="licenseProviderPhone" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Provider Email</label>
+      <input class="form-control" [(ngModel)]="license.licenseProviderEmail" name="licenseProviderEmail" />
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-6">
+      <label>License Holder Company Description</label>
+      <textarea class="form-control" [(ngModel)]="license.licenseHolderDescription" name="licenseHolderDescription"></textarea>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <label>Provider Description</label>
+      <textarea class="form-control" [(ngModel)]="license.licenseProviderDescription" name="licenseProviderDescription"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-3">
+      <label>Providing Authority</label>
+      <input class="form-control" [(ngModel)]="license.licenseProvidingAuthority" name="licenseProvidingAuthority" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Issued Date</label>
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" [(ngModel)]="license.issuedDate" name="issuedDate"
+      />
+      <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
+
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Place Of Issue</label>
+      <input class="form-control" [(ngModel)]="license.placeIssued" name="placeIssued" />
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Renewal Date</label>
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="license.renewalDate" name="renewalDate"
+      />
+      <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Start Date Time</label>
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="license.startDateTime" name="startDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>End Date Time</label>
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="license.endDateTime" name="endDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Grace Date Time</label>
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="license.graceDateTime" name="graceDateTime"
+      />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12 col-md-4">
+      <label>Grace Period In Months</label>
+      <input class="form-control" [(ngModel)]="license.gracePeriodInMonths" name="gracePeriodInMonths" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>License Amount</label>
+      <input class="form-control" [(ngModel)]="license.licenseAmount" name="licenseAmount" />
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <label>Renewal Amount</label>
+      <input class="form-control" [(ngModel)]="license.renewalAmount" name="renewalAmount" />
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-12">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)]="license.comments" name="comments"></textarea>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success float-right" data-toggle="modal" data-target="#lookUp">Lookup</button>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>License #</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Renewal Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let license of asset.licenses">
+        <td>{{license.licenseNumber}}</td>
+        <td>{{license.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{license.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{license.renewalDate | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editLicense(license)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeLicenseFromAsset(license)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-supporting-documents [docsObject]="license" [addTo]="'license'"></app-supporting-documents>
+  <div class="modal" tabindex="-1" role="dialog" id="lookUp">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Inspection Lookup</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>License #</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseNumber.value" (change)="lookupFieldChange(lookupOptions.licenseNumber)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseNumber)" [(ngModel)]="lookupOptions.licenseNumber.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseNumber.sort" (change)="lookupSortChange(lookupOptions.licenseNumber)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseNumber)" [(ngModel)]="lookupOptions.licenseNumber.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Holding Company</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseHoldingCompany.value" (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)" [(ngModel)]="lookupOptions.licenseHoldingCompany.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHoldingCompany.sort" (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)" [(ngModel)]="lookupOptions.licenseHoldingCompany.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Holder Name</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseHolderName.value" (change)="lookupFieldChange(lookupOptions.licenseHolderName)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHolderName)" [(ngModel)]="lookupOptions.licenseHolderName.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHolderName.sort" (change)="lookupSortChange(lookupOptions.licenseHolderName)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseHolderName)" [(ngModel)]="lookupOptions.licenseHolderName.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Provided By</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidedBy.value" (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)" [(ngModel)]="lookupOptions.licenseProvidedBy.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidedBy.sort" (change)="lookupSortChange(lookupOptions.licenseProvidedBy)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseProvidedBy)" [(ngModel)]="lookupOptions.licenseProvidedBy.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Provided Authority</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidingAuthority.value" (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)" [(ngModel)]="lookupOptions.licenseProvidingAuthority.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="STARTS_WITH">Starts With</option>
+                <option value="ENDS_WITH">Ends With</option>
+                <option value="CONTAINS">Contains</option>
+                <option value="NOT_CONTAINS">Not Contains</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidingAuthority.sort" (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)" [(ngModel)]="lookupOptions.licenseProvidingAuthority.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Place Issued</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [(ngModel)]="lookupOptions.placeIssued.value" (change)="lookupFieldChange(lookupOptions.placeIssued)"
+              />
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.placeIssued)" [(ngModel)]="lookupOptions.placeIssued.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.placeIssued.sort" (change)="lookupSortChange(lookupOptions.placeIssued)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.placeIssued)" [(ngModel)]="lookupOptions.placeIssued.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Start Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.startDateTime.value"
+                (dateTimeChange)="lookupFieldChange(lookupOptions.startDateTime)" />
+              <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.startDateTime.sort" (change)="lookupSortChange(lookupOptions.startDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>End Date Time</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.endDateTime.value"
+                (dateTimeChange)="lookupFieldChange(lookupOptions.endDateTime)" />
+              <owl-date-time [pickerType]="'calendar'" #dtd></owl-date-time>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.operator">
+                <option value="EQ">Equals</option>
+                <option value="NEQ">Not equals</option>
+                <option value="GT"> Greater than</option>
+                <option value="LT">Less than</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-2">
+              <span>
+                <input type="checkbox" [(ngModel)]="lookupOptions.endDateTime.sort" (change)="lookupSortChange(lookupOptions.endDateTime)"> Sort
+              </span>
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.order">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+            </div>
+          </div>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>License #</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Renewal Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="lookupItems">
+              <tr *ngFor="let licns of lookupItems.licenses">
+                <td>{{licns.licenseNumber}}</td>
+                <td>{{licns.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td>{{licns.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td>{{licns.renewalDate | date:'dd/MM/yyyy'}}</td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingLicenseToAsset(licns)"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupLicense($event)"></ng-pagination>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary float-right" (click)="lookupLicense()">Search</button>
+          <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
