@@ -1,10 +1,5 @@
-import { Injectable } from "@angular/core";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/toPromise";
-import { CanActivate, CanLoad } from "@angular/router/src/interfaces";
-import { Router } from "@angular/router";
-import { Injector } from "@angular/core";
-
+import { Injectable,Injector } from "@angular/core";
+import { Router, CanActivate, CanLoad } from "@angular/router";
 @Injectable()
 export class UserService implements CanActivate, CanLoad {
     userDetails: any;

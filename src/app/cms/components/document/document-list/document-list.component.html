@@ -4,7 +4,7 @@
       <span class="fa fa-building"></span> Documents |
       <button class="btn btn-info btn-sm" [routerLink]="'add-document'">
         <span class="fa fa-plus"></span> Add</button>
-     </h4>
+    </h4>
   </div>
   <div class="col-md-6">
     <button class="btn btn-info btn-sm float-right ml-2">
@@ -18,90 +18,34 @@
 
   </div>
 </div>
-<table class="table table-bordered" >
+<table class="table table-bordered">
   <thead>
-    <th>
-       ID
-    </th>
-    <th>
-       Title
-    </th>
-    <th>
-      Type
-    </th>
-    <th>
-      Version
-    </th>
-    <th>
-     Classification 
-    </th>
-    <th>
-      Status 
-     </th>
-     <th>
-       Published
-     </th>
-     <th>
-       LMS Notified
-     </th>
-     <th>
-       Expiry Date
-     </th>
-     <th>
-       Never Expires
-     </th>
-     <th>
-       Author
-     </th>
-     <th>
-       Approver
-     </th>
+    <th> ID</th>
+    <th> Title</th>
+    <th>Classification </th>
+    <th>Status</th>
+    <th>Published</th>
+    <th>Expiry Date </th>
+    <th>Author</th>
+    <th>Approver</th>
     <th></th>
   </thead>
   <tbody>
-    <tr>
-     <td>
-       DOC001
-      </td>
-      <td>
-      HR Policy
-      </td>
-      <td>
-        PDF
-      </td>
-      <td>
-        1
-      </td>
-      <td>
-        Internal
-      </td>
-      <td>
-        Draft
-      </td>
-      <td>
-        N
-      </td>
-      <td>
-        N
-      </td>
-      <td>
-        01/01/2019
-      </td>
-      <td>
-        N
-      </td>
-      <td>
-        Smith
-      </td>
-      <td>
-        King
-      </td>
+    <tr *ngFor="let doc of documentsList; let i = index;">
+      <td><a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a></td>
+      <td> {{doc.documentTitle}}</td>
+      <td>{{doc.documentClassification?.description}}</td>
+      <td>{{doc.documentStatus?.description}}</td>
+      <td> {{doc.isPublished}}</td>
+      <td>{{doc.expiryDate ? (doc.expiryDate | date:'dd/MM/yyyy'): 'NA'}}</td>
+      <td>{{doc.createdBy}}</td>
+      <td>{{doc.publishedBy?.firstName}}</td>
       <td>
         <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="'send-email'"></span>
-        <span class="fa fa-bell btn btn-sm  btn-outline-info" [routerLink]="'notify-admin'"></span>
-        <span class="fa fa-download btn btn-sm btn-outline-info"></span>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" ></span>
+        <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadDocument(doc)"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocumnet(doc,i)"></span>
       </td>
     </tr>
   </tbody>
 </table>
+<ng-pagination *ngIf="documentsList.length>0" [itemsCount]="itemsCount" [pageSize]="pageSize" (getPageData)="getPageData($event)"></ng-pagination>

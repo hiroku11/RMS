@@ -15,6 +15,7 @@ const cmsRoutes: Routes = [
         path: 'document', component: DocumentComponent,
         children: [
               { path: '', component: DocumentListComponent, pathMatch: 'full' },
+              { path: 'edit-document/:id', component: AddDocumentComponent, pathMatch: 'full' },
               { path: 'document-list', component: DocumentListComponent, pathMatch: 'full' },
               { path: 'add-document', component: AddDocumentComponent, pathMatch: 'full' },
               { path: 'send-email', component: SendEmailComponent, pathMatch: 'full' },
