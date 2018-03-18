@@ -1,0 +1,15 @@
+@import './../../../../_common';
+.content{
+    border-color: $cmsColor;
+}
+
+thead {
+    background-color: $cmsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
+        background-color: $cmsColor;
+    }
+}

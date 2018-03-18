@@ -18,7 +18,7 @@ body {
 .content {
     padding-top: 15px;
     overflow: auto;
-    border-top: 15px solid $amsColor;
+    border-top: 15px solid;
     min-height: 100%;
 }
 .table {
@@ -33,16 +33,26 @@ body {
 h5 {
     border-bottom: 2px dotted #2e2e2e;
 }
+
+
 thead {
     background-color: $amsColor;
     color: white;
 }
 
-.btn {
-    &:hover {
-        background-color: $amsColor;
-    }
+.cms-table thead{
+    background-color: $cmsColor;
+    color: white;
 }
+.ams-table thead{
+    background-color: $cmsColor;
+    color: white;
+}
+// // .btn {
+// //     &:hover {
+// //         background-color: $amsColor;
+// //     }
+// // }
 
 a:hover {
     text-decoration: none;

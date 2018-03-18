@@ -165,7 +165,7 @@
     </div>
   </div>
   <h5>Version History</h5>
-  <table class="table table-bordered">
+  <table class="table table-bordered cms-table">
     <thead>
       <th>File Name</th>
       <th>Description</th>
@@ -192,7 +192,7 @@
         <td>{{doc.approvedUserFullName}}</td>
         <td>{{doc.approvedDate | date: "dd/MM/yyyy"}}</td>
         <td>
-          <span class="fa fa-file btn btn-sm  btn-outline-info" [routerLink]="['publish-email',doc.id]"></span>
+          <span class="fa fa-file btn btn-sm  btn-outline-info" [routerLink]="['publish-document',doc.id]"></span>
           <span class="fa fa-bell btn btn-sm  btn-outline-info" [routerLink]="['notify-admin',doc.id]"></span>
           <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['send-email',doc.id]"></span>
           <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadVersion(doc)"></span>

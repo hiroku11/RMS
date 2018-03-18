@@ -19,7 +19,7 @@ const cmsRoutes: Routes = [
               { path: 'document-list', component: DocumentListComponent, pathMatch: 'full' },
               { path: 'add-document', component: AddDocumentComponent, pathMatch: 'full' },
               { path: 'send-email/:id', component: SendEmailComponent, pathMatch: 'full' },
-              { path: 'publish-email/:id', component: PublishEmailComponent, pathMatch: 'full' },
+              { path: 'publish-document/:id', component: PublishEmailComponent, pathMatch: 'full' },
               { path: 'notify-admin/:id', component: NotifyAdminComponent, pathMatch: 'full' },
         ], canActivate: [UserService]
   },
