@@ -10,7 +10,7 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
-  @Input() thisView: string;
+  @Input() thisView: string = 'document';
   userDetails: any;
   constructor(private userService: UserService,private _sharedService: SharedService) { 
     this.userDetails = this.userService.userDetails;
