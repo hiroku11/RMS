@@ -41,7 +41,7 @@
       <td>{{doc.createdBy}}</td>
       <td>{{doc.publishedBy?.firstName}}</td>
       <td>
-        <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="'send-email'"></span>
+        <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['send-email',doc.id]"></span>
         <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadDocument(doc)"></span>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocumnet(doc,i)"></span>
       </td>

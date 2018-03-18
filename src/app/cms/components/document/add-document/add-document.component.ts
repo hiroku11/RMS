@@ -3,6 +3,8 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../../../../services/shared.service';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-add-document',
@@ -12,10 +14,20 @@ import { ActivatedRoute } from '@angular/router';
 export class AddDocumentComponent implements OnInit {
   document: any = {};
   editMode: boolean = false;
-  file: any ={};
+  file: any = {};
   formData: FormData;
   fileInput: any;
-  constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService, private route: ActivatedRoute) { }
+  dropdownsData: any = {};
+  versionHistory: any;
+  constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService,
+    private route: ActivatedRoute, private _sharedService: SharedService) {
+    if (!this._sharedService.cmsDropDownsData.documentStatuses) {
+      this._sharedService.getCmsDropdownsData();
+    }
+    this._sharedService.cmsDropDownsService.subscribe((data) => {
+      this.dropdownsData = data;
+    })
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -74,27 +86,26 @@ export class AddDocumentComponent implements OnInit {
     return item1.id == item2.id;
   }
   uploadDocumentVersion() {
-    ///compliance/save-compliance-document-history
-    if(!this.document.id){
+    if (!this.document.id) {
       this._alertsService.error("Please save document details first.");
       return;
     }
-    let headers: {
-      'Content-Type': undefined
-    }
-    this.formData.append("comments",this.file.comments);
-    this.formData.append("statusCode",this.file.statusCode);
-    this._apiService.post("/compliance/save-compliance-document-history", this.formData, headers).subscribe(
-      data => {
-        this.clearSelectedFile();
-      },
-      error => {
-        this._alertsService.error("Some error occured while uploading document.");
-      }
-    )
+    this.formData.append("comments", this.file.comments);
+    this.formData.append("statusCode", this.file.statusCode);
+    this._apiService.post("/compliance/save-compliance-document-history", this.formData)
+      .subscribe(
+        (data) => {
+          this._alertsService.success("Document successfully uploaded.");
+          this.clearSelectedFile();
+          this.getVersionHistory();
+        },
+        (error) => {
+          this._alertsService.error("Some error occured while uploading document.");
+        }
+      )
   }
 
-  clearSelectedFile(){
+  clearSelectedFile() {
     this.file = {};
     this.fileInput.value = null;
   }
@@ -119,4 +130,45 @@ export class AddDocumentComponent implements OnInit {
       }
     )
   }
+
+  getVersionHistory() {
+    this._apiService.get(`/compliance/compliance-document-history/complianceDocumentId/${this.document.id}`).subscribe(
+      (data) => {
+        this.document.complianceDocumentVersionHistoryView = data;
+      },
+      (error) => {
+        this._alertsService.error("Error getting version history.");
+      }
+    )
+  }
+
+  deleteVersionHistory(ver: any) {
+    this._apiService.delete(`/compliance/delete-compliance-document-history/id/${ver.id}`).subscribe(
+      (data) => {
+        this._alertsService.success("Version history successfully deleted.");
+        this.getVersionHistory();
+      },
+      (error) => {
+        this._alertsService.error("Error deleting version history. Try again.")
+      }
+    )
+
+  }
+
+  downloadVersion(ver: any) {
+    this._apiService.get(`/compliance/download-compliance-document-history/id/${ver.id}`,{},true,true).subscribe(
+      (data) => {
+        this.saveFile(data, ver.originalFileName);
+      },
+      (error) => {
+        this._alertsService.error("Error downloading version history. Try again.")
+      }
+    )
+  }
+
+  saveFile(blobContent: any, fileName: string) {
+    const blob = new Blob([blobContent], { type: 'application/octet-stream' });
+    saveAs(blob, fileName);
+  }
+
 }

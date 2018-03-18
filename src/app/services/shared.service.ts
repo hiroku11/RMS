@@ -7,6 +7,7 @@ import { Subject } from "rxjs/Subject";
 export class SharedService {
     public activeView: string;
     public dropDownsData: any = {};
+    public cmsDropDownsData: any = {};
     public conditionalTabs: [
 
         {
@@ -33,6 +34,7 @@ export class SharedService {
         }
     ];
     public dropDownsService = new Subject();
+    public cmsDropDownsService = new Subject();
     constructor(private _apiService: ApiService) {
         this.getAllDropdownData();
 
@@ -269,7 +271,73 @@ export class SharedService {
             );
     }
 
+    getCmsDocumentStatuses(){
+        this._apiService
+        .get("/table-maintenance/document-status/document-statuses")
+        .subscribe(
+            (data) => {
+                this.cmsDropDownsData.documentStatuses = data;
+                this.propagateNewCmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+    getCmsDocumentClassifications(){
+        this._apiService
+        .get("/table-maintenance/document-classification/document-classifications")
+        .subscribe(
+            (data) => {
+                this.cmsDropDownsData.documentClassifications = data;
+                this.propagateNewCmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+    getCmsDocumentApprovalLevels(){
+        this._apiService
+        .get("/table-maintenance/approval-level/approval-levels")
+        .subscribe(
+            (data) => {
+                this.cmsDropDownsData.approvalLevels = data;
+                this.propagateNewCmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+    getCmsDocumentVersionStatuses(){
+        this._apiService
+        .get("/table-maintenance/document-history-status/document-history-statuses")
+        .subscribe(
+            (data) => {
+                this.cmsDropDownsData.versionStatuses = data;
+                this.propagateNewCmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+    getCmsDropdownsData(){
+        this.getCmsDocumentApprovalLevels();
+        this.getCmsDocumentClassifications();
+        this.getCmsDocumentStatuses();
+        this.getCmsDocumentVersionStatuses();
+    }
+    
     propagateNewData() {
         this.dropDownsService.next(this.dropDownsData);
+    }
+    propagateNewCmsData(){
+        this.cmsDropDownsService.next(this.cmsDropDownsData);
     }
 }

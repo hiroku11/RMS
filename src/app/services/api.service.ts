@@ -4,8 +4,9 @@ import { Injectable } from "@angular/core";
 import {
     HttpClient,
     HttpHeaders,
-    HttpErrorResponse
+    HttpErrorResponse,
 } from "@angular/common/http";
+import { ResponseContentType } from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
@@ -34,7 +35,7 @@ export class ApiService {
             data = this.parseDateToApiFormat(data);
         }
         return this._http
-            .post(this.apiUrl + url, data, headers)
+            .post(this.apiUrl + url, data, {headers: headers})
             .map((res: any) => {
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
@@ -55,12 +56,11 @@ export class ApiService {
             headers: headers,
         }
         if(blob){
-            options.responseType ='arraybuffer'
+            options.responseType ='blob';
         }
         return this._http
-            .get(this.apiUrl + url, {headers: headers})
+            .get(this.apiUrl + url, options)
             .map((res: any) => {
-                //debugger
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
                 return res;

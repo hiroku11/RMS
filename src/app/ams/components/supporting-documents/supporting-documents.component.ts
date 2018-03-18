@@ -46,10 +46,7 @@ export class SupportingDocumentsComponent implements OnInit {
       this._alertsService.error("Please select an item from the table to add documents to.");
       return;
     }
-    let headers: {
-      'Content-Type': undefined
-    }
-    this._apiService.post(this.uploadUrl, this.formData, headers).subscribe(
+    this._apiService.post(this.uploadUrl, this.formData).subscribe(
       data => {
         this._alertsService.success("Documents successfully uploaded");
         this.docsObject.documents.length==0?this.docsObject.documents = data
