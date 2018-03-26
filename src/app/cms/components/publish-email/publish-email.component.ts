@@ -4,6 +4,7 @@ import { UserService } from './../../../services/user.service';
 import { UserLookupComponent } from './../user-lookup/user-lookup.component';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../../../services/shared.service';
 import { Component, OnInit,  ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 @Component({
@@ -15,6 +16,7 @@ export class PublishEmailComponent implements OnInit {
   document: any = {};
   userDetails:any;
   Id: any;
+  dropdownsData: any = {};
   data: any;
   notifiedDate =(new Date()).toJSON().slice(0,10).split('-').reverse().join('/') ;
   notifiedBy:any;
@@ -23,8 +25,15 @@ export class PublishEmailComponent implements OnInit {
   constructor(private route: ActivatedRoute,private _apiService: ApiService, private _alertsService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private userService: UserService
+    private userService: UserService,
+    private _sharedService: SharedService
   ) {
+    if (!this._sharedService.cmsDropDownsData.documentStatuses) {
+      this._sharedService.getCmsDropdownsData();
+    }
+    this._sharedService.cmsDropDownsService.subscribe((data) => {
+      this.dropdownsData = data;
+    })
     this.userDetails = this.userService.userDetails;
     this.notifiedBy = this.userDetails.firstName + " " + this.userDetails.lastName;
    }
