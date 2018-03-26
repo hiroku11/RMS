@@ -1,6 +1,6 @@
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
-
+import { UserService } from './../../../services/user.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,26 +10,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notify-admin.component.scss']
 })
 export class NotifyAdminComponent implements OnInit {
+  userDetails:any;
   document: any={};
-  constructor(private route: ActivatedRoute, private _apiService: ApiService, private _alertsService: AlertsLoaderService) { }
+  data:any={};
+  notifiedDate =(new Date()).toJSON().slice(0,10).split('-').reverse().join('/') ;
+  notifiedBy:any;
+  Id:any;
+  constructor(private route: ActivatedRoute, private _apiService: ApiService, private _alertsService: AlertsLoaderService,
+    private userService: UserService) { 
+      this.userDetails = this.userService.userDetails;
+      this.notifiedBy = this.userDetails.firstName + " " + this.userDetails.lastName;
+    }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      let Id = params["id"];
-      if (Id) {
-        this.getDocumentById(Id);
+      this.initDocumnet();
+      this.Id = params["id"];
+      if (this.Id) {
+        this.getDocumentById(this.Id);
       } else {
         //this.initDocumnet()
       }
     });
   }
-  save(){
-    
+  initDocumnet() {
+    this.data = {
+     
+      "versionHistoryId": this.Id,
+      "comments": null,
+    }
+  }
+  Save() {
+    this._apiService.post("/compliance/notify-lms-admin", this.data)
+      .subscribe(
+        (data) => {
+          this._alertsService.success("Notified admin successfully.");
+
+        },
+        (error) => {
+          this._alertsService.error("Some error occured while notifying an admin.");
+        }
+      )
+
   }
   getDocumentById(docId: any) {
     this._apiService.get(`/compliance/complianceDocumentId/${docId}`).subscribe(
       (data) => {
         this.document = data;
+        console.log(this.document);
       },
       (error) => {
         this._alertsService.error("Error occured while getting documents details");
@@ -37,4 +65,8 @@ export class NotifyAdminComponent implements OnInit {
     )
 
   }
+  Reset() {
+    this.initDocumnet();
+  }
+
 }

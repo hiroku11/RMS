@@ -11,80 +11,102 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Document ID</label>
-      <input class="form-control" />
+      <input class="form-control" [(ngModel)]="document.documentId" readonly/>
     </div>
+
     <div class="col-sm-12 col-md-6">
       <label>Title</label>
-      <input class="form-control" [(ngModel)]="documnet.documnetName" name="documnetName" />
+      <input class="form-control" [(ngModel)]="document.documentTitle" readonly/>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Status</label>
-      <select class="form-control" [(ngModel)]="documnet.assetCategory.id">
-        <option value="null"></option>
-        <option>New</option>
-      </select>
+      <input class="form-control" [(ngModel)]="document.documentStatus.description" readonly />
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Document Classification</label>
-      <select class="form-control" [(ngModel)]="documnet.assetCategory.id">
-        <option value="null"></option>
-        <option>Internal</option>
-      </select>
+      <input class="form-control" [(ngModel)]="document.documentClassification.description" readonly />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
       <label>File Name</label>
-      <input class="form-control" />
+      <input class="form-control" readonly/>
     </div>
     <div class="col-sm-6">
       <label>Version Number</label>
-      <input class="form-control" />
+      <input class="form-control"  readonly/>
     </div>
 
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
       <label>Version Status</label>
-      <input class="form-control" />
+      <input class="form-control" readonly/>
     </div>
     <div class="col-sm-6">
       <label>Approved By</label>
-      <input class="form-control" />
+      <input class="form-control" readonly/>
     </div>
 
   </div>
-  <h5></h5>
+
   <div class="row pb-2">
     <div class="col-sm-6">
       <label>Sent Date</label>
-      <input class="form-control" />
+      <input class="form-control" [(ngModel)]="notifiedDate" readonly/>
     </div>
     <div class="col-sm-6">
       <label>From</label>
-      <input class="form-control" />
+      <input class="form-control" [(ngModel)]="notifiedBy" readonly/>
     </div>
 
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Sender Comments</label>
-      <textarea class="form-control" [(ngModel)]="documnet.documnetDescription" name="documnetDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="data.comments"></textarea>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Selected users</label>
-      <button class="btn btn-primary btn-sm">Lookup</button>
+    
+      <button class="btn btn-primary btn-sm" (click)="userLookup()">Lookup</button>
     </div>
   </div>
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Login Id
+      </th>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of data.users">
+        
+        <td>{{user.loginId}}
+        </td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>
+          <span class="fa fa-trash btn btn-sm btn-outline-success" (click)="deleteUser(user)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="Save()">Save</button>
 
 
-      <button class="btn btn-danger" (click)="save()">Cancel</button>
+      <button class="btn btn-danger" (click)="Reset()">Cancel</button>
     </div>
   </div>

@@ -15,6 +15,9 @@ import { CmsRoutingModule } from './cms.routing.module';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
+import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
+
+
 
 
 export const MY_MOMENT_FORMATS = {
@@ -30,11 +33,13 @@ export const MY_MOMENT_FORMATS = {
     imports: [CommonModule, FormsModule, CoreComponentsModule, CmsRoutingModule,
         OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule
     ],
-    exports: [],
+    exports: [UserLookupComponent],
     declarations: [DocumentComponent, DocumentListComponent, AddDocumentComponent,
-        NotifyAdminComponent, PublishEmailComponent, SendEmailComponent, SideNavComponent
+        NotifyAdminComponent, PublishEmailComponent, SendEmailComponent, SideNavComponent, UserLookupComponent
     ],
-    providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }]
+    providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
+    entryComponents: [UserLookupComponent]
+   
 })
 export class CmsModule {
 
