@@ -22,6 +22,7 @@
   <thead>
     <th> ID</th>
     <th> Title</th>
+    <th>Version</th>
     <th>Classification </th>
     <th>Status</th>
     <th>Published</th>
@@ -34,14 +35,15 @@
     <tr *ngFor="let doc of documentsList; let i = index;">
       <td><a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a></td>
       <td> {{doc.documentTitle}}</td>
-      <td>{{doc.documentClassification?.description}}</td>
-      <td>{{doc.documentStatus?.description}}</td>
+      <td>{{doc.versionNumber}}</td>
+      <td>{{doc.documentClassificationDescription}}</td>
+      <td>{{doc.documentStatusDescription}}</td>
       <td> {{doc.isPublished}}</td>
       <td>{{doc.expiryDate ? (doc.expiryDate | date:'dd/MM/yyyy'): 'NA'}}</td>
-      <td>{{doc.createdBy}}</td>
-      <td>{{doc.publishedBy?.firstName}}</td>
+      <td>{{doc.addedBy}}</td>
+      <td>{{doc.approvedBy}}</td>
       <td>
-        <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['send-email',doc.id]"></span>
+        <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['send-email',doc.versionHistoryId]"></span>
         <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadDocument(doc)"></span>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocumnet(doc,i)"></span>
       </td>

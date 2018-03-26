@@ -37,7 +37,7 @@ export class DocumentListComponent implements OnInit {
   }
 
   getDocuments() {
-    this._apiService.get("/compliance/search-compliance-documents", { Search: JSON.stringify(this.searchParams) }).subscribe(
+    this._apiService.get("/compliance/search-compliance-document-and-version-history", { Search: JSON.stringify(this.searchParams) }).subscribe(
       (data) => {
         this.documentsList = data.complianceDocuments;
         this.itemsCount = data.totalRecords;

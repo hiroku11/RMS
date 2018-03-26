@@ -41,6 +41,7 @@ export class NotifyAdminComponent implements OnInit {
     }
   }
   Save() {
+    this.data.versionHistoryId = this.document.versionHistoryId;
     this._apiService.post("/compliance/notify-lms-admin", this.data)
       .subscribe(
         (data) => {
@@ -54,7 +55,7 @@ export class NotifyAdminComponent implements OnInit {
 
   }
   getDocumentById(docId: any) {
-    this._apiService.get(`/compliance/complianceDocumentId/${docId}`).subscribe(
+    this._apiService.get(`/compliance/send-email-info/versionHistoryId/${docId}`).subscribe(
       (data) => {
         this.document = data;
         console.log(this.document);

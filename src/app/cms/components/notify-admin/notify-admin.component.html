@@ -7,7 +7,6 @@
 
 
 <div class="tab-content">
-
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Document ID</label>
@@ -22,32 +21,32 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Status</label>
-      <input class="form-control" [(ngModel)]="document.documentStatus.description" readonly />
+      <input class="form-control" [(ngModel)]="document.documentStatusDescription" readonly />
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Document Classification</label>
-      <input class="form-control" [(ngModel)]="document.documentClassification.description" readonly />
+      <input class="form-control" [(ngModel)]="document.documentClassificationDescription" readonly />
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
       <label>File Name</label>
-      <input class="form-control" readonly/>
+      <input class="form-control" [(ngModel)]="document.originalFileName" readonly/>
     </div>
     <div class="col-sm-6">
       <label>Version Number</label>
-      <input class="form-control"  readonly/>
+      <input class="form-control" [(ngModel)]="document.versionNumber" readonly/>
     </div>
 
   </div>
   <div class="row pb-2">
     <div class="col-sm-6">
       <label>Version Status</label>
-      <input class="form-control" readonly/>
+      <input class="form-control" [(ngModel)]="document.versionStatusDescription" readonly/>
     </div>
     <div class="col-sm-6">
       <label>Approved By</label>
-      <input class="form-control" readonly/>
+      <input class="form-control" [(ngModel)]="document.approvedBy" readonly/>
     </div>
 
   </div>
@@ -71,7 +70,8 @@
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="Save()">Save</button>
-      <button class="btn btn-danger" (click)="Reset()">Cancel</button>
+      <button class="btn btn-primary" (click)="Save()">Notify</button>
+     
     </div>
+  </div>
   </div>
