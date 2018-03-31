@@ -16,7 +16,7 @@ import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
-
+import { SelectDropDownModule } from "ngx-select-dropdown";
 
 
 
@@ -31,7 +31,7 @@ export const MY_MOMENT_FORMATS = {
 
 @NgModule({
     imports: [CommonModule, FormsModule, CoreComponentsModule, CmsRoutingModule,
-        OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule
+        OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule, SelectDropDownModule
     ],
     exports: [UserLookupComponent],
     declarations: [DocumentComponent, DocumentListComponent, AddDocumentComponent,
