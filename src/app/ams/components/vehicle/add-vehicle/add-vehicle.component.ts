@@ -146,6 +146,12 @@ export class AddVehicleComponent implements OnInit {
             data => {
                 this.vehicle = data;
                 this.updateTabs();
+                if (this.vehicle.assetCategory == null) {
+                    this.vehicle.assetCategory = {
+                        id: "VEHICLE",
+                        description: "Vehicle"
+                    }
+                }
             },
             error => {
                 this._alertsService.error(
@@ -190,10 +196,7 @@ export class AddVehicleComponent implements OnInit {
             );
     }
     userLookup() {
-        if (!this.vehicle.id) {
-            this._alertsService.error("Please save vehicle details.");
-            return;
-        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
             UserLookupComponent
         );

@@ -16,8 +16,8 @@ export class RentOrLeaseComponent implements OnInit {
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     editMode: boolean = false;
     lookupParams: any;
-    lookupItems:any;
-    lookupOptions :any;
+    lookupItems: any;
+    lookupOptions: any;
     editing: any;
 
     constructor(
@@ -34,7 +34,7 @@ export class RentOrLeaseComponent implements OnInit {
 
     ngOnInit() {
         this.initLookupParams();
-     }
+    }
     initLookupParams() {
         this.lookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
         this.lookupOptions = {
@@ -42,61 +42,61 @@ export class RentOrLeaseComponent implements OnInit {
                 field: 'agreementId',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             agreementName: {
                 field: 'agreementName',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             agreementDescription: {
                 field: 'agreementDescription',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             companyName: {
                 field: 'companyName',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             companyContactPerson: {
                 field: 'companyContactPerson',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             startDateTime: {
                 field: 'startDateTime',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             endDateTime: {
                 field: 'endDateTime',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             rentalOrLeaseType: {
                 field: 'rentalOrLeaseType',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             }
         }
     }
-    initRentOrLease(){
+    initRentOrLease() {
         this.rent = {
             id: null,
             statusFlag: null,
@@ -134,16 +134,16 @@ export class RentOrLeaseComponent implements OnInit {
             this.updateRentOrLease();
             return;
         }
-        let url = "/building/add-rental-or-lease-to-building/buildingId/";
+        let url = "/building/add-rental-or-lease-agreement-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/asset-type-other/add-rental-or-lease-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
-            url = "/equipment/add-rental-or-lease-to-equipment/equipmentId/";
+            url = "/equipment/add-rental-or-lease-agreement-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/vehicle/add-rental-or-lease-to-vehicle/vehicleId/";
+            url = "/vehicle/add-rental-or-lease-agreement-to-vehicle/vehicleId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.rent).subscribe(
@@ -173,7 +173,7 @@ export class RentOrLeaseComponent implements OnInit {
         this._apiService.put("/rental-or-lease/update-rental-or-lease-agreement", this.rent).subscribe(
             data => {
                 this.rent = data;
-                this.editing = Object.assign(this.editing,data);
+                this.editing = Object.assign(this.editing, data);
                 this._alertsService.success(
                     "Rental or lease agreement successfully updated."
                 );
@@ -213,43 +213,43 @@ export class RentOrLeaseComponent implements OnInit {
             }
         );
     }
-    lookupFieldChange({field,operator,value}){
+    lookupFieldChange({ field, operator, value }) {
         let fil = {
             field,
             operator,
             value
         }
-        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const exists = this.lookupParams.filters.filter(filt => filt.field === field);
         const obj = {};
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
-        if(!exists.length){
+        if (!exists.length) {
             this.lookupParams.filters.push(fil);
-        }else{
+        } else {
             exists[0].value = value;
             exists[0].operator = operator;
         }
     }
 
-    lookupSortChange({field,sort,order}){
-        let sor={
+    lookupSortChange({ field, sort, order }) {
+        let sor = {
             field,
             order
         }
-        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
-        if(!exists.length && sort){
+        const exists = this.lookupParams.sorts.filter(s => s.field === field);
+        if (!exists.length && sort) {
             this.lookupParams.sorts.push(sor);
-        }else if(exists.length && sort){
+        } else if (exists.length && sort) {
             exists[0].order = order;
-        }else{
+        } else {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
-            this.lookupParams.sorts.splice(ind,1);
+            this.lookupParams.sorts.splice(ind, 1);
         }
 
     }
-    lookupRentOrLease($event ?: any) {
-        if($event){
-            this.lookupParams.paging.currentPage = $event.pageNo -1;
+    lookupRentOrLease($event?: any) {
+        if ($event) {
+            this.lookupParams.paging.currentPage = $event.pageNo - 1;
             this.lookupParams.paging.pageSize = $event.pageSize;
         }
         this._apiService.get('/rental-or-lease/search-rental-or-lease-agreements', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
@@ -262,10 +262,10 @@ export class RentOrLeaseComponent implements OnInit {
         )
 
     }
-    addExistingRentalOrLeaseToAsset(rol: any){
+    addExistingRentalOrLeaseToAsset(rol: any) {
         let url = `/building/add-existing-rental-or-lease-agreement-to-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         if (this.asset.assetCategory.id == "OTHER") {
-            url =`/asset-type-other/add-existing-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
+            url = `/asset-type-other/add-existing-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = `/equipment/add-existing-rental-or-lease-agreement-to-equipment/equipmentId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
@@ -273,12 +273,12 @@ export class RentOrLeaseComponent implements OnInit {
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = url = `/vehicle/add-existing-rental-or-lease-agreement-to-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         }
-        this._apiService.put(url,null).subscribe(
-            data=>{
+        this._apiService.put(url, null).subscribe(
+            data => {
                 this.addedToAsset.emit(data);
                 this._alertsService.success("Rental or lease agreement successfully added to " + this.asset.assetCategory.description);
             },
-            error=>{
+            error => {
                 this._alertsService.error("some error occured. Please try again.");
             }
         );

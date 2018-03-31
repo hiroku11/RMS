@@ -126,6 +126,12 @@ export class AddBuildingComponent implements OnInit {
             data => {
                 this.building = data;
                 this.updateTabs();
+                if (this.building.assetCategory == null) {
+                    this.building.assetCategory = {
+                        id: "BUILDING",
+                        description: "Building"
+                    }
+                }
             },
             (error: HttpErrorResponse) => {
                 this._alertsService.error(

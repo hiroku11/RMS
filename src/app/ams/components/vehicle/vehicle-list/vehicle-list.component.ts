@@ -51,6 +51,7 @@ export class VehicleListComponent implements OnInit {
         this._apiService.delete(`/vehicle/delete-vehicle/vehicleId/${vehicle.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Vehicle deleteed successfully.");
+                this.vehicleList.splice(this.vehicleList.indexOf(vehicle), 1);
             },
             (error)=>{
                 this._alertService.error("Vehicle cannot be deleted because it is associated to an incident.");

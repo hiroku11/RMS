@@ -50,6 +50,7 @@ export class OtherAssetsListComponent implements OnInit {
         this._apiService.delete(`/asset-type-other/delete-asset-type-other/assetTypeOtherId/${asset.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Asset deleteed successfully.");
+                this.otherAssetList.splice(this.otherAssetList.indexOf(asset), 1);
             },
             (error)=>{
                 this._alertService.error("Asset type other cannot be deleted because it is associated to an incident.");

@@ -156,6 +156,12 @@ export class AddOtherAssetsComponent implements OnInit {
                 data => {
                     this.asset = data;
                     this.updateTabs();
+                    if (this.asset.assetCategory == null) {
+                        this.asset.assetCategory = {
+                            id: "OTHER",
+                            description: "Other"
+                        }
+                    }
                 },
                 error => {
                     this._alertsService.error(
@@ -189,10 +195,7 @@ export class AddOtherAssetsComponent implements OnInit {
             );
     }
     userLookup() {
-        if(!this.asset.id){
-            this._alertsService.error("Please save asset details first.");
-            return;
-        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
             UserLookupComponent
         );

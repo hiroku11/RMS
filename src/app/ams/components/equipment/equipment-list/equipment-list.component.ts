@@ -53,6 +53,7 @@ export class EquipmentListComponent implements OnInit {
         this._apiService.delete(`/equipment/delete-equipment/equipmentId/${equipment.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Equipment deleteed successfully.");
+                this.equipmentList.splice(this.equipmentList.indexOf(equipment), 1);
             },
             (error)=>{
                 this._alertService.error("Equipment cannot be deleted because it is associated to an incident.");

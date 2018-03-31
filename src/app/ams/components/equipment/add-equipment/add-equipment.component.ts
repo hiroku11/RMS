@@ -11,7 +11,7 @@ import { UserLookupComponent } from '../../user-lookup/user-lookup.component';
     styleUrls: ["./add-equipment.component.scss"]
 })
 export class AddEquipmentComponent implements OnInit {
-    equipment: any ;
+    equipment: any;
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any = {};
@@ -32,7 +32,7 @@ export class AddEquipmentComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
-        
+
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
@@ -44,13 +44,13 @@ export class AddEquipmentComponent implements OnInit {
             }
         });
     }
-    selectCompareFunction(item1:any,item2:any) {
-        if(item1 == null || item2 ==null){
+    selectCompareFunction(item1: any, item2: any) {
+        if (item1 == null || item2 == null) {
             return false;
         }
         return item1.id == item2.id;
     }
-    initEquipment(){
+    initEquipment() {
         this.equipment = {
             id: null,
             assets: null,
@@ -60,7 +60,7 @@ export class AddEquipmentComponent implements OnInit {
             serialNumber: null,
             assetCategory: {
                 id: "EQUIPMENT",
-                description:"Equipment"
+                description: "Equipment"
             },
             addresses: [],
             insurancePolicies: null,
@@ -132,7 +132,7 @@ export class AddEquipmentComponent implements OnInit {
             licensePresent: "N",
             warrantyPresent: "N",
             inspectionPresent: "N",
-            rentalOrLeasePresent:"N",
+            rentalOrLeasePresent: "N",
             servicePresent: "N",
             fireExitsLoc: null,
             fireExtinguisherLoc: null,
@@ -151,6 +151,12 @@ export class AddEquipmentComponent implements OnInit {
             data => {
                 this.equipment = data;
                 this.updateTabs();
+                if (this.equipment.assetCategory == null) {
+                    this.equipment.assetCategory = {
+                        id: "EQUIPMENT",
+                        description: "Equipment"
+                    }
+                }
             },
             error => {
                 this._alertsService.error(
@@ -163,7 +169,7 @@ export class AddEquipmentComponent implements OnInit {
     updateTabs() {
         this.tabs = this._sharedService.getTabstoShow(this.equipment);
     }
-    addedToAsset($event:any){
+    addedToAsset($event: any) {
         this.equipment = $event;
     }
     save() {
@@ -187,10 +193,7 @@ export class AddEquipmentComponent implements OnInit {
     }
 
     userLookup() {
-        if(!this.equipment.id){
-            this._alertsService.error("Please save equipments details first.");
-            return;
-        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
             UserLookupComponent
         );
@@ -203,39 +206,45 @@ export class AddEquipmentComponent implements OnInit {
             this.closeModal();
         });
     }
-    closeModal(){
+    closeModal() {
         this.componentRef.instance.assignUser.unsubscribe();
         this.componentRef.instance.closeModal.unsubscribe();
         this.componentRef.destroy();
     }
-    assignUser(user: any){
+    assignUser(user: any) {
         if (!this.equipment.id) {
             this.equipment.assignees == null ? this.equipment.assignees = [] : "";
             this.equipment.assignees.push(user);
             return;
         }
-        this._apiService.put(`/equipment/add-assignee-to-equipment-by-user-id/equipmentId/${this.equipment.id}/userId/${user.id}`,null).subscribe(
-            (data)=>{
+        this._apiService.put(`/equipment/add-assignee-to-equipment-by-user-id/equipmentId/${this.equipment.id}/userId/${user.id}`, null).subscribe(
+            (data) => {
                 this.equipment = data;
-                this._alertsService.success("Equipment successfully assigned to user.")
+                this._alertsService.success("Equipment successfully assigned to user.");
             },
-            (error)=>{
-                this._alertsService.error("Some error occured try again.")
+            (error) => {
+                this._alertsService.error("Some error occured try again.");
             }
         )
         console.log("assigning user")
     }
 
-    deleteAssignee(user: any){
+    deleteAssignee(user: any) {
         //equipment/remove-assignee-from-equipment-by-user-id/equipmentId/116/userId/1
         this._apiService.delete(`/equipment/remove-assignee-from-equipment-by-user-id/equipmentId/${this.equipment.id}/userId/${user.id}`).subscribe(
-            (data)=>{
+            (data) => {
                 this.equipment = data;
                 this._alertsService.success("Assignee successfully removed from equipment.");
             },
-            (error)=>{
+            (error) => {
                 this._alertsService.error("Some error occured try again.");
             }
         )
+    }
+    equipmentReturnedChange() {
+        if (this.equipment.equipmentReturned === 'N') {
+            this.equipment.equipmentReturnedDate = null;
+            this.equipment.refundAmount = null;
+        }
     }
 }

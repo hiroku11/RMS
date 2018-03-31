@@ -141,7 +141,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Equipment Returned</label>
-      <select class="form-control" [(ngModel)]="equipment.equipmentReturned">
+      <select class="form-control" [(ngModel)]="equipment.equipmentReturned" (change)="equipmentReturnedChange()">
         <option value="null"></option>
         <option value="N">No</option>
         <option value="Y">Yes</option>
@@ -252,6 +252,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
       <select class="form-control" [(ngModel)]="equipment.loanPresent" (change)="updateTabs()">
+          <option value="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
