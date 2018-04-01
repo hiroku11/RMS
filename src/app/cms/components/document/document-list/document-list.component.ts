@@ -108,7 +108,7 @@ closeModal(searchParams: any) {
 
 advancedSearchResult($event: any) {
     this.itemsCount = $event.data.totalRecords;
-    this.documentsList = $event.data.docs;
+    this.documentsList = $event.data.complianceDocuments;
     this.searchParams = $event.searchParams;
 
 }

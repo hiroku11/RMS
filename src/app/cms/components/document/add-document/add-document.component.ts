@@ -60,7 +60,9 @@ export class AddDocumentComponent implements OnInit {
       "publishComments": null,
       "isLmsNotified": null,
       "lmsNotificationDate": null,
-      "lmsNotifiedBy": null,
+      "lmsNotifiedBy": {
+        "fullName" : null
+      },
       "lmsNotificationComments": null,
       "expiryDate": null,
       "neverExpires": null,

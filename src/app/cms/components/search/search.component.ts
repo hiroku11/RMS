@@ -3,6 +3,7 @@ import { ApiService } from './../../../services/api.service';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { Component, Directive, OnInit, Input, Output, EventEmitter, ViewContainerRef, } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-search',
@@ -49,7 +50,7 @@ export class SearchComponent implements OnInit {
     }
     initSearchParams(clear: boolean) {
         this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-        let propsArray = ['documentId', 'documentTitle', 'documentClassificationCode', 'documentStatuses', 'documentAuthor',
+        let propsArray = ['documentId', 'documentTitle', 'documentClassificationCode', 'documentStatusCode', 'documentAuthor',
             'addedBy', 'expiryDate','approvedBy'];
         propsArray.forEach((prop) => {
             let parentFilter: any = {};
@@ -59,6 +60,10 @@ export class SearchComponent implements OnInit {
                 parentSort = this.parentSearchParams.sorts.filter((item) => item.field == prop);
                 parentFilter.length != 0 ? parentFilter = parentFilter[0] : parentFilter = {};
                 parentSort.length != 0 ? parentSort = parentSort[0] : parentSort = {};
+                
+            }
+            else{
+                this.searchAsset();    
             }
 
 
@@ -67,13 +72,19 @@ export class SearchComponent implements OnInit {
                 operator: parentFilter.operator || "EQ",
                 value: parentFilter.value || null,
                 order: parentSort.order || "ASC",
+                // date:  moment(parentFilter.value, "DD/MM/YYYY").toDate(),
                 sort: typeof parentSort.order === 'undefined' ? false : true
             }
+            // console.log(prop + " " + parentFilter.value );
+            // console.log(this.lookupOptions[prop].date);
         });
-
+       
     }
 
-    lookupFieldChange({ field, operator, value }) {
+    lookupFieldChange({ field, operator, value, date }) {
+        if(date){ 
+            value = date.format('DD/MM/YYYY');
+        }
         let fil = {
             field,
             operator,
@@ -81,6 +92,7 @@ export class SearchComponent implements OnInit {
         }
         const exists = this.searchParams.filters.filter(filt => filt.field === field);
         const obj = {};
+        
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
         if (!exists.length) {
@@ -109,8 +121,11 @@ export class SearchComponent implements OnInit {
     }
 
     searchAsset() {
+    //    if(this.lookupOptions.documentClassificationCode)  
+    //      this.searchParams.filters.push(this.lookupOptions.documentClassificationCode)
+        
         this._apiService
-            .get(this.searchUrl, { Search: JSON.stringify(this.searchParams) })
+            .get('/compliance/search-compliance-document-and-version-history', { Search: JSON.stringify(this.searchParams) })
             .subscribe((data) => {
                 this.searchResult.emit({ data: data, searchParams: this.searchParams });
                 this.close();

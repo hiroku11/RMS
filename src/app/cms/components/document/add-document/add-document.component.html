@@ -76,7 +76,8 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>LMS Notified by</label>
-      <input class="form-control" disabled [(ngModel)]="document.lmsNotifiedBy" name="lmsNotifiedBy" />
+   
+      <input class="form-control" disabled [ngModel]="document.lmsNotifiedBy?.fullName" name="lmsNotifiedBy" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>LMS Notified Date</label>

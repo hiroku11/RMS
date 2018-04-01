@@ -83,9 +83,10 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="lookupOptions.documentClassificationCode.value">
+                            <select class="form-control" [(ngModel)]="lookupOptions.documentClassificationCode.value"
+                            (change)="lookupFieldChange(lookupOptions.documentClassificationCode)">
                                 <option value="null"></option>
-                                <option *ngFor="let department of dropDownsData.documentClassifications" [ngValue]="department.description">{{department.description}}</option>
+                                <option *ngFor="let department of dropDownsData.documentClassifications" [ngValue]="department.id">{{department.description}}</option>
                             </select>
                          
                         </div>
@@ -105,7 +106,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.documentStatuses)" [(ngModel)]="lookupOptions.documentStatuses.operator">
+                            <select class="form-control" [(ngModel)]="lookupOptions.documentStatusCode.operator"
+                            (change)="lookupFieldChange(lookupOptions.documentStatusCode)">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -116,17 +118,18 @@
                         </div>
                         <div class="col-sm-12 col-md-4">
                                 
-                                <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="lookupOptions.documentStatuses.value">
+                                <select class="form-control" [(ngModel)]="lookupOptions.documentStatusCode.value"
+                                (change)="lookupFieldChange(lookupOptions.documentStatusCode)">
                                         <option value="null"></option>
-                                        <option *ngFor="let department of dropDownsData.documentStatuses" [ngValue]="department.documentStatuses">{{department.description}}</option>
+                                        <option *ngFor="let department of dropDownsData.documentStatuses" [ngValue]="department.id">{{department.description}}</option>
                                     </select>
                          
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" [(ngModel)]="lookupOptions.documentStatuses.sort" (change)="lookupSortChange(lookupOptions.documentStatuses)"> Sort
+                                <input type="checkbox" [(ngModel)]="lookupOptions.documentStatusCode.sort" (change)="lookupSortChange(lookupOptions.documentStatusCode)"> Sort
                             </span>
-                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.documentStatuses)" [(ngModel)]="lookupOptions.documentStatuses.order">
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.documentStatusCode)" [(ngModel)]="lookupOptions.documentStatusCode.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -148,7 +151,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.expiryDate)" [owlDateTime]="dt9" [owlDateTimeTrigger]="dt9" [(ngModel)]="lookupOptions.expiryDate.value"
+                      
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.expiryDate)" [owlDateTime]="dt9" [owlDateTimeTrigger]="dt9" [(ngModel)]="lookupOptions.expiryDate.date"
                             name="expiryDate" />
                         <owl-date-time [pickerType]="'calendar'" #dt9></owl-date-time>
                         </div>
