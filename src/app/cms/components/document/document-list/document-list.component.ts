@@ -4,6 +4,7 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver/FileSaver';
+import { SearchComponent } from './../../search/search.component';
 
 @Component({
   selector: 'app-document-list',
@@ -82,4 +83,34 @@ export class DocumentListComponent implements OnInit {
       }
     )
   }
+  
+  advancedSearch() {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+        SearchComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.parentSearchParams = this.searchParams;
+    this.componentRef.instance.searchResult.subscribe((data) => {
+        this.advancedSearchResult(data);
+    });
+    this.componentRef.instance.closeModal.subscribe((searchParams: any) => {
+        this.closeModal(searchParams);
+    });
+}
+closeModal(searchParams: any) {
+    this.componentRef.instance.searchResult.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
+    if (JSON.stringify(this.searchParams) == JSON.stringify(searchParams)) {
+        this.getDocuments();
+    }
+}
+
+advancedSearchResult($event: any) {
+    this.itemsCount = $event.data.totalRecords;
+    this.documentsList = $event.data.docs;
+    this.searchParams = $event.searchParams;
+
+}
+
 }

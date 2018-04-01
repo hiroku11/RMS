@@ -17,6 +17,7 @@ import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 import { SelectDropDownModule } from "ngx-select-dropdown";
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -35,10 +36,11 @@ export const MY_MOMENT_FORMATS = {
     ],
     exports: [UserLookupComponent],
     declarations: [DocumentComponent, DocumentListComponent, AddDocumentComponent,
-        NotifyAdminComponent, PublishEmailComponent, SendEmailComponent, SideNavComponent, UserLookupComponent
+        NotifyAdminComponent, PublishEmailComponent, SendEmailComponent, SideNavComponent,
+         UserLookupComponent, SearchComponent
     ],
     providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
-    entryComponents: [UserLookupComponent]
+    entryComponents: [UserLookupComponent, SearchComponent]
    
 })
 export class CmsModule {
