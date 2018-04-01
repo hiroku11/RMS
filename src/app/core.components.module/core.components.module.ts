@@ -10,13 +10,14 @@ import { LoginComponent } from './component/login/login.component';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxSlidesModule } from 'ngx-slides';
 
 
 
 
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule],
+    imports: [CommonModule, FormsModule, RouterModule, NgxSlidesModule],
     exports: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
         LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent],
     declarations: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,

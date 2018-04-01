@@ -1,49 +1,60 @@
 <app-header class="d-none d-lg-block"></app-header>
+
 <div class="row view cont">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <!-- Single Banner -->
-                    <div class="single-banner">
-                        <a href="/lms"><img src="/assets/images/banner1.png" alt="LMS"></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <!-- Single Banner -->
-                    <div class="single-banner">
-                        <a href="/ims"><img src="/assets/images/banner2.png" alt="IMS"></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <!-- Single Banner -->
-                    <div class="single-banner">
-                        <a href="/ams"><img src="/assets/images/banner3.png" alt="AMS"></a>
-                    </div>
-                </div>
+    <div class="container p-0 m-0" style="max-width:100%">
+        <ngx-slides [slideImages]='slideImages' [config]='config'></ngx-slides>
+    </div>
 
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <!-- Single Banner -->
+                <div class="single-banner">
+                    <a [routerLink]="['/lms']">
+                        <img src="./assets/images/banner1.png" alt="LMS">
+                    </a>
+                </div>
             </div>
+            <div class="col-md-4 col-sm-4">
+                <!-- Single Banner -->
+                <div class="single-banner">
+                    <a [routerLink]="['/ims']">
+                        <img src="./assets/images/banner2.png" alt="IMS">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <!-- Single Banner -->
+                <div class="single-banner">
+                    <a [routerLink]="['/ams']">
+                        <img src="./assets/images/banner3.png" alt="AMS">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
 
-            <br>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <!-- Single Banner -->
+                <div class="single-banner">
+                    <a [routerLink]="['/cms']">
+                        <img src="./assets/images/banner4.png" alt="CMS">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <!-- Single Banner -->
+                <div class="single-banner">
+                    <a [routerLink]="['/pms']">
+                        <img src="./assets/images/banner5.png" alt="PMS">
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <!-- Single Banner -->
-                    <div class="single-banner">
-                        <a href="/cms"><img src="/assets/images/banner4.png" alt="CMS"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <!-- Single Banner -->
-                    <div class="single-banner">
-                        <a href="/pms"><img src="/assets/images/banner5.png" alt="PMS"></a>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
+    </div>
 </div>
