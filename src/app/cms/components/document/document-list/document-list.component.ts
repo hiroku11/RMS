@@ -55,7 +55,7 @@ export class DocumentListComponent implements OnInit {
     this.getDocuments();
   }
   downloadDocument(doc: any) {
-    this._apiService.get(`/document/download-document/${doc.id}`, {}, true, true).subscribe(
+    this._apiService.get(`/compliance/download-compliance-document-history/id/${doc.versionNumber}`, {}, true, true).subscribe(
       data => {
         this.saveFile(data, doc.originalFileName);
       },
