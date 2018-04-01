@@ -16,7 +16,7 @@ export class PublishEmailComponent implements OnInit {
   document: any = {};
   userDetails: any;
   Id: any;
-  dropdownsData: any = {};
+  dropDownsData: any = {};
   data: any;
   notifiedDate = (new Date()).toJSON().slice(0, 10).split('-').reverse().join('/');
   notifiedBy: any;
@@ -36,7 +36,7 @@ export class PublishEmailComponent implements OnInit {
       this._sharedService.getCmsDropdownsData();
     }
     this._sharedService.cmsDropDownsService.subscribe((data) => {
-      this.dropdownsData = data;
+      this.dropDownsData = data;
     })
     this.userDetails = this.userService.userDetails;
     this.notifiedBy = this.userDetails.firstName + " " + this.userDetails.lastName;

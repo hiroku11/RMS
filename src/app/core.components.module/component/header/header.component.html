@@ -62,9 +62,9 @@
                 <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <img src="./assets/images/logo@1x.png" alt="gotorisk.co.uk" /> {{userDetails.roles[0].roleName}}</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/home">Home</a>
+                    <a class="dropdown-item" [routerLink]="['/home']">Home</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" [routerLink]="['/']">Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" (click)="logOut()">Logout</a>
                 </div>

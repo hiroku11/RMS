@@ -51,3 +51,4 @@
   </tbody>
 </table>
 <ng-pagination *ngIf="documentsList.length>0" [itemsCount]="itemsCount" [pageSize]="pageSize" (getPageData)="getPageData($event)"></ng-pagination>
+<app-ajax-loader *ngIf="documentsList.length == 0"></app-ajax-loader>

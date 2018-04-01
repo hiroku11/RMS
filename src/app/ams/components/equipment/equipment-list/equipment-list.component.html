@@ -60,3 +60,4 @@
   </tbody>
 </table>
 <ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+<app-ajax-loader *ngIf="equipmentList.length == 0"></app-ajax-loader>
