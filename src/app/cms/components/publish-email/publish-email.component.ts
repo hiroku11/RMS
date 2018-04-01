@@ -5,7 +5,7 @@ import { UserLookupComponent } from './../user-lookup/user-lookup.component';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../../services/shared.service';
-import { Component, OnInit,  ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-publish-email',
@@ -14,21 +14,25 @@ import { Component, OnInit,  ComponentFactoryResolver, ViewContainerRef } from '
 })
 export class PublishEmailComponent implements OnInit {
   document: any = {};
-  userDetails:any;
+  userDetails: any;
   Id: any;
   dropdownsData: any = {};
   data: any;
-  notifiedDate =(new Date()).toJSON().slice(0,10).split('-').reverse().join('/') ;
-  notifiedBy:any;
+  notifiedDate = (new Date()).toJSON().slice(0, 10).split('-').reverse().join('/');
+  notifiedBy: any;
+  multiselectConfig = {
+    displayKey: "description",
+    search: false
+  }
   public componentRef: any;
- 
-  constructor(private route: ActivatedRoute,private _apiService: ApiService, private _alertsService: AlertsLoaderService,
+
+  constructor(private route: ActivatedRoute, private _apiService: ApiService, private _alertsService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
     private userService: UserService,
     private _sharedService: SharedService
   ) {
-    if (!this._sharedService.cmsDropDownsData.documentStatuses) {
+    if (!this._sharedService.cmsDropDownsData.departmentList) {
       this._sharedService.getCmsDropdownsData();
     }
     this._sharedService.cmsDropDownsService.subscribe((data) => {
@@ -36,11 +40,11 @@ export class PublishEmailComponent implements OnInit {
     })
     this.userDetails = this.userService.userDetails;
     this.notifiedBy = this.userDetails.firstName + " " + this.userDetails.lastName;
-   }
+  }
 
   ngOnInit() {
     this.initDocumnet();
-    this.route.params.subscribe((params:Params)=>{
+    this.route.params.subscribe((params: Params) => {
       let Id = params["id"];
       if (Id) {
         this.getDocumentById(Id);
@@ -52,8 +56,8 @@ export class PublishEmailComponent implements OnInit {
     this.data = {
       "versionHistoryId": null,
       "comments": null,
-      "departments": [ ],
-      "users": [ ],
+      "departments": [],
+      "users": [],
       "emailIds": []
     }
   }
@@ -69,13 +73,13 @@ export class PublishEmailComponent implements OnInit {
     )
 
   }
-  publish(){
+  publish() {
     this.data.versionHistoryId = this.document.versionHistoryId;
-    this._apiService.post("/compliance/publish-document",this.data).subscribe(
-      (data)=>{
+    this._apiService.post("/compliance/publish-document", this.data).subscribe(
+      (data) => {
         this._alertsService.success("Documnet published succesfully.");
       },
-      (error)=>{
+      (error) => {
         this._alertsService.error("Error occured while publishing documnet.");
       }
     )
@@ -114,6 +118,6 @@ export class PublishEmailComponent implements OnInit {
       }
     }
   }
- 
+
 
 }

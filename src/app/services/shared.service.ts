@@ -121,6 +121,7 @@ export class SharedService {
             .subscribe(
                 data => {
                     this.dropDownsData.departmentList = data;
+                    this.cmsDropDownsData.departmentList = data;
                     this.propagateNewData();
                 },
                 error => {
@@ -332,6 +333,7 @@ export class SharedService {
         this.getCmsDocumentClassifications();
         this.getCmsDocumentStatuses();
         this.getCmsDocumentVersionStatuses();
+        this.getDepartmentList();
     }
     
     propagateNewData() {

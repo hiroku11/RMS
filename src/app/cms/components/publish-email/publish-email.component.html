@@ -70,15 +70,13 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label> Departments</label>
-      <select></select>
-      <ngx-select-dropdown *ngIf="dropDownsData.departmentList"
-      [multiple]="true" [config]="multiselectConfig" [(value)]="data.departments" [options]="dropDownsData.departmentList"></ngx-select-dropdown>
+      <ngx-select-dropdown *ngIf="dropDownsData.departmentList" [multiple]="true" 
+      [config]="multiselectConfig" [(value)]="data.departments" [options]="dropDownsData.departmentList"></ngx-select-dropdown>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Selected users</label>
-     
       <button class="btn btn-primary btn-sm" (click)="userLookup()">User Lookup</button>
     </div>
   </div>

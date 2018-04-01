@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
     public dropDownsData: any;
     display: boolean;
     lookupOptions: any = {};
-  
+
     @Output() searchResult: EventEmitter<any> = new EventEmitter();
     @Output() closeModal: EventEmitter<any> = new EventEmitter();
     searchUrl: string;
@@ -25,16 +25,17 @@ export class SearchComponent implements OnInit {
         private _alertsService: AlertsLoaderService,
     ) {
         this.dropDownsData = this._sharedService.cmsDropDownsData;
-        // this._sharedService.cmsDropDownsService.subscribe(data => {
-        //     this.dropDownsData = data;
-        // });
-
-
+        if (!this._sharedService.cmsDropDownsData.documentStatuses) {
+            this._sharedService.getCmsDropdownsData();
+        }
+        this._sharedService.cmsDropDownsService.subscribe(data => {
+            this.dropDownsData = data;
+        });
     }
 
 
     ngOnInit() {
-        //this.searchUrl = `/${this.assetType}/search-${this.assetType}s`;
+        this.searchUrl = `/search`;
         this.display = true;
         this.initSearchParams(false);
         this.searchParams = this.parentSearchParams;
@@ -46,9 +47,30 @@ export class SearchComponent implements OnInit {
         }
         return item1.id == item2.id;
     }
-    initSearchParams(clear:boolean) {
+    initSearchParams(clear: boolean) {
         this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-     
+        let propsArray = ['documentId', 'documentTitle', 'documentClassificationCode', 'documentStatuses', 'documentAuthor',
+            'addedBy', 'expiryDate','approvedBy'];
+        propsArray.forEach((prop) => {
+            let parentFilter: any = {};
+            let parentSort: any = {};
+            if (!clear) {
+                parentFilter = this.parentSearchParams.filters.filter((item) => item.field == prop);
+                parentSort = this.parentSearchParams.sorts.filter((item) => item.field == prop);
+                parentFilter.length != 0 ? parentFilter = parentFilter[0] : parentFilter = {};
+                parentSort.length != 0 ? parentSort = parentSort[0] : parentSort = {};
+            }
+
+
+            this.lookupOptions[prop] = {
+                field: prop,
+                operator: parentFilter.operator || "EQ",
+                value: parentFilter.value || null,
+                order: parentSort.order || "ASC",
+                sort: typeof parentSort.order === 'undefined' ? false : true
+            }
+        });
+
     }
 
     lookupFieldChange({ field, operator, value }) {
@@ -93,9 +115,9 @@ export class SearchComponent implements OnInit {
                 this.searchResult.emit({ data: data, searchParams: this.searchParams });
                 this.close();
             },
-            error => {
-                this._alertsService.error("Error getting search Data");
-            });
+                error => {
+                    this._alertsService.error("Error getting search Data");
+                });
     }
 
     close() {
