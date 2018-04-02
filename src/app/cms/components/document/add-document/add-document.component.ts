@@ -21,7 +21,8 @@ export class AddDocumentComponent implements OnInit {
   versionHistory: any;
   constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService,
     private route: ActivatedRoute, private _sharedService: SharedService) {
-    if (!this._sharedService.cmsDropDownsData.documentStatuses) {
+    this.dropdownsData = this._sharedService.cmsDropDownsData;
+    if (!this._sharedService.cmsDropDownsData.documentStatuses || !this._sharedService.cmsDropDownsData.documentClassifications) {
       this._sharedService.getCmsDropdownsData();
     }
     this._sharedService.cmsDropDownsService.subscribe((data) => {
@@ -61,7 +62,7 @@ export class AddDocumentComponent implements OnInit {
       "isLmsNotified": null,
       "lmsNotificationDate": null,
       "lmsNotifiedBy": {
-        "fullName" : null
+        "fullName": null
       },
       "lmsNotificationComments": null,
       "expiryDate": null,
@@ -158,7 +159,7 @@ export class AddDocumentComponent implements OnInit {
   }
 
   downloadVersion(ver: any) {
-    this._apiService.get(`/compliance/download-compliance-document-history/id/${ver.id}`,{},true,true).subscribe(
+    this._apiService.get(`/compliance/download-compliance-document-history/id/${ver.id}`, {}, true, true).subscribe(
       (data) => {
         this.saveFile(data, ver.originalFileName);
       },
@@ -171,6 +172,12 @@ export class AddDocumentComponent implements OnInit {
   saveFile(blobContent: any, fileName: string) {
     const blob = new Blob([blobContent], { type: 'application/octet-stream' });
     saveAs(blob, fileName);
+  }
+
+  neverExpireChange(){
+    if(this.document.neverExpires == 'Y'){
+      this.document.expiryDate = null;
+    }
   }
 
 }
