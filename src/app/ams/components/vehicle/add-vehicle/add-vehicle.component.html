@@ -65,7 +65,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Month Of Manufacturing</label>
-      <select class="form-control" [(ngModel)]="vehicle.monthOfManufacturing">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.monthOfManufacturing">
         <option value="null"></option>
         <option *ngFor="let month of dropDownsData.monthTypeList" [ngValue]="month">{{month.description}}</option>
       </select>
@@ -98,17 +98,17 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Amount</label>
-      <input class="form-control" [(ngModel)]="vehicle.taxAmount" name="taxAmount" />
+      <input class="form-control" [disabled]="vehicle.taxApplicable == 'N'" [(ngModel)]="vehicle.taxAmount" name="taxAmount" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Start Date Time</label>
-      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+      <input [disabled]="vehicle.taxApplicable == 'N'" class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
       [(ngModel)]="vehicle.taxStartDateTime" name="taxStartDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time> 
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [disabled]="vehicle.taxApplicable == 'N'"
       [(ngModel)]="vehicle.taxEndDateTime" name="taxEndDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
@@ -159,11 +159,11 @@
     <div class="col-sm-12 col-md-6">
       <label>Vehicle Damage Type</label>
       <ngx-select-dropdown *ngIf="dropDownsData.vehicleDamageTypeList" [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.vehicleDamageTypes"
-        [options]="dropDownsData.vehicleDamageTypeList"></ngx-select-dropdown>
+        [options]="dropDownsData.vehicleDamageTypeList" (change)="damageTypeChanged()"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If other Specify</label>
-      <input class="form-control" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
+      <input class="form-control" [disabled]="enabledOthers" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
     </div>
   </div>
 
@@ -361,7 +361,7 @@
     <tbody>
       <tr *ngFor="let assignee of vehicle.assignees">
         
-        <td>{{assignee.loginId}}
+        <td>{{assignee.userLoginId}}
         </td>
         <td>{{assignee.firstName}}</td>
         <td>{{assignee.lastName}}</td>

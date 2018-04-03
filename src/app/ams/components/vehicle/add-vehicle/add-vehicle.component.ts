@@ -17,6 +17,7 @@ export class AddVehicleComponent implements OnInit {
     public dropDownsData: any;
     public editMode: boolean;
     componentRef: any;
+    enabledOthers: boolean = true;
     constructor(
         private _sharedService: SharedService,
         private _apiService: ApiService,
@@ -160,8 +161,8 @@ export class AddVehicleComponent implements OnInit {
             }
         );
     }
-    changeTab(tab: string) {
-        if (!this.vehicle.id) {
+    changeTab(tab: any) {
+        if (!this.vehicle.id && tab.tab != 11 && tab.tab != 1) {
             this._alertsService.error("Please save vehicle details first.");
             return;
         }
@@ -177,22 +178,22 @@ export class AddVehicleComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateVehicle(
-            "/vehicle/create-or-update-vehicle",
-            this.vehicle
+                "/vehicle/create-or-update-vehicle",
+                this.vehicle
             )
             .subscribe(
-            data => {
-                this.vehicle = data;
-                this._alertsService.success(
-                    "Vehicle details successfully saved."
-                );
-                //this.initVehicle();
-            },
-            error => {
-                this._alertsService.error(
-                    "Some error occured while saving vehicle details."
-                );
-            }
+                data => {
+                    this.vehicle = data;
+                    this._alertsService.success(
+                        "Vehicle details successfully saved."
+                    );
+                    //this.initVehicle();
+                },
+                error => {
+                    this._alertsService.error(
+                        "Some error occured while saving vehicle details."
+                    );
+                }
             );
     }
     userLookup() {
@@ -231,8 +232,24 @@ export class AddVehicleComponent implements OnInit {
         )
     }
 
+    damageTypeChanged() {
+        let others = this.vehicle.vehicleDamageTypes.filter((item) => {
+            return item.id == 'OTHER';
+        });
+        if(others.length != 0){
+            this.enabledOthers = false;
+            return;
+        }
+        this.enabledOthers = true;
+    }
 
     deleteAssignee(user: any) {
+        if (!this.vehicle.id) {
+            this.vehicle.assignees.forEach((element, index) => {
+                this.vehicle.assignees.splice(index, 1);
+            });
+            return;
+        }
         this._apiService.delete(`/vehicle/remove-assignee-from-vehicle-by-user-id/vehicleId/${this.vehicle.id}/userId/${user.id}`).subscribe(
             (data) => {
                 this.vehicle = data;
