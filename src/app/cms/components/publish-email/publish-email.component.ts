@@ -66,6 +66,7 @@ export class PublishEmailComponent implements OnInit {
     this._apiService.get(`/compliance/send-email-info/versionHistoryId/${docId}`).subscribe(
       (data) => {
         this.document = data;
+        console.log(this.document);
       },
       (error) => {
         this._alertsService.error("Error occured while getting documents details");
@@ -118,6 +119,5 @@ export class PublishEmailComponent implements OnInit {
       }
     }
   }
-
-
+ 
 }

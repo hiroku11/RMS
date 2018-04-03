@@ -64,7 +64,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Comments</label>
-      <textarea class="form-control" [(ngModel)]="document.documentDescription" name="documentDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="data.comments" name="documentDescription"></textarea>
     </div>
   </div>
   <div class="row pb-2">
@@ -108,7 +108,7 @@
   </table>
   <div class="row pb-2">
     <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="publish()">Publish</button>
-     
+      <button class="btn btn-primary" (click)="publish()">Cancel</button>
+      <button class="btn btn-danger" [routerLink]="['/cms/document/edit-document',document.complianceDocumentId]">Cancel</button> 
     </div>
   </div>

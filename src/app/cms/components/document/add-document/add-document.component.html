@@ -173,11 +173,11 @@
       <th>Version</th>
       <th>Status</th>
       <th>Added By</th>
-      <th>Added Date</th>
+      <!-- <th>Added Date</th> -->
       <th>Reviewd By</th>
-      <th>Reviewd Date</th>
+      <!-- <th>Reviewd Date</th> -->
       <th>Approved By</th>
-      <th>Approved Date</th>
+      <!-- <th>Approved Date</th> -->
       <th></th>
     </thead>
     <tbody>
@@ -187,11 +187,11 @@
         <td>{{doc.versionNumber}}</td>
         <td>{{doc.documentHistoryStatusDescription}}</td>
         <td>{{doc.addedUserFullName}}</td>
-        <td>{{doc.addedDate | date: "dd/MM/yyyy"}}</td>
+        <!-- <td>{{doc.addedDate | date: "dd/MM/yyyy"}}</td> -->
         <td>{{doc.reviewedUserFullName}}</td>
-        <td>{{doc.reviewedDate | date: "dd/MM/yyyy"}}</td>
+        <!-- <td>{{doc.reviewedDate | date: "dd/MM/yyyy"}}</td> -->
         <td>{{doc.approvedUserFullName}}</td>
-        <td>{{doc.approvedDate | date: "dd/MM/yyyy"}}</td>
+        <!-- <td>{{doc.approvedDate | date: "dd/MM/yyyy"}}</td> -->
         <td>
           <span class="fa fa-file btn btn-sm  btn-outline-info" [routerLink]="['/cms/publish-document',doc.id]"></span>
           <span class="fa fa-bell btn btn-sm  btn-outline-info" [routerLink]="['/cms/notify-admin',doc.id]"></span>
