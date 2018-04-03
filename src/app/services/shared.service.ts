@@ -86,7 +86,7 @@ export class SharedService {
     }
 
     getAllDropdownData() {
-        // this.getAssetConditionList();
+        this.getAssetConditionList();
         this.getRentOrLeaseType();
         this.getAssetStatusList();
         this.getRenewalTypeList();
