@@ -139,8 +139,8 @@ export class AddOtherAssetsComponent implements OnInit {
             fireExtinguisherTypes: []
         };
     }
-    changeTab(tab: string) {
-        if (!this.asset.id) {
+    changeTab(tab: any) {
+        if (!this.asset.id && tab.tab != 11 && tab.tab != 1) {
             this._alertsService.error("Please save asset details first.");
             return;
         }
@@ -233,6 +233,12 @@ export class AddOtherAssetsComponent implements OnInit {
 
     deleteAssignee(user: any){
         //building/remove-assignee-from-building-by-user-id/buildingId/116/userId/1
+        if (!this.asset.id) {
+            this.asset.assignees.forEach((element, index) => {
+                this.asset.assignees.splice(index, 1);
+            });
+            return;
+        }
         this._apiService.delete(`/asset-type-other/remove-assignee-from-asset-type-other-by-user-id/assetTypeOtherId/${this.asset.id}/userId/${user.id}`).subscribe(
             (data)=>{
                 this.asset = data;

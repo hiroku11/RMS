@@ -145,8 +145,8 @@ export class AddBuildingComponent implements OnInit {
         this.building = $event;
     }
 
-    changeTab(tab: string) {
-        if (!this.building.id) {
+    changeTab(tab: any) {
+        if (!this.building.id && tab.tab != 11 && tab.tab != 1) {
             this._alertsService.error("Please save building details first.");
             return;
         }
@@ -159,18 +159,18 @@ export class AddBuildingComponent implements OnInit {
     save() {
         this._apiService
             .createOrUpdateBuilding(
-            "/building/create-or-update-building",
-            this.building
+                "/building/create-or-update-building",
+                this.building
             )
             .subscribe(
-            data => {
-                this.building = data;
-                this._alertsService.success("Building successfully saved");
-                //this.initBuilding();
-            },
-            error => {
-                this._alertsService.error("Some error ocured. Try again");
-            }
+                data => {
+                    this.building = data;
+                    this._alertsService.success("Building successfully saved");
+                    //this.initBuilding();
+                },
+                error => {
+                    this._alertsService.error("Some error ocured. Try again");
+                }
             );
     }
 
@@ -192,7 +192,7 @@ export class AddBuildingComponent implements OnInit {
         this.componentRef.instance.assignUser.unsubscribe();
         this.componentRef.instance.closeModal.unsubscribe();
         this.componentRef.destroy();
-        
+
     }
     assignUser(user: any) {
         if (!this.building.id) {
@@ -206,7 +206,7 @@ export class AddBuildingComponent implements OnInit {
                 this._alertsService.success("Building successfully assigned to user.")
             },
             (error) => {
-                
+
                 this._alertsService.error(error);
             }
         )
@@ -214,6 +214,12 @@ export class AddBuildingComponent implements OnInit {
 
     deleteAssignee(user: any) {
         //building/remove-assignee-from-building-by-user-id/buildingId/116/userId/1
+        if (!this.building.id) {
+            this.building.assignees.forEach((element, index) => {
+                this.building.assignees.splice(index, 1);
+            });
+            return;
+        }
         this._apiService.delete(`/building/remove-assignee-from-building-by-user-id/buildingId/${this.building.id}/userId/${user.id}`).subscribe(
             (data) => {
                 this.building = data;

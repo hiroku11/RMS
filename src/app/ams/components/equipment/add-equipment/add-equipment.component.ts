@@ -139,8 +139,8 @@ export class AddEquipmentComponent implements OnInit {
             fireExtinguisherTypes: []
         };
     }
-    changeTab(tab: string) {
-        if (!this.equipment.id) {
+    changeTab(tab: any) {
+        if (!this.equipment.id && tab.tab != 11 && tab.tab != 1) {
             this._alertsService.error("Please save equipment details first.");
             return;
         }
@@ -231,6 +231,12 @@ export class AddEquipmentComponent implements OnInit {
 
     deleteAssignee(user: any) {
         //equipment/remove-assignee-from-equipment-by-user-id/equipmentId/116/userId/1
+        if (!this.equipment.id) {
+            this.equipment.assignees.forEach((element, index) => {
+                this.equipment.assignees.splice(index, 1);
+            });
+            return;
+        }
         this._apiService.delete(`/equipment/remove-assignee-from-equipment-by-user-id/equipmentId/${this.equipment.id}/userId/${user.id}`).subscribe(
             (data) => {
                 this.equipment = data;
