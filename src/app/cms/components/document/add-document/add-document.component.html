@@ -11,7 +11,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Document ID</label>
-      <input class="form-control" [(ngModel)]="document.documentId" />
+      <input class="form-control" [(ngModel)]="document.documentId" readonly/>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Title</label>
@@ -20,7 +20,7 @@
 
     <div class="col-sm-12 col-md-4">
       <label>Status</label>
-      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="document.documentStatus">
+      <select class="form-control" [disabled]="!editMode" [compareWith]="selectCompareFunction" [(ngModel)]="document.documentStatus">
         <option value="null"></option>
         <option *ngFor="let opt of dropdownsData.documentStatuses" [ngValue]="opt">{{opt.description}}</option>
       </select>
@@ -115,7 +115,7 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Approval Level</label>
-      <select class="form-control" [(ngModel)]="document.approvalLevel">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="document.approvalLevel">
         <option value="null"></option>
         <option *ngFor="let opt of dropdownsData.approvalLevels" [ngValue]="opt">{{opt.description}}</option>
       </select>
@@ -130,10 +130,7 @@
 
   <h5>Upload File</h5>
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-8">
-      <label>File Name</label>
-      <input type="text" class="form-control" [(ngModel)]="file.fileName" />
-    </div>
+    
     <div class="col-sm-12 col-md-4">
       <label>File</label>
       <input class="form-control" (change)="documentSelected($event)" type="file" [disabled]="!file.fileName || !file.fileDescription"

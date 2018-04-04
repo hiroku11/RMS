@@ -32,6 +32,7 @@ export class PublishEmailComponent implements OnInit {
     private userService: UserService,
     private _sharedService: SharedService
   ) {
+    this.dropDownsData = this._sharedService.cmsDropDownsData;
     if (!this._sharedService.cmsDropDownsData.departmentList) {
       this._sharedService.getCmsDropdownsData();
     }
