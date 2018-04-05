@@ -130,19 +130,20 @@
 
   <h5>Upload File</h5>
   <div class="row pb-2">
-    
-    <div class="col-sm-12 col-md-4">
-      <label>File</label>
-      <input class="form-control" (change)="documentSelected($event)" type="file" [disabled]="!file.fileName || !file.fileDescription"
-      />
-    </div>
-  </div>
-  <div class="row pb-2">
     <div class="col-sm-12">
       <label>File Description</label>
       <textarea class="form-control" [(ngModel)]="file.fileDescription" name="documentDescription"></textarea>
     </div>
   </div>
+  <div class="row pb-2">
+    
+    <div class="col-sm-12 col-md-4">
+      <label>File</label>
+      <input class="form-control" (change)="documentSelected($event)" type="file" [disabled]="!file.fileDescription"
+      />
+    </div>
+  </div>
+
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Status</label>
