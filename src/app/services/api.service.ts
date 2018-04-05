@@ -16,8 +16,8 @@ import * as moment from 'moment';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://0ba0e9e1.ngrok.io/rmsrest/s";
-    loginApi: string = "https://0ba0e9e1.ngrok.io/rmsrest/p"
+    apiUrl: string = "http://b2fb6cb0.ngrok.io/rmsrest/s";
+    loginApi: string = "http://b2fb6cb0.ngrok.io/rmsrest/p"
     constructor(
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,

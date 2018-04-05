@@ -124,13 +124,13 @@ export class LicenseComponent implements OnInit {
         let url = "/building/add-license-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/asset-type-other/add-license-to-asset-type-other/assetTypeOtherId/";
+                "/asset-type-other/add-license-to-asset-type-other/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = "/equipment/add-license-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/vehicle/add-license-to-vehicle/vehicleId/";
+            url = "/vehicle/add-license-to-vehicle/assetTypeOtherId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.license).subscribe(
