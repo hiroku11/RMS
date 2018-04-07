@@ -10,7 +10,7 @@
     <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
       <span class="fa fa-search"></span> Advance Search</button>
     <div class="input-group search float-right">
-      <input class="form-control form-control-sm " placeholder="Search" />
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
       <span class="input-group-addon">
         <span class="fa fa-search"></span>
       </span>
@@ -32,7 +32,7 @@
     <th></th>
   </thead>
   <tbody>
-    <tr *ngFor="let doc of documentsList; let i = index;">
+    <tr *ngFor="let doc of documentsList | searchFilter: searchText; let i = index;">
       <td><a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a></td>
       <td> {{doc.documentTitle}}</td>
       <td>{{doc.versionNumber}}</td>
@@ -43,9 +43,9 @@
       <td>{{doc.addedBy}}</td>
       <td>{{doc.approvedBy}}</td>
       <td>
-        <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['send-email',doc.versionHistoryId]"></span>
-        <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadDocument(doc)"></span>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteDocumnet(doc,i)"></span>
+        <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email" [routerLink]="['send-email',doc.versionHistoryId]"></span>
+        <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc,i)"></span>
       </td>
     </tr>
   </tbody>

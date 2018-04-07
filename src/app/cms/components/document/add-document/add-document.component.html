@@ -29,7 +29,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Description</label>
-      <textarea class="form-control" [(ngModel)]="document.documentDescription" name="documentDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="document.documentDescription" name="documentDescription" maxlength="256"></textarea>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Publish Comments</label>
-      <textarea class="form-control" disabled [(ngModel)]="document.publishComments" name="publishComments"></textarea>
+      <textarea class="form-control" disabled [(ngModel)]="document.publishComments" name="publishComments" maxlength="256"></textarea>
     </div>
   </div>
 
@@ -91,7 +91,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>LMS Notification Comments</label>
-      <textarea class="form-control" disabled [(ngModel)]="document.lmsNotificationComments" name="lmsNotificationComments"></textarea>
+      <textarea class="form-control" disabled [(ngModel)]="document.lmsNotificationComments" name="lmsNotificationComments" maxlength="256"></textarea>
     </div>
   </div>
 
@@ -132,7 +132,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>File Description</label>
-      <textarea class="form-control" [(ngModel)]="file.fileDescription" name="documentDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="file.fileDescription" name="documentDescription" maxlength="256"></textarea>
     </div>
   </div>
   <div class="row pb-2">
@@ -191,11 +191,11 @@
         <td>{{doc.approvedUserFullName}}</td>
         <!-- <td>{{doc.approvedDate | date: "dd/MM/yyyy"}}</td> -->
         <td>
-          <span class="fa fa-file btn btn-sm  btn-outline-info" [routerLink]="['/cms/publish-document',doc.id]"></span>
-          <span class="fa fa-bell btn btn-sm  btn-outline-info" [routerLink]="['/cms/notify-admin',doc.id]"></span>
-          <span class="fa fa-envelope btn btn-sm  btn-outline-info" [routerLink]="['/cms/document/send-email',doc.id]"></span>
-          <span class="fa fa-download btn btn-sm btn-outline-info" (click)="downloadVersion(doc)"></span>
-          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteVersionHistory(doc)"></span>
+          <span class="fa fa-file btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Publish" [routerLink]="['/cms/publish-document',doc.id]"></span>
+          <span class="fa fa-bell btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Notify" [routerLink]="['/cms/notify-admin',doc.id]"></span>
+          <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email" [routerLink]="['/cms/document/send-email',doc.id]"></span>
+          <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadVersion(doc)"></span>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteVersionHistory(doc)"></span>
         </td>
       </tr>
     </tbody>
