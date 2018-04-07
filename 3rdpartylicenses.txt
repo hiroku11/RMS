@@ -162,11 +162,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [1]: http://eligrey.com
 
-@angular/forms@5.2.9
+@angular/core@5.2.9
 MIT
 MIT
 
-@angular/core@5.2.9
+@angular/forms@5.2.9
 MIT
 MIT
 
