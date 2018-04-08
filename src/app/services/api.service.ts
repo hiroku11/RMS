@@ -13,16 +13,21 @@ import "rxjs/add/operator/map";
 import "rxjs/add/observable/throw";
 import { UserService } from "./user.service";
 import * as moment from 'moment';
+import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://11399022.ngrok.io/rmsrest/s";
-    loginApi: string = "https://11399022.ngrok.io/rmsrest/p"
+    apiUrl: string = "https://happy-grasshopper-56.localtunnel.me/rmsrest/s";
+    loginApi: string = "https://happy-grasshopper-56.localtunnel.me/rmsrest/p";
+    config: any;
     constructor(
         private _http: HttpClient,
         private _ajaxLoader: AlertsLoaderService,
-        private _userService: UserService
-    ) { }
+        private _userService: UserService,
+        private _configService: ConfigService
+    ) {
+        this.config = this._configService.config;
+    }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
         debugger
         this.apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
@@ -30,12 +35,12 @@ export class ApiService {
         if (!headers) {
             headers = {};
         }
-        if(url.indexOf('login') == -1){
+        if (url.indexOf('login') == -1) {
             headers["X-AUTH-TOKEN"] = this._userService.authToken;
             data = this.parseDateToApiFormat(data);
         }
         return this._http
-            .post(this.apiUrl + url, data, {headers: headers})
+            .post(this.apiUrl + url, data, { headers: headers })
             .map((res: any) => {
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
@@ -46,17 +51,17 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
-    get(url: string, headers?: any, showLoader: boolean = true,blob:boolean = false) {
+    get(url: string, headers?: any, showLoader: boolean = true, blob: boolean = false) {
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
-        let options: any ={
+        let options: any = {
             headers: headers,
         }
-        if(blob){
-            options.responseType ='blob';
+        if (blob) {
+            options.responseType = 'blob';
         }
         return this._http
             .get(this.apiUrl + url, options)
@@ -120,28 +125,28 @@ export class ApiService {
     //     // headers['responseType']='arraybuffer';
     //     return this._http.get(this.apiUrl + url,{headers:options});
     // }
-    parseDateToApiFormat(payload: any){
-        for(let key in payload){
-            if(key.indexOf("Time") > -1 && payload[key]){
+    parseDateToApiFormat(payload: any) {
+        for (let key in payload) {
+            if (key.indexOf("Time") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
                 continue;
             }
-            if(key.indexOf("Date") > -1 && payload[key]){
+            if (key.indexOf("Date") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY").toString();
                 continue;
             }
         }
         return payload;
     }
-    parseDate(response: any){
-        for(let key in response){
-            if(Array.isArray(response[key])){
+    parseDate(response: any) {
+        for (let key in response) {
+            if (Array.isArray(response[key])) {
                 response[key].forEach(element => {
                     this.parseDate(element);
                 });
             }
-            if(key.indexOf("Date") > -1 && response[key]){
-                response[key] = moment(response[key],"DD/MM/YYYY HH:mm:ss").toDate();
+            if (key.indexOf("Date") > -1 && response[key]) {
+                response[key] = moment(response[key], "DD/MM/YYYY HH:mm:ss").toDate();
             }
         }
         return response;
@@ -165,4 +170,5 @@ export class ApiService {
     createOrUpdateVehicle(url: string, data: any) {
         return this.put(url, data);
     }
+
 }

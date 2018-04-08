@@ -1,3 +1,4 @@
+import { ConfigService } from './services/config.service';
 
 import { CoreComponentsModule } from './core.components.module/core.components.module';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +33,12 @@ import { HttpClientModule } from '@angular/common/http';
       useFactory: getUserDetails,
       deps: [UserService],
       multi: true
-    }, ApiService, AlertsLoaderService, SharedService],
+    }, ApiService, ConfigService, {
+      provide: APP_INITIALIZER,
+      useFactory: getAppConfig,
+      deps: [ConfigService],
+      multi: true
+    }, AlertsLoaderService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
@@ -41,6 +47,18 @@ export function getUserDetails(userService: UserService) {
   return () => userService.getUserDetails().then((data) => {
     if (!data) {
       return false;
+    }
+  });
+}
+
+
+export function getAppConfig(_configService: ConfigService) {
+  return () => _configService.getConfig().then((data) => {
+    console.log(data);
+    if (!data) {
+      return false;
+    } else {
+      _configService.config = data;
     }
   });
 }
