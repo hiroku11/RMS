@@ -19,6 +19,8 @@ export class AddDocumentComponent implements OnInit {
   fileInput: any;
   dropdownsData: any = {};
   versionHistory: any;
+  reverse: boolean = false;
+  keyName: string = 'versionNumber';
   constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService,
     private route: ActivatedRoute, private _sharedService: SharedService) {
     this.dropdownsData = this._sharedService.cmsDropDownsData;
@@ -179,5 +181,9 @@ export class AddDocumentComponent implements OnInit {
       this.document.expiryDate = null;
     }
   }
-
+  
+  changeSort(keyName: string) {
+    this.reverse = !this.reverse;
+    this.keyName = keyName;
+  }
 }

@@ -17,8 +17,8 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://happy-grasshopper-56.localtunnel.me/rmsrest/s";
-    loginApi: string = "https://happy-grasshopper-56.localtunnel.me/rmsrest/p";
+    apiUrl: string = "https://ba05179e.ngrok.io/rmsrest/s";
+    loginApi: string = "https://ba05179e.ngrok.io/rmsrest/p";
     config: any;
     constructor(
         private _http: HttpClient,

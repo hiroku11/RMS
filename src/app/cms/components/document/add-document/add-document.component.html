@@ -179,7 +179,7 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let doc of document.complianceDocumentVersionHistoryView">
+      <tr *ngFor="let doc of document.complianceDocumentVersionHistoryView | sortBy: reverse : keyName;">
         <td>{{doc.originalFileName}}</td>
         <td>{{doc.fileDescription}}</td>
         <td>{{doc.versionNumber}}</td>
