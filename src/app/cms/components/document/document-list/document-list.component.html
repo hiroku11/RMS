@@ -20,19 +20,19 @@
 </div>
 <table class="table table-bordered cms-table">
   <thead>
-    <th> ID</th>
-    <th> Title</th>
-    <th>Version</th>
-    <th>Classification </th>
-    <th>Status</th>
-    <th>Published</th>
+    <th (click)="changeSort('documentId')"> ID</th>
+    <th (click)="changeSort('documentTitle')"> Title</th>
+    <th (click)="changeSort('versionNumber')">Version</th>
+    <th (click)="changeSort('documentClassificationDescription')">Classification </th>
+    <th (click)="changeSort('documentStatusDescription')">Status</th>
+    <th (click)="changeSort('isPublished')">Published</th>
     <!-- <th>Expiry Date </th> -->
-    <th>Author</th>
-    <th>Approver</th>
+    <th (click)="changeSort('addedBy')">Author</th>
+    <th (click)="changeSort('approvedBy')">Approver</th>
     <th></th>
   </thead>
   <tbody>
-    <tr *ngFor="let doc of documentsList | searchFilter: searchText; let i = index;">
+    <tr *ngFor="let doc of documentsList | searchFilter: searchText | sortBy: reverse : keyName; let i = index;">
       <td><a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a></td>
       <td> {{doc.documentTitle}}</td>
       <td>{{doc.versionNumber}}</td>

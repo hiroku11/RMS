@@ -17,6 +17,8 @@ export class DocumentListComponent implements OnInit {
   pageSize: number = 10;
   itemsCount: number = 0;
   searchText: string;
+  reverse: boolean = false;
+  keyName: string = 'documentId';
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [
@@ -71,11 +73,11 @@ export class DocumentListComponent implements OnInit {
     saveAs(blob, fileName);
   }
 
-  deleteDocumnet(doc: any, index:number){
-    this._apiService.delete(`/compliance/delete-compliance-document/complianceDocumentId/${doc.id}`,{}, true).subscribe(
+  deleteDocumnet(doc: any, index: number) {
+    this._apiService.delete(`/compliance/delete-compliance-document/complianceDocumentId/${doc.id}`, {}, true).subscribe(
       data => {
         this._alertService.success("Documnet deleted successfully");
-        this.documentsList.splice(index,1);
+        this.documentsList.splice(index, 1);
       },
       error => {
         this._alertService.error("Some error occured while deleting document.");
@@ -83,34 +85,38 @@ export class DocumentListComponent implements OnInit {
       }
     )
   }
-  
+
   advancedSearch() {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-        SearchComponent
+      SearchComponent
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
     this.componentRef.instance.parentSearchParams = this.searchParams;
     this.componentRef.instance.searchResult.subscribe((data) => {
-        this.advancedSearchResult(data);
+      this.advancedSearchResult(data);
     });
     this.componentRef.instance.closeModal.subscribe((searchParams: any) => {
-        this.closeModal(searchParams);
+      this.closeModal(searchParams);
     });
-}
-closeModal(searchParams: any) {
+  }
+  closeModal(searchParams: any) {
     this.componentRef.instance.searchResult.unsubscribe();
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
     if (JSON.stringify(this.searchParams) == JSON.stringify(searchParams)) {
-        this.getDocuments();
+      this.getDocuments();
     }
-}
+  }
 
-advancedSearchResult($event: any) {
+  advancedSearchResult($event: any) {
     this.itemsCount = $event.data.totalRecords;
     this.documentsList = $event.data.complianceDocuments;
     this.searchParams = $event.searchParams;
 
-}
+  }
+  changeSort(keyName: string) {
+    this.reverse = !this.reverse;
+    this.keyName = keyName;
+  }
 
 }

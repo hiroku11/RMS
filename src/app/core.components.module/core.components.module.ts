@@ -1,3 +1,4 @@
+import { SortByPipe } from './pipes/sort-by.pipe';
 import { HomeComponent } from './component/home/home.component';
 import { HttpActionDirective } from './directives/http-action.directive';
 import { HeaderComponent } from './component/header/header.component';
@@ -16,12 +17,13 @@ import { NgxSlidesModule } from 'ngx-slides';
 
 
 
+
 @NgModule({
     imports: [CommonModule, FormsModule, RouterModule, NgxSlidesModule],
     exports: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent],
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe],
     declarations: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe
     ],
     entryComponents:[SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent]
 })
