@@ -10,6 +10,6 @@ export class ConfigService  {
     constructor(private _http: HttpClient) {
     }
     getConfig() {
-        return this._http.get('/assets/config.json').toPromise();
+        return this._http.get('assets/config.json').toPromise();
     }
 }
