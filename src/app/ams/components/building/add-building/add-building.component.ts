@@ -75,7 +75,10 @@ export class AddBuildingComponent implements OnInit {
             },
             addresses: [],
             organization: null,
-            department: null,
+            department: {
+                id:null,
+                organization:null
+            },
             numberOfFloors: null,
             regulatoryCompliance: null,
             regulatoryAuthorityName: null,
@@ -130,6 +133,14 @@ export class AddBuildingComponent implements OnInit {
                     this.building.assetCategory = {
                         id: "BUILDING",
                         description: "Building"
+                    }
+                }
+                if(this.building.department === null){
+                    this.building.department = {
+                        id: null,
+                        organization:{
+                            id:null
+                        }
                     }
                 }
             },

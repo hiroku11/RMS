@@ -40,7 +40,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
-      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="equipment.organization">
+      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="equipment.department.organization">
         <option value="null"></option>
         <option *ngFor="let org of dropDownsData.organizationList" [ngValue]="org">{{org.description}}</option>
       </select>
@@ -49,7 +49,7 @@
       <label>Department</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="equipment.department">
         <option value="null"></option>
-        <option *ngFor="let dep of dropDownsData.departmentList" [ngValue]="org">{{dep.description}}</option>
+        <option *ngFor="let dep of dropDownsData.departmentList" [ngValue]="dep">{{dep.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -162,7 +162,7 @@
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Return Reason</label>
-      <textarea class="form-control" [(ngModel)]="equipment.equipmentReturnedReason" name="equipmentReturnedReason"></textarea>
+      <textarea [disabled]="equipment.equipmentReturned !='Y'" class="form-control" [(ngModel)]="equipment.equipmentReturnedReason" name="equipmentReturnedReason"></textarea>
     </div>
   </div>
 
@@ -360,7 +360,7 @@
     <tbody>
       <tr *ngFor="let assignee of equipment.assignees">
         
-        <td>{{assignee.userLoginId}}
+        <td>{{assignee.userLoginId || assignee.loginId}}
         </td>
         <td>{{assignee.firstName}}</td>
         <td>{{assignee.lastName}}</td>

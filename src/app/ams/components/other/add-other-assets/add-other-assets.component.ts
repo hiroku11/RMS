@@ -122,7 +122,8 @@ export class AddOtherAssetsComponent implements OnInit {
                 id: null
             },
             department: {
-                id: null
+                id:null,
+                organization:null
             },
             amcPresent: "N",
             insurancePresent: "N",
@@ -160,6 +161,14 @@ export class AddOtherAssetsComponent implements OnInit {
                         this.asset.assetCategory = {
                             id: "OTHER",
                             description: "Other"
+                        }
+                    }
+                    if(this.asset.department === null){
+                        this.asset.department = {
+                            id: null,
+                            organization:{
+                                id:null
+                            }
                         }
                     }
                 },

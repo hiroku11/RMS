@@ -119,7 +119,8 @@ export class AddEquipmentComponent implements OnInit {
                 id: null
             },
             department: {
-                id: null
+                id: null,
+                organization:null
             },
             regulatoryCompliance: null,
             regulatoryAuthorityName: null,
@@ -155,6 +156,14 @@ export class AddEquipmentComponent implements OnInit {
                     this.equipment.assetCategory = {
                         id: "EQUIPMENT",
                         description: "Equipment"
+                    }
+                }
+                if(this.equipment.department === null){
+                    this.equipment.department = {
+                        id: null,
+                        organization:{
+                            id:null
+                        }
                     }
                 }
             },
