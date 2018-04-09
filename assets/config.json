@@ -1,3 +1,4 @@
 {
-  apiUrl:"dummyurl"
+    "loginUrl":"https://11399022.ngrok.io/rmsrest/p",
+    "apiUrl":"https://happy-grasshopper-56.localtunnel.me"
 }
