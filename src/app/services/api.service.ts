@@ -126,7 +126,11 @@ export class ApiService {
     //     return this._http.get(this.apiUrl + url,{headers:options});
     // }
     parseDateToApiFormat(payload: any) {
+
         for (let key in payload) {
+            if (Array.isArray(payload[key]) || typeof payload[key] == 'object') {
+                payload[key] = this.parseDateToApiFormat(payload[key]);
+            }
             if (key.indexOf("Time") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
                 continue;
