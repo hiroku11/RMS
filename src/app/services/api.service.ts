@@ -127,9 +127,6 @@ export class ApiService {
     // }
     parseDateToApiFormat(payload: any) {
         for (let key in payload) {
-          if (Array.isArray(payload[key]) || typeof payload[key] == 'object') {
-                payload[key] = this.parseDateToApiFormat(payload[key]);
-            }
             if (key.indexOf("Time") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
                 continue;
@@ -137,6 +134,9 @@ export class ApiService {
             if (key.indexOf("Date") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY").toString();
                 continue;
+            }
+            if (Array.isArray(payload[key]) || typeof payload[key] == 'object') {
+                payload[key] = this.parseDateToApiFormat(payload[key]);
             }
         }
         return payload;
