@@ -60,7 +60,7 @@ export class AddVehicleComponent implements OnInit {
             statusFlag: null,
             vehicleRegistrationId: null,
             engineNumber: null,
-            chasisNumber: null,
+            chassisNumber: null,
             make: null,
             model: null,
             commentDescription: null,

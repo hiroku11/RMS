@@ -397,7 +397,7 @@
                         </div>
 
                         <div class="col-lg-4 col-sm-6 col-md-2">
-                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.operator">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.chassisNumber)" [(ngModel)]="lookupOptions.chassisNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -408,13 +408,13 @@
                             </select>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-md-6">
-                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.value" name="chasisNumber" />
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.chassisNumber)" [(ngModel)]="lookupOptions.chassisNumber.value" name="chassisNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" [(ngModel)]="lookupOptions.chasisNumber.sort" (change)="lookupSortChange(lookupOptions.chasisNumber)"> Sort
+                                <input type="checkbox" [(ngModel)]="lookupOptions.chassisNumber.sort" (change)="lookupSortChange(lookupOptions.chassisNumber)"> Sort
                             </span>
-                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.chasisNumber)" [(ngModel)]="lookupOptions.chasisNumber.order">
+                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.chassisNumber)" [(ngModel)]="lookupOptions.chassisNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>

@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
         const equipmentProps = ['equipmentId', 'equipmentname', 'equipmentTag', 'equipmentMake', 'equipmentModel', 'orderNumber', 'invoiceNumber', 'serialNumber'];
         const assetotherProps = ['assetTypeOtherId', 'assetTypeOtherName', 'assetTypeOtherDescription', 'assetTag', 'assetMake',
             'assetModel', 'assetSerialNumber', 'purchasedDate'];
-        const vehicletProps = ['engineNumber', 'chasisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
+        const vehicletProps = ['engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
             'monthOfManufacturing'];
         let propsArray = ['department', 'assetCondition', 'assetStatus', 'assetType', 'regulatoryCompliance', 'amcPresent', 'insurancePresent', 'loanPresent',
             'licensePresent', 'warrantyPresent', 'inspectionPresent', 'servicePresent', 'rentalOrLeasePresent'];

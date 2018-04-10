@@ -99,20 +99,21 @@
 
 
   <div class="row pb-2">
+      <div class="col-sm-12 col-md-4">
+          <label>Never Expires</label>
+          <select class="form-control" [(ngModel)]="document.neverExpires" (change)="neverExpireChange()">
+            <option value="null"></option>
+            <option value="N">No</option>
+            <option value="Y">Yes</option>
+          </select>
+        </div>
     <div class="col-sm-12 col-md-4">
       <label>Expiry Date</label>
       <input class="form-control" [disabled]="document.neverExpires == 'Y'" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="document.expiryDate" name="expiryDate"
       />
       <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
     </div>
-    <div class="col-sm-12 col-md-4">
-      <label>Never Expires</label>
-      <select class="form-control" [(ngModel)]="document.neverExpires" (change)="neverExpireChange()">
-        <option value="null"></option>
-        <option value="N">No</option>
-        <option value="Y">Yes</option>
-      </select>
-    </div>
+  
     <div class="col-sm-12 col-md-4">
       <label>Approval Level</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="document.approvalLevel">
