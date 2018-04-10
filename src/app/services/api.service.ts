@@ -17,8 +17,8 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "http://gotorisk.co.uk:8088/rmsrest/s";
-    loginApi: string = "http://gotorisk.co.uk:8088/rmsrest/p";
+    apiUrl: string = "https://ba05179e.ngrok.io/rmsrest/s";
+    loginApi: string = "https://ba05179e.ngrok.io/rmsrest/p";
     config: any;
     constructor(
         private _http: HttpClient,
@@ -126,11 +126,7 @@ export class ApiService {
     //     return this._http.get(this.apiUrl + url,{headers:options});
     // }
     parseDateToApiFormat(payload: any) {
-
         for (let key in payload) {
-            if (Array.isArray(payload[key]) || typeof payload[key] == 'object') {
-                payload[key] = this.parseDateToApiFormat(payload[key]);
-            }
             if (key.indexOf("Time") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
                 continue;
