@@ -30,21 +30,21 @@
     <div class="col-sm-12 col-md-4">
       <label>Asset Category</label>
       <select class="form-control" [compareWith]="selectCompareFunction" disabled [(ngModel)]="vehicle.assetCategory">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category">{{category.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
       <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.department.organization">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.department">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
       </select>
     </div>
@@ -66,7 +66,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Month Of Manufacturing</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.monthOfManufacturing">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let month of dropDownsData.monthTypeList" [ngValue]="month">{{month.description}}</option>
       </select>
     </div>
@@ -76,7 +76,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Vehicle Type</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.vehicleType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let veh of dropDownsData.vehicleTypeList" [ngValue]="veh">{{veh.description}}</option>
       </select>
     </div>
@@ -91,7 +91,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Tax</label>
       <select class="form-control" [(ngModel)]="vehicle.taxApplicable">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -118,7 +118,7 @@
     <div class="col-sm-12 col-md-4">
       <label>MOT</label>
       <select class="form-control" [(ngModel)]="vehicle.motApplicable">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -171,7 +171,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="vehicle.regulatoryCompliance">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -189,7 +189,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="vehicle.fireExits">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -207,7 +207,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Fire Exitinguishers Present</label>
       <select class="form-control" [(ngModel)]="vehicle.fireExtinguishers">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -228,7 +228,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
       <select class="form-control" [(ngModel)]="vehicle.amcPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -236,7 +236,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
       <select class="form-control" [(ngModel)]="vehicle.inspectionPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -244,7 +244,7 @@
     <div class="col-sm-12 col-md-3">
       <label>License</label>
       <select class="form-control" [(ngModel)]="vehicle.licensePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -252,7 +252,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
       <select class="form-control" [(ngModel)]="vehicle.loanPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -263,7 +263,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
       <select class="form-control" [(ngModel)]="vehicle.insurancePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -271,7 +271,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
       <select class="form-control" [(ngModel)]="vehicle.rentalOrLeasePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -279,7 +279,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
       <select class="form-control" [(ngModel)]="vehicle.servicePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -287,8 +287,8 @@
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
       <select class="form-control" [(ngModel)]="vehicle.warrantyPresent" (change)="updateTabs()">
-        <option value="null"></option>
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -299,7 +299,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetCondition">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
       </select>
     </div>
@@ -314,7 +314,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetStatus">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
       </select>
     </div>
@@ -328,7 +328,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="vehicle.assetType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
