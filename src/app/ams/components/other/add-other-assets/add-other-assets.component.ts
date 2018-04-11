@@ -150,26 +150,29 @@ export class AddOtherAssetsComponent implements OnInit {
     updateTabs() {
         this.tabs = this._sharedService.getTabstoShow(this.asset);
     }
+    handleNullOrganization(data: any) {
+        if (data.assetCategory == null) {
+            data.assetCategory = {
+                id: "OTHER",
+                description: "Other"
+            }
+        }
+        if (data.department === null) {
+            data.department = {
+                id: null,
+                organization: {
+                    id: null
+                }
+            }
+        }
+        return data;
+    }
     getAssetById(id: number) {
         this._apiService
             .get("/asset-type-other/assetTypeOtherId/" + id)
             .subscribe(
-                data => {
-                   
-                    if (data.assetCategory == null) {
-                        data.assetCategory = {
-                            id: "OTHER",
-                            description: "Other"
-                        }
-                    }
-                    if(data.department === null){
-                        data.department = {
-                            id: null,
-                            organization:{
-                                id:null
-                            }
-                        }
-                    }
+                data => { 
+                   data = this.handleNullOrganization(data);
                     this.asset = data;
                     this.updateTabs();
                 },
@@ -191,6 +194,7 @@ export class AddOtherAssetsComponent implements OnInit {
             )
             .subscribe(
                 data => {
+                    data = this.handleNullOrganization(data);
                     this.asset = data;
                     this._alertsService.success(
                         "Asset details saved successfully."

@@ -122,8 +122,8 @@ export class AddVehicleComponent implements OnInit {
                 id: null
             },
             department: {
-                id:null,
-                organization:null
+                id: null,
+                organization: null
             },
             regulatoryCompliance: null,
             regulatoryAuthorityName: null,
@@ -143,24 +143,12 @@ export class AddVehicleComponent implements OnInit {
             fireExtinguisherTypes: []
         };
     }
+    
     getVehicleById(id: number) {
         this._apiService.get("/vehicle/vehicleId/" + id).subscribe(
             data => {
-                
-                if (data.assetCategory == null) {
-                    data.assetCategory = {
-                        id: "VEHICLE",
-                        description: "Vehicle"
-                    }
-                }
-                if(data.department === null){
-                    data.department = {
-                        id: null,
-                        organization:{
-                            id:null
-                        }
-                    }
-                }
+
+                data = this.handleNullOrganization(data);
                 this.vehicle = data;
                 this.updateTabs();
             },
@@ -170,6 +158,23 @@ export class AddVehicleComponent implements OnInit {
                 );
             }
         );
+    }
+    handleNullOrganization(data: any) {
+        if (data.assetCategory == null) {
+            data.assetCategory = {
+                id: "VEHICLE",
+                description: "Vehicle"
+            }
+        }
+        if (data.department === null) {
+            data.department = {
+                id: null,
+                organization: {
+                    id: null
+                }
+            }
+        }
+        return data;
     }
     changeTab(tab: any) {
         if (!this.vehicle.id && tab.tab != 11 && tab.tab != 1) {
@@ -193,6 +198,7 @@ export class AddVehicleComponent implements OnInit {
             )
             .subscribe(
                 data => {
+                    data = this.handleNullOrganization(data);
                     this.vehicle = data;
                     this._alertsService.success(
                         "Vehicle details successfully saved."
@@ -246,7 +252,7 @@ export class AddVehicleComponent implements OnInit {
         let others = this.vehicle.vehicleDamageTypes.filter((item) => {
             return item.id == 'OTHER';
         });
-        if(others.length != 0){
+        if (others.length != 0) {
             this.enabledOthers = false;
             return;
         }

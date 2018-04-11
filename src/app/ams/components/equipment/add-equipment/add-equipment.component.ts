@@ -147,24 +147,28 @@ export class AddEquipmentComponent implements OnInit {
         }
         this.currentTab = tab;
     }
+    handleNullOrganization(data: any) {
+        if (data.assetCategory == null) {
+            data.assetCategory = {
+                id: "EQUIPMENT",
+                description: "Equipment"
+            }
+        }
+        if (data.department === null) {
+            data.department = {
+                id: null,
+                organization: {
+                    id: null
+                }
+            }
+        }
+        return data;
+    }
     getEquipmentById(id: number) {
         this._apiService.get("/equipment/equipmentId/" + id).subscribe(
             data => {
                
-                if (data.assetCategory == null) {
-                    data.assetCategory = {
-                        id: "EQUIPMENT",
-                        description: "Equipment"
-                    }
-                }
-                if(data.department === null){
-                    data.department = {
-                        id: null,
-                        organization:{
-                            id:null
-                        }
-                    }
-                }
+               data = this.handleNullOrganization(data);
                 this.equipment = data;
                 this.updateTabs();
             },
@@ -190,6 +194,7 @@ export class AddEquipmentComponent implements OnInit {
             )
             .subscribe(
                 data => {
+                    data = this.handleNullOrganization(data);
                     this.equipment = data;
                     this._alertsService.success("Equipment successfully saved.");
                     //this.initEquipment();

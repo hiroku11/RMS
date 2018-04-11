@@ -124,23 +124,28 @@ export class AddBuildingComponent implements OnInit {
         };
     }
 
+    handleNullOrganization(data: any) {
+        if (data.assetCategory == null) {
+            data.assetCategory = {
+                id: "BUILDING",
+                description: "Building"
+            }
+        }
+        if (data.department === null) {
+            data.department = {
+                id: null,
+                organization: {
+                    id: null
+                }
+            }
+        }
+        return data;
+    }
     getBuildingById(buidingId: number) {
         this._apiService.get("/building/buildingId/" + buidingId).subscribe(
             data => {
-                if (data.assetCategory == null) {
-                    data.assetCategory = {
-                        id: "BUILDING",
-                        description: "Building"
-                    }
-                }
-                if(data.department === null){
-                    data.department = {
-                        id: null,
-                        organization:{
-                            id:null
-                        }
-                    }
-                }
+               
+                data = this.handleNullOrganization(data);
                 this.building = data;
                 this.updateTabs();
             },
@@ -175,6 +180,7 @@ export class AddBuildingComponent implements OnInit {
             )
             .subscribe(
                 data => {
+                    data = this.handleNullOrganization(data);
                     this.building = data;
                     this._alertsService.success("Building successfully saved");
                     //this.initBuilding();
