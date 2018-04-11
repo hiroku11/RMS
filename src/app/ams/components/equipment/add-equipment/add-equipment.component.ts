@@ -190,7 +190,7 @@ export class AddEquipmentComponent implements OnInit {
             .subscribe(
                 data => {
                     this.equipment = data;
-                    this._alertsService.success("Equipment successfully saved");
+                    this._alertsService.success("Equipment successfully saved.");
                     //this.initEquipment();
                 },
                 error => {

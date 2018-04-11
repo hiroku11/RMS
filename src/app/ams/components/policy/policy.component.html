@@ -56,7 +56,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Policy Type</label>
       <select class="form-control" [(ngModel)]="policy.policyType" name="policyType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.policyTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
@@ -68,7 +68,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Renewal Type</label>
       <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let renew of dropDownsData.renewalTypeList" [ngValue]="renew">{{renew.description}}</option>
       </select>
     </div>

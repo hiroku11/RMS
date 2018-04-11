@@ -22,7 +22,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Rental or Lease Type</label>
       <select class="form-control" [(ngModel)]="rent.rentalOrLeaseType" name="rentalOrLeaseType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.rentOrLeaseTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>

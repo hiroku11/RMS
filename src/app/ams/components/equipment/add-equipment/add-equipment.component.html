@@ -34,21 +34,21 @@
     <div class="col-sm-12 col-md-3">
       <label>Asset Category</label>
       <select disabled class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="equipment.assetCategory">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category">{{category.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
       <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="equipment.department.organization">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let org of dropDownsData.organizationList" [ngValue]="org">{{org.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Department</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="equipment.department">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let dep of dropDownsData.departmentList" [ngValue]="dep">{{dep.description}}</option>
       </select>
     </div>
@@ -142,7 +142,7 @@
     <div class="col-sm-12 col-md-4">
       <label>Equipment Returned</label>
       <select class="form-control" [(ngModel)]="equipment.equipmentReturned" (change)="equipmentReturnedChange()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="N">No</option>
         <option value="Y">Yes</option>
       </select>
@@ -170,7 +170,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="equipment.regulatoryCompliance">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -188,7 +188,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="equipment.fireExits">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -206,7 +206,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Fire Exitinguishers Present</label>
       <select class="form-control" [(ngModel)]="equipment.fireExtinguishers">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -228,7 +228,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Annual Maintenance Contract</label>
       <select class="form-control" [(ngModel)]="equipment.amcPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -236,7 +236,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Inspection</label>
       <select class="form-control" [(ngModel)]="equipment.inspectionPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -244,7 +244,7 @@
     <div class="col-sm-12 col-md-3">
       <label>License</label>
       <select class="form-control" [(ngModel)]="equipment.licensePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -252,7 +252,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
       <select class="form-control" [(ngModel)]="equipment.loanPresent" (change)="updateTabs()">
-          <option value="null"></option>
+          <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -263,7 +263,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Policy</label>
       <select class="form-control" [(ngModel)]="equipment.insurancePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -271,7 +271,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Rental/Lease</label>
       <select class="form-control" [(ngModel)]="equipment.rentalOrLeasePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -279,7 +279,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Service</label>
       <select class="form-control" [(ngModel)]="equipment.servicePresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -287,7 +287,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Warranty</label>
       <select class="form-control" [(ngModel)]="equipment.warrantyPresent" (change)="updateTabs()">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -298,7 +298,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Condition</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="equipment.assetCondition">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
       </select>
     </div>
@@ -313,7 +313,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Status</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="equipment.assetStatus">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status">{{status.description}}</option>
       </select>
     </div>
@@ -327,7 +327,7 @@
     <div class="col-sm-12 col-md-6">
       <label>Asset Type</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="equipment.assetType">
-        <option value="null"></option>
+        <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
