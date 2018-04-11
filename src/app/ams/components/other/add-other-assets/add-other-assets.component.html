@@ -150,20 +150,20 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Return Date</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+      <input class="form-control" [disabled]="asset.assetReturned !='Y'" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
       [(ngModel)]="asset.assetReturnedDate" name="assetReturnedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>
-      <input class="form-control" [(ngModel)]="asset.refundAmount" name="refundAmount" />
+      <input class="form-control" [disabled]="asset.assetReturned !='Y'" [(ngModel)]="asset.refundAmount" name="refundAmount" />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Return Reason</label>
-      <textarea class="form-control" [(ngModel)]="asset.assetReturnReason" name="assetReturnReason"></textarea>
+      <textarea class="form-control" [disabled]="asset.assetReturned !='Y'" [(ngModel)]="asset.assetReturnReason" name="assetReturnReason"></textarea>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Asset Damage Description</label>
@@ -172,7 +172,7 @@
   </div>
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-">
+    <div class="col-sm-12 col-md-3">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="asset.regulatoryCompliance">
         <option value="null"></option>
