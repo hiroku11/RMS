@@ -155,22 +155,23 @@ export class AddOtherAssetsComponent implements OnInit {
             .get("/asset-type-other/assetTypeOtherId/" + id)
             .subscribe(
                 data => {
-                    this.asset = data;
-                    this.updateTabs();
-                    if (this.asset.assetCategory == null) {
-                        this.asset.assetCategory = {
+                   
+                    if (data.assetCategory == null) {
+                        data.assetCategory = {
                             id: "OTHER",
                             description: "Other"
                         }
                     }
-                    if(this.asset.department === null){
-                        this.asset.department = {
+                    if(data.department === null){
+                        data.department = {
                             id: null,
                             organization:{
                                 id:null
                             }
                         }
                     }
+                    this.asset = data;
+                    this.updateTabs();
                 },
                 error => {
                     this._alertsService.error(

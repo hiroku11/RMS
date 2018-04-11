@@ -146,22 +146,23 @@ export class AddVehicleComponent implements OnInit {
     getVehicleById(id: number) {
         this._apiService.get("/vehicle/vehicleId/" + id).subscribe(
             data => {
-                this.vehicle = data;
-                this.updateTabs();
-                if (this.vehicle.assetCategory == null) {
-                    this.vehicle.assetCategory = {
+                
+                if (data.assetCategory == null) {
+                    data.assetCategory = {
                         id: "VEHICLE",
                         description: "Vehicle"
                     }
                 }
-                if(this.vehicle.department === null){
-                    this.vehicle.department = {
+                if(data.department === null){
+                    data.department = {
                         id: null,
                         organization:{
                             id:null
                         }
                     }
                 }
+                this.vehicle = data;
+                this.updateTabs();
             },
             error => {
                 this._alertsService.error(

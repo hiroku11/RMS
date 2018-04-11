@@ -150,22 +150,23 @@ export class AddEquipmentComponent implements OnInit {
     getEquipmentById(id: number) {
         this._apiService.get("/equipment/equipmentId/" + id).subscribe(
             data => {
-                this.equipment = data;
-                this.updateTabs();
-                if (this.equipment.assetCategory == null) {
-                    this.equipment.assetCategory = {
+               
+                if (data.assetCategory == null) {
+                    data.assetCategory = {
                         id: "EQUIPMENT",
                         description: "Equipment"
                     }
                 }
-                if(this.equipment.department === null){
-                    this.equipment.department = {
+                if(data.department === null){
+                    data.department = {
                         id: null,
                         organization:{
                             id:null
                         }
                     }
                 }
+                this.equipment = data;
+                this.updateTabs();
             },
             error => {
                 this._alertsService.error(

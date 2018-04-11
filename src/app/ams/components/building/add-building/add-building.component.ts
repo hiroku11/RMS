@@ -127,22 +127,22 @@ export class AddBuildingComponent implements OnInit {
     getBuildingById(buidingId: number) {
         this._apiService.get("/building/buildingId/" + buidingId).subscribe(
             data => {
-                this.building = data;
-                this.updateTabs();
-                if (this.building.assetCategory == null) {
-                    this.building.assetCategory = {
+                if (data.assetCategory == null) {
+                    data.assetCategory = {
                         id: "BUILDING",
                         description: "Building"
                     }
                 }
-                if(this.building.department === null){
-                    this.building.department = {
+                if(data.department === null){
+                    data.department = {
                         id: null,
                         organization:{
                             id:null
                         }
                     }
                 }
+                this.building = data;
+                this.updateTabs();
             },
             (error: HttpErrorResponse) => {
                 this._alertsService.error(
