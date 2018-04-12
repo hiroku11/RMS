@@ -115,13 +115,13 @@ export class InspectionComponent implements OnInit {
         let url = "/building/add-inspection-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
             url =
-                "/asset-type-other/add-inspection-to-asset-type-other/vehicleId/";
+                "/asset-type-other/add-inspection-to-vehicle/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = "/equipment/add-inspection-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/vehicle/add-inspection-to-vehicle/assetTypeOtherId/";
+            url = "/vehicle/add-inspection-to-asset-type-other/assetTypeOtherId/";
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.inspection).subscribe(
