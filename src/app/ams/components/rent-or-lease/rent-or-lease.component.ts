@@ -136,14 +136,15 @@ export class RentOrLeaseComponent implements OnInit {
         }
         let url = "/building/add-rental-or-lease-agreement-to-building/buildingId/";
         if (this.asset.assetCategory.id == "VEHICLE") {
-            url =
-                "/asset-type-other/add-rental-or-lease-agreement-to-asset-type-other/vehicleId/";
+            url = "/vehicle/add-rental-or-lease-agreement-to-vehicle/vehicleId/";
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = "/equipment/add-rental-or-lease-agreement-to-equipment/equipmentId/";
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url = "/vehicle/add-rental-or-lease-agreement-to-vehicle/assetTypeOtherId/";
+            url =
+                "/asset-type-other/add-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/";
+            
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.rent).subscribe(
