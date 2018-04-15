@@ -145,9 +145,7 @@ export class LicenseComponent implements OnInit {
                 this.addedToAsset.emit(data);
             },
             error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
+                this._alertsService.error(error);
             }
         );
     }
@@ -171,9 +169,7 @@ export class LicenseComponent implements OnInit {
                 this.editMode = false;
             },
             error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
+                this._alertsService.error(error);
             }
             );
     }
@@ -206,9 +202,7 @@ export class LicenseComponent implements OnInit {
                 this.addedToAsset.emit(data);
             },
             error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
+                this._alertsService.error(error);
             }
         );
     }
@@ -279,7 +273,7 @@ export class LicenseComponent implements OnInit {
                 this._alertsService.success("License successfully added to " + this.asset.assetCategory.description);
             },
             error=>{
-                this._alertsService.error("some error occured. Please try again.");
+                this._alertsService.error(error);
             }
         );
     }

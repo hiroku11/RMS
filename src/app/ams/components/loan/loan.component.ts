@@ -147,7 +147,7 @@ export class LoanComponent implements OnInit {
             },
             error => {
                 this._alertsService.error(
-                    "Some error occured. Please try again."
+                   error
                 );
             }
         );
@@ -171,7 +171,7 @@ export class LoanComponent implements OnInit {
             },
             error => {
                 this._alertsService.error(
-                    "Some error occured. Please try again."
+                    error
                 );
             }
         );
@@ -197,7 +197,7 @@ export class LoanComponent implements OnInit {
         },
         error => {
             this._alertsService.error(
-                "Some error occured. Please try again."
+                error
             );
         }
     );
@@ -269,7 +269,7 @@ export class LoanComponent implements OnInit {
                 this._alertsService.success("Loan successfully added to " + this.asset.assetCategory.description);
             },
             error=>{
-                this._alertsService.error("some error occured. Please try again.");
+                this._alertsService.error(error);
             }
         );
     }

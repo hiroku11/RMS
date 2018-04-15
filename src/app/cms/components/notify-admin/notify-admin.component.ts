@@ -49,7 +49,7 @@ export class NotifyAdminComponent implements OnInit {
 
         },
         (error) => {
-          this._alertsService.error("Some error occured while notifying an admin.");
+          this._alertsService.error(error);
         }
       )
 

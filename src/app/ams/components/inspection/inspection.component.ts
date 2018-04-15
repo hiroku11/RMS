@@ -15,7 +15,7 @@ export class InspectionComponent implements OnInit {
     lookupParams: any;
     editMode: boolean = false;
     lookupItems: any;
-    lookupOptions :any;
+    lookupOptions: any;
     editing: any;
     constructor(private _apiService: ApiService, private _alertsService: AlertsLoaderService) {
         this.initInspection();
@@ -60,50 +60,50 @@ export class InspectionComponent implements OnInit {
                 field: 'inspectionNumber',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             inspectionCompanyName: {
                 field: 'inspectionCompanyName',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             inspectionCompanyContactPerson: {
                 field: 'inspectionCompanyContactPerson',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             inspectionDoneBy: {
                 field: 'inspectionDoneBy',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             inspectionDoneDateTime: {
                 field: 'inspectionDoneDateTime',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             inspectionDueDate: {
                 field: 'inspectionDueDate',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             nextInspectionDueDate: {
                 field: 'nextInspectionDueDate',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             }
         }
     }
@@ -134,9 +134,7 @@ export class InspectionComponent implements OnInit {
                 this.addedToAsset.emit(data);
             },
             error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
+                this._alertsService.error(error);
             }
         );
     }
@@ -151,20 +149,18 @@ export class InspectionComponent implements OnInit {
         this._apiService
             .put("/inspection/update-inspection", this.inspection)
             .subscribe(
-            data => {
-                this.inspection = data;
-                this.editing = Object.assign(this.editing,data);
-                this._alertsService.success(
-                    "Inspection successfully updated."
-                );
-                this.initInspection();
-                this.editMode = false;
-            },
-            error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
-            }
+                data => {
+                    this.inspection = data;
+                    this.editing = Object.assign(this.editing, data);
+                    this._alertsService.success(
+                        "Inspection successfully updated."
+                    );
+                    this.initInspection();
+                    this.editMode = false;
+                },
+                error => {
+                    this._alertsService.error(error);
+                }
             );
     }
     removeInspectionFromAsset(inspection: any) {
@@ -187,50 +183,48 @@ export class InspectionComponent implements OnInit {
                 this.addedToAsset.emit(data);
             },
             error => {
-                this._alertsService.error(
-                    "Some error occured. Please try again."
-                );
+                this._alertsService.error(error);
             }
         );
     }
 
-    lookupFieldChange({field,operator,value}){
+    lookupFieldChange({ field, operator, value }) {
         let fil = {
             field,
             operator,
             value
         }
-        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        const exists = this.lookupParams.filters.filter(filt => filt.field === field);
         const obj = {};
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
-        if(!exists.length){
+        if (!exists.length) {
             this.lookupParams.filters.push(fil);
-        }else{
+        } else {
             exists[0].value = value;
             exists[0].operator = operator;
         }
     }
 
-    lookupSortChange({field,sort,order}){
-        let sor={
+    lookupSortChange({ field, sort, order }) {
+        let sor = {
             field,
             order
         }
-        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
-        if(!exists.length && sort){
+        const exists = this.lookupParams.sorts.filter(s => s.field === field);
+        if (!exists.length && sort) {
             this.lookupParams.sorts.push(sor);
-        }else if(exists.length && sort){
+        } else if (exists.length && sort) {
             exists[0].order = order;
-        }else{
+        } else {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
-            this.lookupParams.sorts.splice(ind,1);
+            this.lookupParams.sorts.splice(ind, 1);
         }
 
     }
-    lookupInspection($event ?: any) {
-        if($event){
-            this.lookupParams.paging.currentPage = $event.pageNo -1;
+    lookupInspection($event?: any) {
+        if ($event) {
+            this.lookupParams.paging.currentPage = $event.pageNo - 1;
             this.lookupParams.paging.pageSize = $event.pageSize;
         }
         this._apiService.get('/inspection/search-inspections', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
@@ -243,10 +237,10 @@ export class InspectionComponent implements OnInit {
         )
 
     }
-    addExistingInspectionToAsset(inspection: any){
+    addExistingInspectionToAsset(inspection: any) {
         let url = `/building/add-existing-inspection-to-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;
         if (this.asset.assetCategory.id == "OTHER") {
-            url =`/asset-type-other/add-existing-inspection-to-asset-type-other/assetTypeOtherId/${this.asset.id}/inspectionId/${inspection.id}`;
+            url = `/asset-type-other/add-existing-inspection-to-asset-type-other/assetTypeOtherId/${this.asset.id}/inspectionId/${inspection.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = `/equipment/add-existing-inspection-to-equipment/equipmentId/${this.asset.id}/inspectionId/${inspection.id}`;
@@ -254,13 +248,13 @@ export class InspectionComponent implements OnInit {
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = url = `/vehicle/add-existing-inspection-to-vehicle/vehicleId/${this.asset.id}/inspectionId/${inspection.id}`;
         }
-        this._apiService.put(url,null).subscribe(
-            data=>{
+        this._apiService.put(url, null).subscribe(
+            data => {
                 this.addedToAsset.emit(data);
                 this._alertsService.success("Inspection successfully added to " + this.asset.assetCategory.description);
             },
-            error=>{
-                this._alertsService.error("some error occured. Please try again.");
+            error => {
+                this._alertsService.error(error);
             }
         );
     }

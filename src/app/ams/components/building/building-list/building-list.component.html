@@ -61,4 +61,4 @@
   </tbody>
 </table>
 <ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
-<app-ajax-loader *ngIf="buildingList.length == 0"></app-ajax-loader>
+<app-ajax-loader *ngIf="!buildingList"></app-ajax-loader>

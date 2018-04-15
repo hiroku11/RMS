@@ -82,7 +82,7 @@ export class PublishEmailComponent implements OnInit {
         this._alertsService.success("Documnet published succesfully.");
       },
       (error) => {
-        this._alertsService.error("Error occured while publishing documnet.");
+        this._alertsService.error(error);
       }
     )
   }

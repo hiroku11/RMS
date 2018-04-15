@@ -200,9 +200,7 @@ export class AddEquipmentComponent implements OnInit {
                     //this.initEquipment();
                 },
                 error => {
-                    this._alertsService.error(
-                        "Error occured while saving equpment details"
-                    );
+                    this._alertsService.error(error);
                 }
             );
     }
@@ -238,7 +236,7 @@ export class AddEquipmentComponent implements OnInit {
                 this._alertsService.success("Equipment successfully assigned to user.");
             },
             (error) => {
-                this._alertsService.error("Some error occured try again.");
+                this._alertsService.error(error);
             }
         )
         console.log("assigning user")
@@ -258,7 +256,7 @@ export class AddEquipmentComponent implements OnInit {
                 this._alertsService.success("Assignee successfully removed from equipment.");
             },
             (error) => {
-                this._alertsService.error("Some error occured try again.");
+                this._alertsService.error(error);
             }
         )
     }

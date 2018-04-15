@@ -56,7 +56,7 @@ export class EquipmentListComponent implements OnInit {
                 this.equipmentList.splice(this.equipmentList.indexOf(equipment), 1);
             },
             (error)=>{
-                this._alertService.error("Equipment cannot be deleted because it is associated to an incident.");
+                this._alertService.error(error);
             }
         )
 

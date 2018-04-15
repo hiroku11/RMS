@@ -53,7 +53,7 @@ export class OtherAssetsListComponent implements OnInit {
                 this.otherAssetList.splice(this.otherAssetList.indexOf(asset), 1);
             },
             (error)=>{
-                this._alertService.error("Asset type other cannot be deleted because it is associated to an incident.");
+                this._alertService.error(error);
             }
         )
 

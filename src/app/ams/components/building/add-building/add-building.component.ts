@@ -186,7 +186,7 @@ export class AddBuildingComponent implements OnInit {
                     //this.initBuilding();
                 },
                 error => {
-                    this._alertsService.error("Some error ocured. Try again");
+                    this._alertsService.error(error);
                 }
             );
     }
@@ -223,7 +223,6 @@ export class AddBuildingComponent implements OnInit {
                 this._alertsService.success("Building successfully assigned to user.")
             },
             (error) => {
-
                 this._alertsService.error(error);
             }
         )
@@ -243,7 +242,7 @@ export class AddBuildingComponent implements OnInit {
                 this._alertsService.success("Assignee successfully removed from building.");
             },
             (error) => {
-                this._alertsService.error("Some error occured try again.");
+                this._alertsService.error(error);
             }
         )
     }

@@ -131,7 +131,7 @@ export class AddDocumentComponent implements OnInit {
         //this.initDocumnet();
       },
       (error) => {
-        this._alertsService.error("Error saving document details.");
+        this._alertsService.error(error);
       }
     )
   }
@@ -154,7 +154,7 @@ export class AddDocumentComponent implements OnInit {
         this.getVersionHistory();
       },
       (error) => {
-        this._alertsService.error("Error deleting version history. Try again.")
+        this._alertsService.error(error)
       }
     )
 

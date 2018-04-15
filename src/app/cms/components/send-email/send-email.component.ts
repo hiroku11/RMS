@@ -59,7 +59,7 @@ export class SendEmailComponent implements OnInit {
 
         },
         (error) => {
-          this._alertsService.error("Some error occured while sending an email.");
+          this._alertsService.error(error);
         }
       )
 

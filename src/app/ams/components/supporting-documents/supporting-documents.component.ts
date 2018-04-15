@@ -68,7 +68,7 @@ export class SupportingDocumentsComponent implements OnInit {
         this.addedToAsset.emit(this.docsObject);
       },
       error => {
-        this._alertsService.error("Some error occured while deleting document.");
+        this._alertsService.error(error);
       }
     )
   }

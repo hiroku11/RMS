@@ -62,7 +62,7 @@ export class DocumentListComponent implements OnInit {
         this.saveFile(data, doc.originalFileName);
       },
       error => {
-        this._alertService.error("Some error occured while download document.");
+        this._alertService.error("Some error occured while downloading document.");
         console.log(error);
       }
     )
@@ -80,7 +80,7 @@ export class DocumentListComponent implements OnInit {
         this.documentsList.splice(index, 1);
       },
       error => {
-        this._alertService.error("Some error occured while deleting document.");
+        this._alertService.error(error);
         console.log(error);
       }
     )

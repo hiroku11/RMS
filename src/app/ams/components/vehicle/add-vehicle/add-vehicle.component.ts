@@ -207,7 +207,7 @@ export class AddVehicleComponent implements OnInit {
                 },
                 error => {
                     this._alertsService.error(
-                        "Some error occured while saving vehicle details."
+                        error
                     );
                 }
             );
@@ -243,7 +243,7 @@ export class AddVehicleComponent implements OnInit {
                 this._alertsService.success("Vehicle successfully assigned to user.")
             },
             (error) => {
-                this._alertsService.error("Some error occured try again.")
+                this._alertsService.error(error)
             }
         )
     }
@@ -272,7 +272,7 @@ export class AddVehicleComponent implements OnInit {
                 this._alertsService.success("Assignee successfully removed from vehicle.");
             },
             (error) => {
-                this._alertsService.error("Some error occured try again.");
+                this._alertsService.error(error);
             }
         )
     }

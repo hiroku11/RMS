@@ -10,7 +10,7 @@
     <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
       <span class="fa fa-search"></span> Advance Search</button>
     <div class="input-group search float-right">
-      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText" />
       <span class="input-group-addon">
         <span class="fa fa-search"></span>
       </span>
@@ -33,7 +33,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let doc of documentsList | searchFilter: searchText | sortBy: reverse : keyName; let i = index;">
-      <td><a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a></td>
+      <td>
+        <a [routerLink]="['edit-document',doc.id]">{{doc.documentId}}</a>
+      </td>
       <td> {{doc.documentTitle}}</td>
       <td>{{doc.versionNumber}}</td>
       <td>{{doc.documentClassificationDescription}}</td>
@@ -51,4 +53,4 @@
   </tbody>
 </table>
 <ng-pagination *ngIf="documentsList.length>0" [itemsCount]="itemsCount" [pageSize]="pageSize" (getPageData)="getPageData($event)"></ng-pagination>
-<app-ajax-loader *ngIf="documentsList.length == 0"></app-ajax-loader>
+<app-ajax-loader *ngIf="!documentsList"></app-ajax-loader>

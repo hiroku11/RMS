@@ -203,7 +203,7 @@ export class AddOtherAssetsComponent implements OnInit {
                 },
                 error => {
                     this._alertsService.error(
-                        "Some error occured while saving asset details."
+                        error
                     );
                 }
             );
@@ -239,7 +239,7 @@ export class AddOtherAssetsComponent implements OnInit {
                 this._alertsService.success("Asset successfully assigned to user.")
             },
             (error)=>{
-                this._alertsService.error("Some error occured try again.")
+                this._alertsService.error(error)
             }
         )
         console.log("assigning user")
@@ -259,7 +259,7 @@ export class AddOtherAssetsComponent implements OnInit {
                 this._alertsService.success("Assignee successfully removed from asset.");
             },
             (error)=>{
-                this._alertsService.error("Some error occured try again.");
+                this._alertsService.error(error);
             }
         )
     }

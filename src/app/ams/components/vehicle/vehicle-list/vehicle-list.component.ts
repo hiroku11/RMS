@@ -54,7 +54,7 @@ export class VehicleListComponent implements OnInit {
                 this.vehicleList.splice(this.vehicleList.indexOf(vehicle), 1);
             },
             (error)=>{
-                this._alertService.error("Vehicle cannot be deleted because it is associated to an incident.");
+                this._alertService.error(error);
             }
         )
 

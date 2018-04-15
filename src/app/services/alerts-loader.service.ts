@@ -18,7 +18,7 @@ export class AlertsLoaderService {
         private componentFactoryResolver: ComponentFactoryResolver,
         private appRef: ApplicationRef,
         private injector: Injector
-    ) {}
+    ) { }
 
     showLoader() {
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
@@ -39,20 +39,37 @@ export class AlertsLoaderService {
         viewContainerRef.clear();
         this.componentRef = viewContainerRef.createComponent(componentFactory);
         this.componentRef.instance.message = message;
-        setTimeout(()=>{
+        setTimeout(() => {
             this.hideLoader();
-        },2000);
+        }, 2000);
     }
-    error(message: string) {
+    error(error: any) {
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
             ErrorMessageComponent
         );
         let viewContainerRef = this.httpActionIndicator.viewContainerRef;
         viewContainerRef.clear();
         this.componentRef = viewContainerRef.createComponent(componentFactory);
-        this.componentRef.instance.message = message;
-        setTimeout(()=>{
+        this.componentRef.instance.message = this.getErrorMessage(error);
+        setTimeout(() => {
             this.hideLoader();
-        },2000)
+        }, 2000)
+    }
+
+    getErrorMessage(error: any) {
+        if (typeof error === 'string') {
+            return error;
+        }
+        if (error.status >= 400 && error.status < 500) {
+            try {
+                return error.error.errorMessages[0].split(":")[1];
+            } catch{
+                return "Some error occured please try again.";
+            }
+        }
+        if (error.status >= 500) {
+            return "Some server error occured please try again.";
+        }
+
     }
 }

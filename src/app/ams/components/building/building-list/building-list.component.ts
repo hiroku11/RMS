@@ -59,11 +59,11 @@ export class BuildingListComponent implements OnInit {
     deleteBuilding(building: any) {
         this._apiService.delete(`/building/delete-building/buildingId/${building.id}`).subscribe(
             (data) => {
-                this._alertService.success("Building deleteed successfully.");
+                this._alertService.success("Building deleted successfully.");
                 this.buildingList.splice(this.buildingList.indexOf(building), 1);
             },
             (error) => {
-                this._alertService.error("Building cannot be deleted because it is associated to an incident.");
+                this._alertService.error(error);
             }
         )
 
