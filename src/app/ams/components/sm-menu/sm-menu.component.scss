@@ -1,0 +1,30 @@
+.side-nav{
+    height: 100%;
+    position:fixed;
+    background: black;
+    width: 0;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    overflow-x: hidden; 
+    transition: width 0.5s;   
+    &.menu-open{
+        width: 180px;
+        padding: 5px;
+    }
+    ul{
+        padding: 5px;
+        li{
+            border-bottom: 1px solid white;
+            padding: 5px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+    }
+    .close-btn{
+        color:white;
+        padding: 2px;
+    }
+}

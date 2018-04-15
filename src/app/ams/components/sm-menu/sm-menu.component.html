@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light bg-light d-lg-none">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/image.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> Bootstrap
+  </a>
+  <span class="fa fa-2x fa-bars" (click)="toggleSideNav()"></span>
+</nav>
+<div class="side-nav" [ngClass]="{'menu-open':menuOpen}">
+  <span class="fa fa-close close-btn float-right" (click)="closeMenu()"></span>
+  <ul class="menu">
+      <li [ngClass]="{active:thisView=='dashboard'}">
+          <a  title="">
+              <i class="fa fa-tasks"></i> Dashboard
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='building'}">
+          <a  title="">
+              <i class="fa fa-building"></i> Building
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='equipment'}">
+          <a  title="">
+              <i class="fa fa-print"></i> Equipment
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='vehicle'}">
+          <a  title="">
+              <i class="fa fa-bus"></i> Vehicle
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='other'}">
+          <a  title="">
+              <i class="fa fa-folder-open"></i> Other
+          </a>
+      </li>
+  </ul>
+</div>
