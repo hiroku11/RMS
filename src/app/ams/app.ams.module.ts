@@ -1,3 +1,4 @@
+import { SmMenuComponent } from './components/sm-menu/sm-menu.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
@@ -73,7 +74,8 @@ export const MY_MOMENT_FORMATS = {
         SearchComponent,
         UserLookupComponent,
         SummaryComponent,
-        SideNavComponent
+        SideNavComponent,
+        SmMenuComponent
     ],
     imports: [FormsModule, CommonModule, AmsRoutingModule,
         PaginationModule, SelectDropDownModule, OwlDateTimeModule,

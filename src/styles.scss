@@ -27,7 +27,8 @@ body {
 
 .row.view {
     @extend .zero-margin;
-    height: calc(100% - 100px);
+    height: 100%;
+    padding-bottom:60px;
 }
 
 h5 {

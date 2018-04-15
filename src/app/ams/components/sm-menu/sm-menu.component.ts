@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sm-menu',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SmMenuComponent implements OnInit {
   menuOpen: boolean = false;
+  @Input() thisView:string;
   constructor() { }
 
   ngOnInit() {
