@@ -1,3 +1,4 @@
+import { SmMenuComponent } from './components/sm-menu/sm-menu.component';
 import { PaginationModule } from 'ngx-pagination-bootstrap';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
@@ -37,7 +38,7 @@ export const MY_MOMENT_FORMATS = {
     exports: [UserLookupComponent],
     declarations: [DocumentComponent, DocumentListComponent, AddDocumentComponent,
         NotifyAdminComponent, PublishEmailComponent, SendEmailComponent, SideNavComponent,
-         UserLookupComponent, SearchComponent
+         UserLookupComponent, SearchComponent, SmMenuComponent
     ],
     providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
     entryComponents: [UserLookupComponent, SearchComponent]

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light bg-light d-lg-none">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/images/logo@0_5x.png" width="30" height="30" class="d-inline-block align-top" alt=""> GotoRisk
+  </a>
+  <span class="fa fa-2x fa-bars" (click)="toggleSideNav()"></span>
+</nav>
+<div class="side-nav" [ngClass]="{'menu-open':menuOpen}">
+  <span class="fa fa-close close-btn float-right" (click)="closeMenu()">Close</span>
+  <ul class="menu">
+    <li [ngClass]="{active:thisView=='document'}">
+        <a [routerLink]="['/cms/document']" title="">
+            <i class="fa fa-file"></i> Document
+        </a>
+    </li>
+  </ul>
+</div>
