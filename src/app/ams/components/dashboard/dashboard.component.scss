@@ -2,13 +2,15 @@
 .row{
         @extend .zero-margin;
         height: 100%;
-}
-
-.dashboard{
-        img{
-                height: 200px;
+        .dashboard{
+            padding-bottom: 60px;
+                img{
+                        height: 200px;
+                }
         }
 }
+
+
 
 .content{
     border-color: $amsColor;
