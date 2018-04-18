@@ -10,8 +10,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: "full" },
   { path: 'login', component: LoginComponent },
   { path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule",canLoad:[UserService], canActivate: [UserService] },
-  { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule",canLoad:[UserService], canActivate: [UserService] }
-
+  { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule",canLoad:[UserService], canActivate: [UserService] },
+  { path: 'pms', loadChildren: "app/pms/app.pms.module#PmsModule",canLoad:[UserService], canActivate: [UserService] }
 ]
 
 @NgModule({
