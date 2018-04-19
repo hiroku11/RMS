@@ -166,15 +166,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 MIT
 MIT
 
-@angular/forms@5.2.9
-MIT
-MIT
-
 @angular/common@5.2.9
 MIT
 MIT
 
 @angular/router@5.2.9
+MIT
+MIT
+
+@angular/forms@5.2.9
 MIT
 MIT
 
