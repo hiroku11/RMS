@@ -16,7 +16,7 @@
         </h4>
       </div>
       <div class="col-md-6">
-        <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+        <button class="btn btn-info btn-sm float-right ml-2">
           <span class="fa fa-search"></span> Advance Search</button>
         <div class="input-group search float-right">
           <input class="form-control form-control-sm " placeholder="Search" />
@@ -29,13 +29,13 @@
     </div>
     <table class="table table-bordered cms-table">
       <thead>
-        <th (click)="changeSort('documentId')">Title</th>
-        <th (click)="changeSort('documentTitle')"> Start Date</th>
-        <th (click)="changeSort('versionNumber')">End Date</th>
-        <th (click)="changeSort('documentClassificationDescription')">Status </th>
-        <th (click)="changeSort('isPublished')">Mid year review status</th>
+        <th>Title</th>
+        <th> Start Date</th>
+        <th>End Date</th>
+        <th>Status </th>
+        <th>Mid year review status</th>
         <!-- <th>Expiry Date </th> -->
-        <th (click)="changeSort('addedBy')">Full year review status</th>
+        <th>Full year review status</th>
     
         <th></th>
       </thead>
@@ -52,8 +52,8 @@
         
           <td>
             <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email" ></span>
-            <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
-            <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc,i)"></span>
+            <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download"></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" ></span>
           </td>
         </tr>
       </tbody>
