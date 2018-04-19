@@ -1,0 +1,62 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-none d-lg-block" >
+    <app-side-nav [thisView]="'admin'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-lg-none" >
+    <app-sm-menu [thisView]="'admin'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 col-sm-12 content">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>
+          <span class="fa fa-building"></span> Performance |
+          <button class="btn btn-info btn-sm" [routerLink]="'add-document'">
+            <span class="fa fa-plus"></span> Add</button>
+        </h4>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
+          <span class="fa fa-search"></span> Advance Search</button>
+        <div class="input-group search float-right">
+          <input class="form-control form-control-sm " placeholder="Search" />
+          <span class="input-group-addon">
+            <span class="fa fa-search"></span>
+          </span>
+        </div>
+    
+      </div>
+    </div>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th (click)="changeSort('documentId')">Title</th>
+        <th (click)="changeSort('documentTitle')"> Start Date</th>
+        <th (click)="changeSort('versionNumber')">End Date</th>
+        <th (click)="changeSort('documentClassificationDescription')">Status </th>
+        <th (click)="changeSort('isPublished')">Mid year review status</th>
+        <!-- <th>Expiry Date </th> -->
+        <th (click)="changeSort('addedBy')">Full year review status</th>
+    
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a>Performance Review 2013</a>
+          </td>
+          <td> 01/04/2013</td>
+          <td>01/04/2013</td>
+          <td>Inactive</td>
+          <td>Yes</td>
+          <td> Yes</td>
+        
+          <td>
+            <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email" ></span>
+            <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc,i)"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

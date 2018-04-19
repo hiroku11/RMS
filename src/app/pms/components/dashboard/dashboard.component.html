@@ -1,0 +1,29 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block">
+    <app-side-nav [thisView]="'dashboard'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'dashboard'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 pl-0 pr-0 col-md-12" style="height:100%;padding-bottom:60px;">
+    <div class="row content dashboard">
+      <div class="col-sm-12 col-md-6 text-center">
+          <a [routerLink]="['/pms/admin']">
+            <img src="./assets/images/building_icon.png" alt="gotorisk.co.uk" /><h4>Admin</h4></a>
+      </div>
+      <div class="col-sm-12 col-md-6 text-center">
+          <a [routerLink]="['/pms/manager']"><img src="./assets/images/equipment_icon.png" alt="gotorisk.co.uk" />
+            <h4>Manager</h4></a>
+      </div>
+      <div class="col-sm-12 col-md-6 text-center">
+          <a [routerLink]="['/pms/employee']">
+            <img src="./assets/images/vehicle_icon.png" alt="gotorisk.co.uk" /> <h4>Employee</h4></a>
+      </div>
+      <div class="col-sm-12 col-md-6 text-center">
+          <a [routerLink]="['/pms/feedback']">
+            <img src="./assets/images/other_icon.png" alt="gotorisk.co.uk" /><h4>Feedback</h4></a>
+      </div>
+    </div>
+  </div>
+</div>
