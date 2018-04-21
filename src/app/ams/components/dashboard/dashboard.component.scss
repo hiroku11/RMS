@@ -1,9 +1,7 @@
 @import './../../../../_common';
 .row{
         @extend .zero-margin;
-        height: 100%;
         .dashboard{
-            padding-bottom: 60px;
                 img{
                         height: 200px;
                 }
