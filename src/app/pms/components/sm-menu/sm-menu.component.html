@@ -9,7 +9,7 @@
   <ul class="menu">
     <li>
       <div class="row pr-1 pb-3 pt-3 zero-margin">
-        <div class="col-sm-3" style="vertical-align:middle">
+        <div class="col-3" style="vertical-align:middle">
           <img src="./assets/images/logo@0_5x.png" alt="gotorisk.co.uk" class="user-image" />
         </div>
         <div class="col-6" style="vertical-align:middle;">
@@ -17,7 +17,7 @@
           <br>
           <span class="fa fa-circle text-success"> Online</span>
         </div>
-        <div class="col-sm-3">
+        <div class="col-3">
           <button class="btn float-right btn-info btn-sm" style="vertical-align:middle" (click)="logOut()">
             <span class="fa fa-power-off "></span>
           </button>
@@ -27,23 +27,28 @@
     </li>
     <li [ngClass]="{active:thisView=='dashboard'}">
       <a [routerLink]="['/pms/dashboard']" title="">
-        <i class="fa fa-file"></i> Dashboard
+        <i class="fa fa-tasks"></i> Dashboard
       </a>
     </li>
     <li [ngClass]="{active:thisView=='admin'}">
       <a [routerLink]="['/pms/admin']" title="">
-        <i class="fa fa-file"></i> Admin
+        <i class="fa fa-lock"></i> Admin
       </a>
     </li>
     <li [ngClass]="{active:thisView=='manager'}">
       <a [routerLink]="['/pms/manager']" title="">
-        <i class="fa fa-file"></i> Manager
+        <i class="fa fa-users"></i> Manager
       </a>
     </li>
     <li [ngClass]="{active:thisView=='employee'}">
-      <a [routerLink]="['/pms/feedback']" title="">
-        <i class="fa fa-file"></i> Feedback
+      <a [routerLink]="['/pms/employee']" title="">
+        <i class="fa fa-user"></i> Employee
       </a>
     </li>
+    <li [ngClass]="{active:thisView=='feedback'}">
+        <a [routerLink]="['/pms/feedback']" title="">
+          <i class="fa fa-commenting-o"></i> Feedback
+        </a>
+      </li>
   </ul>
 </div>
