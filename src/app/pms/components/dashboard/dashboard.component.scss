@@ -1,27 +1,10 @@
-@import './../../../../_common';
+@import './../../../../assets/styles/pms';
 .row{
         @extend .zero-margin;
-        height: 100%;
 }
 
 .dashboard{
-    padding-bottom: 30px;
         img{
                 height: 200px;
         }
-}
-
-.content{
-    border-color: $pmsColor;
-}
-
-thead {
-    background-color: $pmsColor;
-    color: white;
-}
-
-.btn {
-    &:hover {
-        background-color: $pmsColor;
-    }
 }

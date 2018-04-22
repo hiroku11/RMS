@@ -1,0 +1,15 @@
+@import './../../_common';
+.content{
+    border-color: $pmsColor;
+}
+
+thead {
+    background-color: $pmsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
+        background-color: $pmsColor;
+    }
+}
