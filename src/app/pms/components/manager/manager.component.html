@@ -7,6 +7,14 @@
     <app-sm-menu [thisView]="'manager'"></app-sm-menu>
   </div>
   <div class="col-lg-10 col-md-12 col-sm-12 content">
+      <div class="row">
+          <div class="col-md-6">
+            <h4>
+              <span class="fa fa-building"></span> Manager
+            
+            </h4>
+          </div>
+        </div>
     <div class="row">
       <table class="table table-bordered cms-table">
         <thead>
@@ -18,12 +26,13 @@
           <!-- <th>Expiry Date </th> -->
           <th>Full year review status</th>
       
-          <th></th>
+          <th>Publish</th>
         </thead>
         <tbody>
           <tr>
             <td>
-              <a>Performance Review 2013</a>
+ 
+              <a [routerLink]="['manager-subview']">Performance Review 2013</a>
             </td>
             <td> 01/04/2013</td>
             <td>01/04/2013</td>

@@ -20,6 +20,7 @@ import {IncidentsComponent} from './components/incidents/incidents.component';
 import {DocumentComponent} from './components/document/document.component';
 import {EmployeeComponent} from './components/employee/employee.component';
 import {ManagerComponent} from './components/manager/manager.component';
+import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 
@@ -30,6 +31,6 @@ import { FeedbackQueueComponent } from './components/feedback/feedback-queue/fee
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
-    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent]
+    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent,ManagerSubViewComponent]
 })
 export class PmsModule { }

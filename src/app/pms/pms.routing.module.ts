@@ -2,6 +2,7 @@ import { FeedbackQueueComponent } from './components/feedback/feedback-queue/fee
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
 import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
 import { ManagerComponent } from './components/manager/manager.component';
+import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -22,7 +23,10 @@ const pmsRoutes: Routes = [
         ]
     },
     { path: 'employee', component: EmployeeComponent },
-    { path: 'manager', component: ManagerComponent }
+    { path: 'manager', component: ManagerComponent, children:[
+        {path:'manager-subview', component:ManagerSubViewComponent, pathMatch:'full'}
+    ] },
+    {path:'manager-subview', component:ManagerSubViewComponent}
 ]
 
 @NgModule({
