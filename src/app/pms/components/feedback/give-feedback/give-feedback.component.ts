@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-give-feedback',
-  templateUrl: './give-feedback.component.html',
-  styleUrls: ['./give-feedback.component.scss']
+  templateUrl: './give-feedback.component.html'
 })
 export class GiveFeedbackComponent implements OnInit {
 
