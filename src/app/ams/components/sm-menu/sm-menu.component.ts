@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,10 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SmMenuComponent implements OnInit {
   menuOpen: boolean = false;
-  @Input() thisView:string;
-  constructor() { }
+  @Input() thisView: string;
+  userDetails: any;
+  constructor(private userService: UserService) {
+    this.userDetails = this.userService.userDetails;
+  }
 
   ngOnInit() {
+    //this.thisView = this._sharedService.activeView;
+  }
+  logOut() {
+    this.userService.logOut();
   }
   toggleSideNav() {
     this.menuOpen = !this.menuOpen;

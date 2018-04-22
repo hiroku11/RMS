@@ -23,6 +23,9 @@ import {ManagerComponent} from './components/manager/manager.component';
 import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
+import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
+import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
+import { PerformanceReviewComponent } from './components/employee/performance-review/performance-review.component';
 
 
 @NgModule({
@@ -31,6 +34,6 @@ import { FeedbackQueueComponent } from './components/feedback/feedback-queue/fee
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
-    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent,ManagerSubViewComponent]
+    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent, PerformanceReviewComponent,ManagerSubViewComponent]
 })
 export class PmsModule { }
