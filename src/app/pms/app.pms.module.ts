@@ -22,6 +22,7 @@ import {DocumentComponent} from './components/document/document.component';
 import {EmployeeComponent} from './components/employee/employee.component';
 import {ManagerComponent} from './components/manager/manager.component';
 import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
+import {ManagerViewComponent} from './components/manager/manager-view/manager-view.component'
 import {FeedbackComponent} from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
@@ -38,6 +39,7 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
-    IncidentsComponent, PerformanceReviewComponent,ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent]
+    IncidentsComponent,ManagerViewComponent,ManagerSubViewComponent, PerformanceReviewComponent,ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent]
+
 })
 export class PmsModule { }
