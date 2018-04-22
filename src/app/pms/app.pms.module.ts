@@ -13,6 +13,8 @@ import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { SelectDropDownModule } from "ngx-select-dropdown";
 // import { SearchComponent } from './components/search/search.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {IncidentsComponent} from './components/incidents/incidents.component';
+import {DocumentComponent} from './components/document/document.component';
 import {EmployeeComponent} from './components/employee/employee.component';
 import {ManagerComponent} from './components/manager/manager.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';

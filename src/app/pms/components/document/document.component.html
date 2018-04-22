@@ -1,0 +1,50 @@
+<h5>Upload File</h5>
+<div class="row pb-2">
+  <div class="col-sm-12">
+    <label>File Description</label>
+    <textarea class="form-control" name="documentDescription" maxlength="256"></textarea>
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12">
+    <label>Comments</label>
+    <textarea class="form-control" name="documentDescription" maxlength="256"></textarea>
+  </div>
+</div>
+<div class="row pb-2">
+  
+  <div class="col-sm-12 col-md-4">
+    <label>File</label>
+    <input class="form-control" (change)="documentSelected($event)" type="file" />
+  </div>
+</div>
+<table class="table table-bordered cms-table">
+  <thead>
+    <th>ID</th>
+    <th>File Name</th>
+    <th>Description</th>
+    <th>Comments </th>
+    <th>Size</th>
+    <th>Added By</th>
+    <th>Added Date</th>
+  
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a>JAVA</a>
+      </td>
+      <td> Certification</td>
+      <td>Score 91%</td>
+      <td>15 MB</td>
+      <td>Smith</td>
+      <td>01/01/2017</td>
+   
+      <td>
+        
+        <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc,i)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
