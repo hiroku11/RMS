@@ -1,3 +1,4 @@
+import { Three60FeedbackComponent } from './components/employee/360-feedback/360-feedback.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
 import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
@@ -20,7 +21,8 @@ import {DocumentComponent} from './components/document/document.component';
 import {EmployeeComponent} from './components/employee/employee.component';
 import {ManagerComponent} from './components/manager/manager.component';
 import {FeedbackComponent} from './components/feedback/feedback.component';
-import { Three60FeedbackComponent } from './components/feedback/360-feedback/360-feedback.component';
+import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
+
 
 @NgModule({
   imports: [
@@ -28,6 +30,6 @@ import { Three60FeedbackComponent } from './components/feedback/360-feedback/360
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
-    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent]
+    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent]
 })
 export class PmsModule { }
