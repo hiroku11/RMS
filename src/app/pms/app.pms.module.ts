@@ -1,4 +1,5 @@
-import { Three60FeedbackComponent } from './components/employee/360-feedback/360-feedback.component';
+import { Three60FeedbackComponent } from './components/360-feedback/360-feedback.component';
+import { PerformanceReviewComponent } from './components/performance-review/performance-review.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
 import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
@@ -25,7 +26,9 @@ import {FeedbackComponent} from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
-import { PerformanceReviewComponent } from './components/employee/performance-review/performance-review.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+
+
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { PerformanceReviewComponent } from './components/employee/performance-re
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
-    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent, PerformanceReviewComponent,ManagerSubViewComponent]
+    Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
+    IncidentsComponent, PerformanceReviewComponent,ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent]
 })
 export class PmsModule { }

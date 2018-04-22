@@ -12,10 +12,13 @@
   </div>
 </div>
 <div class="row pb-2">
-  
   <div class="col-sm-12 col-md-4">
     <label>File</label>
     <input class="form-control" (change)="documentSelected($event)" type="file" />
+  </div>
+
+  <div class="col-sm-12 col-md-4 pt-2">
+    <button class="btn btn-primary mt-4">Upload</button>
   </div>
 </div>
 <table class="table table-bordered cms-table">
@@ -27,7 +30,7 @@
     <th>Size</th>
     <th>Added By</th>
     <th>Added Date</th>
-  
+
   </thead>
   <tbody>
     <tr>
@@ -39,9 +42,9 @@
       <td>15 MB</td>
       <td>Smith</td>
       <td>01/01/2017</td>
-   
+
       <td>
-        
+
         <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc,i)"></span>
       </td>

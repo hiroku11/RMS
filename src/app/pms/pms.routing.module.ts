@@ -1,3 +1,4 @@
+import { PerformanceReviewComponent } from './components/performance-review/performance-review.component';
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
@@ -12,7 +13,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
-import { PerformanceReviewComponent } from './components/employee/performance-review/performance-review.component';
+
 
 const pmsRoutes: Routes = [
     { path: '', redirectTo: "dashboard" },

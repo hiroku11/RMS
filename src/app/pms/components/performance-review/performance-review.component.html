@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <span class="fa fa-building"></span> Employee | Performance Review
+    </h4>
+  </div>
+</div>
+
+<ul class="row nav nav-tabs mb-2">
+  <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+    <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
+  </li>
+</ul>
+<app-goal-details *ngIf="currentTab.tab == 1"></app-goal-details>
+<app-incidents *ngIf="currentTab.tab == 4"></app-incidents>
+<app-360-feedback *ngIf="currentTab.tab == 2"></app-360-feedback>
+<app-document *ngIf="currentTab.tab == 3"></app-document>
