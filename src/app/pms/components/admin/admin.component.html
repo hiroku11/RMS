@@ -1,9 +1,9 @@
 <app-header class="d-none d-lg-block"></app-header>
 <div class="row view">
-  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-none d-lg-block" >
+  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-none d-lg-block">
     <app-side-nav [thisView]="'admin'"></app-side-nav>
   </div>
-  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-lg-none" >
+  <div class="col-lg-2 col-md-12 pl-0 pr-0 d-lg-none">
     <app-sm-menu [thisView]="'admin'"></app-sm-menu>
   </div>
   <div class="col-lg-10 col-md-12 col-sm-12 content">
@@ -24,7 +24,7 @@
             <span class="fa fa-search"></span>
           </span>
         </div>
-    
+
       </div>
     </div>
     <table class="table table-bordered cms-table">
@@ -36,27 +36,63 @@
         <th>Mid year review status</th>
         <!-- <th>Expiry Date </th> -->
         <th>Full year review status</th>
-    
+
         <th></th>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let cycle of performanceCycles; let i = index;">
           <td>
-            <a>Performance Review 2013</a>
+            <a>{{cycle.title}}</a>
           </td>
-          <td> 01/04/2013</td>
-          <td>01/04/2013</td>
-          <td>Inactive</td>
-          <td>Yes</td>
-          <td> Yes</td>
-        
+          <td>{{cycle.cycleStartDate |date:'dd/MM/yyyy' }}</td>
+          <td>{{cycle.cycleEndDate |date:'dd/MM/yyyy'}}</td>
+          <td> {{cycle.published}}</td>
+          <td>{{cycle.openMidYearReview}}</td>
+          <td>{{cycle.openFullYearReview}}</td>
+
           <td>
-            <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email" ></span>
+            <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email"></span>
             <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download"></span>
-            <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" ></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteCycle(cycle, i)" data-toggle="tooltip" title="Delete"></span>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <label>Title</label>
+        <input class="form-control" type="text" [(ngModel)]="addCycle.title">
+      </div>
+      <div class="col-12 col-md-4">
+        <label>Mid Year Review Status</label>
+        <select class="form-control" [(ngModel)]="addCycle.openMidYearReview">
+          <option value="null"></option>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-4">
+        <label>Full Year Review Status</label>
+        <select class="form-control" [(ngModel)]="addCycle.openFullYearReview">
+          <option value="null"></option>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <label>Start Date</label>
+        <input class="form-control" type="text" [(ngModel)]="addCycle.cycleStartDate">
+      </div>
+      <div class="col-12 col-md-4">
+        <label>End Date</label>
+        <input class="form-control" type="text" [(ngModel)]="addCycle.cycleEndDate">
+      </div>
+      <div class="col-12 col-md-4 pt-3">
+        <button (click)="addUpdatePerformanceCycle()" class="btn btn-primary mt-3">Add</button>
+      </div>
+    </div>
   </div>
 </div>
