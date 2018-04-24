@@ -18,20 +18,18 @@
     <th></th>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let cycle of cycles;let i = index;">
       <td>
-        <a [routerLink]="['performance-review']">Performance Review 2013</a>
+        <a [routerLink]="['performance-review']">{{cycle.performanceCycleTitle}}</a>
       </td>
-      <td> 01/04/2013</td>
-      <td>01/04/2013</td>
-      <td>Inactive</td>
-      <td>Yes</td>
-      <td> Yes</td>
+      <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{cycle.userPerfCycleStatus?.description}}</td>
+      <td>{{cycle.performanceCycleMidYearStatus}}</td>
+      <td>{{cycle.userPerfCycleFullYearStatus}}</td>
 
       <td>
-        <span class="fa fa-envelope btn btn-sm  btn-outline-info" data-toggle="tooltip" title="Email"></span>
-        <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download"></span>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle)" data-toggle="tooltip" title="Delete"></span>
       </td>
     </tr>
   </tbody>

@@ -12,4 +12,13 @@ export class DocumentComponent implements OnInit {
   ngOnInit() {
   }
 
+  documentSelected($event: any){
+
+  }
+  downloadDocument(doc:any){
+
+  }
+  deleteDocumnet(doc:any, index: number){
+
+  }
 }
