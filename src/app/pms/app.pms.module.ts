@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Three60FeedbackComponent } from './components/360-feedback/360-feedback.component';
 import { PerformanceReviewComponent } from './components/performance-review/performance-review.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
@@ -35,7 +36,7 @@ import { LmsDetailsComponent } from './components/lms-details/lms-details.compon
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule,FormsModule,
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,

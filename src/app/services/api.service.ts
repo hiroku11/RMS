@@ -29,7 +29,6 @@ export class ApiService {
         this.config = this._configService.config;
     }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
-        debugger
         this.apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
         this._ajaxLoader.showLoader();
         if (!headers) {

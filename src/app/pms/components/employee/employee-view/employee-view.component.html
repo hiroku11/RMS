@@ -20,7 +20,7 @@
   <tbody>
     <tr *ngFor="let cycle of cycles;let i = index;">
       <td>
-        <a [routerLink]="['performance-review']">{{cycle.performanceCycleTitle}}</a>
+        <a [routerLink]="['performance-review',cycle.id]">{{cycle.performanceCycleTitle}}</a>
       </td>
       <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>

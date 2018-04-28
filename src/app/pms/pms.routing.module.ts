@@ -31,12 +31,12 @@ const pmsRoutes: Routes = [
         path: 'employee', component: EmployeeComponent, children: [
             { path: '', pathMatch: 'full', component: EmployeeViewComponent },
             { path: 'add-performance-cycle', component: AddCycleComponent, pathMatch: 'full' },
-            { path: 'performance-review', component: PerformanceReviewComponent, pathMatch: 'full' }
+            { path: 'performance-review/:cycleId', component: PerformanceReviewComponent, pathMatch: 'full' }
         ]
     },
     { path: 'manager', component: ManagerComponent, children: [
         { path: '', pathMatch: 'full', component: ManagerViewComponent },
-        { path: 'manager-subview', component: ManagerSubViewComponent, pathMatch: 'full' }
+        { path: 'manager-subview/:cycleId', component: ManagerSubViewComponent, pathMatch: 'full' }
     ]}
 ]
 

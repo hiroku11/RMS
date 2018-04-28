@@ -64,4 +64,14 @@ export class AdminComponent implements OnInit {
       }
     )
   }
+
+  publish(cycle: any) {
+    this._api.put(`/rmsrest/s/performance/publish-performance-cycle-admin/id/${cycle.id}`, null).subscribe(
+      (data) => {
+        this._alert.success('Performance cycle successfully published');
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
 }

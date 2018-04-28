@@ -2,59 +2,59 @@
   <table class="table table-bordered cms-table">
     <tbody>
       <tr>
-          <td>
-              Start Date
-            </td>
-            <td>
-              01/01/2017
-            </td>
+        <td>
+          Start Date
+        </td>
+        <td>
+          {{cycle?.performanceCycleStartDate | date:'dd/MM/yyyy'}}
+        </td>
       </tr>
-     <tr>
+      <tr>
         <td>
-            End Date
-          </td>
-          <td>
-            01/01/2017
-          </td>
-     </tr>
-     <tr>
+          End Date
+        </td>
         <td>
-           Status
-          </td>
-          <td>
-           Active
-          </td>
-     </tr>
-     <tr>
+          {{cycle?.performanceCycleEndDate | date:'dd/MM/yyyy'}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Status
+        </td>
+        <td>
+          {{cycle?.performanceCycleStatus}}
+        </td>
+      </tr>
+      <tr>
         <td>
           Mid Year Open?
-          </td>
-          <td>
-           No
-          </td>
-     </tr>
-     <tr>
+        </td>
+        <td>
+          {{cycle?.performanceCycleMidYearStatus}}
+        </td>
+      </tr>
+      <tr>
         <td>
           Full Year Open?
-          </td>
-          <td>
-           No
-          </td>
-     </tr>
-     <tr>
+        </td>
         <td>
-        Manager
-          </td>
-          <td>
-           Karthik
-          </td>
-     </tr>
+          {{cycle?.performanceCycleFullYearStatus}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Manager
+        </td>
+        <td>
+          {{cycle?.managerFullName}}
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 <div class="col s12">
-<table class="table table-bordered cms-table">
+  <table class="table table-bordered cms-table">
     <thead>
       <th>User Id</th>
       <th> Full Name</th>
@@ -63,7 +63,7 @@
       <th>Mid year review submitted</th>
       <!-- <th>Expiry Date </th> -->
       <th>Full year review submitted</th>
-  
+
       <th>Status</th>
     </thead>
     <tbody>
@@ -77,10 +77,10 @@
         <td>kc@irg.com</td>
         <td>No</td>
         <td> No</td>
-      
+
         <td>
-         Submitted
-          
+          Submitted
+
         </td>
       </tr>
     </tbody>

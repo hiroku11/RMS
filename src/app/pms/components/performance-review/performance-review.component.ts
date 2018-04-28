@@ -1,3 +1,7 @@
+import { AlertsLoaderService } from './../../../services/alerts-loader.service';
+import { ApiService } from './../../../services/api.service';
+import { Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -28,14 +32,30 @@ export class PerformanceReviewComponent implements OnInit {
       name: 'LMS'
     }
   ];
+  cycle: any;
   currentTab: any;
-  constructor() {
+  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService) {
     this.currentTab = this.tabs[0];
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      let Id = params["cycleId"];
+      if (Id) {
+        this.getCycle(Id);
+        //this.getEmployees(Id);
+      }
+    });
   }
-
+  getCycle(id: number) {
+    this._api.get(`/performance/employee-sub-view/userPerformanceCycleId/${id}`).subscribe(
+      (data) => {
+        this.cycle = data;
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
   changeTab(tab: any) {
     this.currentTab = tab;
   }
