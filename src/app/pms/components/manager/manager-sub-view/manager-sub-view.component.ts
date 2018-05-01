@@ -2,7 +2,7 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from './../../../../services/user.service';
 @Component({
   selector: 'app-manager-sub-view',
   templateUrl: './manager-sub-view.component.html',
@@ -10,14 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerSubViewComponent implements OnInit {
   cycle: any;
-  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService) { }
+  performanceCycles:any;
+  userDetails: any;
+  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) {
+    this.userDetails = this.userService.userDetails;
+   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       let Id = params["cycleId"];
       if (Id) {
         this.getCycle(Id);
-        //this.getEmployees(Id);
+        this.getCycleData(Id);
       }
     });
   }
@@ -41,5 +45,14 @@ export class ManagerSubViewComponent implements OnInit {
       }
     )
   }
+  getCycleData(id:number){
+    console.log( this.userDetails);
+    this._api.get(`/performance/manager-sub-view/performanceCycleId/${id}`).subscribe(
+      (data)=>{
+        this.performanceCycles = data.employeePerformanceCycles;
+      },(error)=>{
 
+      }
+    )
+  }
 }

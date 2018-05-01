@@ -66,20 +66,20 @@
 
       <th>Status</th>
     </thead>
-    <tbody>
+    <tbody *ngFor="let c of performanceCycles; let i = index;">
       <tr>
         <td>
 
-          <a>Karthik</a>
+          <a [routerLink]="['/pms/employee',cycle.id]">{{c.userLoginId}}</a>
         </td>
-        <td> Karthik, Chidambaram</td>
-        <td>111 22 333</td>
-        <td>kc@irg.com</td>
-        <td>No</td>
-        <td> No</td>
+        <td>{{c.userFullName}}</td>
+        <td>{{c.userPhone}}</td>
+        <td><a  href="mailto:{{c.userEmail}}">{{c.userEmail}}</a></td>
+        <td>{{c.performanceCycleMidYearStatus == 'N' ? 'No' : 'Yes'}}</td>
+        <td> {{c.performanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}} </td>
 
         <td>
-          Submitted
+          {{c.userPerfCycleStatus}} 
 
         </td>
       </tr>

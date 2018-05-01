@@ -16,7 +16,7 @@ export class EmployeeViewComponent implements OnInit {
   }
 
   getPerfomanceCycles() {
-    this._api.get('/performance/employee-view').subscribe(
+    this._api.get(`/performance/employee-sub-view/userPerformanceCycleId/`).subscribe(
       (data) => {
         this.cycles = data;
       }, (error) => {
