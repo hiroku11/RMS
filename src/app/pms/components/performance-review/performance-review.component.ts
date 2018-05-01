@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./performance-review.component.scss']
 })
 export class PerformanceReviewComponent implements OnInit {
+  Id:number;
   tabs: any[] = [
     {
       tab: 1,
@@ -40,9 +41,9 @@ export class PerformanceReviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      let Id = params["cycleId"];
-      if (Id) {
-        this.getCycle(Id);
+      this.Id = params["cycleId"];
+      if (this.Id) {
+        //this.getCycle(Id);
         //this.getEmployees(Id);
       }
     });

@@ -31,7 +31,8 @@ const pmsRoutes: Routes = [
         path: 'employee', component: EmployeeComponent, children: [
             { path: '', pathMatch: 'full', component: EmployeeViewComponent },
             { path: 'add-performance-cycle', component: AddCycleComponent, pathMatch: 'full' },
-            { path: 'performance-review/:cycleId', component: PerformanceReviewComponent, pathMatch: 'full' }
+            { path: 'performance-review/:cycleId', component: PerformanceReviewComponent, pathMatch: 'full' },
+            { path: 'emp/:cycleId/:name', component: EmployeeViewComponent, pathMatch: 'full' }
         ]
     },
     { path: 'manager', component: ManagerComponent, children: [

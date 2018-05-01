@@ -64,7 +64,7 @@
     <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
   </li>
 </ul>
-<app-goal-details *ngIf="currentTab.tab == 1"></app-goal-details>
+<app-goal-details [userPerformanceCycleId]="Id" *ngIf="currentTab.tab == 1"></app-goal-details>
 <app-incidents *ngIf="currentTab.tab == 4"></app-incidents>
 <app-360-feedback *ngIf="currentTab.tab == 2"></app-360-feedback>
 <app-document *ngIf="currentTab.tab == 3"></app-document>
