@@ -37,7 +37,7 @@ export class ManagerSubViewComponent implements OnInit {
   }
 
   getEmployees(id : number){
-    this._api.get(`/performance/employee-sub-view/userLoginId/admin1/userPerformanceCycleId/${id}`).subscribe(
+    this._api.get(`/performance/manager-sub-view/performanceCycleId/${id}`).subscribe(
       (data)=>{
         console.log(data);
       },(error)=>{
