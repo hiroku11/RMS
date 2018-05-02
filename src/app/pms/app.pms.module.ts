@@ -30,6 +30,7 @@ import { EmployeeViewComponent } from './components/employee/employee-view/emplo
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { LmsDetailsComponent } from './components/lms-details/lms-details.component';
+import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 
 
 
@@ -41,7 +42,8 @@ import { LmsDetailsComponent } from './components/lms-details/lms-details.compon
   ],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
-    IncidentsComponent,ManagerViewComponent,ManagerSubViewComponent, PerformanceReviewComponent,ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent]
+    IncidentsComponent,ManagerViewComponent,ManagerSubViewComponent, PerformanceReviewComponent,
+    ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent]
 
 })
 export class PmsModule { }

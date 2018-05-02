@@ -4,8 +4,8 @@ import { FeedbackQueueComponent } from './components/feedback/feedback-queue/fee
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
 import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
 import { ManagerComponent } from './components/manager/manager.component';
-import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
-import {ManagerViewComponent} from './components/manager/manager-view/manager-view.component';
+import { ManagerSubViewComponent } from './components/manager/manager-sub-view/manager-sub-view.component';
+import { ManagerViewComponent } from './components/manager/manager-view/manager-view.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -32,13 +32,17 @@ const pmsRoutes: Routes = [
             { path: '', pathMatch: 'full', component: EmployeeViewComponent },
             { path: 'add-performance-cycle', component: AddCycleComponent, pathMatch: 'full' },
             { path: 'performance-review/:cycleId', component: PerformanceReviewComponent, pathMatch: 'full' },
-            { path: 'emp/:cycleId/:name', component: EmployeeViewComponent, pathMatch: 'full' }
+
         ]
     },
-    { path: 'manager', component: ManagerComponent, children: [
-        { path: '', pathMatch: 'full', component: ManagerViewComponent },
-        { path: 'manager-subview/:cycleId', component: ManagerSubViewComponent, pathMatch: 'full' }
-    ]}
+    {
+        path: 'manager', component: ManagerComponent, children: [
+            { path: '', pathMatch: 'full', component: ManagerViewComponent },
+            { path: 'manager-subview/:cycleId', component: ManagerSubViewComponent, pathMatch: 'full' },
+            { path: 'manager-subview/:cycleId/:name', component: PerformanceReviewComponent, pathMatch: 'full' }
+
+        ]
+    }
 ]
 
 @NgModule({

@@ -18,7 +18,7 @@ export class GoalDetailsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.getCycleData()
+    //this.getCycleData()
   }
   getCycleData(){
     this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/`+ this.userPerformanceCycleId, this.goalData).subscribe(
