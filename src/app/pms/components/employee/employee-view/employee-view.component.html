@@ -18,10 +18,10 @@
 
     <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="cycles && cycles.length > 0">
     <tr *ngFor="let cycle of cycles">
       <td>
-        <a [routerLink]="['/pms/employee/performance-review',cycle.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
+        <a [routerLink]="['performance-review',cycle?.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
       </td>
       <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
