@@ -34,9 +34,9 @@ export class SearchComponent implements OnInit {
 
 
     ngOnInit() {
+        this.initSearchParams(false);
         this.searchUrl = `/${this.assetType}/search-${this.assetType}s`;
         this.display = true;
-        this.initSearchParams(false);
         this.searchParams = this.parentSearchParams;
     }
 
@@ -46,13 +46,13 @@ export class SearchComponent implements OnInit {
         }
         return item1.id == item2.id;
     }
-    initSearchParams(clear:boolean) {
+    initSearchParams(clear: boolean) {
         this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
         const buildingProps = ['buildingId', 'buildingName', 'buildingDescription'];
-        const equipmentProps = ['equipmentId', 'equipmentname', 'equipmentTag', 'equipmentMake', 'equipmentModel', 'orderNumber', 'invoiceNumber', 'serialNumber'];
+        const equipmentProps = ['equipmentId', 'equipmentName', 'equipmentTag', 'equipmentMake', 'equipmentModel', 'orderNumber', 'invoiceNumber', 'serialNumber'];
         const assetotherProps = ['assetTypeOtherId', 'assetTypeOtherName', 'assetTypeOtherDescription', 'assetTag', 'assetMake',
             'assetModel', 'assetSerialNumber', 'purchasedDate'];
-        const vehicletProps = ['engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
+        const vehicletProps = ['vehicleRegistrationId','engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
             'monthOfManufacturing'];
         let propsArray = ['department', 'assetCondition', 'assetStatus', 'assetType', 'regulatoryCompliance', 'amcPresent', 'insurancePresent', 'loanPresent',
             'licensePresent', 'warrantyPresent', 'inspectionPresent', 'servicePresent', 'rentalOrLeasePresent'];
@@ -71,22 +71,22 @@ export class SearchComponent implements OnInit {
 
 
         propsArray.forEach((prop) => {
-            let parentFilter:any = {};
-            let parentSort: any ={};
-            if(!clear){
+            let parentFilter: any = {};
+            let parentSort: any = {};
+            if (!clear) {
                 parentFilter = this.parentSearchParams.filters.filter((item) => item.field == prop);
                 parentSort = this.parentSearchParams.sorts.filter((item) => item.field == prop);
                 parentFilter.length != 0 ? parentFilter = parentFilter[0] : parentFilter = {};
                 parentSort.length != 0 ? parentSort = parentSort[0] : parentSort = {};
             }
-            
+
 
             this.lookupOptions[prop] = {
                 field: prop,
                 operator: parentFilter.operator || "EQ",
                 value: parentFilter.value || null,
                 order: parentSort.order || "ASC",
-                sort:typeof parentSort.order === 'undefined' ? false : true
+                sort: typeof parentSort.order === 'undefined' ? false : true
             }
         });
 
@@ -137,9 +137,9 @@ export class SearchComponent implements OnInit {
                 this.searchResult.emit({ data: data, searchParams: this.searchParams });
                 this.close();
             },
-            error => {
-                this._alertsService.error("Error getting search Data");
-            });
+                error => {
+                    this._alertsService.error("Error getting search Data");
+                });
     }
 
     close() {
