@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lms-details',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lms-details.component.scss']
 })
 export class LmsDetailsComponent implements OnInit {
-
+  @Input() cycle: any;
   constructor() { }
 
   ngOnInit() {

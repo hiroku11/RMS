@@ -11,40 +11,41 @@ import { UserService } from './../../../services/user.service';
 })
 export class DocumentComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
-  data:any;
+  @Input() cycle: any;
+  data: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) { }
 
   ngOnInit() {
     this.getDocument()
   }
 
-  documentSelected($event: any){
+  documentSelected($event: any) {
 
   }
-  downloadDocument(id:number){
+  downloadDocument(id: number) {
     this._api.get(`/performance/download-performance-document/id/${id}`).subscribe(
-      (data)=>{
+      (data) => {
         this.data = data;
-      },(error)=>{
+      }, (error) => {
 
       }
     )
   }
-  deleteDocumnet(id:number){
-  
-    this._api.delete(`performance/delete-performance-document/userPerformanceCycleId/`+ this.userPerformanceCycleId +`/id/${id}`).subscribe(
-      (data)=>{
+  deleteDocumnet(id: number) {
+
+    this._api.delete(`performance/delete-performance-document/userPerformanceCycleId/` + this.userPerformanceCycleId + `/id/${id}`).subscribe(
+      (data) => {
         this.data = data;
-      },(error)=>{
+      }, (error) => {
 
       }
     )
   }
-  getDocument(){
-    this._api.get(`/performance/performance-documents/userPerformanceCycleId/`+ this.userPerformanceCycleId).subscribe(
-      (data)=>{
+  getDocument() {
+    this._api.get(`/performance/performance-documents/userPerformanceCycleId/` + this.userPerformanceCycleId).subscribe(
+      (data) => {
         this.data = data;
-      },(error)=>{
+      }, (error) => {
 
       }
     )

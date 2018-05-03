@@ -1,0 +1,152 @@
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">User Lookup</h3>
+                <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>User Login ID</label>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.userLoginId)" [(ngModel)]="lookupOptions.userLoginId.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input class="form-control" [(ngModel)]="lookupOptions.userLoginId.value" (change)="lookupFieldChange(lookupOptions.userLoginId)"
+                            name="userLoginId" />
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.userLoginId.sort" (change)="lookupSortChange(lookupOptions.userLoginId)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.userLoginId)" [(ngModel)]="lookupOptions.userLoginId.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>First Name</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.firstName)" [(ngModel)]="lookupOptions.firstName.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input class="form-control" [(ngModel)]="lookupOptions.firstName.value" (change)="lookupFieldChange(lookupOptions.firstName)"
+                            name="buildingName" />
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.firstName.sort" (change)="lookupSortChange(lookupOptions.firstName)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.firstName)" [(ngModel)]="lookupOptions.firstName.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Last Name</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.lastName)" [(ngModel)]="lookupOptions.lastName.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input class="form-control" [(ngModel)]="lookupOptions.lastName.value" (change)="lookupFieldChange(lookupOptions.lastName)"
+                            name="lastName">
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.lastName.sort" (change)="lookupSortChange(lookupOptions.lastName)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.lastName)" [(ngModel)]="lookupOptions.lastName.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Full Name</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.fullName)" [(ngModel)]="lookupOptions.fullName.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input class="form-control" [(ngModel)]="lookupOptions.fullName.value" (change)="lookupFieldChange(lookupOptions.fullName)"
+                            name="fullName">
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" [(ngModel)]="lookupOptions.fullName.sort" (change)="lookupSortChange(lookupOptions.fullName)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.fullName)" [(ngModel)]="lookupOptions.fullName.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>User Login Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Full Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of searchResult">
+                            <td>{{user.userLoginId}}</td>
+                            <td>{{user.firstName}}</td>
+                            <td>{{user.lastName}}</td>
+                            <td>{{user.fullName}}</td>
+                            <td><span class="fa fa-user-plus btn btn-sm btn-outline-success" (click)="assignUserToAsset(user)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="searchUsers()">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
+                <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

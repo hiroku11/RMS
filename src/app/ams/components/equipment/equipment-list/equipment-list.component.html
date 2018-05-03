@@ -10,14 +10,14 @@
     <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
       <span class="fa fa-search"></span> Advance Search</button>
     <div class="input-group search float-right">
-      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText" />
       <span class="input-group-addon">
         <span class="fa fa-search"></span>
       </span>
     </div>
   </div>
 </div>
-<table class="table table-bordered" >
+<table class="table table-bordered">
   <thead>
     <th>
       Equipment ID
@@ -45,7 +45,7 @@
         {{equipment.equipmentName}}
       </td>
       <td>
-        {{equipment.organization?.description}}
+        {{equipment.department?.organization?.description}}
       </td>
       <td>
         {{equipment.department?.description}}

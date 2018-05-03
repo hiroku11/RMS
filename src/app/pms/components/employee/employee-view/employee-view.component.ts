@@ -10,20 +10,15 @@ import { UserService } from './../../../../services/user.service';
   styleUrls: ['./employee-view.component.scss']
 })
 export class EmployeeViewComponent implements OnInit {
-  cycle: any;
+  cycles: any;
   addCycle: any;
-  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) {
+    this.initAddCycle();
+  }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      let Id = params["cycleId"];
-      let userId = params["name"];
-      if (Id) {
-        this.getPerfomanceCycles(Id,userId);
-        this.initAddCycle();
-      }
-    });
-   
+    this.getPerfomanceCycles();
+
   }
   initAddCycle() {
     this.addCycle = {
@@ -37,10 +32,10 @@ export class EmployeeViewComponent implements OnInit {
       "published": null
     }
   }
-  getPerfomanceCycles(id:number,userId:string) {
-    this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
+  getPerfomanceCycles() {
+    this._api.get(`/performance/employee-view`).subscribe(
       (data) => {
-        this.cycle = data;
+        this.cycles = data;
       }, (error) => {
         console.log(error);
       }
@@ -48,7 +43,7 @@ export class EmployeeViewComponent implements OnInit {
   }
 
 
-  removeCycle(cycle: any){
+  removeCycle(cycle: any) {
     this._api.delete(`/performance/remove-performance-cycle-from-employee/userPerformanceCycleId/${cycle.id}`).subscribe(
       (data) => {
         this._alert.success("Performance cycle successfully removed.")
@@ -57,18 +52,5 @@ export class EmployeeViewComponent implements OnInit {
       }
     )
   }
-  addUpdatePerformanceCycle(id:number) {
-    this._api.post('/performance/add-performance-cycle-for-employee/performanceCycleId/'+ id , this.addCycle).subscribe(
-      (data) => {
-        // this.performanceCycles.push(data);
-        this._alert.success("Performance cycle successfully added.");
-        this.initAddCycle();
-      },
-      (error) => {
-        this._alert.error(error);
-      }
-    )
-  }
-
 }
 

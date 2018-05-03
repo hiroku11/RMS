@@ -144,7 +144,7 @@ export class RentOrLeaseComponent implements OnInit {
         if (this.asset.assetCategory.id == "OTHER") {
             url =
                 "/asset-type-other/add-rental-or-lease-agreement-to-asset-type-other/assetTypeOtherId/";
-            
+
         }
         url = url + this.asset.id;
         this._apiService.put(url, this.rent).subscribe(
@@ -283,5 +283,12 @@ export class RentOrLeaseComponent implements OnInit {
                 this._alertsService.error(error);
             }
         );
+    }
+
+    selectCompareFunction(item1: any, item2: any) {
+        if (item1 == null || item2 == null) {
+            return false;
+        }
+        return item1.id == item2.id;
     }
 }

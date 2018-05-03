@@ -10,7 +10,7 @@
     <th>Title</th>
     <th> Start Date</th>
     <th>End Date</th>
-    
+
     <th>Mid year review status</th>
     <!-- <th>Expiry Date </th> -->
     <th>Full year review status</th>
@@ -19,56 +19,19 @@
     <th></th>
   </thead>
   <tbody>
-    {{cycles}}
-    <tr>
+    <tr *ngFor="let cycle of cycles">
       <td>
-        <a [routerLink]="['/pms/employee/performance-review',cycle.userPerformanceCycleId]">{{cycle.performanceCycleTitle}}</a>
+        <a [routerLink]="['/pms/employee/performance-review',cycle.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
       </td>
       <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
-  
       <td>{{cycle.userPerformanceCycleMidYearStatus == 'N' ? 'No' : 'Yes'}}</td>
       <td>{{cycle.userPerformanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}}</td>
       <td>{{cycle.userPerformanceCycleStatusDescription}}</td>
-
       <td>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle)" data-toggle="tooltip" title="Delete"></span>
       </td>
     </tr>
   </tbody>
 </table>
-<div class="row">
-    <div class="col-12 col-md-4">
-      <label>Title</label>
-      <input class="form-control" type="text" [(ngModel)]="addCycle.title">
-    </div>
-    <div class="col-12 col-md-4">
-      <label>Mid Year Review Status</label>
-      <select class="form-control" [(ngModel)]="addCycle.openMidYearReview">
-        <option value="null"></option>
-        <option value="N">No</option>
-        <option value="Y">Yes</option>
-      </select>
-    </div>
-    <div class="col-12 col-md-4">
-      <label>Full Year Review Status</label>
-      <select class="form-control" [(ngModel)]="addCycle.openFullYearReview">
-        <option value="null"></option>
-        <option value="N">No</option>
-        <option value="Y">Yes</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <label>Start Date</label>
-      <input class="form-control" type="text" [(ngModel)]="addCycle.cycleStartDate">
-    </div>
-    <div class="col-12 col-md-4">
-      <label>End Date</label>
-      <input class="form-control" type="text" [(ngModel)]="addCycle.cycleEndDate">
-    </div>
-    <div class="col-12 col-md-4 pt-3">
-      <button (click)="addUpdatePerformanceCycle(cycle.performanceCycleId)" class="btn btn-primary mt-3">Add</button>
-    </div>
-  </div>
+<button class="btn btn-primary" [routerLink]="['add-performance-cycle']">Add</button>

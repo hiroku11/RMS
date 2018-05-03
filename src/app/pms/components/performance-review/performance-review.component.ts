@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./performance-review.component.scss']
 })
 export class PerformanceReviewComponent implements OnInit {
-  Id:number;
+  Id: number;
   tabs: any[] = [
     {
       tab: 1,
@@ -42,9 +42,13 @@ export class PerformanceReviewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.Id = params["cycleId"];
-      if (this.Id) {
+      let userId = params["name"];
+      if (this.Id && userId) {
+        this.getUserPerfomanceCycle(this.Id, userId);
         //this.getCycle(Id);
         //this.getEmployees(Id);
+      } else if (this.Id) {
+        this.getCycle(this.Id);
       }
     });
   }
@@ -57,6 +61,17 @@ export class PerformanceReviewComponent implements OnInit {
       }
     )
   }
+
+  getUserPerfomanceCycle(id: number, userId: string) {
+    this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
+      (data) => {
+        this.cycle = data;
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
+
   changeTab(tab: any) {
     this.currentTab = tab;
   }

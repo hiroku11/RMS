@@ -70,16 +70,18 @@
       <tr>
         <td>
 
-          <a [routerLink]="['/pms/employee/emp',c.userPerfCycleId,c.userLoginId]">{{c.userLoginId}}</a>
+          <a [routerLink]="['/pms/manager/manager-subview',c.userPerfCycleId,c.userLoginId]">{{c.userLoginId}}</a>
         </td>
         <td>{{c.userFullName}}</td>
         <td>{{c.userPhone}}</td>
-        <td><a  href="mailto:{{c.userEmail}}">{{c.userEmail}}</a></td>
+        <td>
+          <a href="mailto:{{c.userEmail}}">{{c.userEmail}}</a>
+        </td>
         <td>{{c.performanceCycleMidYearStatus == 'N' ? 'No' : 'Yes'}}</td>
         <td> {{c.performanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}} </td>
 
         <td>
-          {{c.userPerfCycleStatus != null ? c.userPerfCycleStatus.description : null }} 
+          {{c.userPerfCycleStatus != null ? c.userPerfCycleStatus.description : null }}
 
         </td>
       </tr>
