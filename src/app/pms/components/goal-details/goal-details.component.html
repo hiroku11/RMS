@@ -3,33 +3,39 @@
     <div class="row">
       <div class="col-6 col-md-3">
         <label>Goal No.</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="goalNo" class="form-control">
       </div>
       <div class="col-6 col-md-3">
-        <label>Goal No.</label>
-        <input type="text" class="form-control">
+        <label>Category</label>
+        <select class="form-control" [(ngModel)]="goalData.goalCategory">
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.category" [ngValue]="opt">{{opt.description}}</option>
+        </select>
       </div>
       <div class="col-6 col-md-3">
-        <label>Goal No.</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-6 col-md-3">
-        <label>Goal No.</label>
-        <input type="text" class="form-control">
+        <label>Category Other</label>
+        <input type="text" class="form-control" [(ngModel)]="goalData.goalCategoryOther" [disabled]="!goalData.goalCategory || goalData.goalCategory.id != 'OTHER'">
       </div>
     </div>
     <div class="row">
-      <div class="col-6 col-md-4">
+      <div class="col-6 col-md-3">
         <label>Set Date</label>
         <input type="text" class="form-control">
       </div>
-      <div class="col-6 col-md-4">
+      <div class="col-6 col-md-3">
         <label>Planned Completion Date</label>
         <input type="text" class="form-control">
       </div>
-      <div class="col-6 col-md-4">
+      <div class="col-6 col-md-3">
         <label>Actual Completed Date</label>
         <input type="text" class="form-control">
+      </div>
+      <div class="col-6 col-md-3">
+        <label>Goal Status</label>
+        <select class="form-control">
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
+        </select>
       </div>
     </div>
     <div class="row">
@@ -45,7 +51,7 @@
       </div>
 
     </div>
-    <div class="row ">
+    <div class="row">
       <div class="col-12 col-lg-6">
         <label>Mid Year Comments Self</label>
         <textarea class="form-control"></textarea>
@@ -58,6 +64,22 @@
     </div>
     <div class="row">
       <div class="col-12 col-lg-6">
+        <label>Mid Year Rating-self</label>
+        <select class="form-control"  >
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-lg-6">
+        <label>Mid Year Rating-Manager</label>
+        <select class="form-control"  >
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
         <label>Full Year Comments Self</label>
         <textarea class="form-control"></textarea>
       </div>
@@ -66,6 +88,22 @@
         <textarea class="form-control"></textarea>
       </div>
 
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <label>Full Year Rating-self</label>
+        <select class="form-control" >
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-lg-6">
+        <label>Full Year Rating-Manager</label>
+        <select class="form-control"  >
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+        </select>
+      </div>
     </div>
     <button class="btn btn-primary mt-2">Save Goal</button>
   </div>
@@ -77,6 +115,6 @@
     <button class="btn btn-primary">Save Goals</button>
     <button class="btn btn-primary" (click)="submitGoals()">Submit Goals</button>
     <button class="btn btn-primary" (click)="submitMidYear()">Submit Mid Year</button>
-    <button class="btn btn-primary" (click="submitFullYear()")>Submit Full Year</button>
+    <button class="btn btn-primary" (click)="submitFullYear()">Submit Full Year</button>
   </div>
 </div>

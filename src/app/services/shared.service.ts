@@ -8,6 +8,7 @@ export class SharedService {
     public activeView: string;
     public dropDownsData: any = {};
     public cmsDropDownsData: any = {};
+    public pmsDropDownnsData:any ={};
     public conditionalTabs: [
 
         {
@@ -35,11 +36,17 @@ export class SharedService {
     ];
     public dropDownsService = new Subject();
     public cmsDropDownsService = new Subject();
+    public pmsDropDownService = new Subject();
     constructor(private _apiService: ApiService) {
         this.getAllDropdownData();
 
     }
-
+  selectCompareFunction(item1: any, item2: any) {
+    if (item1 == null || item2 == null) {
+      return false;
+    }
+    return item1.id == item2.id;
+  }
     getTabstoShow(tabConditions: any) {
         const tabs = JSON.parse(JSON.stringify(this.tabs));
         if (tabConditions.amcPresent == "Y") {
@@ -342,4 +349,53 @@ export class SharedService {
     propagateNewCmsData(){
         this.cmsDropDownsService.next(this.cmsDropDownsData);
     }
+    propagateNewPmsData(){
+        this.pmsDropDownService.next(this.pmsDropDownnsData);
+    }
+   
+    getPmsCategory(){
+        this._apiService
+        .get("/table-maintenance/goal-category/goal-categories")
+        .subscribe(
+            (data) => {
+                this.pmsDropDownnsData.category = data;
+                this.propagateNewPmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+    getPmsRating(){
+        this._apiService
+        .get("/table-maintenance/performance-rating/performance-ratings")
+        .subscribe(
+            (data) => {
+                this.pmsDropDownnsData.rating = data;
+                this.propagateNewPmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+    getPmsCycleStauts(){
+        this._apiService
+        .get("/table-maintenance/performance-cycle-status/performance-cycle-statuses")
+        .subscribe(
+            (data) => {
+                this.pmsDropDownnsData.status = data;
+                this.propagateNewPmsData();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+    getPmsDropdownsData(){
+         this.getPmsCategory();
+         this.getPmsCycleStauts();
+         this.getPmsRating();
+    }
+
 }
