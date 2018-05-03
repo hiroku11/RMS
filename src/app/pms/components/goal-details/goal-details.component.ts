@@ -14,6 +14,7 @@ export class GoalDetailsComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
   @Input() cycle: any;
   goalData:any;
+  goalNo: number;
   dropDownsData:any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService,
     private _sharedService: SharedService) {

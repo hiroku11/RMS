@@ -17,14 +17,14 @@ import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 // import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 import { SelectDropDownModule } from "ngx-select-dropdown";
 // import { SearchComponent } from './components/search/search.component';
-import {AdminComponent} from './components/admin/admin.component';
-import {IncidentsComponent} from './components/incidents/incidents.component';
-import {DocumentComponent} from './components/document/document.component';
-import {EmployeeComponent} from './components/employee/employee.component';
-import {ManagerComponent} from './components/manager/manager.component';
-import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
-import {ManagerViewComponent} from './components/manager/manager-view/manager-view.component'
-import {FeedbackComponent} from './components/feedback/feedback.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { IncidentsComponent } from './components/incidents/incidents.component';
+import { DocumentComponent } from './components/document/document.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { ManagerSubViewComponent } from './components/manager/manager-sub-view/manager-sub-view.component';
+import { ManagerViewComponent } from './components/manager/manager-view/manager-view.component'
+import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
@@ -37,12 +37,13 @@ import { UserLookupComponent } from './components/user-lookup/user-lookup.compon
 
 @NgModule({
   imports: [
-    CommonModule,FormsModule,
-    PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
+    CommonModule, FormsModule,
+    PmsRoutingModule, CoreComponentsModule, SelectDropDownModule, PaginationModule
   ],
+  entryComponents: [UserLookupComponent],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
-    IncidentsComponent,ManagerViewComponent,ManagerSubViewComponent, PerformanceReviewComponent,
+    IncidentsComponent, ManagerViewComponent, ManagerSubViewComponent, PerformanceReviewComponent,
     ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent]
 
 })
