@@ -29,4 +29,31 @@ export class GoalDetailsComponent implements OnInit {
       }
     )
   }
+  submitGoals(){
+    this._api.put(`/performance/submit-goals/userPerformanceCycleId/`+ this.userPerformanceCycleId,'').subscribe(
+      (data)=>{
+        this.goalData = data.employeePerformanceCycles;
+      },(error)=>{
+
+      }
+    )
+  }  
+  submitMidYear(){
+    this._api.put(`/performance/submit-mid-year-review/userPerformanceCycleId/`+ this.userPerformanceCycleId,'').subscribe(
+      (data)=>{
+        this.goalData = data.employeePerformanceCycles;
+      },(error)=>{
+
+      }
+    )
+  }
+  submitFullYear(){
+    this._api.put(`/performance/submit-full-year-review/userPerformanceCycleId/`+ this.userPerformanceCycleId,'').subscribe(
+      (data)=>{
+        this.goalData = data.employeePerformanceCycles;
+      },(error)=>{
+
+      }
+    )
+  }
 }
