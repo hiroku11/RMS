@@ -1,0 +1,81 @@
+<h5>Request Feedback</h5>
+
+<table class="table table-bordered cms-table">
+  <tbody>
+    <tr>
+      <td>
+        Start Date
+      </td>
+      <td>
+        01/01/2017
+      </td>
+    </tr>
+    <tr>
+      <td>
+        End Date
+      </td>
+      <td>
+        01/01/2017
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Status
+      </td>
+      <td>
+        Active
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Mid Year Open?
+      </td>
+      <td>
+        No
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Full Year Open?
+      </td>
+      <td>
+        No
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Manager
+      </td>
+      <td>
+        Karthik
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-sm-12">
+    <label>Requestor Comments</label>
+    <textarea class="form-control" maxlength="521"></textarea>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10">
+    <label>Users</label>
+    <ngx-select-dropdown></ngx-select-dropdown>
+  </div>
+  <div class="col-sm-2 pt-2">
+    <button class="btn pt-1 btn-info mt-4">Lookup</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <label>Enter Email Ids</label>
+    <textarea class="form-control"></textarea>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" (click)="sendFeedbackRequest()">Send</button>
+    <button class="btn btn-secondary float-right" [routerLink]="['/pms/employee']">Cancel</button>
+  </div>
+</div>

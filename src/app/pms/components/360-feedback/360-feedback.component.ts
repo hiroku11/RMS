@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-360-feedback',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./360-feedback.component.scss']
 })
 export class Three60FeedbackComponent implements OnInit {
-
+  @Input() cycle: any;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.cycle);
   }
 
 }

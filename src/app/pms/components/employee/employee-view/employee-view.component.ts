@@ -52,18 +52,5 @@ export class EmployeeViewComponent implements OnInit {
       }
     )
   }
-  addUpdatePerformanceCycle(id: number) {
-    this._api.post('/performance/add-performance-cycle-for-employee/performanceCycleId/' + id, this.addCycle).subscribe(
-      (data) => {
-        // this.performanceCycles.push(data);
-        this._alert.success("Performance cycle successfully added.");
-        this.initAddCycle();
-      },
-      (error) => {
-        this._alert.error(error);
-      }
-    )
-  }
-
 }
 

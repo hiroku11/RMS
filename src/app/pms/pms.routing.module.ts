@@ -2,7 +2,7 @@ import { PerformanceReviewComponent } from './components/performance-review/perf
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
-import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
+import { FeedbackRequestComponent } from './components/feedback-request/feedback-request.component';
 import { ManagerComponent } from './components/manager/manager.component';
 import { ManagerSubViewComponent } from './components/manager/manager-sub-view/manager-sub-view.component';
 import { ManagerViewComponent } from './components/manager/manager-view/manager-view.component';
@@ -24,7 +24,7 @@ const pmsRoutes: Routes = [
         path: 'feedback', component: FeedbackComponent, children: [
             { path: '', component: FeedbackQueueComponent, pathMatch: 'full' },
             { path: 'give-feedback', component: GiveFeedbackComponent, pathMatch: 'full' },
-            { path: 'request-feedback', pathMatch: 'full', component: FeedbackRequestComponent }
+
         ]
     },
     {
@@ -32,6 +32,7 @@ const pmsRoutes: Routes = [
             { path: '', pathMatch: 'full', component: EmployeeViewComponent },
             { path: 'add-performance-cycle', component: AddCycleComponent, pathMatch: 'full' },
             { path: 'performance-review/:cycleId', component: PerformanceReviewComponent, pathMatch: 'full' },
+            { path: 'request-feedback/:cycleId', pathMatch: 'full', component: FeedbackRequestComponent }
 
         ]
     },

@@ -11,6 +11,7 @@ import { UserService } from './../../../services/user.service';
 })
 export class GoalDetailsComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
+  @Input() cycle: any;
   goalData:any;
   goal:any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) {

@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { Three60FeedbackComponent } from './components/360-feedback/360-feedback.component';
 import { PerformanceReviewComponent } from './components/performance-review/performance-review.component';
 import { GiveFeedbackComponent } from './components/feedback/give-feedback/give-feedback.component';
-import { FeedbackRequestComponent } from './components/feedback/feedback-request/feedback-request.component';
+import { FeedbackRequestComponent } from './components/feedback-request/feedback-request.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
 import { PmsRoutingModule } from './pms.routing.module';
 import { PaginationModule } from 'ngx-pagination-bootstrap';
