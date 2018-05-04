@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerformanceReviewComponent implements OnInit {
   Id: number;
+  headerCycle: any;
   tabs: any[] = [
     {
       tab: 1,
@@ -45,10 +46,9 @@ export class PerformanceReviewComponent implements OnInit {
       let userId = params["name"];
       if (this.Id && userId) {
         this.getUserPerfomanceCycle(this.Id, userId);
-        //this.getCycle(Id);
-        //this.getEmployees(Id);
       } else if (this.Id) {
         this.getCycle(this.Id);
+        this.getHeaderInfo();
       }
     });
   }
@@ -62,6 +62,14 @@ export class PerformanceReviewComponent implements OnInit {
     )
   }
 
+  getHeaderInfo() {
+    this._api.get(`/performance/performance-cycle-header-info/userPerformanceCycleId/${this.Id}`)
+      .subscribe((data) => {
+        this.headerCycle = data;
+      }, (error) => {
+        this._alert.error(error);
+      })
+  }
   getUserPerfomanceCycle(id: number, userId: string) {
     this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
       (data) => {

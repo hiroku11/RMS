@@ -32,12 +32,19 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
 import { LmsDetailsComponent } from './components/lms-details/lms-details.component';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 
-
+export const MY_MOMENT_FORMATS = {
+  parseInput: 'DD/MM/YYYY HH:mm:ss',
+  fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
+  datePickerInput: 'DD/MM/YYYY',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM YYYY',
+};
 
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule,
+    CommonModule, FormsModule,OwlDateTimeModule,OwlMomentDateTimeModule,
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule, PaginationModule
   ],
   entryComponents: [UserLookupComponent],
