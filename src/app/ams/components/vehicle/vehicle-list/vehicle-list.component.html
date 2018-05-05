@@ -42,16 +42,16 @@
         <a [routerLink]="['edit-vehicle', vehicle.id]">{{vehicle.vehicleRegistrationId}}</a>
       </td>
       <td>
-        {{vehicle.assettype?.make}}
+        {{vehicle.make}}
       </td>
       <td>
-        {{vehicle.assettype?.model}}
+        {{vehicle.model}}
       </td>
       <td>
-        {{vehicle.assettype?.engineNumber}}
+        {{vehicle?.engineNumber}}
       </td>
       <td>
-        {{vehicle.assettype?.chassisNumber}}
+        {{vehicle.chassisNumber}}
       </td>
       <td>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteVehicle(vehicle)"></span>

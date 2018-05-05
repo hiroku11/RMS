@@ -32,7 +32,7 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
 import { LmsDetailsComponent } from './components/lms-details/lms-details.component';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 
-export const MY_MOMENT_FORMATS = {
+const MY_MOMENT_FORMATS = {
   parseInput: 'DD/MM/YYYY HH:mm:ss',
   fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
   datePickerInput: 'DD/MM/YYYY',
@@ -44,14 +44,14 @@ export const MY_MOMENT_FORMATS = {
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule,OwlDateTimeModule,OwlMomentDateTimeModule,
+    CommonModule, FormsModule, OwlDateTimeModule, OwlMomentDateTimeModule,
     PmsRoutingModule, CoreComponentsModule, SelectDropDownModule, PaginationModule
   ],
   entryComponents: [UserLookupComponent],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
     IncidentsComponent, ManagerViewComponent, ManagerSubViewComponent, PerformanceReviewComponent,
-    ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent]
-
+    ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent],
+  providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })
 export class PmsModule { }
