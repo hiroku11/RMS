@@ -15,7 +15,7 @@ export class UserLookupComponent implements OnInit {
   searchResult: any;
   @Input() assetType: string;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
-  @Output() assignUser: EventEmitter<any> = new EventEmitter();
+  @Output() selectUser: EventEmitter<any> = new EventEmitter();
   searchUrl: string = "/user-lookup";
   searchParams: any = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
   constructor(private _sharedService: SharedService,
@@ -91,7 +91,7 @@ export class UserLookupComponent implements OnInit {
     this.display = false;
     this.closeModal.emit();
   }
-  assignUserToAsset(user: any){
-    this.assignUser.emit(user);
+  selectUserForRequest(user: any){
+    this.selectUser.emit(user);
   }
 }

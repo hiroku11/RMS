@@ -17,14 +17,14 @@ import { OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 // import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 import { SelectDropDownModule } from "ngx-select-dropdown";
 // import { SearchComponent } from './components/search/search.component';
-import {AdminComponent} from './components/admin/admin.component';
-import {IncidentsComponent} from './components/incidents/incidents.component';
-import {DocumentComponent} from './components/document/document.component';
-import {EmployeeComponent} from './components/employee/employee.component';
-import {ManagerComponent} from './components/manager/manager.component';
-import {ManagerSubViewComponent} from './components/manager/manager-sub-view/manager-sub-view.component';
-import {ManagerViewComponent} from './components/manager/manager-view/manager-view.component'
-import {FeedbackComponent} from './components/feedback/feedback.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { IncidentsComponent } from './components/incidents/incidents.component';
+import { DocumentComponent } from './components/document/document.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { ManagerSubViewComponent } from './components/manager/manager-sub-view/manager-sub-view.component';
+import { ManagerViewComponent } from './components/manager/manager-view/manager-view.component'
+import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackQueueComponent } from './components/feedback/feedback-queue/feedback-queue.component';
 import { EmployeeViewComponent } from './components/employee/employee-view/employee-view.component';
 import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.component';
@@ -32,18 +32,26 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
 import { LmsDetailsComponent } from './components/lms-details/lms-details.component';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 
-
+const MY_MOMENT_FORMATS = {
+  parseInput: 'DD/MM/YYYY HH:mm:ss',
+  fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
+  datePickerInput: 'DD/MM/YYYY',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM YYYY',
+};
 
 
 @NgModule({
   imports: [
-    CommonModule,FormsModule,
-    PmsRoutingModule, CoreComponentsModule, SelectDropDownModule
+    CommonModule, FormsModule, OwlDateTimeModule, OwlMomentDateTimeModule,
+    PmsRoutingModule, CoreComponentsModule, SelectDropDownModule, PaginationModule
   ],
+  entryComponents: [UserLookupComponent],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
-    IncidentsComponent,ManagerViewComponent,ManagerSubViewComponent, PerformanceReviewComponent,
-    ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent]
-
+    IncidentsComponent, ManagerViewComponent, ManagerSubViewComponent, PerformanceReviewComponent,
+    ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent],
+  providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })
 export class PmsModule { }

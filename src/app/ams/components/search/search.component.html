@@ -26,7 +26,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.buildingId.value" (change)="lookupFieldChange(lookupOptions.buildingId)" name="buildingId" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingId.value" 
+                            (change)="lookupFieldChange(lookupOptions.buildingId)" name="buildingId" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -55,7 +56,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.buildingName.value" (change)="lookupFieldChange(lookupOptions.buildingName)" name="buildingName" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingName.value"
+                             (change)="lookupFieldChange(lookupOptions.buildingName)" name="buildingName" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -83,7 +85,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.buildingDescription.value" (change)="lookupFieldChange(lookupOptions.buildingDescription)" name="buildingDescription">
+                            <input class="form-control" [(ngModel)]="lookupOptions.buildingDescription.value" 
+                            (change)="lookupFieldChange(lookupOptions.buildingDescription)" name="buildingDescription">
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -114,11 +117,13 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="equipmentId" (change)="lookupFieldChange(lookupOptions.equipmentId)" name="equipmentid" />
+                            <input class="form-control" [(ngModel)]="equipmentId" 
+                            (change)="lookupFieldChange(lookupOptions.equipmentId)" name="equipmentid" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentId.sort" (change)="lookupSortChange(lookupOptions.equipmentId)"> Sort
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentId.sort" 
+                                (change)="lookupSortChange(lookupOptions.equipmentId)" name="equipmentidsort"> Sort
                             </span>
                             <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentId)" [(ngModel)]="lookupOptions.equipmentId.order">
                                 <option value="ASC">ASC</option>
@@ -132,7 +137,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentName)" [(ngModel)]="lookupOptions.equipmentName.operator">
+                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentName)"
+                             [(ngModel)]="lookupOptions.equipmentName.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -143,13 +149,17 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentName.value" (change)="lookupFieldChange(lookupOptions.equipmentName)" name="equipmentname" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentName.value" 
+                            (change)="lookupFieldChange(lookupOptions.equipmentName)" name="equipmentName" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentName.sort" (change)="lookupSortChange(lookupOptions.equipmentName)"> Sort
+                                <input type="checkbox" [(ngModel)]="lookupOptions.equipmentName.sort" 
+                                (change)="lookupSortChange(lookupOptions.equipmentName)"> Sort
                             </span>
-                            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.equipmentName)" [(ngModel)]="lookupOptions.equipmentName.order">
+                            <select class="form-control d-inline w-50"  
+                            (change)="lookupSortChange(lookupOptions.equipmentName)" 
+                            [(ngModel)]="lookupOptions.equipmentName.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -160,8 +170,9 @@
                             <label>Equipment Tag</label>
                         </div>
 
-                        <div class="col-sm-12 col-md-3" (change)="lookupFieldChange(lookupOptions.equipmentTag)" [(ngModel)]="lookupOptions.equipmentTag.operator">
-                            <select class="form-control" [(ngModel)]="lookupOptions.equipmentTag.operator">
+                        <div class="col-sm-12 col-md-3" >
+                            <select name="equipmentTagoperator" class="form-control" (change)="lookupFieldChange(lookupOptions.equipmentTag)" 
+                            [(ngModel)]="lookupOptions.equipmentTag.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -172,7 +183,9 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentTag.value" (change)="lookupFieldChange(lookupOptions.equipmentTag)"/>
+                            <input class="form-control" 
+                            [(ngModel)]="lookupOptions.equipmentTag.value" 
+                            (change)="lookupFieldChange(lookupOptions.equipmentTag)" name="equipmentTag"/>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -202,7 +215,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentMake.value" (change)="lookupFieldChange(lookupOptions.equipmentMake)" name="equipmentMake" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentMake.value" 
+                            (change)="lookupFieldChange(lookupOptions.equipmentMake)" name="equipmentMake" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -231,7 +245,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentModel.value" (change)="lookupFieldChange(lookupOptions.equipmentModel)" name="equipmentModel" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.equipmentModel.value" 
+                            (change)="lookupFieldChange(lookupOptions.equipmentModel)" name="equipmentModel" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -260,7 +275,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.orderNumber.value" (change)="lookupFieldChange(lookupOptions.orderNumber)" name="orderNumber" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.orderNumber.value"
+                             (change)="lookupFieldChange(lookupOptions.orderNumber)" name="orderNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -289,7 +305,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.invoiceNumber.value" (change)="lookupFieldChange(lookupOptions.invoiceNumber)"  name="invoiceNumber" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.invoiceNumber.value" 
+                            (change)="lookupFieldChange(lookupOptions.invoiceNumber)"  name="invoiceNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -318,7 +335,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.serialNumber.value" (change)="lookupFieldChange(lookupOptions.serialNumber)" name="serialNumber" />
+                            <input class="form-control" [(ngModel)]="lookupOptions.serialNumber.value"
+                             (change)="lookupFieldChange(lookupOptions.serialNumber)" name="serialNumber" />
 
                         </div>
                         <div class="col-sm-12 col-md-2">
@@ -339,7 +357,9 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" [(ngModel)]="lookupOptions.vehicleRegistrationId.operator">
+                            <select class="form-control" 
+                            (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" 
+                            [(ngModel)]="lookupOptions.vehicleRegistrationId.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -350,7 +370,9 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" [(ngModel)]="lookupOptions.vehicleRegistrationId.value" (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" name="vehicleRegistrationId" />
+                            <input class="form-control" 
+                            [(ngModel)]="lookupOptions.vehicleRegistrationId.value" 
+                            (change)="lookupFieldChange(lookupOptions.vehicleRegistrationId)" name="vehicleRegistrationId" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -379,7 +401,8 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.engineNumber)" [(ngModel)]="lookupOptions.engineNumber.value" name="engineNumber" />
+                            <input class="form-control" (change)="lookupFieldChange(lookupOptions.engineNumber)"
+                             [(ngModel)]="lookupOptions.engineNumber.value" name="engineNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
@@ -818,7 +841,8 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" [(ngModel)]="lookupOptions.department.operator">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.department)" 
+                        [(ngModel)]="lookupOptions.department.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -829,7 +853,8 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="lookupOptions.department.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.department)" [compareWith]="selectCompareFunction" 
+                        [(ngModel)]="lookupOptions.department.value">
                             <option [ngValue]="null"></option>
                             <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department.description">{{department.description}}</option>
                         </select>
@@ -850,7 +875,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" [(ngModel)]="lookupOptions.assetCondition.operator">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetCondition)" [(ngModel)]="lookupOptions.assetCondition.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -861,7 +886,7 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetCondition.value">
+                        <select [compareWith]="selectCompareFunction" (change)="lookupFieldChange(lookupOptions.assetCondition)" class="form-control" [(ngModel)]="lookupOptions.assetCondition.value">
                             <option [ngValue]="null"></option>
                             <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition.description">{{condition.description}}</option>
                         </select>
@@ -882,7 +907,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" [(ngModel)]="lookupOptions.assetStatus.operator">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetStatus)" [(ngModel)]="lookupOptions.assetStatus.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -893,7 +918,8 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetStatus.value">
+                        <select [compareWith]="selectCompareFunction" (change)="lookupFieldChange(lookupOptions.assetStatus)"
+                         class="form-control" [(ngModel)]="lookupOptions.assetStatus.value">
                             <option [ngValue]="null"></option>
                             <option *ngFor="let status of dropDownsData.assetStatusList" [ngValue]="status.description">{{status.description}}</option>
                         </select>
@@ -914,7 +940,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" [(ngModel)]="lookupOptions.assetType.operator">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.assetType)" [(ngModel)]="lookupOptions.assetType.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -925,7 +951,8 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="lookupOptions.assetType.value">
+                        <select [compareWith]="selectCompareFunction" (change)="lookupFieldChange(lookupOptions.assetType)"
+                         class="form-control" [(ngModel)]="lookupOptions.assetType.value">
                             <option [ngValue]="null"></option>
                             <option *ngFor="let type of dropDownsData.assetTypeList" [ngValue]="type.description">{{type.description}}</option>
                         </select>
@@ -943,7 +970,8 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 ">
                         <label>Regulatory</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.regulatoryCompliance.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.regulatoryCompliance)"
+                         [(ngModel)]="lookupOptions.regulatoryCompliance.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -951,7 +979,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4 ">
                         <label>AMC</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.amcPresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.amcPresent)"
+                         [(ngModel)]="lookupOptions.amcPresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -959,7 +988,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Insurance</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.insurancePresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.insurancePresent)"
+                        [(ngModel)]="lookupOptions.insurancePresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -970,14 +1000,16 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 ">
                         <label>Loan</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.loanPresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.loanPresent)"
+                        [(ngModel)]="lookupOptions.loanPresent.value">
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4 ">
                         <label>License</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.licensePresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.licensePresent)"
+                        [(ngModel)]="lookupOptions.licensePresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -985,7 +1017,8 @@
                     </div>
                     <div class="col-sm-12  col-md-4 ">
                         <label>Warranty</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.warrantyPresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyPresent)"
+                        [(ngModel)]="lookupOptions.warrantyPresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -996,7 +1029,8 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
                         <label>Inspection</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.inspectionPresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.inspectionPresent)"
+                        [(ngModel)]="lookupOptions.inspectionPresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1004,7 +1038,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Service</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.servicePresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.servicePresent)"
+                        [(ngModel)]="lookupOptions.servicePresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1012,7 +1047,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Rental or Lease</label>
-                        <select class="form-control" [(ngModel)]="lookupOptions.rentalOrLeasePresent.value">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.rentalOrLeasePresent)"
+                        [(ngModel)]="lookupOptions.rentalOrLeasePresent.value">
                             <option [ngValue]="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>

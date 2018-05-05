@@ -2,13 +2,13 @@
 <div class="row pb-2">
   <div class="col-sm-12">
     <label>File Description</label>
-    <textarea class="form-control" name="documentDescription" maxlength="256"></textarea>
+    <textarea class="form-control" name="documentDescription" maxlength="256" [(ngModel)]="file.fileDescription"></textarea>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12">
     <label>Comments</label>
-    <textarea class="form-control" name="documentDescription" maxlength="256"></textarea>
+    <textarea class="form-control" [(ngModel)]="file.comments" name="comments" maxlength="256"></textarea>
   </div>
 </div>
 <div class="row pb-2">
@@ -18,7 +18,7 @@
   </div>
 
   <div class="col-sm-12 col-md-4 pt-2">
-    <button class="btn btn-primary mt-4">Upload</button>
+    <button class="btn btn-primary mt-4" (click)="addDocument()">Upload</button>
   </div>
 </div>
 <table class="table table-bordered cms-table">
@@ -33,24 +33,24 @@
 
 
   </thead>
-  <tbody *ngFor="let doc of data; let i = index;">
+  <tbody *ngFor="let doc of documents; let i = index;">
     <tr>
-        <td>
-           {{doc.id}}
-          </td>
-          <td> {{doc.originalFileName}}</td>
-     
-          <td>{{doc.fileDescription}}</td>
-         
-          <td> {{doc.comments}}</td>
-          <td>{{doc.fileSize/1024}} MB</td>
-          <!-- <td>{{doc.expiryDate ? (doc.expiryDate | date:'dd/MM/yyyy'): 'NA'}}</td> -->
-          <td>{{doc.createdBy}}</td>
-       
+      <td>
+        {{doc.id}}
+      </td>
+      <td> {{doc.originalFileName}}</td>
+
+      <td>{{doc.fileDescription}}</td>
+
+      <td> {{doc.comments}}</td>
+      <td>{{doc.fileSize/1024}} KB</td>
+      <!-- <td>{{doc.expiryDate ? (doc.expiryDate | date:'dd/MM/yyyy'): 'NA'}}</td> -->
+      <td>{{doc.createdBy}}</td>
+
       <td>
 
-        <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc.id)"></span>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc.id)"></span>
+        <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc, i)"></span>
       </td>
     </tr>
   </tbody>

@@ -3,7 +3,7 @@ import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
 import { Params, ActivatedRoute } from '@angular/router';
 import { UserService } from './../../../services/user.service';
-
+import { saveAs } from 'file-saver/FileSaver';
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
@@ -12,41 +12,69 @@ import { UserService } from './../../../services/user.service';
 export class DocumentComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
   @Input() cycle: any;
-  data: any;
+  documents: any = [];
+  formData: FormData;
+  fileInput: any;
+  file: any = {};
+  comments: string;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) { }
 
   ngOnInit() {
     this.getDocument()
   }
+  clearSelectedFile() {
+    this.file = {};
+    this.fileInput.value = null;
+  }
 
   documentSelected($event: any) {
-
+    this.formData = new FormData();
+    this.fileInput = $event.target;
+    this.formData.append("file", $event.target.files[0]);
+    this.formData.append('userPerformanceCycleId', this.cycle.userPerformanceCycleId);
+    this.formData.append("fileDescription", this.file.fileDescription);
+    this.formData.append('comments', this.file.comments);
   }
-  downloadDocument(id: number) {
-    this._api.get(`/performance/download-performance-document/id/${id}`).subscribe(
-      (data) => {
-        this.data = data;
-      }, (error) => {
 
+  addDocument() {
+    this._api.post(`/performance/save-performance-document`, this.formData).subscribe(
+      (data) => {
+        this._alert.success("Documnet added successfully");
+        this.documents.push(data);
+      }, (error) => {
+        this._alert.error(error);
       }
     )
   }
-  deleteDocumnet(id: number) {
-
-    this._api.delete(`performance/delete-performance-document/userPerformanceCycleId/` + this.userPerformanceCycleId + `/id/${id}`).subscribe(
+  downloadDocument(doc: any) {
+    this._api.get(`/performance/download-performance-document/id/${doc.id}`, null, true, true).subscribe(
       (data) => {
-        this.data = data;
+        this.saveFile(data, doc.originalFileName);
       }, (error) => {
-
+        this._alert.error("Some error occured while downloading document.");
       }
     )
+  }
+  deleteDocumnet(doc: any, index: number) {
+    this._api.delete(`/performance/delete-performance-document/userPerformanceCycleId/${this.userPerformanceCycleId}/id/${doc.id}`).subscribe(
+      (data) => {
+        this._alert.success("Document successfully deleted");
+        this.documents.splice(index, 1);
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
+  saveFile(blobContent: any, fileName: string) {
+    const blob = new Blob([blobContent], { type: 'application/octet-stream' });
+    saveAs(blob, fileName);
   }
   getDocument() {
     this._api.get(`/performance/performance-documents/userPerformanceCycleId/` + this.userPerformanceCycleId).subscribe(
       (data) => {
-        this.data = data;
+        this.documents = data;
       }, (error) => {
-
+        this._alert.error(error)
       }
     )
   }

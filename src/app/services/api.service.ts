@@ -141,6 +141,11 @@ export class ApiService {
         return payload;
     }
     parseDate(response: any) {
+        if (Array.isArray(response)) {
+            response.forEach(element => {
+                this.parseDate(element);
+            });
+        }
         for (let key in response) {
             if (Array.isArray(response[key])) {
                 response[key].forEach(element => {

@@ -1,7 +1,6 @@
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -10,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   performanceCycles: any;
   addCycle: any;
+  editing: boolean = false;
   constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {
@@ -43,9 +43,13 @@ export class AdminComponent implements OnInit {
   addUpdatePerformanceCycle() {
     this._api.put('/performance/add-or-update-performance-cycle', this.addCycle).subscribe(
       (data) => {
-        this.performanceCycles.push(data);
-        this._alert.success("Performance cycle successfully added.");
+        if (!this.editing) {
+          this.performanceCycles.push(data);
+        }
+
+        this._alert.success("Performance cycle successfully added/updated.");
         this.initAddCycle();
+        this.editing = false;
       },
       (error) => {
         this._alert.error(error);
@@ -53,6 +57,10 @@ export class AdminComponent implements OnInit {
     )
   }
 
+  editCycle(cycle: any) {
+    this.editing = true;
+    this.addCycle = cycle;
+  }
   deleteCycle(cycle: any, ind: number) {
     this._api.delete(`/performance/delete-performance-cycle/id/${cycle.id}`).subscribe(
       (data) => {
@@ -66,7 +74,7 @@ export class AdminComponent implements OnInit {
   }
 
   publish(cycle: any) {
-    this._api.put(`/rmsrest/s/performance/publish-performance-cycle-admin/id/${cycle.id}`, null).subscribe(
+    this._api.put(`/performance/publish-performance-cycle-admin/id/${cycle.id}`, null).subscribe(
       (data) => {
         this._alert.success('Performance cycle successfully published');
       }, (error) => {
