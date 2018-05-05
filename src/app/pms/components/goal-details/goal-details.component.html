@@ -1,38 +1,39 @@
-<div class="card">
-  <div class="card-body">
+<!-- <div class="card" *ngFor="let dummy of ' '.repeat(count).split(''), let x = index"> -->
+<div class="card" *ngFor="let g of goals.performanceGoals">
+    <div class="card-body">
     <div class="row">
       <div class="col-6 col-md-3">
         <label>Goal No.</label>
-        <input type="text" [(ngModel)]="goalNo" class="form-control">
+        <input type="text" [(ngModel)]="count" class="form-control">
       </div>
       <div class="col-6 col-md-3">
         <label>Category</label>
-        <select class="form-control" [(ngModel)]="goalData.goalCategory">
-          <option value="null"></option>
+        <select class="form-control" [(ngModel)]="g.goalCategory" [compareWith]="selectCompareFunction">
+          <option value=""></option>
           <option *ngFor="let opt of dropDownsData.category" [ngValue]="opt">{{opt.description}}</option>
         </select>
       </div>
       <div class="col-6 col-md-3">
         <label>Category Other</label>
-        <input type="text" class="form-control" [(ngModel)]="goalData.goalCategoryOther" [disabled]="!goalData.goalCategory || goalData.goalCategory.id != 'OTHER'">
+        <input type="text" class="form-control" [(ngModel)]="g.goalCategoryOther" [disabled]="!g.goalCategory || g.goalCategory.id != 'OTHER'">
       </div>
     </div>
     <div class="row">
       <div class="col-6 col-md-3">
         <label>Set Date</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" [(ngModel)]="g.goalSetDate">
       </div>
       <div class="col-6 col-md-3">
         <label>Planned Completion Date</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" [(ngModel)]="plannedCompletionDate">
       </div>
       <div class="col-6 col-md-3">
         <label>Actual Completed Date</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" [(ngModel)]="actualCompletedDate">
       </div>
       <div class="col-6 col-md-3">
         <label>Goal Status</label>
-        <select class="form-control">
+        <select class="form-control" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
           <option value="null"></option>
           <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
         </select>
@@ -43,47 +44,47 @@
         <label>
           Goal Description
         </label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" [(ngModel)]="g.goal"></textarea>
       </div>
       <div class="col-12 col-lg-6">
         <label>Action Plan</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" [(ngModel)]="g.actionPlan"></textarea>
       </div>
 
     </div>
     <div class="row">
       <div class="col-12 col-lg-6">
         <label>Mid Year Comments Self</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" [(ngModel)]="g.midYearCommentsSelf"></textarea>
       </div>
       <div class="col-12 col-lg-6">
         <label>Mid Year Comments Manager</label>
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" [(ngModel)]="g.midYearCommentsManager"></textarea>
       </div>
 
     </div>
     <div class="row">
       <div class="col-12 col-lg-6">
         <label>Mid Year Rating-self</label>
-        <select class="form-control"  >
+        <select class="form-control" [(ngModel)]="g.midYearRatingSelf" >
           <option value="null"></option>
           <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
         </select>
       </div>
       <div class="col-12 col-lg-6">
         <label>Mid Year Rating-Manager</label>
-        <select class="form-control"  >
+        <select class="form-control" [(ngModel)]="g.midYearRatingManager">
           <option value="null"></option>
           <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
         </select>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6" [(ngModel)]="g.fullYearCommentsSelf">
         <label>Full Year Comments Self</label>
         <textarea class="form-control"></textarea>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6" [(ngModel)]="g.fullYearCommentsManager">
         <label>Full Year Comments Manager</label>
         <textarea class="form-control"></textarea>
       </div>
@@ -92,27 +93,28 @@
     <div class="row">
       <div class="col-12 col-lg-6">
         <label>Full Year Rating-self</label>
-        <select class="form-control" >
+        <select class="form-control" [(ngModel)]="g.fullYearRatingSelf" >
           <option value="null"></option>
           <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
         </select>
       </div>
       <div class="col-12 col-lg-6">
         <label>Full Year Rating-Manager</label>
-        <select class="form-control"  >
+        <select class="form-control" [(ngModel)]="g.fullYearRatingManager" >
           <option value="null"></option>
           <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
         </select>
       </div>
     </div>
-    <button class="btn btn-primary mt-2">Save Goal</button>
+    <button class="btn btn-primary mt-2" (click)="saveGoal(g)">Save Goal</button>
+    <button class="btn btn-danger mt-2" (click)="deleteGoal(g)">Delete Goal</button>
   </div>
 
 </div>
 <div class="row">
   <div class="col-12 pt-2">
-    <button class="btn btn-primary">Add New</button>
-    <button class="btn btn-primary">Save Goals</button>
+    <button class="btn btn-primary" (click)="addGoal()">Add New</button>
+    <button class="btn btn-primary" (click)="saveGoals()">Save Goals</button>
     <button class="btn btn-primary" (click)="submitGoals()">Submit Goals</button>
     <button class="btn btn-primary" (click)="submitMidYear()">Submit Mid Year</button>
     <button class="btn btn-primary" (click)="submitFullYear()">Submit Full Year</button>
