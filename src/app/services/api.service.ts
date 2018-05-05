@@ -29,7 +29,7 @@ export class ApiService {
         this.config = this._configService.config;
     }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
-        this.apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
+        let apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -39,7 +39,7 @@ export class ApiService {
             data = this.parseDateToApiFormat(data);
         }
         return this._http
-            .post(this.apiUrl + url, data, { headers: headers })
+            .post(apiUrl + url, data, { headers: headers })
             .map((res: any) => {
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();

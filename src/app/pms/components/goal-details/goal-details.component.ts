@@ -65,7 +65,6 @@ export class GoalDetailsComponent implements OnInit {
               this.getUserPerfomanceCycle(this.userPerformanceCycleId,userId);		
             }
           });
-    // this.getCycleData()
     this.initGoalData();
     this.goals.performanceGoals[this.goals.performanceGoals.length] = this.obj;
 
@@ -104,7 +103,6 @@ export class GoalDetailsComponent implements OnInit {
 
   addGoal(){
     this.count++;
-   
     this.goals.performanceGoals.push(this.obj);
   }
   

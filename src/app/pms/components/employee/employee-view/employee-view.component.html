@@ -18,8 +18,8 @@
 
     <th></th>
   </thead>
-  <tbody *ngIf="cycles && cycles.length > 0">
-    <tr *ngFor="let cycle of cycles">
+  <tbody *ngIf="cycles.length > 0">
+    <tr *ngFor="let cycle of cycles; let i = index">
       <td>
         <a [routerLink]="['performance-review',cycle?.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
       </td>
@@ -29,7 +29,7 @@
       <td>{{cycle.userPerformanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}}</td>
       <td>{{cycle.userPerfCycleStatus?.description}}</td>
       <td>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle)" data-toggle="tooltip" title="Delete"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle, index)" data-toggle="tooltip" title="Delete"></span>
       </td>
     </tr>
   </tbody>

@@ -10,7 +10,7 @@ import { UserService } from './../../../../services/user.service';
   styleUrls: ['./employee-view.component.scss']
 })
 export class EmployeeViewComponent implements OnInit {
-  cycles: any;
+  cycles: any = [];
   addCycle: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) {
     this.initAddCycle();
@@ -43,10 +43,11 @@ export class EmployeeViewComponent implements OnInit {
   }
 
 
-  removeCycle(cycle: any) {
+  removeCycle(cycle: any, index: number) {
     this._api.delete(`/performance/remove-performance-cycle-from-employee/userPerformanceCycleId/${cycle.userPerfCycleId}`).subscribe(
       (data) => {
-        this._alert.success("Performance cycle successfully removed.")
+        this._alert.success("Performance cycle successfully removed.");
+        this.cycles.splice(index, 1);
       }, (error) => {
         this._alert.error(error);
       }
