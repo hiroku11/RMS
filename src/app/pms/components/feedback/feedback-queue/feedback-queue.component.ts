@@ -27,7 +27,15 @@ export class FeedbackQueueComponent implements OnInit {
       }, (error) => {
         this._alert.error(error);
       }
-    )
+    );
+
+    // this._api.get(`/performance/user-feedback-queue/id/30`).subscribe(
+    //   (data)=>{
+    //     console.log(data);
+    //   },(error)=>{
+
+    //   }
+    // )
   }
 
   getPageData($event) {
