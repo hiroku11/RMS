@@ -1,176 +1,196 @@
-<h5>Reported Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Inc Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Suspect to Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Inc Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Injured due to accident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Accident Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Witness to Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Accident Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Crime suspect to Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Crime Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Witness to crime(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Crime Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Investigator for Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Inc Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
-<h5>Claim handler for Incident(s)</h5>
-<table class="table table-bordered cms-table">
-  <thead>
-    <th>Incident ID</th>
-    <th>Inc Desc</th>
-    <th>Date Opened</th>
-    <th>Inc Type </th>
-    <th>Inc Status</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        IN01012018
-      </td>
-      <td> Desc 1</td>
-      <td>01/01/2017</td>
-      <td>Other</td>
-      <td>New</td>
-     
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="data.reportedIncidents.length>0">
+    <h5>Reported Incident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Inc Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="data.incidentSuspects">
+    <h5>Suspect to Incident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Inc Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody *ngFor = "let d of data.incidentSuspects">
+        <tr>
+          <td>
+            {{d.uniqueIncidentId}}
+          </td>
+          <td> {{d.incidentDescription}}</td>
+          <td>{{d.incidentOpenedDateTime}}</td>
+          <td>{{d.incidentType}}</td>
+          <td>{{d.incidentStatus}}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<div *ngIf="data.accidentInjuredPersons.length>0">
+    <h5>Injured due to accident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Accident Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div *ngIf="data.accidentWitnesses.length>0">
+    <h5>Witness to Accident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Accident Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="data.crimeSuspects.length>0">
+    <h5>Crime suspect to Incident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Crime Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="data.crimeWitnesses.length>0">
+    <h5>Witness to crime(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Crime Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="data.incidentInvestigations.length>0">
+    <h5>Investigator for Incident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Inc Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div *ngIf="data.claimsHandled.length>0">
+    <h5>Claim handler for Incident(s)</h5>
+    <table class="table table-bordered cms-table">
+      <thead>
+        <th>Incident ID</th>
+        <th>Inc Desc</th>
+        <th>Date Opened</th>
+        <th>Inc Type </th>
+        <th>Inc Status</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            IN01012018
+          </td>
+          <td> Desc 1</td>
+          <td>01/01/2017</td>
+          <td>Other</td>
+          <td>New</td>
+         
+        </tr>
+      </tbody>
+    </table>
+</div>

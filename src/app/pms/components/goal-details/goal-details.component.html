@@ -1,122 +1,132 @@
 <!-- <div class="card" *ngFor="let dummy of ' '.repeat(count).split(''), let x = index"> -->
-<div class="card" *ngFor="let g of goals.performanceGoals">
-    <div class="card-body">
-    <div class="row">
-      <div class="col-6 col-md-3">
-        <label>Goal No.</label>
-        <input type="text" [(ngModel)]="count" class="form-control">
+  <div *ngIf="goals && goals.performanceGoals">
+      <div class="card" *ngFor="let g of goals.performanceGoals">
+          <div class="card-body">
+          <div class="row">
+            <div class="col-6 col-md-3">
+              <label>Goal No.</label>
+              <input type="text" [(ngModel)]="count" class="form-control" readonly>
+            </div>
+            <div class="col-6 col-md-3">
+              <label>Category</label>
+              <select class="form-control" [(ngModel)]="g.goalCategory" [compareWith]="selectCompareFunction" [disabled]="isManager">
+                <option value=""></option>
+                <option *ngFor="let opt of dropDownsData.category" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label>Category Other</label>
+              <input type="text" class="form-control" [(ngModel)]="g.goalCategoryOther" [disabled]="!g.goalCategory || g.goalCategory.id != 'OTHER'">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-md-3">
+              <label>Set Date</label>
+              <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="g.goalSetDate " name="goalSetDate" [disabled]="isManager ||g?.isEdit"/>
+              <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+              <!-- <input type="text" class="form-control" [(ngModel)]="g.goalSetDate"> -->
+            </div>
+            <div class="col-6 col-md-3">
+              <label>Planned Completion Date</label>
+              <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="g.plannedCompletionDate " name="plannedCompletionDate"
+              [disabled]="isManager || !g?.isEdit" />
+              <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+              <!-- <input type="text" class="form-control" [(ngModel)]="plannedCompletionDate"> -->
+            </div>
+            <div class="col-6 col-md-3">
+              <label>Actual Completed Date</label>
+              <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="g.actualCompletedDate " name="actualCompletedDate"
+              [disabled]="isManager"/>
+              <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+              <!-- <input type="text" class="form-control" [(ngModel)]="actualCompletedDate"> -->
+            </div>
+            <div class="col-6 col-md-3">
+              <label>Goal Status</label>
+              <select class="form-control" [disabled]="isManager || !isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
+                <option value="null"></option>
+                <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <label>
+                Goal Description
+              </label>
+              <textarea class="form-control" [disabled]="isManager" [(ngModel)]="g.goal"></textarea>
+            </div>
+            <div class="col-12 col-lg-6">
+              <label>Action Plan</label>
+              <textarea class="form-control" [disabled]="isManager" [(ngModel)]="g.actionPlan"></textarea>
+            </div>
+      
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <label>Mid Year Comments Self</label>
+              <textarea class="form-control" [disabled]="isManager || !isMidYear" [(ngModel)]="g.midYearCommentsSelf"></textarea>
+            </div>
+            <div class="col-12 col-lg-6">
+              <label>Mid Year Comments Manager</label>
+              <textarea class="form-control"  [(ngModel)]="g.midYearCommentsManager" [disabled]="!isManager || !isMidYear"></textarea>
+            </div>
+      
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <label>Mid Year Rating-self</label>
+              <select class="form-control" [(ngModel)]="g.midYearRatingSelf" [disabled]="isManager || !isMidYear" >
+                <option value="null"></option>
+                <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+            <div class="col-12 col-lg-6">
+              <label>Mid Year Rating-Manager</label>
+              <select class="form-control" [(ngModel)]="g.midYearRatingManager" [disabled]="!isManager || !isMidYear">
+                <option value="null"></option>
+                <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6" >
+              <label>Full Year Comments Self</label>
+              <textarea class="form-control" [disabled]="isManager || !isFullYear" [(ngModel)]="g.fullYearCommentsSelf"></textarea>
+            </div>
+            <div class="col-12 col-lg-6" >
+              <label>Full Year Comments Manager</label>
+              <textarea class="form-control" [(ngModel)]="g.fullYearCommentsManager" [disabled]="!isManager || !isFullYear"></textarea>
+            </div>
+      
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <label>Full Year Rating-self</label>
+              <select class="form-control" [disabled]="isManager || !isFullYear" [(ngModel)]="g.fullYearRatingSelf" >
+                <option value="null"></option>
+                <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+            <div class="col-12 col-lg-6">
+              <label>Full Year Rating-Manager</label>
+              <select class="form-control" [(ngModel)]="g.fullYearRatingManager" [disabled]="!isManager || !isFullYear" >
+                <option value="null"></option>
+                <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-2" (click)="saveGoal(g)">Save Goal</button>
+          <!-- <button class="btn btn-danger mt-2" (click)="deleteGoal(g)">Delete Goal</button> -->
+        </div>
+      
       </div>
-      <div class="col-6 col-md-3">
-        <label>Category</label>
-        <select class="form-control" [(ngModel)]="g.goalCategory" [compareWith]="selectCompareFunction">
-          <option value=""></option>
-          <option *ngFor="let opt of dropDownsData.category" [ngValue]="opt">{{opt.description}}</option>
-        </select>
+      <div class="row">
+        <div class="col-12 pt-2">
+          <button class="btn btn-primary" (click)="addGoal()" *ngIf="!isManager">Add New</button>
+          <button class="btn btn-primary" (click)="saveGoals()">Save Goals</button>
+          <button class="btn btn-primary" (click)="submitGoals()">Submit Goals</button>
+          <button class="btn btn-primary" (click)="submitMidYear()">Submit Mid Year</button>
+          <button class="btn btn-primary" (click)="submitFullYear()">Submit Full Year</button>
+        </div>
       </div>
-      <div class="col-6 col-md-3">
-        <label>Category Other</label>
-        <input type="text" class="form-control" [(ngModel)]="g.goalCategoryOther" [disabled]="!g.goalCategory || g.goalCategory.id != 'OTHER'">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6 col-md-3">
-        <label>Set Date</label>
-        <input type="text" class="form-control" [(ngModel)]="g.goalSetDate">
-      </div>
-      <div class="col-6 col-md-3">
-        <label>Planned Completion Date</label>
-        <input type="text" class="form-control" [(ngModel)]="plannedCompletionDate">
-      </div>
-      <div class="col-6 col-md-3">
-        <label>Actual Completed Date</label>
-        <input type="text" class="form-control" [(ngModel)]="actualCompletedDate">
-      </div>
-      <div class="col-6 col-md-3">
-        <label>Goal Status</label>
-        <select class="form-control" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
-          <option value="null"></option>
-          <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <label>
-          Goal Description
-        </label>
-        <textarea class="form-control" [(ngModel)]="g.goal"></textarea>
-      </div>
-      <div class="col-12 col-lg-6">
-        <label>Action Plan</label>
-        <textarea class="form-control" [(ngModel)]="g.actionPlan"></textarea>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <label>Mid Year Comments Self</label>
-        <textarea class="form-control" [(ngModel)]="g.midYearCommentsSelf"></textarea>
-      </div>
-      <div class="col-12 col-lg-6">
-        <label>Mid Year Comments Manager</label>
-        <textarea class="form-control" [(ngModel)]="g.midYearCommentsManager"></textarea>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <label>Mid Year Rating-self</label>
-        <select class="form-control" [(ngModel)]="g.midYearRatingSelf" >
-          <option value="null"></option>
-          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
-        </select>
-      </div>
-      <div class="col-12 col-lg-6">
-        <label>Mid Year Rating-Manager</label>
-        <select class="form-control" [(ngModel)]="g.midYearRatingManager">
-          <option value="null"></option>
-          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-6" >
-        <label>Full Year Comments Self</label>
-        <textarea class="form-control" [(ngModel)]="g.fullYearCommentsSelf"></textarea>
-      </div>
-      <div class="col-12 col-lg-6" >
-        <label>Full Year Comments Manager</label>
-        <textarea class="form-control" [(ngModel)]="g.fullYearCommentsManager"></textarea>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <label>Full Year Rating-self</label>
-        <select class="form-control" [(ngModel)]="g.fullYearRatingSelf" >
-          <option value="null"></option>
-          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
-        </select>
-      </div>
-      <div class="col-12 col-lg-6">
-        <label>Full Year Rating-Manager</label>
-        <select class="form-control" [(ngModel)]="g.fullYearRatingManager" >
-          <option value="null"></option>
-          <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-primary mt-2" (click)="saveGoal(g)">Save Goal</button>
-    <button class="btn btn-danger mt-2" (click)="deleteGoal(g)">Delete Goal</button>
   </div>
-
-</div>
-<div class="row">
-  <div class="col-12 pt-2">
-    <button class="btn btn-primary" (click)="addGoal()">Add New</button>
-    <button class="btn btn-primary" (click)="saveGoals()">Save Goals</button>
-    <button class="btn btn-primary" (click)="submitGoals()">Submit Goals</button>
-    <button class="btn btn-primary" (click)="submitMidYear()">Submit Mid Year</button>
-    <button class="btn btn-primary" (click)="submitFullYear()">Submit Full Year</button>
-  </div>
-</div>

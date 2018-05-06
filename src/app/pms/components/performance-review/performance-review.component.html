@@ -5,7 +5,7 @@
         Start Date
       </td>
       <td>
-        {{headerCycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}
+        {{cycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}
       </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
         End Date
       </td>
       <td>
-        {{headerCycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}
+        {{cycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}
       </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
         Status
       </td>
       <td>
-        {{headerCycle?.performanceCycleStatus}}
+        {{cycle?.performanceCycleStatus}}
       </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
         Mid Year Open?
       </td>
       <td>
-        {{headerCycle?.performanceCycleMidYearStatus}}
+        {{cycle?.performanceCycleMidYearStatus}}
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
         Full Year Open?
       </td>
       <td>
-        {{headerCycle?.performanceCycleFullYearStatus}}
+        {{cycle?.performanceCycleFullYearStatus}}
       </td>
     </tr>
     <!-- <tr>
@@ -64,7 +64,7 @@
     <a class="nav-link" [ngClass]="{'active': currentTab.tab == tab.tab}">{{tab.name}}</a>
   </li>
 </ul>
-<app-goal-details [cycle]="cycle" [userPerformanceCycleId]="Id" *ngIf="currentTab.tab == 1"></app-goal-details>
+<app-goal-details [cycle]="cycle" [userPerformanceCycleId]="Id" [isManager]="isManager" *ngIf="currentTab.tab == 1"></app-goal-details>
 <app-incidents [cycle]="cycle" *ngIf="currentTab.tab == 4"></app-incidents>
 <app-360-feedback [cycle]="cycle" *ngIf="currentTab.tab == 2"></app-360-feedback>
 <app-document [cycle]="cycle" [userPerformanceCycleId]="Id" *ngIf="currentTab.tab == 3"></app-document>

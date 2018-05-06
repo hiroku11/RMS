@@ -3,6 +3,7 @@ import { ApiService } from './../../../services/api.service';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './../../../services/user.service';
 
 @Component({
   selector: 'app-performance-review',
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class PerformanceReviewComponent implements OnInit {
   Id: number;
   headerCycle: any;
+  isManager:boolean;
   tabs: any[] = [
     {
       tab: 1,
@@ -36,7 +38,8 @@ export class PerformanceReviewComponent implements OnInit {
   ];
   cycle: any;
   currentTab: any;
-  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService) {
+  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService,
+    private userService: UserService,) {
     this.currentTab = this.tabs[0];
   }
 
@@ -45,13 +48,18 @@ export class PerformanceReviewComponent implements OnInit {
       this.Id = params["cycleId"];
       let userId = params["name"];
       if (this.Id && userId) {
-        this.getUserPerfomanceCycle(this.Id, userId);
+        this.isManager = true;
+        // this.getUserPerfomanceCycle(this.Id, userId);
       } else if (this.Id) {
-        this.getCycle(this.Id);
-        this.getHeaderInfo();
+        userId = this.userService.userDetails.loginId;
+        this.isManager = false;
+        // this.getCycle(this.Id);
+        // this.getHeaderInfo();
       }
+      this.getUserPerfomanceCycle(this.Id, userId);
     });
   }
+
   getCycle(id: number) {
     this._api.get(`/performance/employee-sub-view/userPerformanceCycleId/${id}`).subscribe(
       (data) => {
