@@ -4,9 +4,10 @@
     <th>S.No</th>
     <th>Requested By</th>
     <th>Date</th>
+
   </thead>
   <tbody>
-    <tr *ngFor="let feed of feedbackQueue; let ind = index;" [routerLink]="[feed.url, feed.id]" style="cursor: pointer;">
+    <tr *ngFor="let feed of feedbackQueue; let ind = index;" [routerLink]="['give-feedback', feed.id]" style="cursor: pointer;">
       <td>{{ind + 1}}</td>
       <td>{{feed.user}}</td>
       <td>{{feed.feedbackStatus}}</td>

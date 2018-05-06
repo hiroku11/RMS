@@ -1,3 +1,6 @@
+import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
+import { ApiService } from './../../../../services/api.service';
+import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,10 +9,43 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './give-feedback.component.html'
 })
 export class GiveFeedbackComponent implements OnInit {
+  userPerformanceCycleId: number;
+  feedbackData: any;
+  feedback: any = {
+    "feedbackGivenDate": new Date(),
+    "feedbackComments": "",
+    "securedURL":"some dummy url",
+    "publicURL":"some dummy url"
+  }
+  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService) {
 
-  constructor(private _route: ActivatedRoute) { }
+  }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.userPerformanceCycleId = params["userCycleId"];
+      this.getInternalFeedbackRequest();
+    });
+  }
+
+  getInternalFeedbackRequest() {
+    this._api.get(`/performance/show-feedback-internal/userPerformanceCycleId/${this.userPerformanceCycleId}`).subscribe(
+      (data) => {
+        this.feedbackData = data;
+      }, (error) => {
+
+      }
+    )
+  }
+
+  gievFeedback() {
+    this._api.post(`/performance/add-feedback-internal/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.feedback).subscribe(
+      (data) => {
+        this._alert.success("Feedback Submitted successfully.");
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
   }
 
 }
