@@ -23,7 +23,7 @@ const pmsRoutes: Routes = [
     {
         path: 'feedback', component: FeedbackComponent, children: [
             { path: '', component: FeedbackQueueComponent, pathMatch: 'full' },
-            { path: 'give-feedback', component: GiveFeedbackComponent, pathMatch: 'full' },
+            { path: 'give-feedback/:userCycleId', component: GiveFeedbackComponent, pathMatch: 'full' },
 
         ]
     },

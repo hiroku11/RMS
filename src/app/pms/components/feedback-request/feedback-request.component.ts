@@ -22,7 +22,8 @@ export class FeedbackRequestComponent implements OnInit {
       "users": [
       ],
       "emailIds": [
-      ]
+      ],
+      "urlPrefix": ""
     }
   constructor(private route: ActivatedRoute, private _api: ApiService,
     private _alert: AlertsLoaderService, private viewContainerRef: ViewContainerRef,
@@ -80,6 +81,7 @@ export class FeedbackRequestComponent implements OnInit {
     if (this.emails) {
       this.request.emailIds = this.emails.split(",");
     }
+    this.request.urlPrefix = `localhost:4200/pms/feedback/give-feedback/${this.userPerformanceCycleId}`;
     this._api.post(`/performance/send-feedback-request/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.request)
       .subscribe((data) => {
         this._alert.success("Feedback request successfully sent.");
