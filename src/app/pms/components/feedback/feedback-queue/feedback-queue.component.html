@@ -10,7 +10,7 @@
     <tr *ngFor="let feed of feedbackQueue; let ind = index;">
       <td>{{ind + 1}}</td>
       <td>
-        <a [href]="feed.url" target="_blank">Click to give feedback</a>
+        <a [routerLink]="['/pms/feedback/give-feedback',getPerfId(feed)]">Click to give feedback</a>
       </td>
       <td>{{feed.feedbackStatus}}</td>
     </tr>

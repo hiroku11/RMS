@@ -29,6 +29,7 @@ export class FeedbackQueueComponent implements OnInit {
       }
     );
 
+
     // this._api.get(`/performance/user-feedback-queue/id/30`).subscribe(
     //   (data)=>{
     //     console.log(data);
@@ -37,7 +38,10 @@ export class FeedbackQueueComponent implements OnInit {
     //   }
     // )
   }
-
+  getPerfId(feed: any) {
+    let temp = feed.url.split("/");
+    return temp[temp.length - 1];
+  }
   getPageData($event) {
     this.searchParams.paging.currentPage = $event.pageNo - 1;
     this.searchParams.paging.pageSize = $event.pageSize;

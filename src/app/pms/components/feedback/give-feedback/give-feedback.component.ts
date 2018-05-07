@@ -1,3 +1,4 @@
+import { UserService } from './../../../../services/user.service';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { Params } from '@angular/router';
@@ -16,12 +17,15 @@ export class GiveFeedbackComponent implements OnInit {
     "feedbackComments": "",
     "securedURL":"some dummy url",
     "publicURL":"some dummy url"
-  }
-  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService) {
+  };
+  loggedInUser: any;
+  constructor(private route: ActivatedRoute, private _api: ApiService, 
+    private _alert: AlertsLoaderService, private user: UserService) {
 
   }
 
   ngOnInit() {
+    this.loggedInUser = this.user.userDetails;
     this.route.params.subscribe((params: Params) => {
       this.userPerformanceCycleId = params["userCycleId"];
       this.getInternalFeedbackRequest();
