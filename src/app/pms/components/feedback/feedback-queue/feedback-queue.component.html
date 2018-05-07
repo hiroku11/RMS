@@ -2,14 +2,16 @@
 <table class="table table-bordered">
   <thead>
     <th>S.No</th>
-    <th>Requested By</th>
+    <th>Give Feedback</th>
     <th>Date</th>
 
   </thead>
   <tbody>
-    <tr *ngFor="let feed of feedbackQueue; let ind = index;" [routerLink]="['give-feedback', feed.id]" style="cursor: pointer;">
+    <tr *ngFor="let feed of feedbackQueue; let ind = index;">
       <td>{{ind + 1}}</td>
-      <td>{{feed.user}}</td>
+      <td>
+        <a [href]="feed.url" target="_blank">Click to give feedback</a>
+      </td>
       <td>{{feed.feedbackStatus}}</td>
     </tr>
   </tbody>

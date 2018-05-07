@@ -13,17 +13,16 @@ import { SharedService } from '../../../services/shared.service';
 export class GoalDetailsComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
   @Input() cycle: any;
-  @Input() isManager:boolean;
+  @Input() isManager: boolean;
 
-  goalData:any;
+  goalData: any;
   goalNo: number;
-  dropDownsData:any;
-  count:number=1;
-  data:any;
-  isEdit:boolean=false;
-  isMidYear:boolean=false;
-  isFullYear:boolean=false;
-  obj={
+  dropDownsData: any;
+  data: any;
+  isEdit: boolean = false;
+  isMidYear: boolean = false;
+  isFullYear: boolean = false;
+  newGoal = {
     "id": null,
     "userPerformanceCycle": null,
     "goal": null,
@@ -32,7 +31,8 @@ export class GoalDetailsComponent implements OnInit {
     "plannedCompletionDate": null,
     "actualCompletedDate": null,
     "goalStatus": {
-      "id":"DRAFT"},
+      "id": "DRAFT"
+    },
     "goalCategory": null,
     "goalCategoryOther": null,
     "midYearRatingSelf": null,
@@ -43,35 +43,35 @@ export class GoalDetailsComponent implements OnInit {
     "fullYearCommentsSelf": null,
     "fullYearRatingManager": null,
     "fullYearCommentsManager": null,
-    "isEdit":false
+    "isEdit": false
   }
-  // goals={
-  //   performanceGoals:[
-  //     {
-           
-  //     }
-  //   ]
-  // }
-  goals:any;
-  
+  goals: any;
+
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService,
     private _sharedService: SharedService) {
-      // this.goals.performanceGoals.push(this.obj);
-      this.dropDownsData = this._sharedService.pmsDropDownnsData;
-      if (!this._sharedService.pmsDropDownnsData.category) {
-        this._sharedService.getPmsDropdownsData();
-      }
-      this._sharedService.pmsDropDownService.subscribe((data) => {
-        this.dropDownsData = data;
-      })
-   }
+    // this.goals.performanceGoals.push(this.obj);
+    this._sharedService.pmsDropDownService.subscribe((data) => {
+      this.dropDownsData = data;
+    });
+    this.dropDownsData = this._sharedService.pmsDropDownnsData;
+    if (!this._sharedService.pmsDropDownnsData.category) {
+      this._sharedService.getPmsDropdownsData();
+    }
+
+  }
 
   ngOnInit() {
-    console.log(this.isManager)
+    this.goals = this.cycle.performanceGoals;
+    this.isMidYear = this.cycle.performanceCycleMidYearStatus == 'N' ? false : true;
+    this.isFullYear = this.cycle.performanceCycleFullYearStatus == 'N' ? false : true;
+    // if(!this.cycle){}
+    // this.goalData = {
+    //   performanceGoals: this.cycle.performanceGoals
+    // }
     // this.route.params.subscribe((params: Params) => {		
     //         let userId = params["name"];	
     //         if (userId) {	
-            
+
     //           this.isManager=true;		
     //         }
     //         else{
@@ -80,106 +80,80 @@ export class GoalDetailsComponent implements OnInit {
     //         this.getUserPerfomanceCycle(this.userPerformanceCycleId,userId);
     //       });
     // this.initGoalData();
-   // this.goals.performanceGoals[this.goals.performanceGoals.length] = this.obj;
+    // this.goals.performanceGoals[this.goals.performanceGoals.length] = this.obj;
 
     //this.goals.performanceGoals.push(this.obj);
     // console.log(this.goals);
 
   }
-  ngOnChanges(cycle){
-    this.goals = this.cycle;
-   
-    if(this.goals){
-      this.isMidYear = this.goals.performanceCycleMidYearStatus == 'N' ? false :true ;
-      this.isFullYear = this.goals.performanceCycleFullYearStatus == 'N' ? false :true;
-      this.goalData = {
-        performanceGoals: this.goals.performanceGoals
-      }
-    }
-    
-    // this.isManager = this.isManager;
-  }
-  initGoalData(){
-    this.goals={
-      performanceGoals:[
-        {
-             
-        }
-      ]
-    }
-   
-  }
-  getCycleData(){
-    this._api.put(`/performance/addorupdategoal/userPerformanceCycleId/`+ this.userPerformanceCycleId, this.goalData).subscribe(
-      (data)=>{
-        this.goalData = data.employeePerformanceCycles;
-      },(error)=>{
+  // getCycleData() {
+  //   this._api.put(`/performance/addorupdategoal/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+  //     (data) => {
+  //       this.goalData = data.employeePerformanceCycles;
+  //     }, (error) => {
+  //       this._alert.error(error);
+  //     }
+  //   )
+  // }
+  getUserPerfomanceCycle(id: number, userId: string) {
+    this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
+      (data) => {
+        this.goals = data;
+
+      }, (error) => {
         this._alert.error(error);
       }
     )
   }
-   getUserPerfomanceCycle(id: number, userId: string) {
-   this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
-     (data) => {
-       this.goals = data;
 
-     }, (error) => {
-       this._alert.error(error);
-     }
-   )
- }
-
-  addGoal(){
-    this.count++;
-    this.goals.performanceGoals.push(this.obj);
+  addGoal() {
+    this.goals.push({ ...this.newGoal });
   }
-  
-  saveGoal(goal:any){
-    goal.userPerformanceCycle = this.userPerformanceCycleId.toString();
-    goal.id = this.cycle.performanceCycleId;
-    this._api.put(`/performance/update-goal/userPerformanceCycleId/`+ this.userPerformanceCycleId,goal).subscribe(
-      (data)=>{
+
+  saveGoal(goal: any) {
+    this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, goal).subscribe(
+      (data) => {
         this._alert.success("Goal saved successfully");
-      },(error)=>{
+      }, (error) => {
         this._alert.error(error);
       }
     )
   }
 
-  saveGoals(){
-    this._api.put(`/performance/update-goal/userPerformanceCycleId/`+ this.userPerformanceCycleId,this.goalData).subscribe(
-      (data)=>{
+  saveGoals() {
+    this._api.put(`/performance/add-or-update-goals/userPerformanceCycleId/${this.userPerformanceCycleId}`, { performanceGoals: this.goals }).subscribe(
+      (data) => {
         this._alert.success("Goals saved successfully");
-      },(error)=>{
+      }, (error) => {
         this._alert.error(error);
       }
     )
   }
 
 
-  submitGoals(){
-    this._api.put(`/performance/submit-goals/userPerformanceCycleId/`+ this.userPerformanceCycleId,this.goalData).subscribe(
-      (data)=>{
+  submitGoals() {
+    this._api.put(`/performance/submit-goals/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+      (data) => {
         this._alert.success("Goals submitted successfully");
-      },(error)=>{
-        this._alert.error(error);
-      }
-    )
-  }  
-  submitMidYear(){
-    this._api.put(`/performance/submit-mid-year-review/userPerformanceCycleId/`+ this.userPerformanceCycleId,this.goalData).subscribe(
-      (data)=>{
-        this._alert.success("Mid year cycle submitted successfully");
-      },(error)=>{
+      }, (error) => {
         this._alert.error(error);
       }
     )
   }
-  submitFullYear(){
-    this._api.put(`/performance/submit-full-year-review/userPerformanceCycleId/`+ this.userPerformanceCycleId,this.goalData).subscribe(
-      (data)=>{
+  submitMidYear() {
+    this._api.put(`/performance/submit-mid-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+      (data) => {
+        this._alert.success("Mid year cycle submitted successfully");
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
+  submitFullYear() {
+    this._api.put(`/performance/submit-full-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+      (data) => {
         this._alert.success("Full year cycle submitted successfully");
-      },(error)=>{
+      }, (error) => {
         this._alert.error(error);
       }
     )

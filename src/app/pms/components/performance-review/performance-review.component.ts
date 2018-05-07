@@ -13,7 +13,7 @@ import { UserService } from './../../../services/user.service';
 export class PerformanceReviewComponent implements OnInit {
   Id: number;
   headerCycle: any;
-  isManager:boolean;
+  isManager: boolean;
   tabs: any[] = [
     {
       tab: 1,
@@ -39,7 +39,7 @@ export class PerformanceReviewComponent implements OnInit {
   cycle: any;
   currentTab: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService,
-    private userService: UserService,) {
+    private userService: UserService, ) {
     this.currentTab = this.tabs[0];
   }
 
@@ -49,14 +49,14 @@ export class PerformanceReviewComponent implements OnInit {
       let userId = params["name"];
       if (this.Id && userId) {
         this.isManager = true;
-        // this.getUserPerfomanceCycle(this.Id, userId);
+        this.getUserPerfomanceCycle(this.Id, userId);
       } else if (this.Id) {
         userId = this.userService.userDetails.loginId;
         this.isManager = false;
-        // this.getCycle(this.Id);
-        // this.getHeaderInfo();
+        this.getCycle(this.Id);
       }
-      this.getUserPerfomanceCycle(this.Id, userId);
+      this.getHeaderInfo();
+      // this.getUserPerfomanceCycle(this.Id, userId);
     });
   }
 
