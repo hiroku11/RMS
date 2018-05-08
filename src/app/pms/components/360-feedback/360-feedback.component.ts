@@ -1,3 +1,5 @@
+import { AlertsLoaderService } from './../../../services/alerts-loader.service';
+import { ApiService } from './../../../services/api.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,10 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class Three60FeedbackComponent implements OnInit {
   @Input() cycle: any;
-  constructor() { }
+  externalFeedbacks: any = [];
+  internalFeedbacks: any = [];
+  constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {
-    console.log(this.cycle);
+    this.getFeedbacksInternal();
   }
 
+  getFeedbacksInternal() {
+    this._api.get(`/performance/view-feedback-internal/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}`).subscribe(
+      (data) => {
+        this.internalFeedbacks = data;
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
 }
