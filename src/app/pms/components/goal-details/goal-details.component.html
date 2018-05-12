@@ -1,5 +1,5 @@
 <!-- <div class="card" *ngFor="let dummy of ' '.repeat(count).split(''), let x = index"> -->
-<div *ngIf="goals && goals">
+<div *ngIf="goals">
   <div class="card" *ngFor="let g of goals; let ind = index;">
     <div class="card-body">
       <div class="row">
@@ -23,21 +23,21 @@
         <div class="col-6 col-md-3">
           <label>Set Date</label>
           <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="g.goalSetDate " name="goalSetDate"
-            [disabled]="isManager ||g?.isEdit" />
+            [disabled]="g.isEdit || isManager" />
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
           <!-- <input type="text" class="form-control" [(ngModel)]="g.goalSetDate"> -->
         </div>
         <div class="col-6 col-md-3">
           <label>Planned Completion Date</label>
           <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="g.plannedCompletionDate " name="plannedCompletionDate"
-            [disabled]="isManager || !g?.isEdit" />
+            [disabled]="isManager"/>
           <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
           <!-- <input type="text" class="form-control" [(ngModel)]="plannedCompletionDate"> -->
         </div>
         <div class="col-6 col-md-3">
           <label>Actual Completed Date</label>
           <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="g.actualCompletedDate " name="actualCompletedDate"
-            [disabled]="isManager" />
+            [disabled]="!g.isEdit || isManager"/>
           <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
           <!-- <input type="text" class="form-control" [(ngModel)]="actualCompletedDate"> -->
         </div>
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Mid Year Comments Self</label>
-          <textarea class="form-control" [disabled]="isManager || !isMidYear" [(ngModel)]="g.midYearCommentsSelf"></textarea>
+          <textarea class="form-control" [disabled]="isManager || !isMidYear || !g.isEdit"  [(ngModel)]="g.midYearCommentsSelf"></textarea>
         </div>
         <div class="col-12 col-lg-6">
           <label>Mid Year Comments Manager</label>
@@ -76,7 +76,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Mid Year Rating-self</label>
-          <select class="form-control" [(ngModel)]="g.midYearRatingSelf" [disabled]="isManager || !isMidYear">
+          <select class="form-control" [(ngModel)]="g.midYearRatingSelf" [disabled]="isManager || !isMidYear || !g.isEdit">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>
@@ -92,7 +92,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Full Year Comments Self</label>
-          <textarea class="form-control" [disabled]="isManager || !isFullYear" [(ngModel)]="g.fullYearCommentsSelf"></textarea>
+          <textarea class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit" [(ngModel)]="g.fullYearCommentsSelf"></textarea>
         </div>
         <div class="col-12 col-lg-6">
           <label>Full Year Comments Manager</label>
@@ -103,7 +103,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Full Year Rating-self</label>
-          <select class="form-control" [disabled]="isManager || !isFullYear" [(ngModel)]="g.fullYearRatingSelf">
+          <select class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit"  [(ngModel)]="g.fullYearRatingSelf">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>

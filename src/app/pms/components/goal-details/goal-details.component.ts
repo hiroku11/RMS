@@ -19,7 +19,6 @@ export class GoalDetailsComponent implements OnInit {
   goalNo: number;
   dropDownsData: any;
   data: any;
-  isEdit: boolean = false;
   isMidYear: boolean = false;
   isFullYear: boolean = false;
   newGoal = {
@@ -61,6 +60,9 @@ export class GoalDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cycle.performanceGoals.map(function(d){
+      d.isEdit = true
+    });
     this.goals = this.cycle.performanceGoals;
     this.isMidYear = this.cycle.performanceCycleMidYearStatus == 'N' ? false : true;
     this.isFullYear = this.cycle.performanceCycleFullYearStatus == 'N' ? false : true;
@@ -111,9 +113,11 @@ export class GoalDetailsComponent implements OnInit {
   }
 
   saveGoal(goal: any) {
+
     this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, goal).subscribe(
       (data) => {
         this._alert.success("Goal saved successfully");
+        goal.isEdit = true;
       }, (error) => {
         this._alert.error(error);
       }

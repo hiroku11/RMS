@@ -4,6 +4,7 @@ import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../../services/user.service';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-performance-review',
@@ -13,7 +14,7 @@ import { UserService } from './../../../services/user.service';
 export class PerformanceReviewComponent implements OnInit {
   Id: number;
   headerCycle: any;
-  isManager: boolean;
+  isManager: boolean = false;
   tabs: any[] = [
     {
       tab: 1,
@@ -92,3 +93,4 @@ export class PerformanceReviewComponent implements OnInit {
     this.currentTab = tab;
   }
 }
+
