@@ -32,8 +32,7 @@
     "ng-pick-datetime": "^5.2.3",
     "ng-pick-datetime-moment": "^1.0.5",
     "ngx-pagination-bootstrap": "^1.5.0",
-    "ngx-select-dropdown": "^0.3.2",
-    "ngx-slides": "^1.0.1",
+    "ngx-select-dropdown": "^0.3.3",
     "rxjs": "^5.5.7",
     "tether": "^1.4.3",
     "zone.js": "^0.8.20"

@@ -1,5 +1,4 @@
 import { ConfigService } from './services/config.service';
-
 import { CoreComponentsModule } from './core.components.module/core.components.module';
 import { FormsModule } from '@angular/forms';
 import { HttpActionDirective } from './core.components.module/directives/http-action.directive';

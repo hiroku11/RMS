@@ -1,3 +1,4 @@
+import { GiveFeedbackExternalComponent } from './component/give-feedback-external/give-feedback-external.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { HomeComponent } from './component/home/home.component';
 import { HttpActionDirective } from './directives/http-action.directive';
@@ -11,7 +12,7 @@ import { LoginComponent } from './component/login/login.component';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { NgxSlidesModule } from 'ngx-slides';
+
 
 
 
@@ -19,11 +20,11 @@ import { NgxSlidesModule } from 'ngx-slides';
 
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule, NgxSlidesModule],
+    imports: [CommonModule, FormsModule, RouterModule],
     exports: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
         LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe],
     declarations: [HeaderComponent,SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, GiveFeedbackExternalComponent
     ],
     entryComponents:[SuccessMessageComponent,AjaxLoaderComponent, ErrorMessageComponent]
 })

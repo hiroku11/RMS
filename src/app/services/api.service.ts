@@ -51,11 +51,14 @@ export class ApiService {
             });
     }
     get(url: string, headers?: any, showLoader: boolean = true, blob: boolean = false) {
+        let apiUrl = url.indexOf('external') != -1 ? this.loginApi : this.apiUrl;
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
         }
-        headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        if (url.indexOf('external') == -1) {
+            headers["X-AUTH-TOKEN"] = this._userService.authToken;
+        }
         let options: any = {
             headers: headers,
         }
@@ -63,7 +66,7 @@ export class ApiService {
             options.responseType = 'blob';
         }
         return this._http
-            .get(this.apiUrl + url, options)
+            .get(apiUrl + url, options)
             .map((res: any) => {
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
@@ -125,6 +128,11 @@ export class ApiService {
     //     return this._http.get(this.apiUrl + url,{headers:options});
     // }
     parseDateToApiFormat(payload: any) {
+        if (Array.isArray(payload)) {
+            payload.forEach((item) => {
+                this.parseDateToApiFormat(item);
+            })
+        }
         for (let key in payload) {
             if (key.indexOf("Time") > -1 && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();

@@ -12,17 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class GiveFeedbackComponent implements OnInit {
   userPerformanceCycleId: number;
   feedbackData: any;
-  feedback: any = {
-    "feedbackGivenDate": new Date(),
-    "feedbackComments": "",
-    "securedURL":"some dummy url",
-    "publicURL":"some dummy url"
-  };
+  feedback: any;
   loggedInUser: any;
-  constructor(private route: ActivatedRoute, private _api: ApiService, 
+  constructor(private route: ActivatedRoute, private _api: ApiService,
     private _alert: AlertsLoaderService, private user: UserService) {
 
   }
+
 
   ngOnInit() {
     this.loggedInUser = this.user.userDetails;
@@ -30,6 +26,14 @@ export class GiveFeedbackComponent implements OnInit {
       this.userPerformanceCycleId = params["userCycleId"];
       this.getInternalFeedbackRequest();
     });
+    this.initFeedback();
+  }
+
+  initFeedback() {
+    this.feedback = {
+      "feedbackGivenDate": new Date(),
+      "feedbackComments": ""
+    };
   }
 
   getInternalFeedbackRequest() {
@@ -50,6 +54,10 @@ export class GiveFeedbackComponent implements OnInit {
         this._alert.error(error);
       }
     )
+  }
+
+  clear() {
+    this.initFeedback();
   }
 
 }

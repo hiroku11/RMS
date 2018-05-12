@@ -1,0 +1,52 @@
+<app-header class="d-none d-lg-block"></app-header>
+
+<div class="p-5 cont">
+    <h5>Give Feedback</h5>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>Start Date</td>
+        <td>{{feedbackData?.performanceCycleEndDate | date:'dd/MM/yyyy'}}</td>
+      </tr>
+      <tr>
+        <td>End Date</td>
+        <td>{{feedbackData?.performanceCycleEndDate | date:'dd/MM/yyyy'}}</td>
+      </tr>
+      <tr>
+        <td>Requeted By</td>
+        <td>{{feedbackData?.feedbackRequestedBy}}</td>
+      </tr>
+      <tr>
+        <td>Requestor Comments</td>
+        <td>{{feedbackData?.feedbackComments}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Given Date:</label>
+      <span>{{feedback?.feedbackGivenDate | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Given By:</label>
+      <input type="text" class="form-control" [(ngModel)]="feedback.feedbackGivenBy">
+    </div>
+  
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Comments:</label>
+      <textarea class="form-control" [(ngModel)]="feedback.feedbackComments"></textarea>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="gievFeedback()">Send</button>
+      <button class="btn btn-secondary float-right" (click)="clear()">Clear</button>
+    </div>
+  </div>
+</div>
