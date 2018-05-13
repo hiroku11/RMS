@@ -15,10 +15,21 @@ export class Three60FeedbackComponent implements OnInit {
 
   ngOnInit() {
     this.getFeedbacksInternal();
+    this.getFeedbacksExternal();
   }
 
   getFeedbacksInternal() {
     this._api.get(`/performance/view-feedback-internal/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}`).subscribe(
+      (data) => {
+        this.internalFeedbacks = data;
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
+  }
+
+  getFeedbacksExternal() {
+    this._api.get(`/performance/view-feedback-external/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}`).subscribe(
       (data) => {
         this.internalFeedbacks = data;
       }, (error) => {

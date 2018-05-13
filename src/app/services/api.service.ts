@@ -29,7 +29,8 @@ export class ApiService {
         this.config = this._configService.config;
     }
     post(url: string, data: any, headers?: any, showLoader: boolean = true) {
-        let apiUrl = url.indexOf('login') != -1 ? this.loginApi : this.apiUrl;
+
+        let apiUrl = url.indexOf('login') != -1 || url.indexOf('external') != -1 ? this.loginApi : this.apiUrl;
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
@@ -52,6 +53,9 @@ export class ApiService {
     }
     get(url: string, headers?: any, showLoader: boolean = true, blob: boolean = false) {
         let apiUrl = url.indexOf('external') != -1 ? this.loginApi : this.apiUrl;
+        if(url.indexOf(`view-feedback-external`) !== -1){
+            apiUrl = this.apiUrl;
+        }
         this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};

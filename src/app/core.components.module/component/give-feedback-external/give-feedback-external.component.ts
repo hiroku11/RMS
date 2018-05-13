@@ -15,7 +15,7 @@ export class GiveFeedbackExternalComponent implements OnInit {
   feedback: any;
   constructor(private route: ActivatedRoute, private _api: ApiService,
     private _alert: AlertsLoaderService) {
-
+    this.initFeedback();
   }
 
 
@@ -24,14 +24,20 @@ export class GiveFeedbackExternalComponent implements OnInit {
       this.userPerformanceCycleId = params["cycleId"];
       this.getExternalFeedbackRequest();
     });
-    this.initFeedback();
+
   }
 
   initFeedback() {
     this.feedback = {
       "feedbackGivenDate": new Date(),
       "feedbackComments": "",
-      "feedbackGivenBy":''
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastName": "",
+      "jobTitle": "",
+      "phone": "",
+      "email": "",
     };
   }
 

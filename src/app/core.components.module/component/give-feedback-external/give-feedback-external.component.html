@@ -1,7 +1,10 @@
 <app-header class="d-none d-lg-block"></app-header>
 
-<div class="p-5 cont">
-    <h5>Give Feedback</h5>
+<div class="row view content cont p-4">
+  <div class="col-sm-12">
+      <h5>Give Feedback</h5>
+  </div>
+
   <table class="table table-bordered">
     <tbody>
       <tr>
@@ -23,27 +26,56 @@
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <label>Given Date:</label>
+  <div class="row col-sm-12">
+    <div class="col-sm-12 col-md-3">
+      <label>Title</label>
+      <select class="form-control" [(ngModel)]="feedback.title">
+        <option value="Mr">Mr.</option>
+        <option value="Ms">Ms.</option>
+        <option value="Mrs">Mrs.</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>First Name</label>
+      <input class="form-control" [(ngModel)]="feedback.firstName">
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Middle Name</label>
+      <input class="form-control" [(ngModel)]="feedback.middleName">
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Last Name</label>
+      <input class="form-control" [(ngModel)]="feedback.lastName">
+    </div>
+
+  </div>
+
+  <div class="row col-sm-12">
+    <div class="col-sm-12 col-md-3">
+      <label>Job Title</label>
+      <input class="form-control" [(ngModel)]="feedback.jobTitle">
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Phone</label>
+      <input class="form-control" [(ngModel)]="feedback.phone">
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Email</label>
+      <input class="form-control" [(ngModel)]="feedback.email">
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <label>Date</label>
       <span>{{feedback?.feedbackGivenDate | date: 'dd/MM/yyyy'}}</span>
     </div>
-  
+
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <label>Given By:</label>
-      <input type="text" class="form-control" [(ngModel)]="feedback.feedbackGivenBy">
-    </div>
-  
-  </div>
-  <div class="row">
+  <div class="row col-sm-12">
     <div class="col-sm-12">
       <label>Comments:</label>
       <textarea class="form-control" [(ngModel)]="feedback.feedbackComments"></textarea>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row col-sm-12 mt-3">
     <div class="col-sm-12">
       <button class="btn btn-primary" (click)="gievFeedback()">Send</button>
       <button class="btn btn-secondary float-right" (click)="clear()">Clear</button>
