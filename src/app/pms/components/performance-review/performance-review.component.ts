@@ -92,5 +92,9 @@ export class PerformanceReviewComponent implements OnInit {
   changeTab(tab: any) {
     this.currentTab = tab;
   }
+
+  updatedCycle(cycle: any){
+    this.cycle = cycle;
+  }
 }
 

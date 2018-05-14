@@ -19,35 +19,30 @@
         <div class="row" *ngFor="let feedback of internalFeedbacks;let ind = index;">
           <div class="col-sm-12">
             <div class="card mb-1">
-              <h5 class="card-header">{{ind+1}}.
-                <span class="btn btn-sm btn-outline-danger fa fa-trash float-right"></span>
+              <h5 class="card-header">{{ind+1}}. {{feedback.user.fullName}}
+                <span (click)="deleteInternalFeedback(feedback, ind)" class="btn btn-sm btn-outline-danger fa fa-trash float-right"></span>
               </h5>
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Position: Manager
+                    Position: {{feedback?.user?.position?.description}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Department: Technology
+                    Department: {{feedback?.user?.department?.description}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Organization: I2g
+                    Organization: {{feedback?.user?.department?.organozation?.description}}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Date: 12/12/2018
+                    Date: {{feedback?.commentGivenDate}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Phone: 888888888
+                    Phone: {{feedback?.user?.phone}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Email: test@test.com
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    Commments sslksadksla here
+                    Email: {{feedback?.user?.email}}
                   </div>
                 </div>
               </div>
@@ -68,30 +63,30 @@
         <div class="row" *ngFor="let feedback of externalFeedbacks;let ind = index;">
           <div class="col-sm-12">
             <div class="card mb-1">
-              <h5 class="card-header">{{ind+1}}. Manish Kumar
-                <span class="btn btn-sm btn-outline-danger fa fa-trash float-right"></span>
+              <h5 class="card-header">{{ind+1}}. {{feedback.user.fullName}}
+                <span (click)="deleteExternalFeedback(feedback, ind)" class="btn btn-sm btn-outline-danger fa fa-trash float-right"></span>
               </h5>
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Position: Manager
+                    Position: {{feedback?.user?.position?.description}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Department: Technology
+                    Department: {{feedback?.user?.department?.description}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Organization: I2g
+                    Organization: {{feedback?.user?.department?.organozation?.description}}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Date: 12/12/2018
+                    Date: {{feedback?.commentGivenDate}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Phone: 888888888
+                    Phone: {{feedback?.user?.phone}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Email: test@test.com
+                    Email: {{feedback?.user?.email}}
                   </div>
                 </div>
               </div>

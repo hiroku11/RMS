@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -12,6 +13,7 @@ import { saveAs } from 'file-saver/FileSaver';
 export class DocumentComponent implements OnInit {
   @Input() userPerformanceCycleId: number;
   @Input() cycle: any;
+  @Output() update: EventEmitter<any> = new EventEmitter();
   documents: any = [];
   formData: FormData;
   fileInput: any;

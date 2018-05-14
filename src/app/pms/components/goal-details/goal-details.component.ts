@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -45,6 +46,7 @@ export class GoalDetailsComponent implements OnInit {
     "isEdit": false
   }
   goals: any;
+  @Output() update: EventEmitter<any> = new EventEmitter();
 
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService,
     private _sharedService: SharedService) {
@@ -115,11 +117,13 @@ export class GoalDetailsComponent implements OnInit {
   saveGoal(goal: any) {
     this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, goal).subscribe(
       (data) => {
+        this.cycle = data;
         this.goals = data.performanceGoals;
         this.goals.forEach(element => {
           element.isEdit = true;
         });
         this._alert.success("Goal saved successfully");
+        this.update.emit(this.cycle);
       }, (error) => {
         this._alert.error(error);
       }
