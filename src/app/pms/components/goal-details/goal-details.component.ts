@@ -60,7 +60,7 @@ export class GoalDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cycle.performanceGoals.map(function(d){
+    this.cycle.performanceGoals.map(function (d) {
       d.isEdit = true
     });
     this.goals = this.cycle.performanceGoals;
@@ -113,11 +113,13 @@ export class GoalDetailsComponent implements OnInit {
   }
 
   saveGoal(goal: any) {
-
     this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, goal).subscribe(
       (data) => {
+        this.goals = data.performanceGoals;
+        this.goals.forEach(element => {
+          element.isEdit = true;
+        });
         this._alert.success("Goal saved successfully");
-        goal.isEdit = true;
       }, (error) => {
         this._alert.error(error);
       }
