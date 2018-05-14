@@ -125,9 +125,9 @@
     <div class="col-12 pt-2">
       <button class="btn btn-primary" (click)="addGoal()" *ngIf="!isManager">Add New</button>
       <button class="btn btn-primary" (click)="saveGoals()">Save Goals</button>
-      <button class="btn btn-primary" (click)="submitGoals()">Submit Goals</button>
-      <button class="btn btn-primary" (click)="submitMidYear()">Submit Mid Year</button>
-      <button class="btn btn-primary" (click)="submitFullYear()">Submit Full Year</button>
+      <button class="btn btn-primary" (click)="submitGoals()" *ngIf="!isManager">Submit Goals</button>
+      <button class="btn btn-primary" (click)="submitMidYear()" *ngIf="!isManager">Submit Mid Year</button>
+      <button class="btn btn-primary" (click)="submitFullYear()" *ngIf="!isManager">Submit Full Year</button>
     </div>
   </div>
 </div>
