@@ -21,7 +21,17 @@
         Status
       </td>
       <td>
-        {{cycle?.performanceCycleStatus}}
+        <span *ngIf="!isManager">
+       
+            {{cycle?.performanceCycleStatus}}
+        </span>
+    
+          <select class="form-control"  *ngIf="isManager" [(ngModel)]="goalStatus" [compareWith]="selectCompareFunction"
+          (change)="statusUpdate()">
+              <option value="null"></option>
+              <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
+            </select>
+  
       </td>
     </tr>
     <tr>

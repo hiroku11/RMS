@@ -8,22 +8,22 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.reportedIncidents">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
 
-<div *ngIf="data.incidentSuspects">
+<div *ngIf="data.incidentSuspects.length>0">
     <h5>Suspect to Incident(s)</h5>
     <table class="table table-bordered cms-table">
       <thead>
@@ -57,17 +57,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.accidentInjuredPersons">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
@@ -81,17 +81,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.accidentWitnesses">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
@@ -106,17 +106,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.crimeSuspects">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
@@ -131,17 +131,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.crimeWitnesses">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
@@ -156,17 +156,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.incidentInvestigations">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>
@@ -180,17 +180,17 @@
         <th>Inc Type </th>
         <th>Inc Status</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            IN01012018
-          </td>
-          <td> Desc 1</td>
-          <td>01/01/2017</td>
-          <td>Other</td>
-          <td>New</td>
-         
-        </tr>
+      <tbody *ngFor = "let d of data.claimsHandled">
+          <tr>
+              <td>
+                {{d.uniqueIncidentId}}
+              </td>
+              <td> {{d.incidentDescription}}</td>
+              <td>{{d.incidentOpenedDateTime}}</td>
+              <td>{{d.incidentType}}</td>
+              <td>{{d.incidentStatus}}</td>
+             
+            </tr>
       </tbody>
     </table>
 </div>

@@ -15,6 +15,8 @@ export class PerformanceReviewComponent implements OnInit {
   Id: number;
   headerCycle: any;
   isManager: boolean = false;
+  goalStatus:any;
+  dropDownsData:any;
   tabs: any[] = [
     {
       tab: 1,
@@ -40,8 +42,15 @@ export class PerformanceReviewComponent implements OnInit {
   cycle: any;
   currentTab: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService,
-    private userService: UserService, ) {
+    private userService: UserService,  private _sharedService: SharedService ) {
     this.currentTab = this.tabs[0];
+    this._sharedService.pmsDropDownService.subscribe((data) => {
+      this.dropDownsData = data;
+    });
+    this.dropDownsData = this._sharedService.pmsDropDownnsData;
+    if (!this._sharedService.pmsDropDownnsData.category) {
+      this._sharedService.getPmsDropdownsData();
+    }
   }
 
   ngOnInit() {
@@ -83,6 +92,7 @@ export class PerformanceReviewComponent implements OnInit {
     this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
       (data) => {
         this.cycle = data;
+        this.goalStatus = this.cycle.performanceCycleStatus;
       }, (error) => {
         this._alert.error(error);
       }
@@ -96,5 +106,23 @@ export class PerformanceReviewComponent implements OnInit {
   updatedCycle(cycle: any){
     this.cycle = cycle;
   }
+
+  statusUpdate() {
+   
+    this._api.put(`/performance/update-employee-performance-review-status/userPerformanceCycleId/${this.Id}/statusCode/${this.goalStatus.id}`,'')
+      .subscribe((data) => {
+       this._alert.success('stauts updated successfully');
+      }, (error) => {
+        this._alert.error(error);
+      })
+  }
+  selectCompareFunction(item1: any, item2: any) {
+    if (item1 == null || item2 == null) {
+      return false;
+    }
+    return item1.id == item2.id;
+  }
+
+ 
 }
 
