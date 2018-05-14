@@ -1,4 +1,4 @@
-import { Injectable,Injector } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { Router, CanActivate, CanLoad } from "@angular/router";
 @Injectable()
 export class UserService implements CanActivate, CanLoad {
@@ -33,27 +33,28 @@ export class UserService implements CanActivate, CanLoad {
             }, 1000);
         });
     }
-    logOut(){
-            localStorage.removeItem("rmsAuthToken");
-            this.userDetails = null;
-            let router = this.injector.get(Router);
-             router.navigate(["login"]);
+    logOut() {
+        localStorage.removeItem("rmsAuthToken");
+        this.userDetails = null;
+        this.authToken = null;
+        let router = this.injector.get(Router);
+        router.navigate(["login"]);
     }
     canActivate() {
         if (this.userDetails) {
             return true;
         } else {
             let router = this.injector.get(Router);
-             router.navigate(["login"]);
+            router.navigate(["login"]);
             return false;
         }
     }
-    canLoad(){
+    canLoad() {
         if (this.userDetails) {
             return true;
         } else {
             let router = this.injector.get(Router);
-             router.navigate(["login"]);
+            router.navigate(["login"]);
             return false;
         }
     }

@@ -60,7 +60,7 @@ export class ApiService {
         if (!headers) {
             headers = {};
         }
-        if (url.indexOf('external') == -1) {
+        if (url.indexOf('external') == -1 || url.indexOf(`view-feedback-external`) !== -1) {
             headers["X-AUTH-TOKEN"] = this._userService.authToken;
         }
         let options: any = {
