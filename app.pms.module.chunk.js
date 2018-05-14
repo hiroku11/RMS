@@ -110,7 +110,7 @@ var PmsModule = /** @class */ (function () {
 /***/ "./src/app/pms/components/360-feedback/360-feedback.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pb-2\">\n  <div class=\"col-sm-12\">\n    <h5 style=\"height:40px;\">Feedbacks\n      <button class=\"btn btn-info btn-sm float-right\" [routerLink]=\"['/pms/employee/request-feedback',cycle.userPerformanceCycleId]\">Request Feedback</button>\n    </h5>\n  </div>\n</div>\n\n<div id=\"accordion\">\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"headingOne\">\n      <h6 class=\"mb-0\" class=\"btn-link\" data-toggle=\"collapse\" data-target=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n        Internal\n      </h6>\n    </div>\n\n    <div id=\"collapseOne\" class=\"collapse show\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n        <div class=\"row\" *ngFor=\"let feedback of internalFeedbacks;let ind = index;\">\n          <div class=\"col-sm-12\">\n            <div class=\"card mb-1\">\n              <h5 class=\"card-header\">{{ind+1}}.\n                <span class=\"btn btn-sm btn-outline-danger fa fa-trash float-right\"></span>\n              </h5>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Position: Manager\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Department: Technology\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Organization: I2g\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Date: 12/12/2018\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Phone: 888888888\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Email: test@test.com\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-12\">\n                    Commments sslksadksla here\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"headingTwo\">\n      <h6 class=\"mb-0 btn-link collapsed\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n        External\n      </h6>\n    </div>\n    <div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n        <div class=\"row\" *ngFor=\"let feedback of externalFeedbacks;let ind = index;\">\n          <div class=\"col-sm-12\">\n            <div class=\"card mb-1\">\n              <h5 class=\"card-header\">{{ind+1}}. Manish Kumar\n                <span class=\"btn btn-sm btn-outline-danger fa fa-trash float-right\"></span>\n              </h5>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Position: Manager\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Department: Technology\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Organization: I2g\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Date: 12/12/2018\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Phone: 888888888\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Email: test@test.com\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<!-- \n<ng-pagination *ngIf=\"itemsCount\" [position]=\"'left'\" [pageSize]=\"pageSize\" [itemsCount]=\"itemsCount\" (getPageData)=\"getPageData($event)\"></ng-pagination>\n<app-ajax-loader *ngIf=\"!buildingList\"></app-ajax-loader> -->"
+module.exports = "<div class=\"row pb-2\">\n  <div class=\"col-sm-12\">\n    <h5 style=\"height:40px;\">Feedbacks\n      <button class=\"btn btn-info btn-sm float-right\" [routerLink]=\"['/pms/employee/request-feedback',cycle.userPerformanceCycleId]\">Request Feedback</button>\n    </h5>\n  </div>\n</div>\n\n<div id=\"accordion\">\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"headingOne\">\n      <h6 class=\"mb-0\" class=\"btn-link\" data-toggle=\"collapse\" data-target=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n        Internal\n      </h6>\n    </div>\n\n    <div id=\"collapseOne\" class=\"collapse show\" aria-labelledby=\"headingOne\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n        <div class=\"row\" *ngFor=\"let feedback of internalFeedbacks;let ind = index;\">\n          <div class=\"col-sm-12\">\n            <div class=\"card mb-1\">\n              <h5 class=\"card-header\">{{ind+1}}. {{feedback.user.fullName}}\n                <span (click)=\"deleteInternalFeedback(feedback, ind)\" class=\"btn btn-sm btn-outline-danger fa fa-trash float-right\"></span>\n              </h5>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Position: {{feedback?.user?.position?.description}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Department: {{feedback?.user?.department?.description}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Organization: {{feedback?.user?.department?.organozation?.description}}\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Date: {{feedback?.commentGivenDate}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Phone: {{feedback?.user?.phone}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Email: {{feedback?.user?.email}}\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"headingTwo\">\n      <h6 class=\"mb-0 btn-link collapsed\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n        External\n      </h6>\n    </div>\n    <div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordion\">\n      <div class=\"card-body\">\n        <div class=\"row\" *ngFor=\"let feedback of externalFeedbacks;let ind = index;\">\n          <div class=\"col-sm-12\">\n            <div class=\"card mb-1\">\n              <h5 class=\"card-header\">{{ind+1}}. {{feedback.user.fullName}}\n                <span (click)=\"deleteExternalFeedback(feedback, ind)\" class=\"btn btn-sm btn-outline-danger fa fa-trash float-right\"></span>\n              </h5>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Position: {{feedback?.user?.position?.description}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Department: {{feedback?.user?.department?.description}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Organization: {{feedback?.user?.department?.organozation?.description}}\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-12 col-md-4\">\n                    Date: {{feedback?.commentGivenDate}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Phone: {{feedback?.user?.phone}}\n                  </div>\n                  <div class=\"col-12 col-md-4\">\n                    Email: {{feedback?.user?.email}}\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<!-- \n<ng-pagination *ngIf=\"itemsCount\" [position]=\"'left'\" [pageSize]=\"pageSize\" [itemsCount]=\"itemsCount\" (getPageData)=\"getPageData($event)\"></ng-pagination>\n<app-ajax-loader *ngIf=\"!buildingList\"></app-ajax-loader> -->"
 
 /***/ }),
 
@@ -126,9 +126,9 @@ module.exports = ".zero-margin {\n  margin: 0 !important; }\n\n.zero-padding {\n
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Three60FeedbackComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_alerts_loader_service__ = __webpack_require__("./src/app/services/alerts-loader.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_service__ = __webpack_require__("./src/app/services/api.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_alerts_loader_service__ = __webpack_require__("./src/app/services/alerts-loader.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_api_service__ = __webpack_require__("./src/app/services/api.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -141,44 +141,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var Three60FeedbackComponent = /** @class */ (function () {
     function Three60FeedbackComponent(_api, _alert) {
         this._api = _api;
         this._alert = _alert;
+        this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
         this.externalFeedbacks = [];
         this.internalFeedbacks = [];
     }
     Three60FeedbackComponent.prototype.ngOnInit = function () {
-        this.getFeedbacksInternal();
-        this.getFeedbacksExternal();
+        this.externalFeedbacks = this.cycle.peerComment.peerCommentsExternal;
+        this.internalFeedbacks = this.cycle.peerComment.peerCommentsInternal;
     };
-    Three60FeedbackComponent.prototype.getFeedbacksInternal = function () {
+    Three60FeedbackComponent.prototype.deleteInternalFeedback = function (feed) {
         var _this = this;
-        this._api.get("/performance/view-feedback-internal/userPerformanceCycleId/" + this.cycle.userPerformanceCycleId).subscribe(function (data) {
-            _this.internalFeedbacks = data;
+        this._api.delete("/performance/delete-internal-feedback/userPerformanceCycleId/" + this.cycle.userPerformanceCycleId + "/internalFeedbackId/" + feed.id).subscribe(function (data) {
+            _this.cycle.peerComment = data;
+            _this.update.emit(_this.cycle);
+            _this._alert.success("Feedback successfully deleted");
         }, function (error) {
             _this._alert.error(error);
         });
     };
-    Three60FeedbackComponent.prototype.getFeedbacksExternal = function () {
+    Three60FeedbackComponent.prototype.deleteExternalFeedback = function (feed) {
         var _this = this;
-        this._api.get("/performance/view-feedback-external/userPerformanceCycleId/" + this.cycle.userPerformanceCycleId).subscribe(function (data) {
-            _this.internalFeedbacks = data;
+        this._api.delete("/performance/delete-external-feedback/userPerformanceCycleId/" + this.cycle.userPerformanceCycleId + "/externalFeedbackId/" + feed.id).subscribe(function (data) {
+            _this.cycle.peerComment = data;
+            _this.update.emit(_this.cycle);
+            _this._alert.success("Feedback successfully deleted");
         }, function (error) {
             _this._alert.error(error);
         });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["D" /* Input */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Object)
     ], Three60FeedbackComponent.prototype, "cycle", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], Three60FeedbackComponent.prototype, "update", void 0);
     Three60FeedbackComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-360-feedback',
             template: __webpack_require__("./src/app/pms/components/360-feedback/360-feedback.component.html"),
             styles: [__webpack_require__("./src/app/pms/components/360-feedback/360-feedback.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_api_service__["a" /* ApiService */], __WEBPACK_IMPORTED_MODULE_0__services_alerts_loader_service__["a" /* AlertsLoaderService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_api_service__["a" /* ApiService */], __WEBPACK_IMPORTED_MODULE_1__services_alerts_loader_service__["a" /* AlertsLoaderService */]])
     ], Three60FeedbackComponent);
     return Three60FeedbackComponent;
 }());
@@ -392,12 +403,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DocumentComponent = /** @class */ (function () {
     function DocumentComponent(route, _api, _alert, userService) {
         this.route = route;
         this._api = _api;
         this._alert = _alert;
         this.userService = userService;
+        this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
         this.documents = [];
         this.file = {};
     }
@@ -462,6 +475,10 @@ var DocumentComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Object)
     ], DocumentComponent.prototype, "cycle", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], DocumentComponent.prototype, "update", void 0);
     DocumentComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-document',
@@ -1099,6 +1116,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GoalDetailsComponent = /** @class */ (function () {
     function GoalDetailsComponent(route, _api, _alert, userService, _sharedService) {
         var _this = this;
@@ -1132,6 +1150,7 @@ var GoalDetailsComponent = /** @class */ (function () {
             "fullYearCommentsManager": null,
             "isEdit": false
         };
+        this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
         // this.goals.performanceGoals.push(this.obj);
         this._sharedService.pmsDropDownService.subscribe(function (data) {
             _this.dropDownsData = data;
@@ -1190,11 +1209,13 @@ var GoalDetailsComponent = /** @class */ (function () {
     GoalDetailsComponent.prototype.saveGoal = function (goal) {
         var _this = this;
         this._api.put("/performance/add-or-update-goal/userPerformanceCycleId/" + this.userPerformanceCycleId, goal).subscribe(function (data) {
+            _this.cycle = data;
             _this.goals = data.performanceGoals;
             _this.goals.forEach(function (element) {
                 element.isEdit = true;
             });
             _this._alert.success("Goal saved successfully");
+            _this.update.emit(_this.cycle);
         }, function (error) {
             _this._alert.error(error);
         });
@@ -1249,6 +1270,10 @@ var GoalDetailsComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Boolean)
     ], GoalDetailsComponent.prototype, "isManager", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], GoalDetailsComponent.prototype, "update", void 0);
     GoalDetailsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-goal-details',
@@ -1268,7 +1293,7 @@ var GoalDetailsComponent = /** @class */ (function () {
 /***/ "./src/app/pms/components/incidents/incidents.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data.reportedIncidents.length>0\">\n    <h5>Reported Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.incidentSuspects\">\n    <h5>Suspect to Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.incidentSuspects\">\n        <tr>\n          <td>\n            {{d.uniqueIncidentId}}\n          </td>\n          <td> {{d.incidentDescription}}</td>\n          <td>{{d.incidentOpenedDateTime}}</td>\n          <td>{{d.incidentType}}</td>\n          <td>{{d.incidentStatus}}</td>\n         \n        </tr>\n      </tbody>\n    </table>\n  </div>\n<div *ngIf=\"data.accidentInjuredPersons.length>0\">\n    <h5>Injured due to accident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Accident Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n<div *ngIf=\"data.accidentWitnesses.length>0\">\n    <h5>Witness to Accident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Accident Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.crimeSuspects.length>0\">\n    <h5>Crime suspect to Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Crime Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.crimeWitnesses.length>0\">\n    <h5>Witness to crime(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Crime Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.incidentInvestigations.length>0\">\n    <h5>Investigator for Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n<div *ngIf=\"data.claimsHandled.length>0\">\n    <h5>Claim handler for Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td>\n            IN01012018\n          </td>\n          <td> Desc 1</td>\n          <td>01/01/2017</td>\n          <td>Other</td>\n          <td>New</td>\n         \n        </tr>\n      </tbody>\n    </table>\n</div>\n"
+module.exports = "<div *ngIf=\"data.reportedIncidents.length>0\">\n    <h5>Reported Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.reportedIncidents\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.incidentSuspects.length>0\">\n    <h5>Suspect to Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.incidentSuspects\">\n        <tr>\n          <td>\n            {{d.uniqueIncidentId}}\n          </td>\n          <td> {{d.incidentDescription}}</td>\n          <td>{{d.incidentOpenedDateTime}}</td>\n          <td>{{d.incidentType}}</td>\n          <td>{{d.incidentStatus}}</td>\n         \n        </tr>\n      </tbody>\n    </table>\n  </div>\n<div *ngIf=\"data.accidentInjuredPersons.length>0\">\n    <h5>Injured due to accident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Accident Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.accidentInjuredPersons\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n<div *ngIf=\"data.accidentWitnesses.length>0\">\n    <h5>Witness to Accident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Accident Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.accidentWitnesses\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.crimeSuspects.length>0\">\n    <h5>Crime suspect to Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Crime Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.crimeSuspects\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.crimeWitnesses.length>0\">\n    <h5>Witness to crime(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Crime Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.crimeWitnesses\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n\n<div *ngIf=\"data.incidentInvestigations.length>0\">\n    <h5>Investigator for Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.incidentInvestigations\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n<div *ngIf=\"data.claimsHandled.length>0\">\n    <h5>Claim handler for Incident(s)</h5>\n    <table class=\"table table-bordered cms-table\">\n      <thead>\n        <th>Incident ID</th>\n        <th>Inc Desc</th>\n        <th>Date Opened</th>\n        <th>Inc Type </th>\n        <th>Inc Status</th>\n      </thead>\n      <tbody *ngFor = \"let d of data.claimsHandled\">\n          <tr>\n              <td>\n                {{d.uniqueIncidentId}}\n              </td>\n              <td> {{d.incidentDescription}}</td>\n              <td>{{d.incidentOpenedDateTime}}</td>\n              <td>{{d.incidentType}}</td>\n              <td>{{d.incidentStatus}}</td>\n             \n            </tr>\n      </tbody>\n    </table>\n</div>\n"
 
 /***/ }),
 
@@ -1596,7 +1621,7 @@ var ManagerComponent = /** @class */ (function () {
 /***/ "./src/app/pms/components/performance-review/performance-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-bordered cms-table\">\n  <tbody>\n    <tr>\n      <td>\n        Start Date\n      </td>\n      <td>\n        {{cycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        End Date\n      </td>\n      <td>\n        {{cycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        Status\n      </td>\n      <td>\n        <span *ngIf=\"!isManager\">\n            {{cycle?.performanceCycleStatus}}\n        </span>\n    \n          <select class=\"form-control\"  *ngIf=\"isManager\" [(ngModel)]=\"goalStatus\" [compareWith]=\"selectCompareFunction\"\n          (change)=\"statusUpdate()\">\n              <option value=\"null\"></option>\n              <option *ngFor=\"let opt of dropDownsData.status\" [ngValue]=\"opt\">{{opt.description}}</option>\n            </select>\n  \n      </td>\n    </tr>\n    <tr>\n      <td>\n        Mid Year Open?\n      </td>\n      <td>\n        {{cycle?.performanceCycleMidYearStatus}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        Full Year Open?\n      </td>\n      <td>\n        {{cycle?.performanceCycleFullYearStatus}}\n      </td>\n    </tr>\n    <!-- <tr>\n      <td>\n        Manager\n      </td>\n      <td>\n        Karthik\n      </td>\n    </tr> -->\n  </tbody>\n</table>\n<div class=\"row\">\n\n  <div class=\"col-md-6\">\n    <h4>\n      <span class=\"fa fa-building\"></span> Employee | Performance Review\n    </h4>\n  </div>\n</div>\n\n<ul class=\"row nav nav-tabs mb-2\">\n  <li class=\"nav-item\" (click)=\"changeTab(tab)\" *ngFor=\"let tab of tabs\">\n    <a class=\"nav-link\" [ngClass]=\"{'active': currentTab.tab == tab.tab}\">{{tab.name}}</a>\n  </li>\n</ul>\n<div *ngIf=\"cycle\">\n  <app-goal-details [cycle]=\"cycle\" [userPerformanceCycleId]=\"Id\" [isManager]=\"isManager\" *ngIf=\"currentTab.tab == 1\"></app-goal-details>\n  <app-incidents [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 4\"></app-incidents>\n  <app-360-feedback [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 2\"></app-360-feedback>\n  <app-document [cycle]=\"cycle\" [userPerformanceCycleId]=\"Id\" *ngIf=\"currentTab.tab == 3\"></app-document>\n  <app-lms-details [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 5\"></app-lms-details>\n</div>"
+module.exports = "<table class=\"table table-bordered cms-table\">\n  <tbody>\n    <tr>\n      <td>\n        Start Date\n      </td>\n      <td>\n        {{cycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        End Date\n      </td>\n      <td>\n        {{cycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        Status\n      </td>\n      <td>\n        <span *ngIf=\"!isManager\">\n       \n            {{cycle?.performanceCycleStatus}}\n        </span>\n    \n          <select class=\"form-control\"  *ngIf=\"isManager\" [(ngModel)]=\"goalStatus\" [compareWith]=\"selectCompareFunction\"\n          (change)=\"statusUpdate()\">\n              <option value=\"null\"></option>\n              <option *ngFor=\"let opt of dropDownsData.status\" [ngValue]=\"opt\">{{opt.description}}</option>\n            </select>\n  \n      </td>\n    </tr>\n    <tr>\n      <td>\n        Mid Year Open?\n      </td>\n      <td>\n        {{cycle?.performanceCycleMidYearStatus}}\n      </td>\n    </tr>\n    <tr>\n      <td>\n        Full Year Open?\n      </td>\n      <td>\n        {{cycle?.performanceCycleFullYearStatus}}\n      </td>\n    </tr>\n    <!-- <tr>\n      <td>\n        Manager\n      </td>\n      <td>\n        Karthik\n      </td>\n    </tr> -->\n  </tbody>\n</table>\n<div class=\"row\">\n\n  <div class=\"col-md-6\">\n    <h4>\n      <span class=\"fa fa-building\"></span> Employee | Performance Review\n    </h4>\n  </div>\n</div>\n\n<ul class=\"row nav nav-tabs mb-2\">\n  <li class=\"nav-item\" (click)=\"changeTab(tab)\" *ngFor=\"let tab of tabs\">\n    <a class=\"nav-link\" [ngClass]=\"{'active': currentTab.tab == tab.tab}\">{{tab.name}}</a>\n  </li>\n</ul>\n<div *ngIf=\"cycle\">\n  <app-goal-details (update)=\"updatedCycle($event)\" [cycle]=\"cycle\" [userPerformanceCycleId]=\"Id\" [isManager]=\"isManager\" *ngIf=\"currentTab.tab == 1\"></app-goal-details>\n  <app-incidents (update)=\"updatedCycle($event)\" [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 4\"></app-incidents>\n  <app-360-feedback (update)=\"updatedCycle($event)\" [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 2\"></app-360-feedback>\n  <app-document (update)=\"updatedCycle($event)\" [cycle]=\"cycle\" [userPerformanceCycleId]=\"Id\" *ngIf=\"currentTab.tab == 3\"></app-document>\n  <app-lms-details (update)=\"updatedCycle($event)\" [cycle]=\"cycle\" *ngIf=\"currentTab.tab == 5\"></app-lms-details>\n</div>"
 
 /***/ }),
 
@@ -1712,6 +1737,7 @@ var PerformanceReviewComponent = /** @class */ (function () {
         var _this = this;
         this._api.get("/performance/employee-sub-view/userLoginId/" + userId + "/userPerformanceCycleId/" + id).subscribe(function (data) {
             _this.cycle = data;
+            _this.goalStatus = _this.cycle.performanceCycleStatus;
         }, function (error) {
             _this._alert.error(error);
         });
@@ -1719,8 +1745,23 @@ var PerformanceReviewComponent = /** @class */ (function () {
     PerformanceReviewComponent.prototype.changeTab = function (tab) {
         this.currentTab = tab;
     };
+    PerformanceReviewComponent.prototype.updatedCycle = function (cycle) {
+        this.cycle = cycle;
+    };
     PerformanceReviewComponent.prototype.statusUpdate = function () {
-        alert('changed');
+        var _this = this;
+        this._api.put("/performance/update-employee-performance-review-status/userPerformanceCycleId/" + this.Id + "/statusCode/" + this.goalStatus.id, '')
+            .subscribe(function (data) {
+            _this._alert.success('stauts updated successfully');
+        }, function (error) {
+            _this._alert.error(error);
+        });
+    };
+    PerformanceReviewComponent.prototype.selectCompareFunction = function (item1, item2) {
+        if (item1 == null || item2 == null) {
+            return false;
+        }
+        return item1.id == item2.id;
     };
     PerformanceReviewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["n" /* Component */])({

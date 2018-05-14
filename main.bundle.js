@@ -916,6 +916,7 @@ var LoginComponent = /** @class */ (function () {
             localStorage.setItem('rmsAuthToken', data.XAuthToken);
             var router = _this.injector.get(__WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */]);
             _this.userService.userDetails = _this.userService.decryptToken(data.XAuthToken);
+            _this.userService.authToken = data.XAuthToken;
             router.navigate(["home"]);
         }, function (error) {
             console.log(error);
@@ -1344,7 +1345,7 @@ var ApiService = /** @class */ (function () {
         if (!headers) {
             headers = {};
         }
-        if (url.indexOf('external') == -1) {
+        if (url.indexOf('external') == -1 || url.indexOf("view-feedback-external") !== -1) {
             headers["X-AUTH-TOKEN"] = this._userService.authToken;
         }
         var options = {
@@ -1928,6 +1929,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.logOut = function () {
         localStorage.removeItem("rmsAuthToken");
         this.userDetails = null;
+        this.authToken = null;
         var router = this.injector.get(__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]);
         router.navigate(["login"]);
     };
