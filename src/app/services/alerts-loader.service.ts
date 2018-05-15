@@ -62,6 +62,9 @@ export class AlertsLoaderService {
         }
         if (error.status >= 400 && error.status < 500) {
             try {
+                if (error.error.errorMessages[0].indexOf(":") == -1) {
+                    return error.error.errorMessages[0]
+                }
                 return error.error.errorMessages[0].split(":")[1];
             } catch{
                 return "Some error occured please try again.";
