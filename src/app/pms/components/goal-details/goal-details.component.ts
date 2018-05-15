@@ -115,7 +115,7 @@ export class GoalDetailsComponent implements OnInit {
   }
 
   saveGoal(goal: any) {
-    this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, goal).subscribe(
+    this._api.put(`/performance/add-or-update-goal/userPerformanceCycleId/${this.userPerformanceCycleId}`, { ...goal }).subscribe(
       (data) => {
         this.cycle = data;
         this.goals = data.performanceGoals;
