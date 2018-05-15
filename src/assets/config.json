@@ -1,5 +1,5 @@
 {	
     "loginUrl":"https://e402aedc.ngrok.io/rmsrest/p",	
     "apiUrl":"https://e402aedc.ngrok.io/rmrest/s",	
-    "feedbackUrlPrefix": "http:://localhost:4200"	
+    "feedbackUrlPrefix": "https://hiroku11.github.io/RMS/"	
 }
