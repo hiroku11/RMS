@@ -69,8 +69,8 @@
     <tbody *ngFor="let c of performanceCycles; let i = index;">
       <tr>
         <td>
-
           <a *ngIf="c?.userPerfCycleId && c?.userLoginId" [routerLink]="['/pms/manager/manager-subview',c?.userPerfCycleId,c?.userLoginId]">{{c.userLoginId}}</a>
+          <a *ngIf="!c?.userPerfCycleId && c?.userLoginId">{{c.userLoginId}}</a>
         </td>
         <td>{{c.userFullName}}</td>
         <td>{{c.userPhone}}</td>

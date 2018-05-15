@@ -28,7 +28,7 @@ export class PerformanceReviewComponent implements OnInit {
     },
     {
       tab: 3,
-      name: 'Documnets'
+      name: 'Documents'
     },
     {
       tab: 4,

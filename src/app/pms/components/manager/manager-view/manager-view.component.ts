@@ -27,7 +27,7 @@ export class ManagerViewComponent implements OnInit {
   }
 
   publish(cycle: any) {
-    this._api.put(`/performance/publish-performance-cycle-manager/id/${cycle.id}`, null).subscribe(
+    this._api.get(`/performance/publish-performance-cycle-manager/performanceCycleId/${cycle.id}`).subscribe(
       (data) => {
         this._alert.success('Performance cycle successfully published');
       }, (error) => {

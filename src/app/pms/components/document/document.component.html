@@ -44,11 +44,8 @@
 
       <td> {{doc.comments}}</td>
       <td>{{doc.fileSize/1024}} KB</td>
-      <!-- <td>{{doc.expiryDate ? (doc.expiryDate | date:'dd/MM/yyyy'): 'NA'}}</td> -->
       <td>{{doc.createdBy}}</td>
-
       <td>
-
         <span class="fa fa-download btn btn-sm btn-outline-info" data-toggle="tooltip" title="Download" (click)="downloadDocument(doc)"></span>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete" (click)="deleteDocumnet(doc, i)"></span>
       </td>

@@ -1,32 +1,31 @@
 <div class="col s12">
-    <table class="table table-bordered cms-table">
-      <thead>
-        <th>Title</th>
-        <th> Start Date</th>
-        <th>End Date</th>
-        <th>Status </th>
-        <th>Mid year review status</th>
-        <!-- <th>Expiry Date </th> -->
-        <th>Full year review status</th>
+  <table class="table table-bordered cms-table">
+    <thead>
+      <th>Title</th>
+      <th> Start Date</th>
+      <th>End Date</th>
+      <th>Published </th>
+      <th>Mid year review status</th>
+      <!-- <th>Expiry Date </th> -->
+      <th>Full year review status</th>
 
-        <th></th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cycle of performanceCycles; let i = index;">
-          <td>
-            <a [routerLink]="['manager-subview',cycle.id]">{{cycle.title}}</a>
-          </td>
-          <td>{{cycle.cycleStartDate |date:'dd/MM/yyyy' }}</td>
-          <td>{{cycle.cycleEndDate |date:'dd/MM/yyyy'}}</td>
-          <td> {{cycle.published}}</td>
-          <td>{{cycle.openMidYearReview}}</td>
-          <td>{{cycle.openFullYearReview}}</td>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cycle of performanceCycles; let i = index;">
+        <td>
+          <a [routerLink]="['manager-subview',cycle.id]">{{cycle.title}}</a>
+        </td>
+        <td>{{cycle.cycleStartDate |date:'dd/MM/yyyy' }}</td>
+        <td>{{cycle.cycleEndDate |date:'dd/MM/yyyy'}}</td>
+        <td> {{cycle.published}}</td>
+        <td>{{cycle.openMidYearReview}}</td>
+        <td>{{cycle.openFullYearReview}}</td>
 
-          <td>
-            <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Email"></span>
-          </td>
-        </tr>
-      </tbody>
-      </table>
+        <td>
+          <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Email"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-     
