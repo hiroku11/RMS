@@ -8,7 +8,7 @@
   </div>
   <div class="col-lg-10 pl-0 pr-0 col-md-12 content">
     <div class="row dashboard">
-      <div class="col-sm-12 col-md-6 text-center">
+      <div class="col-sm-12 col-md-6 text-center" *ngIf="isAdmin">
         <a [routerLink]="['/pms/admin']">
           <span class="fa fa-6 fa-lock"></span>
           <h4>Admin</h4>

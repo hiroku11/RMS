@@ -12,8 +12,10 @@ import { Component, OnInit,Input } from '@angular/core';
 export class SideNavComponent implements OnInit {
   @Input() thisView: string = 'document';
   userDetails: any;
+  isAdmin: boolean;
   constructor(private userService: UserService) { 
     this.userDetails = this.userService.userDetails;
+    this.isAdmin = this.userService.isAdmin;
   }
 
   ngOnInit() {

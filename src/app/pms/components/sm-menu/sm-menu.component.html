@@ -30,7 +30,7 @@
         <i class="fa fa-tasks"></i> Dashboard
       </a>
     </li>
-    <li [ngClass]="{active:thisView=='admin'}">
+    <li [ngClass]="{active:thisView=='admin'}" *ngIf="isAdmin">
       <a [routerLink]="['/pms/admin']" title="">
         <i class="fa fa-lock"></i> Admin
       </a>

@@ -70,6 +70,7 @@ export class FeedbackRequestComponent implements OnInit {
     this.usersOptions.push(user);
     this.usersOptions = [...this.usersOptions];
     this.selectedUsers = [...this.selectedUsers];
+    this._alert.success('User selected for request.');
   }
   closeModal() {
     this.componentRef.instance.selectUser.unsubscribe();

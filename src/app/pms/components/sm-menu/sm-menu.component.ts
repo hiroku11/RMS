@@ -10,8 +10,10 @@ export class SmMenuComponent implements OnInit {
   menuOpen: boolean = false;
   @Input() thisView:string;
   userDetails: any;
+  isAdmin: boolean;
   constructor(private userService: UserService) { 
     this.userDetails = this.userService.userDetails;
+    this.isAdmin = this.userService.isAdmin;
   }
 
   ngOnInit() {
