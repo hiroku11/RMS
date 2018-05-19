@@ -41,7 +41,7 @@ export class AlertsLoaderService {
         this.componentRef.instance.message = message;
         setTimeout(() => {
             this.hideLoader();
-        }, 2000);
+        }, 4000);
     }
     error(error: any) {
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
@@ -53,7 +53,7 @@ export class AlertsLoaderService {
         this.componentRef.instance.message = this.getErrorMessage(error);
         setTimeout(() => {
             this.hideLoader();
-        }, 2000)
+        }, 4000)
     }
 
     getErrorMessage(error: any) {

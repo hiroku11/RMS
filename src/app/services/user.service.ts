@@ -4,7 +4,16 @@ import { Router, CanActivate, CanLoad } from "@angular/router";
 export class UserService implements CanActivate, CanLoad {
     userDetails: any;
     authToken: any;
+    isAdmin: boolean = false;
     constructor(private injector: Injector) {
+        this.getUserDetails().then((data) => {
+            this.userDetails = data;
+            this.userDetails.roles.forEach((role) => {
+                if (role.roleName.toLowerCase() === 'admin') {
+                    this.isAdmin = true;
+                }
+            });
+        });
 
     }
     decryptToken(token: any) {
@@ -16,6 +25,11 @@ export class UserService implements CanActivate, CanLoad {
                 return false;
             } else {
                 this.userDetails = decryptedUserDetails;
+                this.userDetails.roles.forEach((role) => {
+                    if (role.roleName.toLowerCase() === 'admin') {
+                        this.isAdmin = true;
+                    }
+                });
                 return decryptedUserDetails;
             }
         }
@@ -37,6 +51,7 @@ export class UserService implements CanActivate, CanLoad {
         localStorage.removeItem("rmsAuthToken");
         this.userDetails = null;
         this.authToken = null;
+        this.isAdmin = null;
         let router = this.injector.get(Router);
         router.navigate(["login"]);
     }
