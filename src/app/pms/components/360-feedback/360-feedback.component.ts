@@ -17,9 +17,10 @@ export class Three60FeedbackComponent implements OnInit {
   constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {
-    this.externalFeedbacks = this.cycle.peerComment.peerCommentsExternal;
-    this.internalFeedbacks = this.cycle.peerComment.peerCommentsInternal;
-
+   if(this.cycle.peerComment){
+      this.internalFeedbacks = this.cycle.peerComment.peerCommentsInternal;
+      this.externalFeedbacks = this.cycle.peerComment.peerCommentsExternal;
+    }
   }
 
   deleteInternalFeedback(feed: any) {
