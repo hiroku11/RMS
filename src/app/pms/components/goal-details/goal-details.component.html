@@ -43,7 +43,7 @@
         </div>
         <div class="col-6 col-md-3">
           <label>Goal Status</label>
-          <select class="form-control"  [disabled]="isManager || !isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
+          <select class="form-control"  [disabled]="isManager || !g.isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
           </select>
@@ -76,14 +76,14 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Mid Year Rating-self</label>
-          <select class="form-control" [(ngModel)]="g.midYearRatingSelf" [disabled]="isManager || !isMidYear || !g.isEdit">
+          <select class="form-control" [(ngModel)]="g.midYearRatingSelf" [disabled]="isManager || !isMidYear || !g.isEdit" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>
         </div>
         <div class="col-12 col-lg-6">
           <label>Mid Year Rating-Manager</label>
-          <select class="form-control" [(ngModel)]="g.midYearRatingManager" [disabled]="!isManager || !isMidYear">
+          <select class="form-control" [(ngModel)]="g.midYearRatingManager" [disabled]="!isManager || !isMidYear" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>
@@ -103,14 +103,14 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Full Year Rating-self</label>
-          <select class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit"  [(ngModel)]="g.fullYearRatingSelf">
+          <select class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit"  [(ngModel)]="g.fullYearRatingSelf" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>
         </div>
         <div class="col-12 col-lg-6">
           <label>Full Year Rating-Manager</label>
-          <select class="form-control" [(ngModel)]="g.fullYearRatingManager" [disabled]="!isManager || !isFullYear">
+          <select class="form-control" [(ngModel)]="g.fullYearRatingManager" [disabled]="!isManager || !isFullYear" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>

@@ -11,9 +11,11 @@ export class SmMenuComponent implements OnInit {
   @Input() thisView:string;
   userDetails: any;
   isAdmin: boolean;
+  isSupervisor : boolean;
   constructor(private userService: UserService) { 
     this.userDetails = this.userService.userDetails;
     this.isAdmin = this.userService.isAdmin;
+    this.isSupervisor = this.userService.isSupervisor;
   }
 
   ngOnInit() {

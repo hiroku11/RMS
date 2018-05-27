@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   isAdmin: boolean;
+  isSupervisor: boolean;
   constructor(private user: UserService) {
     if (this.user.isAdmin) {
       this.isAdmin = true;
+    }
+    if(this.user.isSupervisor){ 
+      this.isSupervisor = true;
     }
   }
 

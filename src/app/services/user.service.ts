@@ -5,12 +5,16 @@ export class UserService implements CanActivate, CanLoad {
     userDetails: any;
     authToken: any;
     isAdmin: boolean = false;
+    isSupervisor: boolean = false;
     constructor(private injector: Injector) {
         this.getUserDetails().then((data) => {
             this.userDetails = data;
             this.userDetails.roles.forEach((role) => {
                 if (role.roleName.toLowerCase() === 'admin') {
                     this.isAdmin = true;
+                }
+                if(role.roleName.toLowerCase() === 'supervisor'){
+                    this.isSupervisor = true;
                 }
             });
         });
