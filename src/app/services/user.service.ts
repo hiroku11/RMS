@@ -9,14 +9,17 @@ export class UserService implements CanActivate, CanLoad {
     constructor(private injector: Injector) {
         this.getUserDetails().then((data) => {
             this.userDetails = data;
-            this.userDetails.roles.forEach((role) => {
-                if (role.roleName.toLowerCase() === 'admin') {
-                    this.isAdmin = true;
-                }
-                if(role.roleName.toLowerCase() === 'supervisor'){
-                    this.isSupervisor = true;
-                }
-            });
+            if (this.userDetails && this.userDetails.roles) {
+                this.userDetails.roles.forEach((role) => {
+                    if (role.roleName.toLowerCase() === 'admin') {
+                        this.isAdmin = true;
+                    }
+                    if (role.roleName.toLowerCase() === 'supervisor') {
+                        this.isSupervisor = true;
+                    }
+                });
+            }
+
         });
 
     }
