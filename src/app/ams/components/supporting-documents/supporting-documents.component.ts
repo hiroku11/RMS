@@ -27,7 +27,7 @@ export class SupportingDocumentsComponent implements OnInit {
     this.uploadUrl = `/document/save-documents-for-${this.addTo}`;
   }
 
-  clearSelectedFile(){
+  clearSelectedFile() {
     this.fileDescription = null;
     this.fileName = null;
     this.fileInput.value = null;
@@ -42,15 +42,15 @@ export class SupportingDocumentsComponent implements OnInit {
     this.formData.append("fileDescription", this.fileDescription);
   }
   addDocuments() {
-    if(!this.docsObject.id){
+    if (!this.docsObject.id) {
       this._alertsService.error("Please select an item from the table to add documents to.");
       return;
     }
-    this._apiService.post(this.uploadUrl, this.formData).subscribe(
+    this._apiService.post(this.uploadUrl, this.formData, true).subscribe(
       data => {
         this._alertsService.success("Documents successfully uploaded");
-        this.docsObject.documents.length==0?this.docsObject.documents = data
-        :this.docsObject.documents.push(data[0]);
+        this.docsObject.documents.length == 0 ? this.docsObject.documents = data
+          : this.docsObject.documents.push(data[0]);
         this.addedToAsset.emit(this.docsObject);
         this.clearSelectedFile();
       },
@@ -74,7 +74,7 @@ export class SupportingDocumentsComponent implements OnInit {
   }
 
   downloadDocument(doc: any) {
-    this._apiService.get(`/document/download-document/${doc.id}`,{},true,true).subscribe(
+    this._apiService.get(`/document/download-document/${doc.id}`, {}, true, true).subscribe(
       data => {
         this.saveFile(data, doc.originalFileName);
       },
