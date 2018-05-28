@@ -77,7 +77,7 @@ export class PublishEmailComponent implements OnInit {
   }
   publish() {
     this.data.versionHistoryId = this.document.versionHistoryId;
-    this._apiService.post("/compliance/publish-document", this.data).subscribe(
+    this._apiService.post("/compliance/publish-document", this.data, false).subscribe(
       (data) => {
         this._alertsService.success("Documnet published succesfully.");
       },

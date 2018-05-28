@@ -52,7 +52,7 @@ export class SendEmailComponent implements OnInit {
   }
   Save() {
     this.data.versionHistoryId = this.document.versionHistoryId;
-    this._apiService.post("/compliance/send-email", this.data)
+    this._apiService.post("/compliance/send-email", this.data, false)
       .subscribe(
         (data) => {
           this._alertsService.success("Email successfully sent.");

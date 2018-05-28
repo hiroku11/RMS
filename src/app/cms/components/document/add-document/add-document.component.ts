@@ -97,7 +97,7 @@ export class AddDocumentComponent implements OnInit {
     }
     this.formData.append("comments", this.file.comments);
     this.formData.append("statusCode", this.file.statusCode);
-    this._apiService.post("/compliance/save-compliance-document-history", this.formData)
+    this._apiService.post("/compliance/save-compliance-document-history", this.formData, true)
       .subscribe(
         (data) => {
           this._alertsService.success("Document successfully uploaded.");
@@ -176,12 +176,12 @@ export class AddDocumentComponent implements OnInit {
     saveAs(blob, fileName);
   }
 
-  neverExpireChange(){
-    if(this.document.neverExpires == 'Y'){
+  neverExpireChange() {
+    if (this.document.neverExpires == 'Y') {
       this.document.expiryDate = null;
     }
   }
-  
+
   changeSort(keyName: string) {
     this.reverse = !this.reverse;
     this.keyName = keyName;

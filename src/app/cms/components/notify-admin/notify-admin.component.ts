@@ -42,7 +42,7 @@ export class NotifyAdminComponent implements OnInit {
   }
   Save() {
     this.data.versionHistoryId = this.document.versionHistoryId;
-    this._apiService.post("/compliance/notify-lms-admin", this.data)
+    this._apiService.post("/compliance/notify-lms-admin", this.data, false)
       .subscribe(
         (data) => {
           this._alertsService.success("Notified admin successfully.");
