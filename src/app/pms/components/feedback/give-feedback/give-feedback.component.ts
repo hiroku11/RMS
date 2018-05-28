@@ -47,7 +47,7 @@ export class GiveFeedbackComponent implements OnInit {
   }
 
   gievFeedback() {
-    this._api.post(`/performance/add-feedback-internal/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.feedback).subscribe(
+    this._api.post(`/performance/add-feedback-internal/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.feedback, false).subscribe(
       (data) => {
         this._alert.success("Feedback Submitted successfully.");
       }, (error) => {

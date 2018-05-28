@@ -30,20 +30,20 @@
         <div class="col-6 col-md-3">
           <label>Planned Completion Date</label>
           <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="g.plannedCompletionDate " name="plannedCompletionDate"
-            [disabled]="isManager"/>
+            [disabled]="isManager" />
           <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
           <!-- <input type="text" class="form-control" [(ngModel)]="plannedCompletionDate"> -->
         </div>
         <div class="col-6 col-md-3">
           <label>Actual Completed Date</label>
           <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="g.actualCompletedDate " name="actualCompletedDate"
-            [disabled]="!g.isEdit || isManager"/>
+            [disabled]="!g.isEdit || isManager" />
           <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
           <!-- <input type="text" class="form-control" [(ngModel)]="actualCompletedDate"> -->
         </div>
         <div class="col-6 col-md-3">
           <label>Goal Status</label>
-          <select class="form-control"  [disabled]="isManager || !g.isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
+          <select class="form-control" [disabled]="isManager || !g.isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
           </select>
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Mid Year Comments Self</label>
-          <textarea class="form-control" [disabled]="isManager || !isMidYear || !g.isEdit"  [(ngModel)]="g.midYearCommentsSelf"></textarea>
+          <textarea class="form-control" [disabled]="isManager || !isMidYear || !g.isEdit" [(ngModel)]="g.midYearCommentsSelf"></textarea>
         </div>
         <div class="col-12 col-lg-6">
           <label>Mid Year Comments Manager</label>
@@ -103,7 +103,7 @@
       <div class="row">
         <div class="col-12 col-lg-6">
           <label>Full Year Rating-self</label>
-          <select class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit"  [(ngModel)]="g.fullYearRatingSelf" [compareWith]="selectCompareFunction">
+          <select class="form-control" [disabled]="isManager || !isFullYear || !g.isEdit" [(ngModel)]="g.fullYearRatingSelf" [compareWith]="selectCompareFunction">
             <option value="null"></option>
             <option *ngFor="let opt of dropDownsData.rating" [ngValue]="opt">{{opt.description}}</option>
           </select>

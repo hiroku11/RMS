@@ -87,7 +87,7 @@ export class FeedbackRequestComponent implements OnInit {
     }
     this.request.securedURL = `${this.config.config.feedbackUrlPrefix}/pms/feedback/give-feedback/${this.userPerformanceCycleId}`;
     this.request.publicURL = `${this.config.config.feedbackUrlPrefix}/give-feedback-external/${this.userPerformanceCycleId}`;
-    this._api.post(`/performance/send-feedback-request/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.request)
+    this._api.post(`/performance/send-feedback-request/userPerformanceCycleId/${this.userPerformanceCycleId}`, this.request, false)
       .subscribe((data) => {
         this._alert.success("Feedback request successfully sent.");
       }, (error) => {

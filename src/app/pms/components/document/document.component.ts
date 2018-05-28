@@ -39,7 +39,7 @@ export class DocumentComponent implements OnInit {
   }
 
   addDocument() {
-    this._api.post(`/performance/save-performance-document`, this.formData).subscribe(
+    this._api.post(`/performance/save-performance-document`, this.formData, true).subscribe(
       (data) => {
         this._alert.success("Documnet added successfully");
         this.documents.push(data);

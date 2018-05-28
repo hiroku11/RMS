@@ -14,24 +14,26 @@ export class AddCycleComponent implements OnInit {
   ngOnInit() {
     this.getCycles();
   }
-  getCycles(){
+  getCycles() {
     this._api.get('/performance/performance-cycle-for-employee-add').subscribe(
-      (data)=>{
+      (data) => {
         this.cycles = data;
-      },(error)=>{[
-        
-      ]}
+      }, (error) => {
+        [
+
+        ]
+      }
     )
   }
 
   addPerformanceCycle(cycle: any) {
-      this._api.post(`/performance/add-performance-cycle-for-employee/performanceCycleId/${cycle.id}`, {}).subscribe(
-        (data) => {
-          this._alert.success("Performance Cycle successfully added.")
-        }, (error) => {
-          this._alert.error(error);
-        }
-      )
+    this._api.post(`/performance/add-performance-cycle-for-employee/performanceCycleId/${cycle.id}`, {}, false).subscribe(
+      (data) => {
+        this._alert.success("Performance Cycle successfully added.")
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
   }
 
 }
