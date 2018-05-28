@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.append("Authorization", "Basic " + btoa(`${this.login.username}:${this.login.password}`));
     headers = headers.append("Content-Type", "application/x-www-form-urlencoded");
-    this._apiService.post('/api/login', {}, headers).subscribe(
+    this._apiService.post('/api/login', {},false, headers).subscribe(
       (data: any) => {
         localStorage.setItem('rmsAuthToken', data.XAuthToken);
         let router = this.injector.get(Router);
