@@ -36,6 +36,9 @@ export class UserService implements CanActivate, CanLoad {
                     if (role.roleName.toLowerCase() === 'admin') {
                         this.isAdmin = true;
                     }
+                    if (role.roleName.toLowerCase() === 'supervisor') {
+                        this.isSupervisor = true;
+                    }
                 });
                 return decryptedUserDetails;
             }
