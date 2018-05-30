@@ -1,0 +1,10 @@
+@import './../../../../assets/styles/_lms';
+.row {
+    @extend .zero-margin;
+}
+
+.dashboard {
+    img {
+        height: 200px;
+    }
+}
