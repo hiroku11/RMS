@@ -1,6 +1,6 @@
 import { SharedService } from './../../../services/shared.service';
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 
@@ -14,16 +14,17 @@ export class SideNavComponent implements OnInit {
   userDetails: any;
   isAdmin: boolean;
   isSupervisor: boolean;
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService) {
     this.userDetails = this.userService.userDetails;
-    this.isAdmin = this.userService.isAdmin;
-    this.isSupervisor = this.userService.isSupervisor;
+
   }
 
   ngOnInit() {
+    this.isAdmin = this.userService.isAdmin;
+    this.isSupervisor = this.userService.isSupervisor;
     //this.thisView = this._sharedService.activeView;
   }
-  logOut(){
+  logOut() {
     this.userService.logOut();
   }
 

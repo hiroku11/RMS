@@ -16,7 +16,6 @@ export class GoalDetailsComponent implements OnInit {
   @Input() cycle: any;
   @Input() isManager: boolean;
 
-  goalData: any;
   goalNo: number;
   dropDownsData: any;
   data: any;
@@ -142,7 +141,7 @@ export class GoalDetailsComponent implements OnInit {
 
 
   submitGoals() {
-    this._api.put(`/performance/submit-goals/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+    this._api.put(`/performance/submit-goals/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goals).subscribe(
       (data) => {
         this._alert.success("Goals submitted successfully");
       }, (error) => {
@@ -151,7 +150,7 @@ export class GoalDetailsComponent implements OnInit {
     )
   }
   submitMidYear() {
-    this._api.put(`/performance/submit-mid-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+    this._api.put(`/performance/submit-mid-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goals).subscribe(
       (data) => {
         this._alert.success("Mid year cycle submitted successfully");
       }, (error) => {
@@ -160,7 +159,7 @@ export class GoalDetailsComponent implements OnInit {
     )
   }
   submitFullYear() {
-    this._api.put(`/performance/submit-full-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goalData).subscribe(
+    this._api.put(`/performance/submit-full-year-review/userPerformanceCycleId/` + this.userPerformanceCycleId, this.goals).subscribe(
       (data) => {
         this._alert.success("Full year cycle submitted successfully");
       }, (error) => {
