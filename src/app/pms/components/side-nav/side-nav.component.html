@@ -26,7 +26,7 @@
                 <i class="fa fa-lock"></i> Admin
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='manager'}">
+        <li [ngClass]="{active:thisView=='manager'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/pms/manager']" title="">
                 <i class="fa fa-users"></i> Manager
             </a>

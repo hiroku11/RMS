@@ -91,7 +91,7 @@ export class ApiService {
             headers = {};
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
-        data = this.parseDateToApiFormat(JSON.parse(JSON.stringify(data)));
+        data = this.parseDateToApiFormat(data);
         return this._http
             .put(this.apiUrl + url, data, { headers: headers })
             .map((res: any) => {
