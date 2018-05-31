@@ -62,6 +62,7 @@ export class UserService implements CanActivate, CanLoad {
         this.userDetails = null;
         this.authToken = null;
         this.isAdmin = null;
+        this.isSupervisor = null;
         let router = this.injector.get(Router);
         router.navigate(["login"]);
     }
