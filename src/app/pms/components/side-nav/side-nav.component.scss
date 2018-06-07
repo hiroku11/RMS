@@ -13,12 +13,12 @@
         width: 100%;
         li {
             cursor: pointer;
-            background-color: #2e2e2e;
+            background-color: #9ca3a9;
             border-bottom: 2px solid white;
             font-size: 13px;
             &.active {
                 a {
-                    background-color: $pmsColor;
+                    background-color: #59607e;
                     color: #fff;
                 }
             }
