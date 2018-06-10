@@ -48,8 +48,7 @@ npm manifest:
       "ng-pick-datetime": "^5.2.3",
       "ng-pick-datetime-moment": "^1.0.5",
       "ngx-pagination-bootstrap": "^1.5.0",
-      "ngx-select-dropdown": "^0.2.0",
-      "ngx-slides": "^1.0.1",
+      "ngx-select-dropdown": "^0.3.3",
       "rxjs": "^5.5.7",
       "tether": "^1.4.3",
       "zone.js": "^0.8.20"
@@ -4229,15 +4228,11 @@ Lockfile:
       "@angular/forms" "^4.0.0"
       bootstrap "^4.0.0-alpha.6"
   
-  ngx-select-dropdown@^0.2.0:
-    version "0.2.1"
-    resolved "https://registry.yarnpkg.com/ngx-select-dropdown/-/ngx-select-dropdown-0.2.1.tgz#62b2d3347b0cc9a1778c991d127b70db55122d74"
+  ngx-select-dropdown@^0.3.3:
+    version "0.3.5"
+    resolved "https://registry.yarnpkg.com/ngx-select-dropdown/-/ngx-select-dropdown-0.3.5.tgz#2c6f8486c45404a84993558b7cc1ae186c8ddd9b"
     dependencies:
       "@angular/forms" "^4.0.0"
-  
-  ngx-slides@^1.0.1:
-    version "1.0.1"
-    resolved "https://registry.yarnpkg.com/ngx-slides/-/ngx-slides-1.0.1.tgz#c2ce336615c23dace632aa52a4b2f7d6c87339d4"
   
   no-case@^2.2.0:
     version "2.3.2"

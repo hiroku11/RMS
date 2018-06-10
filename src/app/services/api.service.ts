@@ -17,8 +17,8 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://e402aedc.ngrok.io/rmsrest/s";
-    loginApi: string = "https://e402aedc.ngrok.io/rmsrest/p";
+    apiUrl: string = "https://125ae965.ngrok.io/rmsrest/s";
+    loginApi: string = "https://125ae965.ngrok.io/rmsrest/p";
     config: any;
     constructor(
         private _http: HttpClient,
