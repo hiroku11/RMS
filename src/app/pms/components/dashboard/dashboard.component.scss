@@ -1,10 +1,15 @@
 @import './../../../../assets/styles/pms';
-.row{
-        @extend .zero-margin;
+.row {
+    @extend .zero-margin;
 }
 
-.dashboard{
-        img{
-                height: 200px;
-        }
+.dashboard {
+    img {
+        height: 200px;
+    }
+}
+
+.side-nav {
+    border: 15px solid;
+    border-color: #9e1d90;
 }
