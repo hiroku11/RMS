@@ -18,7 +18,7 @@
     <ul>
         <li [ngClass]="{active:thisView=='profile'}">
             <a [routerLink]="['/myprofile/profile']" title="">
-                <i class="fa fa-tasks"></i> Profile
+                <i class="fa fa-user-circle-o"></i> Profile
             </a>
         </li>
         <li [ngClass]="{active:thisView=='update-password'}" *ngIf="isAdmin">
@@ -28,12 +28,12 @@
         </li>
         <li [ngClass]="{active:thisView=='my-addresses'}">
             <a [routerLink]="['/myprofile/my-addresses']" title="">
-                <i class="fa fa-users"></i> My Addresses
+                <i class="fa fa-address-book"></i> My Addresses
             </a>
         </li>
         <li [ngClass]="{active:thisView=='office-address'}">
             <a [routerLink]="['/myprofile/office-address']" title="">
-                <i class="fa fa-user"></i> Office Address
+                <i class="fa fa-address-book-o"></i> Office Address
             </a>
         </li>
     </ul>

@@ -1,0 +1,78 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'office-address'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'office-address'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 content">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-address-book-o"></span> My Addresses</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label>Organization Name (if any)</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Block #/Name</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Building Name</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label>Post Code</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Locality Name</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>City</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label>Door #</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Apartment #/Name</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Street Name</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label>Post Town</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>County</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-sm-4">
+        <label>Country</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col-sm-12">
+        <button class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
