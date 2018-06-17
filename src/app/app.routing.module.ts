@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'pms', loadChildren: "app/pms/app.pms.module#PmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'lms', loadChildren: "app/lms/app.lms.module#LmsModule", canLoad: [UserService], canActivate: [UserService] },
-    { path: 'myprofile', loadChildren: "app/myprofile/app.myprofile.module#MyProfileModule", canLoad: [UserService], canActivate: [UserService] }
+    { path: 'ums', loadChildren: "app/ums/app.ums.module#UmsModule", canLoad: [UserService], canActivate: [UserService] }
 ]
 
 @NgModule({

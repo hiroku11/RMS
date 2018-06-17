@@ -13,7 +13,16 @@ const myProfileRoutes: Routes = [
     { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
     { path: 'update-password', component: UpdatePasswordComponent, pathMatch: 'full' },
     { path: 'my-addresses', component: MyAddressesComponent, pathMatch: 'full' },
-    { path: 'office-address', component: OfficeAddressComponent, pathMatch: 'full' }
+    { path: 'office-address', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'organization', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'department', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'roles', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'manage-users', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'import-users', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'investigation-teams', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'admin-teams', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'manage-templates', component: OfficeAddressComponent, pathMatch: 'full' },
+    { path: 'reports', component: OfficeAddressComponent, pathMatch: 'full' }
 ]
 
 @NgModule({
