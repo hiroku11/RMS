@@ -1,0 +1,40 @@
+<div class="row pr-1 pb-3 pt-3 zero-margin">
+    <div class="col-3" style="vertical-align:middle">
+        <img src="./assets/images/logo.png" alt="gotorisk.co.uk" class="user-image" />
+    </div>
+    <div class="col-6" style="vertical-align:middle;">
+        <span>{{userDetails.roles[0].roleName}}</span>
+        <br>
+        <span class="fa fa-circle text-success"> Online</span>
+    </div>
+    <div class="col-3">
+        <button class="btn float-right btn-info btn-sm" style="vertical-align:middle" (click)="logOut()">
+            <span class="fa fa-power-off "></span>
+        </button>
+
+    </div>
+</div>
+<div class="navbar">
+    <ul>
+        <li [ngClass]="{active:thisView=='profile'}">
+            <a [routerLink]="['/myprofile/profile']" title="">
+                <i class="fa fa-tasks"></i> Profile
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='update-password'}" *ngIf="isAdmin">
+            <a [routerLink]="['/myprofile/update-password']" title="">
+                <i class="fa fa-lock"></i> Update Password
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='my-addresses'}">
+            <a [routerLink]="['/myprofile/my-addresses']" title="">
+                <i class="fa fa-users"></i> My Addresses
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='office-address'}">
+            <a [routerLink]="['/myprofile/office-address']" title="">
+                <i class="fa fa-user"></i> Office Address
+            </a>
+        </li>
+    </ul>
+</div>
