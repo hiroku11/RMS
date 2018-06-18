@@ -1,51 +1,56 @@
 <div class="row login-form zero-margin">
-  <div class="col-sm-8 col-md-4">
-      <div class="card">
-          <div class="card-header text-center">
-              <h3 class=""> Sign in </h3>
-          </div>
-          <div class="card-body">
-              <form role="form" (submit)="loginUser()">
-                  <fieldset>
-                      <div class="row pb-1">
-                          <div class="center-block">
-                              <img class="logo-img" src="./assets/images/logo@0_5x.png" />
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-sm-12 col-md-10  col-md-offset-1 center-block">
-                              <div class="form-group">
+    <div class="col-sm-8 col-md-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 class=""> Sign in </h3>
+            </div>
+            <div class="card-body">
+                <form role="form" (submit)="loginUser()">
+                    <fieldset>
+                        <div class="row pb-3">
+                            <div class="center-block">
+                                <img class="logo-img" src="./assets/images/logo0.5.jpg" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10  col-md-offset-1 center-block">
+                                <div class="form-group">
 
-                                  <div class="input-group">
-                                      <div class="input-group-prepend">
-                                          <span class="input-group-text fa fa-user"></span>
-                                      </div>
-                                      <input class="form-control" [(ngModel)]="login.username" placeholder="Username" name="loginname" type="text" required autofocus>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <div class="input-group-prepend">
-                                          <span class="input-group-text fa fa-lock"></span>
-                                      </div>
-                                      <input class="form-control" [(ngModel)]="login.password" placeholder="Password" name="password" type="password" required
-                                          value="">
-                                  </div>
-                              </div>
-                              <div class="form-group text-danger" *ngIf="signInError">
-                                  *Incorrect Username or Password
-                              </div>
-                              <div class="form-group">
-                                  <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-                              </div>
-                          </div>
-                      </div>
-                  </fieldset>
-              </form>
-          </div>
-          <!--<div class="panel-footer ">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text fa fa-user"></span>
+                                        </div>
+                                        <input class="form-control" [(ngModel)]="login.username" placeholder="Username" name="loginname" type="text" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text fa fa-lock"></span>
+                                        </div>
+                                        <input class="form-control" [(ngModel)]="login.password" placeholder="Password" name="password" type="password" required
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="form-group text-danger" *ngIf="signInError">
+                                    *Incorrect Username or Password
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <a [routerLink]="['password-reset']">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="panel-footer ">
             Don't have an account! <a href="#/login"> Sign Up Here </a>
         </div>-->
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
