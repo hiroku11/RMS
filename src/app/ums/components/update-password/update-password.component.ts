@@ -1,3 +1,5 @@
+import { AlertsLoaderService } from './../../../services/alerts-loader.service';
+import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-password.component.scss']
 })
 export class UpdatePasswordComponent implements OnInit {
+  password = {
+    oldPassword: '',
+    newPassword: '',
+    reConfirmNewPassword: ''
+  };
 
-  constructor() { }
+  constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
+  }
+
+  updatePassword() {
+    this.api.put(`/user/update-user-password`, this.password).subscribe(
+      (data) => {
+        this.alert.success('Password successfully updated');
+      }, (error) => {
+        this.alert.error(error);
+      }
+    )
+
+  }
+
+  clear() {
+    this.password = {
+      oldPassword: '',
+      newPassword: '',
+      reConfirmNewPassword: ''
+    };
   }
 
 }
