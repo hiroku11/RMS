@@ -8,55 +8,14 @@
         <div class="sm-navbar-container hidden-lg">
             <span style="font-size:20px" data-elem="smallMenu" class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
-        <!-- <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
-              <li ng-class="{active:thisView=='dashboard'}" data-elem ="smallMenu" ng-if="isAdminRole">
-                  <a ui-sref="dashboard" title="" data-elem ="smallMenu">
-                      <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
-              </a>
-              </li>
-              <li ng-class="{active:thisView=='incidents'}" >
-                  <a ui-sref="incidents" title="" data-elem ="smallMenu">
-                      <i class="glyphicon glyphicon-time menu-icon"></i> Incidents
-                  </a>
-              </li>
-              <li ng-class="{active:thisView=='claims'}" data-elem ="smallMenu">
-                  <a ui-sref="claims" title="" data-elem ="smallMenu">
-                      <i class="glyphicon glyphicon-gift menu-icon"></i> Claims
-                  </a>
-              </li>
-              <li ng-class="{active:thisView=='investigations'}" data-elem ="smallMenu">
-                  <a ui-sref="investigations" title="" data-elem ="smallMenu">
-                      <i class="glyphicon glyphicon-search menu-icon"></i> Investigations
-                  </a>
-              </li>
-              <li data-elem ="smallMenu" ng-class="{active:thisView=='user' || thisView=='roles'}">
-                  <a data-toggle="collapse" data-target="#submenu-1" title="" data-elem ="smallMenu">
-                      <i class="glyphicon glyphicon-user menu-icon"></i> User Administration
-                      <i class="glyphicon glyphicon-menu-right pull-right"></i>
-                  </a>
-          
-                  <ul id="submenu-1" class="collapse">
-                      <li ng-class="{active:thisView=='user'}" data-elem ="smallMenu">
-                          <a ui-sref="users" title="" data-elem ="smallMenu">
-                              User
-                          </a>
-                      </li>
-                      <li ng-class="{active:thisView=='roles'}" data-elem ="smallMenu">
-                          <a ui-sref="roles" title="" data-elem ="smallMenu">
-                              Roles
-                          </a>
-                      </li>
-                  </ul>
-              </li>
-          </ul> -->
     </div>
     <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="userDetails">
         <h4 class="welcome">Welcome {{userDetails?.firstName}} {{userDetails?.lastName==null?"":userDetails?.lastName}}</h4>
     </div>
     <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="!userDetails">
-            <h4 class="welcome">Welcome to Risk Management System</h4>
-        </div>
-    <div class="col-lg-4 col-sm-12" *ngIf="userDetails">
+        <h4 class="welcome">Welcome to Risk Management System</h4>
+    </div>
+    <div class="col-lg-4 col-sm-12" *ngIf="userDetails" style="cursor: pointer;">
         <div class="text-right pt-2">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -64,32 +23,11 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" [routerLink]="['/home']">Home</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/']">Profile</a>
+                    <a class="dropdown-item" [routerLink]="['/ums']">Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" (click)="logOut()">Logout</a>
                 </div>
             </div>
-            <!-- | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->
         </div>
-        <!-- <div class="user-details">
-          <span class="user-circle">
-              <i class="glyphicon glyphicon-user"></i>
-          </span> Logged in as <a href="" id="user">{{loggedInUser.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a>
-      </div> -->
     </div>
 </div>
-<!-- <script>
-    $(document).on("click",function(event){
-        //event.preventDefault();
-        event.stopPropagation();
-        let $elm= $(event.target);
-        if( $elm.data("elem") != "smallMenu"){
-            var scope = angular.element($(".sm-navbar")).scope();
-            if(typeof scope !=="undefined"){
-                scope.showMenu = false;
-                scope.$apply();
-            }
-        }
-        
-    })
-  </script> -->
