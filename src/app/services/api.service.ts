@@ -193,4 +193,19 @@ export class ApiService {
         return this.put(url, data);
     }
 
+    passwordReset(url: any) {
+        this._ajaxLoader.showLoader();
+        return this._http
+            .put(this.loginApi + url, {}, { headers: {} })
+            .map((res: any) => {
+                res = this.parseDate(res);
+                this._ajaxLoader.hideLoader();
+                return res;
+            })
+            .catch((error: HttpErrorResponse) => {
+                this._ajaxLoader.hideLoader();
+                return Observable.throw(error);
+            });
+    }
+
 }

@@ -1,3 +1,4 @@
+import { PasswordResetComponent } from './core.components.module/component/password-reset/password-reset.component';
 import { GiveFeedbackExternalComponent } from './core.components.module/component/give-feedback-external/give-feedback-external.component';
 import { HomeComponent } from './core.components.module/component/home/home.component';
 import { UserService } from './services/user.service';
@@ -10,6 +11,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: "full" },
     { path: 'home', component: HomeComponent, pathMatch: "full" },
     { path: 'login', component: LoginComponent },
+    { path: 'password-reset', component: PasswordResetComponent },
     { path: 'give-feedback-external/:cycleId', component: GiveFeedbackExternalComponent },
     { path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule", canLoad: [UserService], canActivate: [UserService] },
