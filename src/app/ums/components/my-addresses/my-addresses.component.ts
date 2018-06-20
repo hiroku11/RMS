@@ -61,7 +61,6 @@ export class MyAddressesComponent implements OnInit {
   }
 
   addAddress() {
-    // /address/create-address
     this.api.post(`/address/create-address`, this.newAddress, false).subscribe(
       (data) => {
         this.alert.success('New address added successfully');
@@ -70,7 +69,7 @@ export class MyAddressesComponent implements OnInit {
       }, (error) => {
         this.alert.error(error);
       }
-    )
+    );
 
   }
 

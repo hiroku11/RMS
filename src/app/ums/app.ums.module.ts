@@ -1,3 +1,7 @@
+import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
+import { DepartmentListComponent } from './components/department/department-list/department-list.component';
+import { PaginationModule } from 'ngx-pagination-bootstrap';
+import { AddOrganizationComponent } from './components/organization/add-organization/add-organization.component';
 import { ManagerLookupComponent } from './components/manager-lookup/manager-lookup.component';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
@@ -19,6 +23,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyProfileRoutingModule } from './ums.routing.module';
 import { CoreComponentsModule } from '../core.components.module/core.components.module';
+import { OrganizationListComponent } from './components/organization/organization-list/organization-list.component';
 
 const MY_MOMENT_FORMATS = {
   parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -30,12 +35,15 @@ const MY_MOMENT_FORMATS = {
 };
 @NgModule({
   imports: [
-    CommonModule, FormsModule, MyProfileRoutingModule, CoreComponentsModule, OwlDateTimeModule, OwlMomentDateTimeModule
+    CommonModule, FormsModule, MyProfileRoutingModule, CoreComponentsModule,
+    OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule
   ],
   entryComponents: [],
   declarations: [ProfileComponent, SmMenuComponent, SideNavComponent, OfficeAddressComponent,
-    MyAddressesComponent, UpdatePasswordComponent, DepartmentComponent, OrganizationComponent, ManageTeamsComponent
-    , ManageUsersComponent, RolesComponent, ReportsComponent, ManageTemplatesComponent, ManagerLookupComponent],
+    MyAddressesComponent, UpdatePasswordComponent, DepartmentComponent, OrganizationComponent,
+    ManageTeamsComponent, OrganizationListComponent, ManageUsersComponent, RolesComponent,
+    AddOrganizationComponent, ReportsComponent, ManageTemplatesComponent, ManagerLookupComponent,
+    DepartmentListComponent, AddDepartmentComponent],
   providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })
 export class UmsModule { }

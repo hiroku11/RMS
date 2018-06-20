@@ -15,64 +15,71 @@
     </div>
     <div *ngFor="let add of userAddresses;let ind = index">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Organization Name (if any)</label>
           <input [(ngModel)]="add.organizationName" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Block #/Name</label>
           <input [(ngModel)]="add.blockNumber" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Building Name</label>
           <input [(ngModel)]="add.buildingName" type="text" class="form-control">
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 row m-0 ">
-          <div class="col-sm-6 p-0">
+        <div class="col-md-4 col-sm-12 row m-0 ">
+          <div class="col-sm-4 p-0">
             <label>Post Code 1</label>
             <input [(ngModel)]="add.postcode1" type="text" class="form-control">
           </div>
-          <div class="col-sm-6 p-0">
+          <div class="col-sm-4 p-0">
             <label>Post Code 2</label>
             <input [(ngModel)]="add.postcode2" type="text" class="form-control">
           </div>
+          <div class="col-sm-4 pt-2 pl-0">
+            <label class="p-1"></label>
+            <button class="btn btn-primary d-block">
+              <span class="fa fa-search"> Lookup</span>
+            </button>
+
+          </div>
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Locality Name</label>
           <input [(ngModel)]="add.localityName" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>City</label>
           <input [(ngModel)]="add.city" type="text" class="form-control">
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Door #</label>
           <input [(ngModel)]="add.doorNumber" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Apartment #/Name</label>
           <input [(ngModel)]="add.apartmentNumber" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Street Name</label>
           <input [(ngModel)]="add.streetName" type="text" class="form-control">
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Post Town</label>
           <input [(ngModel)]="add.postTown" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>County</label>
           <input [(ngModel)]="add.county" type="text" class="form-control">
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-12">
           <label>Country</label>
           <input [(ngModel)]="add.country" type="text" class="form-control">
         </div>
@@ -87,64 +94,70 @@
 
     <hr>
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Organization Name (if any)</label>
         <input [(ngModel)]="newAddress.organizationName" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Block #/Name</label>
         <input [(ngModel)]="newAddress.blockNumber" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Building Name</label>
         <input [(ngModel)]="newAddress.buildingName" type="text" class="form-control">
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 row m-0">
-        <div class="col-sm-6 p-0">
+      <div class="col-md-4 col-sm-12 row m-0">
+        <div class="col-sm-4 p-0">
           <label>Post Code 1</label>
           <input [(ngModel)]="newAddress.postcode1" type="text" class="form-control">
         </div>
-        <div class="col-sm-6 p-0">
+        <div class="col-sm-4 p-0">
           <label>Post Code 2</label>
           <input [(ngModel)]="newAddress.postcode2" type="text" class="form-control">
         </div>
+        <div class="col-sm-4 pt-2 pl-0">
+          <label class="p-1"></label>
+          <button class="btn btn-primary d-block">
+            <span class="fa fa-search"> Lookup</span>
+          </button>
 
+        </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Locality Name</label>
         <input [(ngModel)]="newAddress.localityName" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>City</label>
         <input [(ngModel)]="newAddress.city" type="text" class="form-control">
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Door #</label>
         <input [(ngModel)]="newAddress.doorNumber" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Apartment #/Name</label>
         <input [(ngModel)]="newAddress.apartmentNumber" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Street Name</label>
         <input [(ngModel)]="newAddress.streetName" type="text" class="form-control">
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Post Town</label>
         <input [(ngModel)]="newAddress.postTown" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>County</label>
         <input [(ngModel)]="newAddress.county" type="text" class="form-control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-12">
         <label>Country</label>
         <input [(ngModel)]="newAddress.country" type="text" class="form-control">
       </div>

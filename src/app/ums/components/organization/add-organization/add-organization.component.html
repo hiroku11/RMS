@@ -1,0 +1,150 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> Add Organiation
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Code</label>
+    <input [(ngModel)]="organization.id" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Name</label>
+    <input [(ngModel)]="organization.name" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Location</label>
+    <input [(ngModel)]="organization.location" type="text" class="form-control">
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Sub Group Org</label>
+    <select [(ngModel)]="organization.subOrganization" class="form-control">
+      <option value="null"></option>
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Total Employees</label>
+    <input [(ngModel)]="organization.totalEmployees" type="number" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Email</label>
+    <input [(ngModel)]="organization.email" type="email" class="form-control">
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Phone</label>
+    <input [(ngModel)]="organization.phone" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Alternate Phone</label>
+    <input [(ngModel)]="organization.alternatePhone" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Fax</label>
+    <input [(ngModel)]="organization.fax" type="text" class="form-control">
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Website</label>
+    <input [(ngModel)]="organization.website" type="url" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Is Active</label>
+    <select [(ngModel)]="organization.statusFlag" class="form-control">
+      <option value="null"></option>
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+  </div>
+</div>
+<h5 class="pb-2 pt-2">Organization Address</h5>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Name (if any)</label>
+    <input [(ngModel)]="address.organizationName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Block #/Name</label>
+    <input [(ngModel)]="address.blockNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Building Name</label>
+    <input [(ngModel)]="address.buildingName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 row m-0 ">
+    <div class="col-sm-4 p-0">
+      <label>Post Code 1</label>
+      <input [(ngModel)]="address.postcode1" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 p-0">
+      <label>Post Code 2</label>
+      <input [(ngModel)]="address.postcode2" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Locality Name</label>
+    <input [(ngModel)]="address.localityName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>City</label>
+    <input [(ngModel)]="address.city" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Door #</label>
+    <input [(ngModel)]="address.doorNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Apartment #/Name</label>
+    <input [(ngModel)]="address.apartmentNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Street Name</label>
+    <input [(ngModel)]="address.streetName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Post Town</label>
+    <input [(ngModel)]="address.postTown" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>County</label>
+    <input [(ngModel)]="address.county" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Country</label>
+    <input [(ngModel)]="address.country" type="text" class="form-control">
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-sm-12">
+    <button class="btn btn-primary " (click)="addOrganization()" *ngIf="!editMode">Add</button>
+    <button class="btn btn-primary " (click)="updateOrganization()" *ngIf="editMode">Update</button>
+  </div>
+</div>
