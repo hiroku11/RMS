@@ -145,7 +145,7 @@ export class ApiService {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
                 continue;
             }
-            if (key.indexOf("Date") > -1 && payload[key]) {
+            if ((key.indexOf("Date") > -1 || key.indexOf('dateOf') > -1) && payload[key]) {
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY").toString();
                 continue;
             }
@@ -167,7 +167,7 @@ export class ApiService {
                     this.parseDate(element);
                 });
             }
-            if (key.indexOf("Date") > -1 && response[key]) {
+            if ((key.indexOf("Date") > -1 || key.indexOf('dateOf') > -1) && response[key]) {
                 response[key] = moment(response[key], "DD/MM/YYYY HH:mm:ss").toDate();
             }
         }

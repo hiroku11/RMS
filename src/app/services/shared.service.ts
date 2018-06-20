@@ -8,7 +8,7 @@ export class SharedService {
     public activeView: string;
     public dropDownsData: any = {};
     public cmsDropDownsData: any = {};
-    public pmsDropDownnsData:any ={};
+    public pmsDropDownnsData: any = {};
     public conditionalTabs: [
 
         {
@@ -41,12 +41,12 @@ export class SharedService {
         this.getAllDropdownData();
 
     }
-  selectCompareFunction(item1: any, item2: any) {
-    if (item1 == null || item2 == null) {
-      return false;
+    selectCompareFunction(item1: any, item2: any) {
+        if (item1 == null || item2 == null) {
+            return false;
+        }
+        return item1.id == item2.id;
     }
-    return item1.id == item2.id;
-  }
     getTabstoShow(tabConditions: any) {
         const tabs = JSON.parse(JSON.stringify(this.tabs));
         if (tabConditions.amcPresent == "Y") {
@@ -106,6 +106,8 @@ export class SharedService {
         this.getDepartmentList();
         this.getOrganizationsList();
         this.getAssetType();
+        this.getGenderTypes();
+        this.getEmployeeTypes();
     }
 
     getOrganizationsList() {
@@ -279,123 +281,151 @@ export class SharedService {
             );
     }
 
-    getCmsDocumentStatuses(){
+    getCmsDocumentStatuses() {
         this._apiService
-        .get("/table-maintenance/document-status/document-statuses")
-        .subscribe(
-            (data) => {
-                this.cmsDropDownsData.documentStatuses = data;
-                this.propagateNewCmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/document-status/document-statuses")
+            .subscribe(
+                (data) => {
+                    this.cmsDropDownsData.documentStatuses = data;
+                    this.propagateNewCmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
 
-    getCmsDocumentClassifications(){
+    getCmsDocumentClassifications() {
         this._apiService
-        .get("/table-maintenance/document-classification/document-classifications")
-        .subscribe(
-            (data) => {
-                this.cmsDropDownsData.documentClassifications = data;
-                this.propagateNewCmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/document-classification/document-classifications")
+            .subscribe(
+                (data) => {
+                    this.cmsDropDownsData.documentClassifications = data;
+                    this.propagateNewCmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
 
-    getCmsDocumentApprovalLevels(){
+    getCmsDocumentApprovalLevels() {
         this._apiService
-        .get("/table-maintenance/approval-level/approval-levels")
-        .subscribe(
-            (data) => {
-                this.cmsDropDownsData.approvalLevels = data;
-                this.propagateNewCmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/approval-level/approval-levels")
+            .subscribe(
+                (data) => {
+                    this.cmsDropDownsData.approvalLevels = data;
+                    this.propagateNewCmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
 
-    getCmsDocumentVersionStatuses(){
+    getCmsDocumentVersionStatuses() {
         this._apiService
-        .get("/table-maintenance/document-history-status/document-history-statuses")
-        .subscribe(
-            (data) => {
-                this.cmsDropDownsData.versionStatuses = data;
-                this.propagateNewCmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/document-history-status/document-history-statuses")
+            .subscribe(
+                (data) => {
+                    this.cmsDropDownsData.versionStatuses = data;
+                    this.propagateNewCmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
 
-    getCmsDropdownsData(){
+    getCmsDropdownsData() {
         this.getCmsDocumentApprovalLevels();
         this.getCmsDocumentClassifications();
         this.getCmsDocumentStatuses();
         this.getCmsDocumentVersionStatuses();
         this.getDepartmentList();
     }
-    
+
     propagateNewData() {
         this.dropDownsService.next(this.dropDownsData);
     }
-    propagateNewCmsData(){
+    propagateNewCmsData() {
         this.cmsDropDownsService.next(this.cmsDropDownsData);
     }
-    propagateNewPmsData(){
+    propagateNewPmsData() {
         this.pmsDropDownService.next(this.pmsDropDownnsData);
     }
-   
-    getPmsCategory(){
+
+    getPmsCategory() {
         this._apiService
-        .get("/table-maintenance/goal-category/goal-categories")
-        .subscribe(
-            (data) => {
-                this.pmsDropDownnsData.category = data;
-                this.propagateNewPmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/goal-category/goal-categories")
+            .subscribe(
+                (data) => {
+                    this.pmsDropDownnsData.category = data;
+                    this.propagateNewPmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
-    getPmsRating(){
+    getPmsRating() {
         this._apiService
-        .get("/table-maintenance/performance-rating/performance-ratings")
-        .subscribe(
-            (data) => {
-                this.pmsDropDownnsData.rating = data;
-                this.propagateNewPmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/performance-rating/performance-ratings")
+            .subscribe(
+                (data) => {
+                    this.pmsDropDownnsData.rating = data;
+                    this.propagateNewPmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
-    getPmsCycleStauts(){
+    getPmsCycleStauts() {
         this._apiService
-        .get("/table-maintenance/performance-cycle-status/performance-cycle-statuses")
-        .subscribe(
-            (data) => {
-                this.pmsDropDownnsData.status = data;
-                this.propagateNewPmsData();
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            .get("/table-maintenance/performance-cycle-status/performance-cycle-statuses")
+            .subscribe(
+                (data) => {
+                    this.pmsDropDownnsData.status = data;
+                    this.propagateNewPmsData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
     }
-    getPmsDropdownsData(){
-         this.getPmsCategory();
-         this.getPmsCycleStauts();
-         this.getPmsRating();
+    getPmsDropdownsData() {
+        this.getPmsCategory();
+        this.getPmsCycleStauts();
+        this.getPmsRating();
     }
 
+    getGenderTypes() {
+        this._apiService
+            .get("/table-maintenance/gender-type/gender-types")
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.genderTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
+
+    getEmployeeTypes() {
+        ///
+        this._apiService
+            .get("/table-maintenance/employee-type/employee-types")
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.employeeTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
 }
