@@ -1,3 +1,6 @@
+import { ManagerLookupComponent } from './components/manager-lookup/manager-lookup.component';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
+import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { ManageTemplatesComponent } from './components/manage-templates/manage-templates.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { RolesComponent } from './components/roles/roles.component';
@@ -17,14 +20,22 @@ import { CommonModule } from '@angular/common';
 import { MyProfileRoutingModule } from './ums.routing.module';
 import { CoreComponentsModule } from '../core.components.module/core.components.module';
 
+const MY_MOMENT_FORMATS = {
+  parseInput: 'DD/MM/YYYY HH:mm:ss',
+  fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
+  datePickerInput: 'DD/MM/YYYY',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM YYYY',
+};
 @NgModule({
   imports: [
-    CommonModule, FormsModule, MyProfileRoutingModule, CoreComponentsModule
+    CommonModule, FormsModule, MyProfileRoutingModule, CoreComponentsModule, OwlDateTimeModule, OwlMomentDateTimeModule
   ],
   entryComponents: [],
   declarations: [ProfileComponent, SmMenuComponent, SideNavComponent, OfficeAddressComponent,
     MyAddressesComponent, UpdatePasswordComponent, DepartmentComponent, OrganizationComponent, ManageTeamsComponent
-  , ManageUsersComponent, RolesComponent, ReportsComponent, ManageTemplatesComponent],
-  providers: [],
+    , ManageUsersComponent, RolesComponent, ReportsComponent, ManageTemplatesComponent, ManagerLookupComponent],
+  providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })
 export class UmsModule { }

@@ -16,87 +16,101 @@
     <div class="row">
       <div class="col-sm-4">
         <label>LoginId</label>
-        <input type="text" class="form-control" readonly>
+        <input [(ngModel)]="userDetails.loginId" type="text" class="form-control" readonly>
       </div>
       <div class="col-sm-4">
         <label>Title</label>
-        <input type="text" class="form-control">
+        <input [(ngModel)]="userDetails.title" type="text" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>First Name</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.firstName" class="form-control">
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <label>Middle Name</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.middleName" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Last Name</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.lastName" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Name Suffix</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.nameSuffix" class="form-control">
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <label>Gender</label>
-        <input type="text" class="form-control">
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.genderType" class="form-control">
+          <option></option>
+          <option [ngValue]="gen" *ngFor="let gen of dropdownsData.genderTypes">{{gen.description}}</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <label>Gender Other</label>
+        <input type="number" [disabled]="userDetails.genderType.id != 'OTHER'" [(ngModel)]="userDetails.genderTypeOther" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Age</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-sm-4">
-        <label>Date of Birth</label>
-        <input type="text" class="form-control">
+        <input type="number" [(ngModel)]="userDetails.age" class="form-control">
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
+        <label>Date of Birth</label>
+        <input type="text" [(ngModel)]="userDetails.dateOfBirth" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      </div>
+      <div class="col-sm-4">
         <label>Phone</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.phone" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Alternate Phone</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.alternatePhone" class="form-control">
       </div>
-      <div class="col-sm-4">
-        <label>Fax</label>
-        <input type="text" class="form-control">
-      </div>
+
     </div>
     <div class="row">
       <div class="col-sm-4">
+        <label>Fax</label>
+        <input type="text" [(ngModel)]="userDetails.fax" class="form-control">
+      </div>
+      <div class="col-sm-4">
         <label>Email</label>
-        <input type="text" class="form-control">
+        <input type="email" [(ngModel)]="userDetails.email" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Employee ID</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.employeeId" class="form-control">
       </div>
-      <div class="col-sm-4">
-        <label>Date of Joining</label>
-        <input type="text" class="form-control">
-      </div>
+
     </div>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
+        <label>Date of Joining</label>
+        <input type="text" [(ngModel)]="userDetails.dateOfJoining" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" class="form-control">
+        <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+      </div>
+      <div class="col-sm-4">
         <label>Designation/Position</label>
         <input type="text" class="form-control">
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <label>Department</label>
-        <input type="text" class="form-control">
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.department" class="form-control">
+          <option></option>
+          <option [ngValue]="dep" *ngFor="let dep of dropdownsData.departmentList">{{dep.description}}</option>
+        </select>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <label>Manager(Level 1)</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.manager.fullName" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Manager(Level 2)</label>
@@ -111,17 +125,20 @@
     <div class="row">
       <div class="col-sm-6">
         <label>Employee Type</label>
-        <input type="text" class="form-control">
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.employeeType" class="form-control">
+          <option></option>
+          <option [ngValue]="emp" *ngFor="let emp of dropdownsData.employeeTypes">{{emp.description}}</option>
+        </select>
       </div>
       <div class="col-sm-6">
         <label>Certification</label>
-        <input type="text" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.certification" class="form-control">
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 pt-3">
-        <button class="btn btn-primary ">Save</button>
-        <button class="btn btn-secondary float-right">Reset</button>
+        <button class="btn btn-primary " (click)="updateProfile()">Save</button>
+        <button (click)="reset()" class="btn btn-secondary float-right">Reset</button>
       </div>
     </div>
 
