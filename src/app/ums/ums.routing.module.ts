@@ -1,3 +1,6 @@
+import { ManageTeamsComponent } from './components/manage-teams/manage-teams.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { RolesComponent } from './components/roles/roles.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { DepartmentListComponent } from './components/department/department-list/department-list.component';
 import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
@@ -38,11 +41,20 @@ const myProfileRoutes: Routes = [
 
         ]
     },
-    { path: 'roles', component: OfficeAddressComponent, pathMatch: 'full' },
-    { path: 'manage-users', component: OfficeAddressComponent, pathMatch: 'full' },
-    { path: 'import-users', component: OfficeAddressComponent, pathMatch: 'full' },
-    { path: 'investigation-teams', component: OfficeAddressComponent, pathMatch: 'full' },
-    { path: 'admin-teams', component: OfficeAddressComponent, pathMatch: 'full' },
+    {
+        path: 'roles', component: RolesComponent, children: [
+            { path: '', component: DepartmentListComponent, pathMatch: 'full' },
+            { path: 'add-role', component: AddDepartmentComponent, pathMatch: 'full' },
+            { path: 'edit-role/:id', component: AddDepartmentComponent, pathMatch: 'full' },
+        ]
+    },
+    { path: 'manage-users', component: ManageUsersComponent, pathMatch: 'full' },
+    {
+        path: 'manage-teams', component: ManageTeamsComponent, children: [
+            { path: 'investigation-teams', component: OfficeAddressComponent, pathMatch: 'full' },
+            { path: 'admin-teams', component: OfficeAddressComponent, pathMatch: 'full' },
+        ]
+    },
     { path: 'manage-templates', component: OfficeAddressComponent, pathMatch: 'full' },
     { path: 'reports', component: OfficeAddressComponent, pathMatch: 'full' }
 ]
