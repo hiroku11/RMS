@@ -26,23 +26,59 @@
       </div>
     </li>
     <li [ngClass]="{active:thisView=='profile'}">
-      <a [routerLink]="['/myprofile/profile']" title="">
-        <i class="fa fa-tasks"></i> Profile
+      <a [routerLink]="['/ums/profile']" title="">
+        <i class="fa fa-user-circle-o"></i> Profile
       </a>
     </li>
-    <li [ngClass]="{active:thisView=='update-password'}" *ngIf="isAdmin">
-      <a [routerLink]="['/myprofile/update-password']" title="">
+    <li [ngClass]="{active:thisView=='update-password'}">
+      <a [routerLink]="['/ums/update-password']" title="">
         <i class="fa fa-lock"></i> Update Password
       </a>
     </li>
-    <li [ngClass]="{active:thisView=='my-addresses'}" *ngIf="isSupervisor">
-      <a [routerLink]="['/myprofile/my-addresses']" title="">
-        <i class="fa fa-users"></i> My Addresses
+    <li [ngClass]="{active:thisView=='my-addresses'}">
+      <a [routerLink]="['/ums/my-addresses']" title="">
+        <i class="fa fa-address-book"></i> My Addresses
       </a>
     </li>
     <li [ngClass]="{active:thisView=='office-address'}">
-      <a [routerLink]="['/myprofile/office-address']" title="">
-        <i class="fa fa-user"></i> Office Address
+      <a [routerLink]="['/ums/office-address']" title="">
+        <i class="fa fa-address-book-o"></i> Office Address
+      </a>
+    </li>
+
+    <li [ngClass]="{active:thisView=='organization'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/organization']" title="">
+        <i class="fa fa-address-book-o"></i> Organization
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='department'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/department']" title="">
+        <i class="fa fa-address-book-o"></i> Department
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='roles'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/roles']" title="">
+        <i class="fa fa-address-book-o"></i> Roles
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='manage-users'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/manage-users']" title="">
+        <i class="fa fa-address-book-o"></i> Manage Users
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='manage-teams'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/manage-teams']" title="">
+        <i class="fa fa-address-book-o"></i> Manage Teams
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='manage-templates'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/manage-templates']" title="">
+        <i class="fa fa-address-book-o"></i> Manage Templates
+      </a>
+    </li>
+    <li [ngClass]="{active:thisView=='reports'}" *ngIf="isSupervisor">
+      <a [routerLink]="['/ums/reports']" title="">
+        <i class="fa fa-address-book-o"></i> Reports
       </a>
     </li>
   </ul>
