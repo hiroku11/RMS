@@ -1,0 +1,302 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-users"></span> {{editMode?'Update':'Add'}} User
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>LoginId</label>
+    <input [(ngModel)]="userDetails.loginId" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Title</label>
+    <input [(ngModel)]="userDetails.title" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>First Name</label>
+    <input type="text" [(ngModel)]="userDetails.firstName" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Middle Name</label>
+    <input type="text" [(ngModel)]="userDetails.middleName" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Last Name</label>
+    <input type="text" [(ngModel)]="userDetails.lastName" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Name Suffix</label>
+    <input type="text" [(ngModel)]="userDetails.nameSuffix" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Gender</label>
+    <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.genderType" class="form-control">
+      <option value="null"></option>
+      <option [ngValue]="gen" *ngFor="let gen of dropdownsData.genderTypes">{{gen.description}}</option>
+    </select>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Gender Other</label>
+    <input type="number" [disabled]="(userDetails.genderType && userDetails.genderType.id != 'OTHER') || userDetails.genderType === null" [(ngModel)]="userDetails.genderTypeOther" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Age</label>
+    <input type="number" [(ngModel)]="userDetails.age" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Date of Birth</label>
+    <input type="text" [(ngModel)]="userDetails.dateOfBirth" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Phone</label>
+    <input type="text" [(ngModel)]="userDetails.phone" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Alternate Phone</label>
+    <input type="text" [(ngModel)]="userDetails.alternatePhone" class="form-control">
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Fax</label>
+    <input type="text" [(ngModel)]="userDetails.fax" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="userDetails.email" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Employee ID</label>
+    <input type="text" [(ngModel)]="userDetails.employeeId" class="form-control">
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Date of Joining</label>
+    <input type="text" [(ngModel)]="userDetails.dateOfJoining" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" class="form-control">
+    <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Designation/Position</label>
+    <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.position" class="form-control">
+      <option value="null"></option>
+      <option [ngValue]="pos" *ngFor="let pos of dropdownsData.positionsList">{{pos.description}}</option>
+    </select>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Department</label>
+    <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.department" class="form-control">
+      <option value="null"></option>
+      <option [ngValue]="dep" *ngFor="let dep of dropdownsData.departmentList">{{dep.description}}</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Manager(Level 1)</label>
+    <input type="text" [(ngModel)]="userDetails.manager.fullName" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Manager(Level 2)</label>
+    <input type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Manager(Level 3)</label>
+    <input type="text" class="form-control">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Employee Type</label>
+    <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.employeeType" class="form-control">
+      <option></option>
+      <option [ngValue]="emp" *ngFor="let emp of dropdownsData.employeeTypes">{{emp.description}}</option>
+    </select>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Certification</label>
+    <input type="text" [(ngModel)]="userDetails.certification" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Threshold</label>
+    <input type="number" [(ngModel)]="userDetails.threshold" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <label>Roles</label>
+    <ngx-select-dropdown [options]="dropdownsData.rolesList" [multiple]="true" [config]="{displayKey:'roleDescription'}" [(value)]="userDetails.roles"></ngx-select-dropdown>
+  </div>
+</div>
+
+
+<h5 class="pb-2 pt-2">Residential Address
+</h5>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Name (if any)</label>
+    <input [(ngModel)]="userDetails.addresses[0].organizationName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Block #/Name</label>
+    <input [(ngModel)]="userDetails.addresses[0].blockNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Building Name</label>
+    <input [(ngModel)]="userDetails.addresses[0].buildingName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 row m-0 ">
+    <div class="col-sm-4 p-0">
+      <label>Post Code 1</label>
+      <input [(ngModel)]="userDetails.addresses[0].postcode1" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 p-0">
+      <label>Post Code 2</label>
+      <input [(ngModel)]="userDetails.addresses[0].postcode2" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Locality Name</label>
+    <input [(ngModel)]="userDetails.addresses[0].localityName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>City</label>
+    <input [(ngModel)]="userDetails.addresses[0].city" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Door #</label>
+    <input [(ngModel)]="userDetails.addresses[0].doorNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Apartment #/Name</label>
+    <input [(ngModel)]="userDetails.addresses[0].apartmentNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Street Name</label>
+    <input [(ngModel)]="userDetails.addresses[0].streetName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Post Town</label>
+    <input [(ngModel)]="userDetails.addresses[0].postTown" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>County</label>
+    <input [(ngModel)]="userDetails.addresses[0].county" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Country</label>
+    <input [(ngModel)]="userDetails.addresses[0].country" type="text" class="form-control">
+  </div>
+</div>
+
+<h5 class="pb-2 pt-2">Office Address |
+  <button class="btn btn-primary btn-sm">
+    <span class="fa fa-search"> Lookup</span>
+  </button>
+</h5>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Name (if any)</label>
+    <input [(ngModel)]="userDetails.officeAddress.organizationName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Block #/Name</label>
+    <input [(ngModel)]="userDetails.officeAddress.blockNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Building Name</label>
+    <input [(ngModel)]="userDetails.officeAddress.buildingName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 row m-0 ">
+    <div class="col-sm-4 p-0">
+      <label>Post Code 1</label>
+      <input [(ngModel)]="userDetails.officeAddress.postcode1" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 p-0">
+      <label>Post Code 2</label>
+      <input [(ngModel)]="userDetails.officeAddress.postcode2" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Locality Name</label>
+    <input [(ngModel)]="userDetails.officeAddress.localityName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>City</label>
+    <input [(ngModel)]="userDetails.officeAddress.city" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Door #</label>
+    <input [(ngModel)]="userDetails.officeAddress.doorNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Apartment #/Name</label>
+    <input [(ngModel)]="userDetails.officeAddress.apartmentNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Street Name</label>
+    <input [(ngModel)]="userDetails.officeAddress.streetName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Post Town</label>
+    <input [(ngModel)]="userDetails.officeAddress.postTown" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>County</label>
+    <input [(ngModel)]="userDetails.officeAddress.county" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Country</label>
+    <input [(ngModel)]="userDetails.officeAddress.country" type="text" class="form-control">
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" (click)="saveUser()" *ngIf="!editMode">Add</button>
+    <button class="btn btn-primary" (click)="saveUser()"  *ngIf="editMode">Update</button>
+  </div>
+
+</div>
