@@ -1,3 +1,14 @@
+import { TeamsComponent } from './components/manage-teams/teams/teams.component';
+import { ImportUsersComponent } from './components/manage-users/import-users/import-users.component';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { AddAdminTeamComponent } from './components/admin-team/add-admin-team/add-admin-team.component';
+import { AdminTeamListComponent } from './components/admin-team/admin-team-list/admin-team-list.component';
+import { AdminTeamComponent } from './components/admin-team/admin-team.component';
+import { AddInvestigationTeamtComponent } from './components/investigation-team/add-investigation-teamt/add-investigation-teamt.component';
+import { InvestigationTeamComponent } from './components/investigation-team/investigation-team.component';
+import { AddRoleComponent } from './components/roles/add-role/add-role.component';
+import { AddUserComponent } from './components/manage-users/add-user/add-user.component';
+import { UserListsComponent } from './components/manage-users/user-lists/user-lists.component';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 import { OrganizationLookupComponent } from './components/organization-lookup/organization-lookup.component';
 import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
@@ -26,6 +37,8 @@ import { MyProfileRoutingModule } from './ums.routing.module';
 import { CoreComponentsModule } from '../core.components.module/core.components.module';
 import { OrganizationListComponent } from './components/organization/organization-list/organization-list.component';
 import { OfficeAddressLookupComponent } from './components/office-address-lookup/office-address-lookup.component';
+import { RolesListComponent } from './components/roles/roles-list/roles-list.component';
+import { InvestigationTeamListComponent } from './components/investigation-team/investigation-team-list/investigation-team-list.component';
 
 const MY_MOMENT_FORMATS = {
   parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -38,7 +51,7 @@ const MY_MOMENT_FORMATS = {
 @NgModule({
   imports: [
     CommonModule, FormsModule, MyProfileRoutingModule, CoreComponentsModule,
-    OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule
+    OwlDateTimeModule, OwlMomentDateTimeModule, PaginationModule, SelectDropDownModule
   ],
   entryComponents: [UserLookupComponent, OfficeAddressLookupComponent, OrganizationLookupComponent],
   declarations: [ProfileComponent, SmMenuComponent, SideNavComponent, OfficeAddressComponent,
@@ -46,7 +59,9 @@ const MY_MOMENT_FORMATS = {
     ManageTeamsComponent, OrganizationListComponent, ManageUsersComponent, RolesComponent,
     AddOrganizationComponent, ReportsComponent, ManageTemplatesComponent, DepartmentListComponent,
     AddDepartmentComponent, OfficeAddressLookupComponent, OrganizationLookupComponent,
-    UserLookupComponent],
+    UserLookupComponent, UserListsComponent, AddUserComponent, AddRoleComponent, ReportsComponent,
+    RolesListComponent, InvestigationTeamComponent, AddInvestigationTeamtComponent, InvestigationTeamListComponent,
+    AdminTeamComponent, AdminTeamListComponent, AddAdminTeamComponent, ImportUsersComponent, TeamsComponent],
   providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })
 export class UmsModule { }
