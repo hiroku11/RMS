@@ -23,13 +23,14 @@ export class InvestigationTeamListComponent implements OnInit {
   constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
+    this.getInvestigationTeamList();
   }
   getPageData($event: any) {
     this.searchParams.paging.currentPage = $event.pageNo - 1;
     this.searchParams.paging.pageSize = $event.pageSize;
-    this.getAdminTeamList();
+    this.getInvestigationTeamList();
   }
-  getAdminTeamList() {
+  getInvestigationTeamList() {
     this.api.get(`/investigation-team/search-investigation-teams-basic`, { Search: JSON.stringify(this.searchParams) }).subscribe(
       (data) => {
         this.itemsCount = data.totalRecords;

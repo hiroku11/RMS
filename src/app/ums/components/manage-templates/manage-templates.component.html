@@ -1,3 +1,54 @@
-<p>
-  manage-templates works!
-</p>
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'manage-templates'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'manage-templates'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 content">
+    <div class="row">
+      <div class="col-sm-12">
+        <label>Template File</label>
+        <input [disabled]="!fileDescription" (change)="fileSelected($event)" type="file" class="form-control">
+      </div>
+      <div class="col-sm-12">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="fileDescription" maxlength="256"></textarea>
+      </div>
+      <div class="col-sm-12 pb-3 pt-3">
+        <button class="btn btn-primary" (click)="addTemplate()">Add</button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Description</th>
+          <th>Added By</th>
+          <th>Added Date</th>
+          <th>Updated By</th>
+          <th>Updated Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let temp of templates;let ind = index">
+          <td>{{temp.fileName}}</td>
+          <td>{{temp.fileDescription}}</td>
+          <td>{{temp.createdBy}}</td>
+          <td>{{temp.created}}</td>
+          <td>{{temp.lastUpdatedBy}}</td>
+          <td>{{temp.lastUpdated}}</td>
+          <td>
+            <span class="btn btn-outline-success fa fa-download" (click)="downloadTemplate(temp)"></span>
+            <span class="btn btn-outline-danger fa fa-trash" (click)="deleteTemplate(temp,ind)"></span>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+  </div>
+
+</div>
