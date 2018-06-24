@@ -58,7 +58,7 @@
             </a>
         </li>
         <li [ngClass]="{active:thisView=='manage-teams'}" *ngIf="isSupervisor">
-            <a [routerLink]="['/ums/investigation-teams']" title="">
+            <a [routerLink]="['/ums/manage-teams']" title="">
                 <i class="fa fa-address-book-o"></i> Manage Teams
             </a>
         </li>
@@ -68,7 +68,7 @@
             </a>
         </li>
         <li [ngClass]="{active:thisView=='reports'}" *ngIf="isSupervisor">
-            <a [routerLink]="['/ums/manage-templates']" title="">
+            <a [routerLink]="['/ums/reports']" title="">
                 <i class="fa fa-address-book-o"></i> Reports
             </a>
         </li>

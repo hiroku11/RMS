@@ -110,7 +110,7 @@
     <div class="row">
       <div class="col-sm-4">
         <label>Manager(Level 1)</label>
-        <input type="text" [(ngModel)]="userDetails.manager.fullName" class="form-control">
+        <input type="text" [(ngModel)]="userDetails.manager && userDetails.manager.fullName" class="form-control">
       </div>
       <div class="col-sm-4">
         <label>Manager(Level 2)</label>

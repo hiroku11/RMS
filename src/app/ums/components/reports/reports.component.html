@@ -1,3 +1,29 @@
-<p>
-  reports works!
-</p>
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'reports'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'reports'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 content">
+    <ul class="row nav nav-tabs mb-2">
+      <li class="nav-item" (click)="changeTab(1)">
+        <a class="nav-link" [ngClass]="{'active': tab == 1}">Org, Dept, Role & User Dist.</a>
+      </li>
+      <li class="nav-item" (click)="changeTab(2)">
+        <a class="nav-link" [ngClass]="{'active': tab == 2}">User & Role Dist.</a>
+      </li>
+    </ul>
+    <div class="tab-content" *ngIf="tab == 1">
+      <div style="width: calc(100% - 20px)" id="firstReport">
+
+      </div>
+    </div>
+    <div class="tab-content" *ngIf="tab == 2">
+      <div style="width: calc(100% - 20px)" id="secondReport">
+
+      </div>
+    </div>
+  </div>
+</div>
