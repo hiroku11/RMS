@@ -1,3 +1,5 @@
+import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
+import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
@@ -13,10 +15,13 @@ export class AddInvestigationTeamtComponent implements OnInit {
 
   team: any;
   editMode: boolean;
+  componentRef: any;
   config = {
     displayKey: 'fullName'
   }
-  constructor(private api: ApiService, private alert: AlertsLoaderService, private route: ActivatedRoute) {
+  constructor(private api: ApiService, private alert: AlertsLoaderService,
+    private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver) {
     this.initTeam();
   }
   ngOnInit() {
@@ -39,12 +44,12 @@ export class AddInvestigationTeamtComponent implements OnInit {
         // {
         //   "id": 28
         // }
-        ],
+      ],
       "investigators": [
         // {
         //   "id": 8
         // }
-        ],
+      ],
       "statusFlag": null
     };
   }
@@ -76,6 +81,31 @@ export class AddInvestigationTeamtComponent implements OnInit {
         this.alert.error(error);
       }
     )
+  }
+
+  investigatorLookup(which: string) {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      UserLookupComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'investigator';
+    this.componentRef.instance.selectUser.subscribe((data) => {
+      this.selectInvestigator(data, which);
+    });
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal();
+    });
+  }
+
+  selectInvestigator(data, which) {
+    this.team[which].push(data);
+    this.team[which] = [...this.team[which]];
+  }
+
+  closeModal() {
+    this.componentRef.instance.selectUser.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 
 }

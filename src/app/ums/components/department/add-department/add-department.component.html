@@ -20,8 +20,8 @@
       <input type="text" [(ngModel)]="department.organization.id" class="form-control" />
     </div>
     <div class="col-sm-4 p-0">
-      <button class="btn btn-primary">
-        <span class="fa fa-search"></span>Lookup</button>
+      <button class="btn btn-primary" (click)="lookup()">
+        <span class="fa fa-search" ></span>Lookup</button>
     </div>
   </div>
 </div>

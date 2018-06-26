@@ -1,3 +1,5 @@
+import { OrganizationLookupComponent } from './../../organization-lookup/organization-lookup.component';
+import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
@@ -13,7 +15,10 @@ export class AddDepartmentComponent implements OnInit {
   department: any;
   address: any;
   editMode: boolean;
-  constructor(private api: ApiService, private alert: AlertsLoaderService, private route: ActivatedRoute) {
+  componentRef: any;
+  constructor(private api: ApiService, private alert: AlertsLoaderService,
+    private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver) {
     this.initDepartment();
   }
 
@@ -94,5 +99,27 @@ export class AddDepartmentComponent implements OnInit {
         this.alert.error(error);
       }
     )
+  }
+
+  lookup() {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      OrganizationLookupComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'admin';
+    this.componentRef.instance.selectOrg.subscribe((data) => {
+      this.selectOrg(data);
+    });
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal();
+    });
+  }
+  selectOrg(org) {
+    this.department.organization = org;
+  }
+  closeModal() {
+    this.componentRef.instance.selectOrg.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 }

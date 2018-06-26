@@ -1,7 +1,7 @@
 <div class="row pb-3">
   <div class="col-md-12">
     <h4>
-      <span class="fa fa-address-book-o"></span> {{editMode?'Update': 'Add'}} Admin Team
+      <span class="fa fa-address-book-o"></span> {{editMode?'Update': 'Add'}} Investigation Team
     </h4>
   </div>
 </div>
@@ -19,26 +19,26 @@
 <div class="row">
   <div class="col-md-6 col-sm-12 row m-0 ">
     <div class="col-sm-8 p-0">
-      <label>Investigators</label>
+      <label>Team Leads</label>
       <ngx-select-dropdown [options]="[]" [multiple]="true" [(value)]="team.investigationTeamLeads" [config]="config"></ngx-select-dropdown>
     </div>
     <div class="col-sm-4 pt-2 pl-0">
       <label class="p-1"></label>
-      <button class="btn btn-primary d-block">
-        <span class="fa fa-search"> Lookup</span>
+      <button class="btn btn-primary d-block" (click)="investigatorLookup('investigationTeamLeads')">
+        <span class="fa fa-search" > Lookup</span>
       </button>
 
     </div>
   </div>
   <div class="col-md-6 col-sm-12 row m-0 ">
     <div class="col-sm-8 p-0">
-      <label>LMS Admins</label>
-      <ngx-select-dropdown [options]="[]" [multiple]="true" [(value)]="team.lmsAdmins" [config]="config"></ngx-select-dropdown>
+      <label>Investigators</label>
+      <ngx-select-dropdown [options]="[]" [multiple]="true" [(value)]="team.investigators" [config]="config"></ngx-select-dropdown>
     </div>
     <div class="col-sm-4 pt-2 pl-0">
       <label class="p-1"></label>
-      <button class="btn btn-primary d-block">
-        <span class="fa fa-search"> Lookup</span>
+      <button class="btn btn-primary d-block" (click)="investigatorLookup('investigators')">
+        <span class="fa fa-search" > Lookup</span>
       </button>
 
     </div>

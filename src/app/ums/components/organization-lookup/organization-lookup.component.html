@@ -1,3 +1,96 @@
-<p>
-  organization-lookup works!
-</p>
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Organization Lookup</h3>
+        <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Organization Code</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.id)" [(ngModel)]="lookupOptions.id.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.id.value" (change)="lookupFieldChange(lookupOptions.id)" name="id"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.id.sort" (change)="lookupSortChange(lookupOptions.id)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.id)" [(ngModel)]="lookupOptions.id.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Organization Name</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.name)" [(ngModel)]="lookupOptions.name.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.name.value" (change)="lookupFieldChange(lookupOptions.name)" name="name"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.name.sort" (change)="lookupSortChange(lookupOptions.name)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.name)" [(ngModel)]="lookupOptions.name.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Org. Code</th>
+              <th>Org. Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let org of searchResult">
+              <td>{{org.id}}</td>
+              <td>{{org.name}}</td>
+              <td>
+                <span class="fa fa-plus btn btn-sm btn-outline-success" (click)="orgSelected(org)"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="searchOrgs()">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
+        <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
