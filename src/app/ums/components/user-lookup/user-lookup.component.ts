@@ -41,7 +41,7 @@ export class UserLookupComponent implements OnInit {
   }
   initSearchParams() {
     this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-    let propsArray = ['userLoginId', 'firstName', 'lastName', 'email'];
+    let propsArray = ['loginId', 'firstName', 'lastName', 'email'];
     propsArray.forEach((prop) => {
       this.lookupOptions[prop] = {
         field: prop,
@@ -52,6 +52,7 @@ export class UserLookupComponent implements OnInit {
       }
     });
   }
+
   lookupFieldChange({ field, operator, value }) {
     let fil = {
       field,
@@ -92,7 +93,8 @@ export class UserLookupComponent implements OnInit {
       .get(this.searchUrl, { Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
         this.itemsCount = data.totalRecords;
-        this.searchResult = data.users;
+        let result = data[this.lookupType + 's'];
+        this.searchResult = result;
       }, (error) => {
         this._alertsService.error("Error getting search Data");
       });
@@ -105,6 +107,8 @@ export class UserLookupComponent implements OnInit {
 
   userSelected(user: any) {
     this.selectUser.emit(user);
+    let msg = this.lookupType.charAt(0).toUpperCase() + this.lookupType.substr(1, 25) + ' selecetd/added';
+    this._alertsService.success(msg);
   }
 
   getPageData($event) {

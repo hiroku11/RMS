@@ -13,7 +13,7 @@
                         <label>User Login ID</label>
                     </div>
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.userLoginId)" [(ngModel)]="lookupOptions.userLoginId.operator">
+                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.loginId)" [(ngModel)]="lookupOptions.loginId.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -22,14 +22,14 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <input class="form-control" [(ngModel)]="lookupOptions.userLoginId.value" (change)="lookupFieldChange(lookupOptions.userLoginId)"
-                            name="userLoginId" />
+                        <input class="form-control" [(ngModel)]="lookupOptions.loginId.value" (change)="lookupFieldChange(lookupOptions.loginId)"
+                            name="loginId" />
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <span>
-                            <input type="checkbox" [(ngModel)]="lookupOptions.userLoginId.sort" (change)="lookupSortChange(lookupOptions.userLoginId)"> Sort
+                            <input type="checkbox" [(ngModel)]="lookupOptions.loginId.sort" (change)="lookupSortChange(lookupOptions.loginId)"> Sort
                         </span>
-                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.userLoginId)" [(ngModel)]="lookupOptions.userLoginId.order">
+                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.loginId)" [(ngModel)]="lookupOptions.loginId.order">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -133,18 +133,18 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of searchResult">
-                            <td>{{user.userLoginId}}</td>
+                            <td>{{user.loginId || user.loginId}}</td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.lastName}}</td>
                             <td>{{user.email}}</td>
                             <td>{{user.phone}}</td>
                             <td>
-                                <span class="fa fa-user-plus btn btn-sm btn-outline-success" (click)="selectUserForRequest(user)"></span>
+                                <span class="fa fa-user-plus btn btn-sm btn-outline-success" (click)="userSelected(user)"></span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+                <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" (click)="searchUsers()">Submit</button>
