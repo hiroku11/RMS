@@ -109,6 +109,19 @@ export class SharedService {
         this.getGenderTypes();
         this.getEmployeeTypes();
         this.getPositions();
+        this.getRoles();
+    }
+
+    getRoles(){
+        this._apiService.get(`/role/roles`, {}, false).subscribe(
+            data => {
+                this.dropDownsData.rolesList = data;
+                this.propagateNewData();
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     getPositions() {
