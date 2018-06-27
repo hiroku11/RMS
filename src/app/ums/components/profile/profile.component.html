@@ -97,7 +97,10 @@
       </div>
       <div class="col-md-4 col-sm-12">
         <label>Designation/Position</label>
-        <input type="text" class="form-control">
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.position" class="form-control">
+          <option></option>
+          <option [ngValue]="dep" *ngFor="let dep of dropdownsData.positionsList">{{dep.description}}</option>
+        </select>
       </div>
       <div class="col-md-4 col-sm-12">
         <label>Department</label>

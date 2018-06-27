@@ -41,10 +41,11 @@ export class ManageTemplatesComponent implements OnInit {
     this.template.append('fileDescription', this.fileDescription);
     this.api.post(`/import-template/save-import-template`, this.template, true).subscribe(
       (data) => {
-        this.alert.success('Ttemplated added successfully');
+        this.alert.success('Template added successfully');
         this.templates.push(data);
         this.fileDescription = null;
         this.template = new FormData();
+        (document.getElementById('templateFile') as any).value = null;
       }, (error) => {
         this.alert.error(error);
       }

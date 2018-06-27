@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-sm-12">
         <label>Template File</label>
-        <input [disabled]="!fileDescription" (change)="fileSelected($event)" type="file" class="form-control">
+        <input id="templateFile" [disabled]="!fileDescription" (change)="fileSelected($event)" type="file" class="form-control">
       </div>
       <div class="col-sm-12">
         <label>Description</label>

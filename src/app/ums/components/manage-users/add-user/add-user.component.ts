@@ -1,3 +1,5 @@
+import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
+import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from './../../../../services/shared.service';
@@ -15,8 +17,11 @@ export class AddUserComponent implements OnInit {
   userDetails: any;
   dropdownsData: any;
   editMode: boolean;
+  componentRef: any;
   constructor(private api: ApiService, private user: UserService,
-    private alert: AlertsLoaderService, private shared: SharedService, private route: ActivatedRoute) {
+    private alert: AlertsLoaderService, private shared: SharedService,
+    private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver) {
     if (!this.shared.dropDownsData.departmentList) {
       this.shared.getAllDropdownData();
       this.shared.dropDownsService.subscribe((data) => {
@@ -152,5 +157,30 @@ export class AddUserComponent implements OnInit {
         this.alert.error(error);
       }
     )
+  }
+
+
+  lookup(which: string) {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      UserLookupComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'manager';
+    this.componentRef.instance.selectUser.subscribe((data) => {
+      this.selectManager(data, which);
+    });
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal();
+    });
+  }
+
+  selectManager(data, which) {
+    this.userDetails[which] = data;;
+  }
+
+  closeModal() {
+    this.componentRef.instance.selectUser.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 }

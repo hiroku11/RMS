@@ -103,19 +103,39 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4 col-sm-12">
-    <label>Manager(Level 1)</label>
-    <input type="text" [(ngModel)]="userDetails.manager.fullName" class="form-control">
+  <div class="col-md-4 col-sm-12 row m-0">
+    <label class="col-sm-12">Manager(Level 1)</label>
+    <div class="col-sm-8 row m-0 p-0">
+      <input type="text" [(ngModel)]="userDetails.manager && userDetails.manager.fullName" class="form-control" />
+    </div>
+    <div class="col-sm-4 p-0">
+      <button class="btn btn-primary" (click)="lookup('manager')">
+        <span class="fa fa-search"></span>Lookup</button>
+    </div>
   </div>
-  <div class="col-md-4 col-sm-12">
-    <label>Manager(Level 2)</label>
-    <input type="text" class="form-control">
+  <div class="col-md-4 col-sm-12 row m-0">
+    <label class="col-sm-12">Manager(Level 2)</label>
+    <div class="col-sm-8 row m-0 p-0">
+      <input type="text" [(ngModel)]="userDetails.managerLevel2 && userDetails.managerLevel2.fullName" class="form-control" />
+    </div>
+    <div class="col-sm-4 p-0">
+      <button class="btn btn-primary" (click)="lookup('managerLevel2')">
+        <span class="fa fa-search"></span>Lookup</button>
+    </div>
   </div>
-  <div class="col-md-4 col-sm-12">
-    <label>Manager(Level 3)</label>
-    <input type="text" class="form-control">
+  <div class="col-md-4 col-sm-12 row m-0">
+    <label class="col-sm-12">Manager(Level 3)</label>
+    <div class="col-sm-8 row m-0 p-0">
+      <input type="text" [(ngModel)]="userDetails.managerLevel3 && userDetails.managerLevel3.fullName" class="form-control" />
+    </div>
+    <div class="col-sm-4 p-0">
+      <button class="btn btn-primary" (click)="lookup('managerLevel3')">
+        <span class="fa fa-search"></span>Lookup</button>
+    </div>
   </div>
+
 </div>
+
 
 <div class="row">
   <div class="col-md-4 col-sm-12">
