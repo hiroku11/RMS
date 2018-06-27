@@ -1,5 +1,5 @@
 @import "./../../../../_common";
-
+@import "~assets/styles/pms";
 .navbar {
     height: 100%;
     position: relative;
@@ -18,13 +18,13 @@
             font-size: 13px;
             &.active {
                 a {
-                    background-color: #59607e;
+                    background-color: $pmsColor;
                     color: #fff;
                 }
             }
             &:hover {
                 a {
-                    background-color: #59607e;
+                    background-color: $pmsColor;
                     color: #fff;
                 }
             }
@@ -38,11 +38,11 @@
     }
 }
 
-.user-image{
-        width: 50px;
+.user-image {
+    width: 50px;
 }
 
-.user-role{
-min-width: 100px;
-@extend .text-overflow;
+.user-role {
+    min-width: 100px;
+    @extend .text-overflow;
 }
