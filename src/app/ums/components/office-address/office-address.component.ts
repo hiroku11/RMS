@@ -1,6 +1,8 @@
+import { ViewContainerRef } from '@angular/core';
+import { OfficeAddressLookupComponent } from './../office-address-lookup/office-address-lookup.component';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 
 @Component({
   selector: 'app-office-address',
@@ -9,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OfficeAddressComponent implements OnInit {
   add: any;
-  constructor(private api: ApiService, private alert: AlertsLoaderService) {
+  componentRef: any;
+  constructor(private api: ApiService, private alert: AlertsLoaderService,
+    private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver) {
     this.getOfficeAddress();
   }
 
@@ -34,6 +39,31 @@ export class OfficeAddressComponent implements OnInit {
         this.alert.error(error);
       }
     )
+  }
+
+
+  lookup() {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      OfficeAddressLookupComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'manager';
+    this.componentRef.instance.selectAddress.subscribe((data) => {
+      this.selectAddress(data);
+    });
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal();
+    });
+  }
+
+  selectAddress(data) {
+    this.add = data;;
+  }
+
+  closeModal() {
+    this.componentRef.instance.selectAddress.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 
 }
