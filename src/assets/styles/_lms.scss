@@ -10,7 +10,7 @@ thead {
 
 .btn {
     &:hover {
-        background-color: $lmsColor;
+        background-color: $lmsColor !important;
     }
 }
 
