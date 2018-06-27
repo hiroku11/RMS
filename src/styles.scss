@@ -229,3 +229,22 @@ ngx-select-dropdown {
     border-top: 15px solid;
     border-color: $cmsColor;
 }
+
+.modal-body {
+    table {
+        margin-top: 15px;
+    }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary, .btn-secondary, .btn-info {
+    background-color: #9ca3a9 !important;
+    border: none;
+    :active {
+        color: #fff;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(90, 115, 143, 0.5) !important;
+    }
+}
