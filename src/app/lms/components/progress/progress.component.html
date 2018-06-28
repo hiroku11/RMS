@@ -1,0 +1,128 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block">
+    <app-side-nav [thisView]="'progress'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'progress'"></app-sm-menu>
+  </div>
+  
+  <!-- <ul class="row nav nav-tabs mb-2">
+    <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+      <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
+        <span class="badge">{{tab.count}}</span>
+      </a>
+    </li>
+  </ul>
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Course Name
+      </th>
+      <th>
+        Last Accesed 
+      </th>
+      <th>
+        Course Duration
+      </th>
+      <th>
+        Due Date
+      </th>
+      <th>
+        Days Overdue
+      </th>
+      <th></th>
+    </thead>
+    <tbody *ngIf="courseData.length">
+      <tr *ngFor="let c of courseData">
+        <td>
+          <a>{{c.courseName}}</a>
+        </td>
+        <td>
+          {{c.equipmentName}}
+        </td>
+        <td>
+          {{c.courseDuration}}
+        </td>
+        <td>
+          {{c.department?.description}}
+        </td>
+        <td>
+          {{c.regulatoryAuthorityName}}
+        </td>
+        <td>
+          <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteEquipment(equipment)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div class="col-lg-10 col-md-12 col-sm-12 content">
+      <ul class="row nav nav-tabs mb-2">
+          <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+            <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
+              <span class="badge">{{tab.count}}</span>
+            </a>
+          </li>
+        </ul>
+        <div class="row tab-content">
+        
+          <table class="table table-bordered">
+            <thead>
+              <th>
+                Course Name
+              </th>
+              <th>
+                Due Date
+              </th>
+              <th>
+                Last Accesed 
+              </th>
+              <th>
+                Completed
+              </th>
+             
+              <th>
+                Course Duration
+              </th>
+              <th>
+                Current Score
+              </th>
+              <th>
+                High Score
+              </th>
+              <th>
+               
+              </th>
+            </thead>
+            <tbody *ngIf="courseData.length">
+              <tr *ngFor="let c of courseData">
+                <td>
+                    <a [routerLink]="['user-course-detail', c.courseId]">{{c.courseName}}</a>
+
+                </td>
+                <td>
+                  {{c.courseEndDateTime}}
+                </td>
+                <td>
+                  {{c.userCourseLastUpdatedDateTime}}
+                </td>
+                <td>
+                  {{c.userCourseStatusDescription}}
+                </td>
+                <td>
+                  {{c.courseDuration}}
+                </td>
+                <td>
+                  {{c.userCourseGrade}}
+                </td>
+                <td>
+
+                </td>
+                <td>
+                  <a>Start Course</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>

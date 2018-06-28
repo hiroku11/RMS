@@ -1,0 +1,61 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block">
+    <app-side-nav [thisView]="'progress'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'progress'"></app-sm-menu>
+  </div>
+  
+  
+  <div class="col-lg-10 col-md-12 col-sm-12 content">
+    
+        <div class="row tab-content">
+        
+          <table class="table table-bordered">
+            <thead>
+              <th>
+                Course Id
+              </th>
+              <th>
+                Course Name
+              </th>
+              <th>
+               Course Type
+              </th>
+              <th>
+                Course Duration
+              </th>
+              <th>
+                Due Date
+              </th>
+              <th>
+                Days Overdue
+              </th>
+              <th></th>
+            </thead>
+            <!-- <tbody *ngIf="courseData.length">
+              <tr *ngFor="let c of courseData">
+                <td>
+                  <a>{{c.courseName}}</a>
+                </td>
+                <td>
+                  {{c.userCourseLastUpdatedDateTime}}
+                </td>
+                <td>
+                  {{c.courseDuration}}
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                  {{c.regulatoryAuthorityName}}
+                </td>
+                <td>
+                  <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteEquipment(equipment)"></span>
+                </td>
+              </tr>
+            </tbody> -->
+          </table>
+        </div>
+  </div>

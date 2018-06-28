@@ -7,48 +7,37 @@
 <div class="side-nav" [ngClass]="{'menu-open':menuOpen}">
   <span class="fa fa-close close-btn float-right" (click)="closeMenu()">Close</span>
   <ul class="menu">
-    <li>
-      <div class="row pr-1 pb-3 pt-3 zero-margin">
-        <div class="col-3" style="vertical-align:middle">
-          <img src="./assets/images/logo0.5.jpg.png" alt="gotorisk.co.uk" class="user-image" />
-        </div>
-        <div class="col-6" style="vertical-align:middle;">
-          <span>{{userDetails.roles[0].roleName}}</span>
-          <br>
-          <span class="fa fa-circle text-success"> Online</span>
-        </div>
-        <div class="col-3">
-          <button class="btn float-right btn-info btn-sm" style="vertical-align:middle" (click)="logOut()">
-            <span class="fa fa-power-off "></span>
-          </button>
 
-        </div>
-      </div>
-    </li>
-    <li [ngClass]="{active:thisView=='dashboard'}">
-      <a [routerLink]="['/pms/dashboard']" title="">
-        <i class="fa fa-tasks"></i> Dashboard
-      </a>
-    </li>
-    <li [ngClass]="{active:thisView=='admin'}" *ngIf="isAdmin">
-      <a [routerLink]="['/pms/admin']" title="">
-        <i class="fa fa-lock"></i> Admin
-      </a>
-    </li>
-    <li [ngClass]="{active:thisView=='manager'}" *ngIf="isSupervisor || isAdmin">
-      <a [routerLink]="['/pms/manager']" title="">
-        <i class="fa fa-users"></i> Manager
-      </a>
-    </li>
-    <li [ngClass]="{active:thisView=='employee'}">
-      <a [routerLink]="['/pms/employee']" title="">
-        <i class="fa fa-user"></i> Employee
-      </a>
-    </li>
-    <li [ngClass]="{active:thisView=='feedback'}">
-        <a [routerLink]="['/pms/feedback']" title="">
-          <i class="fa fa-commenting-o"></i> Feedback
-        </a>
+      <li [ngClass]="{active:thisView=='dashboard'}">
+          <a [routerLink]="['/pms/dashboard']" title="">
+              <i class="fa fa-tasks"></i> Dashboard
+          </a>
       </li>
+      <li [ngClass]="{active:thisView=='Progress'}">
+          <a [routerLink]="['/lms/progress']" title="">
+              <i class="fa fa-lock"></i> Progress
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='Courses'}">
+          <a [routerLink]="['/lms/courses']" title="">
+              <i class="fa fa-users"></i> Courses
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='supervisor'}">
+          <a [routerLink]="['/lms/supervisor']" title="">
+              <i class="fa fa-user"></i> Supervisor
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='admin'}">
+          <a [routerLink]="['/lms/admin']" title="">
+              <i class="fa fa-commenting-o"></i> Admin Dashboard
+          </a>
+      </li>
+      <li [ngClass]="{active:thisView=='performance'}">
+          <a [routerLink]="['/lms/performance']" title="">
+              <i class="fa fa-commenting-o"></i> Performance
+          </a>
+      </li>
+
   </ul>
 </div>
