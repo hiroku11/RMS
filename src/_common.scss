@@ -1,27 +1,46 @@
-$amsColor : rgb(11,77,138)!global;
-$cmsColor: rgb(1,159,49)!global;
-$pmsColor:  rgb(158,29,144)!global;
-$lmsColor:  orange!global;
-
-.zero-margin{
-        margin: 0 !important;
+$amsColor: rgb(11, 77, 138) !global;
+$cmsColor: rgb(1, 159, 49) !global;
+$pmsColor : rgb(158, 29, 144) !global;
+$lmsColor : orange !global;
+.zero-margin {
+    margin: 0 !important;
 }
 
-.zero-padding{
-        padding: 0 !important;
+.zero-padding {
+    padding: 0 !important;
 }
 
-.center-block{
+.center-block {
     display: block;
     margin: auto;
 }
 
-.text-overflow{
-        white-space:nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fa-6 {
-        font-size: 10em;
+    font-size: 10em;
+}
+
+.navbar {
+    height: 100%;
+    position: relative;
+    align-items: initial;
+    @extend .zero-padding;
+    ul {
+        list-style: none;
+        @extend .zero-margin;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 100%;
+        li {
+            cursor: pointer;
+            background-color: #9ca3a9 !important;
+            border-bottom: 2px solid white;
+            font-size: 13px;
+        }
+    }
 }
