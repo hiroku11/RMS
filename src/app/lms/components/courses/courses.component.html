@@ -1,40 +1,47 @@
 <app-header class="d-none d-lg-block"></app-header>
 <div class="row view">
-  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block">
-    <app-side-nav [thisView]="'progress'"></app-side-nav>
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'courses'"></app-side-nav>
   </div>
   <div class="col-lg-2 pl-0 pr-0 d-lg-none">
-    <app-sm-menu [thisView]="'progress'"></app-sm-menu>
+    <app-sm-menu [thisView]="'courses'"></app-sm-menu>
   </div>
-  
-  
+
+
   <div class="col-lg-10 col-md-12 col-sm-12 content">
-    
-        <div class="row tab-content">
-        
-          <table class="table table-bordered">
-            <thead>
-              <th>
-                Course Id
-              </th>
-              <th>
-                Course Name
-              </th>
-              <th>
-               Course Type
-              </th>
-              <th>
-                Course Duration
-              </th>
-              <th>
-                Due Date
-              </th>
-              <th>
-                Days Overdue
-              </th>
-              <th></th>
-            </thead>
-            <!-- <tbody *ngIf="courseData.length">
+    <div class="row pb-3">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-address-book-o"></span> Courses |
+          <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+            <span class="fa fa-plus"></span>Add</button>
+        </h4>
+      </div>
+    </div>
+    <div class="row tab-content">
+      <table class="table table-bordered">
+        <thead>
+          <th>
+            Course Id
+          </th>
+          <th>
+            Course Name
+          </th>
+          <th>
+            Course Type
+          </th>
+          <th>
+            Course Duration
+          </th>
+          <th>
+            Due Date
+          </th>
+          <th>
+            Days Overdue
+          </th>
+          <th></th>
+        </thead>
+        <!-- <tbody *ngIf="courseData.length">
               <tr *ngFor="let c of courseData">
                 <td>
                   <a>{{c.courseName}}</a>
@@ -56,6 +63,6 @@
                 </td>
               </tr>
             </tbody> -->
-          </table>
-        </div>
+      </table>
+    </div>
   </div>
