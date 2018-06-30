@@ -37,37 +37,37 @@
             </a>
         </li>
 
-        <li [ngClass]="{active:thisView=='organization'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='organization'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/organization']" title="">
                 <i class="fa fa-address-book-o"></i> Organization
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='department'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='department'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/department']" title="">
                 <i class="fa fa-address-book-o"></i> Department
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='roles'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='roles'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/roles']" title="">
                 <i class="fa fa-address-book-o"></i> Roles
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='manage-users'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='manage-users'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/manage-users']" title="">
                 <i class="fa fa-address-book-o"></i> Manage Users
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='manage-teams'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='manage-teams'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/manage-teams']" title="">
                 <i class="fa fa-address-book-o"></i> Manage Teams
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='manage-templates'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='manage-templates'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/manage-templates']" title="">
                 <i class="fa fa-address-book-o"></i> Manage Templates
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='reports'}" *ngIf="isSupervisor">
+        <li [ngClass]="{active:thisView=='reports'}" *ngIf="isSupervisor || isAdmin">
             <a [routerLink]="['/ums/reports']" title="">
                 <i class="fa fa-address-book-o"></i> Reports
             </a>
