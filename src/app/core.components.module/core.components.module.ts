@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { PasswordResetComponent } from './component/password-reset/password-reset.component';
+import { PostcodeLookupComponent } from './component/postcode-lookup/postcode-lookup.component';
 
 
 
@@ -26,7 +27,7 @@ import { PasswordResetComponent } from './component/password-reset/password-rese
     exports: [HeaderComponent, SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,
         LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, UserLookupComponent],
     declarations: [HeaderComponent, SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,UserLookupComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, GiveFeedbackExternalComponent, PasswordResetComponent
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, GiveFeedbackExternalComponent, PasswordResetComponent, PostcodeLookupComponent
     ],
     entryComponents: [SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent, UserLookupComponent]
 })
