@@ -1,3 +1,7 @@
+import { RemoveCourseComponent } from './components/manage-courses/remove-course/remove-course.component';
+import { AssignCourseComponent } from './components/manage-courses/assign-course/assign-course.component';
+import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
+import { AssignProfileComponent } from './components/manage-profiles/assign-profile/assign-profile.component';
 import { AddCourseComponent } from './components/manage-courses/add-course/add-course.component';
 import { ManageCourseListComponent } from './components/manage-courses/manage-course-list/manage-course-list.component';
 import { AddProfileComponent } from './components/manage-profiles/add-profile/add-profile.component';
@@ -32,6 +36,9 @@ const lmsRoutes = [
             { path: '', pathMatch: 'full', component: ProfilesListComponent },
             { path: 'add-profile', pathMatch: 'full', component: AddProfileComponent },
             { path: 'edit-profile/:id', pathMatch: 'full', component: AddProfileComponent },
+            { path: 'assign-profile', pathMatch: 'full', component: AssignProfileComponent },
+            { path: 'remove-profile', pathMatch: 'full', component: RemoveProfileComponent },
+
         ]
     },
     {
@@ -39,6 +46,8 @@ const lmsRoutes = [
             { path: '', pathMatch: 'full', component: ManageCourseListComponent },
             { path: 'add-course', pathMatch: 'full', component: AddCourseComponent },
             { path: 'edit-course/:id', pathMatch: 'full', component: AddCourseComponent },
+            { path: 'assign-course', pathMatch: 'full', component: AssignCourseComponent },
+            { path: 'remove-course', pathMatch: 'full', component: RemoveCourseComponent },
         ]
     },
 

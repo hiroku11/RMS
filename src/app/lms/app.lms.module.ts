@@ -1,3 +1,6 @@
+import { RemoveCourseComponent } from './components/manage-courses/remove-course/remove-course.component';
+import { AssignProfileComponent } from './components/manage-profiles/assign-profile/assign-profile.component';
+import { AssignCourseComponent } from './components/manage-courses/assign-course/assign-course.component';
 import { ManageCourseListComponent } from './components/manage-courses/manage-course-list/manage-course-list.component';
 import { PaginationModule } from 'ngx-pagination-bootstrap';
 import { AddProfileComponent } from './components/manage-profiles/add-profile/add-profile.component';
@@ -20,13 +23,15 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
 import { UserCourseDetailComponent } from './components/user-course-detail/user-course-detail.component';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
 @NgModule({
     declarations: [DashboardComponent, SideNavComponent, SmMenuComponent,
         CourseComponent, MyCoursesComponent, ProgressComponent, UserCourseDetailComponent,
         CourseDetailComponent, CourseListComponent, ManageCoursesComponent, AddCourseComponent,
         ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent],
     imports: [CommonModule, FormsModule, CoreComponentsModule, LmsRoutingModule,
-        SelectDropDownModule, PaginationModule],
+        SelectDropDownModule, PaginationModule, AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent,
+        RemoveProfileComponent],
     providers: []
 })
 export class LmsModule { }
