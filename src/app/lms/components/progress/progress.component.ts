@@ -20,10 +20,13 @@ export class ProgressComponent implements OnInit {
   currentTab: string;
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
-    filters:
-    [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
+    sorts: [
+       
+    ],
+    filters:  [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
     {"field":"userCourseStatusCode","operator":"EQ","value":"PENDING"}]
 };
+ 
   course:any;
   public courseData = [];
   tabs:any;
@@ -38,7 +41,7 @@ export class ProgressComponent implements OnInit {
   }
   getProgress() {
     this._apiService
-      .get("/user-course/my-progress",{ Search: JSON.stringify(this.searchParams) })
+      .get("/user-course/my-progress")
       .subscribe(data => {
         this.progressData = data;
    
@@ -91,25 +94,25 @@ export class ProgressComponent implements OnInit {
     this.courseData = [];
     this.currentTab = tab;
     if(tab.name == 'Not Started'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
       {"field":"userCourseStatusCode","operator":"EQ","value":"PENDING"}]
     }
     else if(tab.name == 'In Progress'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"IN_PROGRESS"},
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"IN_PROGRESS"},
       {"field":"userCourseStatusCode","operator":"EQ","value":"STARTED"}]
     }
     else if(tab.name == 'Completed'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"COMPLETED"}]
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"COMPLETED"}]
     
     }
     else if(tab.name == 'Aborted'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"ABORTED"}]
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"ABORTED"}]
     }
     else if(tab.name == 'Cancelled'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"CANCELLED"}]
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"CANCELLED"}]
     }
     else if(tab.name == 'Overdue'){
-      this.searchParams =  [{"field":"userCourseStatusCode","operator":"EQ","value":"OVERDUE"}]
+      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"OVERDUE"}]
     }
 
     this._apiService

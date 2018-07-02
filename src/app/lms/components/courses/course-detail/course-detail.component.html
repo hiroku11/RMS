@@ -1,0 +1,93 @@
+<div class="row pb-2">
+        <div class="col-sm-12 col-md-3">
+          <label>Code</label>
+          <input class="form-control" [(ngModel)]="course.code" name="courseid" readonly/>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <label>Name</label>
+          <input class="form-control" [(ngModel)]="course.name" name="courseName" readonly/>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <label>Description</label>
+          <input class="form-control" [(ngModel)]="course.description"  readonly/>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <label>Category</label>
+          <input class="form-control" [(ngModel)]="course.courseCategory" name="courseSize" readonly/>
+        </div>
+      </div>
+      <div class="row pb-2">
+            <div class="col-sm-12 col-md-3">
+              <label>Type</label>
+              <input class="form-control" [(ngModel)]="course.courseType" name="courseid" readonly/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <label>Domain</label>
+              <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" readonly/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <label>Duration</label>
+              <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" readonly/>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <label>Learning Type</label>
+              <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" readonly/>
+            </div>
+          </div>
+          <div class="row pb-2">
+                <div class="col-sm-12 col-md-3">
+                  <label>Content Description</label>
+                  <input class="form-control" [(ngModel)]="course.contentDescription" name="courseid" readonly/>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label>Venue</label>
+                  <input class="form-control" [(ngModel)]="course.venue" name="courseName" readonly/>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label>Pre-requisite</label>
+                  <input class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors" readonly/>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label>Passing Grade</label>
+                  <input class="form-control" [(ngModel)]="course.passingGrade" name="courseSize" readonly/>
+                </div>
+              </div>
+              <div class="row pb-2">
+                    <div class="col-sm-12 col-md-3">
+                      <label>Faculty Phone</label>
+                      <input class="form-control" [(ngModel)]="course.facultyPhone" name="courseid" readonly/>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                      <label>Cost</label>
+                      <input class="form-control" [(ngModel)]="course.cost" name="courseName" readonly/>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                      <label>Start Date & Time</label>
+                      <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors" readonly/>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                      <label>End Date & Time</label>
+                      <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize" readonly/>
+                    </div>
+                  </div>
+                  <div class="row pb-2">
+                        <div class="col-sm-12 col-md-3">
+                          <label>Available Seats</label>
+                          <input class="form-control" [(ngModel)]="course.availableSeats" name="courseid" readonly/>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                          <label>Days To Complete</label>
+                          <input class="form-control" [(ngModel)]="course.daysToComplete" name="courseName" readonly/>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                          <label>Is People Manager Course?</label>
+                          <input class="form-control" [(ngModel)]="course.peopleManager" name="numberOfFloors" readonly/>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                          <label>Approval Required</label>
+                          <input class="form-control" [(ngModel)]="course.approvalRequired" name="courseSize" readonly/>
+                        </div>
+                      </div>
+                      <div class="row pb-2">
+                            <button class="btn btn-primary" (click)="goBack()">Back</button>
+                      </div>

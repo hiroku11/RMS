@@ -26,10 +26,21 @@
                 <i class="fa fa-lock"></i> Progress
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='courses'}">
-            <a [routerLink]="['/lms/courses']" title="">
+        <li>
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Courses</a>
+        <!-- <li [ngClass]="{active:thisView=='courses'}"> -->
+            <!-- <a [routerLink]="['/lms/courses']" title="">
                 <i class="fa fa-users"></i> Courses
-            </a>
+            </a> -->
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <a [routerLink]="['/lms/courses']" title="">
+                        <i class="fa fa-lock"></i> Course
+                    </a>
+                    <a [routerLink]="['/lms/my-course']" title="">
+                        <i class="fa fa-add"></i> My Course
+                    </a>
+                   
+                </ul>
         </li>
         <li [ngClass]="{active:thisView=='supervisor'}">
             <a [routerLink]="['/lms/supervisor']" title="">
@@ -38,14 +49,10 @@
         </li>
         <li [ngClass]="{active:thisView=='admin'}">
             <a [routerLink]="['/lms/admin']" title="">
-                <i class="fa fa-commenting-o"></i> Admin Dashboard
+                <i class="fa fa-commenting-o"></i> Reports
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='performance'}">
-            <a [routerLink]="['/lms/performance']" title="">
-                <i class="fa fa-commenting-o"></i> Performance
-            </a>
-        </li>
+       
     </ul>
 
 </div>

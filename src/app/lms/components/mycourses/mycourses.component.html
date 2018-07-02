@@ -12,9 +12,9 @@
     <div class="row pb-3">
       <div class="col-md-12">
         <h4>
-          <span class="fa fa-address-book-o"></span> Courses |
-          <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
-            <span class="fa fa-plus"></span>Add</button>
+          <span class="fa fa-address-book-o"></span> My Courses 
+          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+            <span class="fa fa-plus"></span>Add</button> -->
         </h4>
       </div>
     </div>
@@ -22,47 +22,50 @@
       <table class="table table-bordered">
         <thead>
           <th>
-            Course Id
+            Course Code
           </th>
           <th>
             Course Name
           </th>
           <th>
-            Course Type
+            Description
+          </th>
+        
+          <th>
+            Planned Start Date
           </th>
           <th>
-            Course Duration
-          </th>
+              Planned End Date
+            </th>
           <th>
-            Due Date
+            Status
           </th>
-          <th>
-            Days Overdue
-          </th>
-          <th></th>
+  
         </thead>
-        <!-- <tbody *ngIf="courseData.length">
+        <tbody *ngIf="courseData.length > 0">
               <tr *ngFor="let c of courseData">
                 <td>
-                  <a>{{c.courseName}}</a>
+                  <a [routerLink]="['user-course-detail', c.id]">{{c.courseCode}}</a>
+              
                 </td>
                 <td>
-                  {{c.userCourseLastUpdatedDateTime}}
+                  {{c.courseName}}
                 </td>
                 <td>
-                  {{c.courseDuration}}
+                  {{c.courseDescription}}
                 </td>
                 <td>
-                
+                {{c.userCoursePlannedStartDate}}
                 </td>
                 <td>
-                  {{c.regulatoryAuthorityName}}
+                  {{c.userCoursePlannedEndDate}}
                 </td>
                 <td>
-                  <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteEquipment(equipment)"></span>
+                  {{c.userCourseStatusDescription}}
                 </td>
+            
               </tr>
-            </tbody> -->
+            </tbody>
       </table>
     </div>
   </div>
