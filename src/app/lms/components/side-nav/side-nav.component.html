@@ -21,38 +21,38 @@
                 <i class="fa fa-tasks"></i> Dashboard
             </a>
         </li>
+        <li [ngClass]="{active:thisView=='courses'}">
+            <a [routerLink]="['/lms/courses']" title="">
+                <i class="fa fa-lock"></i> Courses
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='my-courses'}">
+            <a [routerLink]="['/lms/my-courses']" title="">
+                <i class="fa fa-lock"></i> My Courses
+            </a>
+        </li>
         <li [ngClass]="{active:thisView=='progress'}">
             <a [routerLink]="['/lms/progress']" title="">
-                <i class="fa fa-lock"></i> Progress
+                <i class="fa fa-lock"></i> My Progress
             </a>
         </li>
-        <li>
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Courses</a>
-        <!-- <li [ngClass]="{active:thisView=='courses'}"> -->
-            <!-- <a [routerLink]="['/lms/courses']" title="">
-                <i class="fa fa-users"></i> Courses
-            </a> -->
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <a [routerLink]="['/lms/courses']" title="">
-                        <i class="fa fa-lock"></i> Course
-                    </a>
-                    <a [routerLink]="['/lms/my-course']" title="">
-                        <i class="fa fa-add"></i> My Course
-                    </a>
-                   
-                </ul>
-        </li>
-        <li [ngClass]="{active:thisView=='supervisor'}">
-            <a [routerLink]="['/lms/supervisor']" title="">
-                <i class="fa fa-user"></i> Supervisor
+
+        <li [ngClass]="{active:thisView=='manage-profiles'}">
+            <a [routerLink]="['/lms/manage-profiles']" title="">
+                <i class="fa fa-user"></i> Manage Profiles
             </a>
         </li>
-        <li [ngClass]="{active:thisView=='admin'}">
-            <a [routerLink]="['/lms/admin']" title="">
+        <li [ngClass]="{active:thisView=='manage-courses'}">
+            <a [routerLink]="['/lms/manage-courses']" title="">
+                <i class="fa fa-user"></i> Manage Courses
+            </a>
+        </li>
+        <li [ngClass]="{active:thisView=='reports'}">
+            <a [routerLink]="['/lms/reports']" title="">
                 <i class="fa fa-commenting-o"></i> Reports
             </a>
         </li>
-       
+
     </ul>
 
 </div>

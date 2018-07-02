@@ -1,0 +1,69 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> Manage Profiles |
+      <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+        <span class="fa fa-plus"></span> Add</button>
+      <button class="btn btn-sm btn-primary" [routerLink]="['assign-course']">
+        <span class="fa fa-plus"></span> Assign Course</button>
+      <button class="btn btn-sm btn-primary" [routerLink]="['remove-course']">
+        <span class="fa fa-trash"></span> Remove Course</button>
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Course Code
+      </th>
+      <th>
+        Course Name
+      </th>
+      <th>
+        Course Description
+      </th>
+      <th>
+        People Manager
+      </th>
+      <th>
+        Approval Required
+      </th>
+      <th>
+        Course Category
+      </th>
+      <th>
+
+      </th>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let cor of courses; let ind = index;">
+        <td>
+          <a [routerLink]="['edit-course', cor.code]">{{cor.code}}</a>
+        </td>
+        <td>
+          {{cor.name}}
+        </td>
+        <td>
+          {{cor.description}}
+        </td>
+        <td>
+          {{cor.peopleManager}}
+        </td>
+        <td>
+          {{cor.approvalRequired}}
+        </td>
+        <td>
+          {{cor.courseCategory}}
+        </td>
+
+        <td>
+          <span class="btn btn-outline-danger fa fa-trash" (click)="deleteCourse(cor, ind)"></span>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+</div>
