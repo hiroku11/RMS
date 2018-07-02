@@ -14,12 +14,17 @@ export class ImportUsersComponent implements OnInit {
   ngOnInit() {
   }
 
-  fileSelected($event){
-    //this.importData.append()
-    debugger
+  fileSelected($event) {
+    this.importData.append('file', $event.target.files[0]);
   }
-  import(){
-    // this.api.post(`/bulk-upload/users`,this.importData,true)
+  import() {
+    this.api.post(`/bulk-upload/users/using-form-submit`, this.importData, true).subscribe(
+      (data) => {
+        this.alert.success('User imported successfully');
+      }, (error) => {
+        this.alert.error(error);
+      }
+    )
 
   }
 
