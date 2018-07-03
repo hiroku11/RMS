@@ -9,6 +9,7 @@ export class SharedService {
     public dropDownsData: any = {};
     public cmsDropDownsData: any = {};
     public pmsDropDownnsData: any = {};
+    public lmsDropDownnsData: any = {};
     public conditionalTabs: [
 
         {
@@ -37,6 +38,7 @@ export class SharedService {
     public dropDownsService = new Subject();
     public cmsDropDownsService = new Subject();
     public pmsDropDownService = new Subject();
+    public lmsDropDownService = new Subject();
     constructor(private _apiService: ApiService) {
         this.getAllDropdownData();
 
@@ -371,6 +373,7 @@ export class SharedService {
         this.getCmsDocumentVersionStatuses();
         this.getDepartmentList();
     }
+ 
 
     propagateNewData() {
         this.dropDownsService.next(this.dropDownsData);
@@ -454,4 +457,49 @@ export class SharedService {
                 }
             );
     }
+    getLmsDropdownsData() {
+        this.getCourseTypes();
+        this.getLearningTypes();
+        this.getCourseDomain();
+    }
+    getCourseTypes() {
+        this._apiService
+            .get("/table-maintenance/course-type/course-types", {}, false)
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.courseTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }   
+    getLearningTypes() {
+        this._apiService
+            .get("/table-maintenance/learning-type/learning-types", {}, false)
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.courseTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
+    getCourseDomain() {
+        this._apiService
+            .get("/table-maintenance/course-domain/course-domains", {}, false)
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.courseTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
 }
+
