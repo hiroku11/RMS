@@ -480,7 +480,7 @@ export class SharedService {
             .get("/table-maintenance/learning-type/learning-types", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseTypes = data;
+                    this.dropDownsData.courseLearningTypes = data;
                     this.propagateNewData();
                 },
                 (error) => {
@@ -493,7 +493,20 @@ export class SharedService {
             .get("/table-maintenance/course-domain/course-domains", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseTypes = data;
+                    this.dropDownsData.courseDomain = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
+    getCourseDuration() {
+        this._apiService
+            .get("/table-maintenance/course-duration/course-durations", {}, false)
+            .subscribe(
+                (data) => {
+                    this.dropDownsData.courseDuration = data;
                     this.propagateNewData();
                 },
                 (error) => {
