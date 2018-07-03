@@ -18,20 +18,22 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SmMenuComponent } from './components/sm-menu/sm-menu.component';
 import { CourseComponent } from './components/courses/course.component';
 import { CourseListComponent } from './components/courses/course-list/course-list.component';
-import { MyCoursesComponent } from './components/mycourses/mycourses.component'
+import { MyCoursesComponent } from './components/my-courses-data/mycourses/mycourses.component'
 import { ProgressComponent } from './components/progress/progress.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
-import { UserCourseDetailComponent } from './components/user-course-detail/user-course-detail.component';
+import { UserCourseDetailComponent } from './components/my-courses-data/user-course-detail/user-course-detail.component';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
+import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
 @NgModule({
     declarations: [DashboardComponent, SideNavComponent, SmMenuComponent,
         CourseComponent, MyCoursesComponent, ProgressComponent, UserCourseDetailComponent,
         CourseDetailComponent, CourseListComponent, ManageCoursesComponent, AddCourseComponent,
-        ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent],
+        ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent,
+        AssignCourseComponent, AssignProfileComponent,RemoveCourseComponent,RemoveProfileComponent,MyCoursesDataComponent],
     imports: [CommonModule, FormsModule, CoreComponentsModule, LmsRoutingModule,
-        SelectDropDownModule, PaginationModule, AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent,
-        RemoveProfileComponent],
+        SelectDropDownModule, PaginationModule
+        ],
     providers: []
 })
 export class LmsModule { }

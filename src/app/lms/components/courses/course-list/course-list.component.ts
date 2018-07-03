@@ -38,7 +38,7 @@ export class CourseListComponent implements OnInit {
       this.courseData = data.courses; 
     });
   }
-  addCourse(id:number){
+  addCourse(){
     let payload = {
       "addReason": this.reason
     }

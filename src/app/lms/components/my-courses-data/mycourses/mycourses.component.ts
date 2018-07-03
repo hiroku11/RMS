@@ -1,7 +1,7 @@
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../../services/api.service';
 
-import { HttpActionDirective } from '../../../core.components.module/directives/http-action.directive';
-import { AlertsLoaderService } from '../../../services/alerts-loader.service';
+import { HttpActionDirective } from '../../../../core.components.module/directives/http-action.directive';
+import { AlertsLoaderService } from '../../../../services/alerts-loader.service';
 import {
   Component,
   ComponentFactoryResolver,

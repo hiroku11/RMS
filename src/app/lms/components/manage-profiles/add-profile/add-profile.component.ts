@@ -73,5 +73,8 @@ export class AddProfileComponent implements OnInit {
       }
     )
   }
+  courseLookup(){
+    
+  }
 
 }

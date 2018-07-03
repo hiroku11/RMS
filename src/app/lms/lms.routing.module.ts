@@ -9,10 +9,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CourseComponent } from './components/courses/course.component';
-import { MyCoursesComponent } from './components/mycourses/mycourses.component';
+import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
+import { UserCourseDetailComponent } from './components/my-courses-data/user-course-detail/user-course-detail.component'
+import { MyCoursesComponent } from './components/my-courses-data/mycourses/mycourses.component';
 import { CourseListComponent } from './components/courses/course-list/course-list.component';
 import { ProgressComponent } from './components/progress/progress.component';
-import { UserCourseDetailComponent } from './components/user-course-detail/user-course-detail.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
 import { ProfilesListComponent } from './components/manage-profiles/profiles-list/profiles-list.component';
 import { ManageProfilesComponent } from './components/manage-profiles/manage-profiles.component';
@@ -26,11 +27,17 @@ const lmsRoutes = [
             { path: 'course-detail/:id', component: CourseDetailComponent, pathMatch: 'full' }
         ]
     },
-    // { path: 'courses', component:CourseComponent},
+    {
+        path: 'my-courses', component: MyCoursesDataComponent, children: [
+            { path: '', pathMatch: 'full', component: MyCoursesComponent },
+            { path: 'user-course-detail/:id', component: UserCourseDetailComponent, pathMatch: 'full' }
+        ]
+    },
+    
     { path: 'course-detail', component: CourseDetailComponent },
-    { path: 'my-courses', component: MyCoursesComponent },
+   
     { path: 'progress', component: ProgressComponent },
-    { path: 'user-course-detail/:id', component: UserCourseDetailComponent },
+  
     {
         path: 'manage-profiles', component: ManageProfilesComponent, children: [
             { path: '', pathMatch: 'full', component: ProfilesListComponent },

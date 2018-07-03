@@ -57,12 +57,12 @@
             </tbody>
       </table>
     </div>
-    <div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}" style="top:30%">
+    <div id="myModal" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Add Course</h3>
-                    <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" (click)="addCourse()">Add</button>
                   
-                    <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
