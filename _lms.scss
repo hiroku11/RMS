@@ -1,0 +1,40 @@
+@import './../../_common';
+.content {
+    border-color: $lmsColor;
+}
+
+thead {
+    background-color: $lmsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
+        background-color: $lmsColor !important;
+    }
+}
+
+// .card-header{
+//     background-color: $pmsColor;
+//     color: #fff;
+//     .fa{
+//         color:#fff;
+//     }
+//     .btn-link{
+//         color: #fff;
+//     }
+// }
+.nav-tabs {
+    border-bottom: 1px solid $lmsColor;
+    .nav-link {
+        border-color: $lmsColor;
+        color: $lmsColor;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            color: white !important;
+            background-color: $lmsColor;
+            border-color: $lmsColor;
+        }
+    }
+}
