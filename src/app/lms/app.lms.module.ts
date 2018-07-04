@@ -1,3 +1,5 @@
+import { ProfileLookupComponent } from './components/profile-lookup/profile-lookup.component';
+import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
 import { RemoveCourseComponent } from './components/manage-courses/remove-course/remove-course.component';
 import { AssignProfileComponent } from './components/manage-profiles/assign-profile/assign-profile.component';
 import { AssignCourseComponent } from './components/manage-courses/assign-course/assign-course.component';
@@ -28,6 +30,7 @@ import { UserCourseDetailComponent } from './components/my-courses-data/user-cou
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
 import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
+import { CourseLookupComponent } from './components/course-lookup/course-lookup.component';
 
 export const MY_MOMENT_FORMATS = {
     parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -36,17 +39,19 @@ export const MY_MOMENT_FORMATS = {
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
-  };
+};
 @NgModule({
     declarations: [DashboardComponent, SideNavComponent, SmMenuComponent,
         CourseComponent, MyCoursesComponent, ProgressComponent, UserCourseDetailComponent,
         CourseDetailComponent, CourseListComponent, ManageCoursesComponent, AddCourseComponent,
         ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent,
-        AssignCourseComponent, AssignProfileComponent,RemoveCourseComponent,RemoveProfileComponent,MyCoursesDataComponent],
+        AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent, RemoveProfileComponent,
+        MyCoursesDataComponent, UserLookupComponent, CourseLookupComponent, ProfileLookupComponent],
     imports: [CommonModule, FormsModule, CoreComponentsModule, LmsRoutingModule,
-        SelectDropDownModule, PaginationModule,OwlDateTimeModule,
+        SelectDropDownModule, PaginationModule, OwlDateTimeModule,
         OwlMomentDateTimeModule
-        ],
-    providers: [ { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }]
+    ],
+    providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
+    entryComponents: [UserLookupComponent, CourseLookupComponent, ProfileLookupComponent]
 })
 export class LmsModule { }
