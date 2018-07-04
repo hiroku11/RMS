@@ -1,6 +1,8 @@
+import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
+import { ApiService } from './../../../../services/api.service';
+import { ProfileLookupComponent } from './../../profile-lookup/profile-lookup.component';
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { UserLookupComponent } from '../../user-lookup/user-lookup.component';
-import { ProfileLookupComponent } from '../../profile-lookup/profile-lookup.component';
 
 @Component({
   selector: 'app-assign-profile',
@@ -10,17 +12,18 @@ import { ProfileLookupComponent } from '../../profile-lookup/profile-lookup.comp
 export class AssignProfileComponent implements OnInit {
   selectedProfiles: any[] = [];
   profiles = [];
-  selectedUsers: any[] = [];
+  selectedUser: any[] = [];
   users = [];
   componentRef: any;
   constructor(private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver) { }
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
   }
 
   lookup(which: string) {
-    let comp = which === 'user' ? UserLookupComponent : ProfileLookupComponent
+    let comp: any = which === 'user' ? UserLookupComponent : ProfileLookupComponent;
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       comp
     );
@@ -45,13 +48,27 @@ export class AssignProfileComponent implements OnInit {
   }
 
   selectUser(data) {
-    this.selectedUsers.push(data);
-    this.selectedUsers = [...this.selectedUsers];
+    this.selectedUser = [data];
   }
 
   closeModal() {
     this.componentRef.instance.selectUser.unsubscribe();
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
+  }
+
+  addProfilesToUser() {
+    this.api.put(`/user/add-profiles-to-user/userId/${this.selectedUser[0].id}`, { profiles: this.selectedProfiles }).subscribe(
+      (data) => {
+        this.alert.success("Profiles successfully assigned to user.");
+      }, (error) => {
+        this.alert.error(error);
+      }
+    )
+  }
+
+  clear() {
+    this.selectedProfiles = [];
+    this.selectedUser = [];
   }
 }

@@ -1,3 +1,45 @@
-<p>
-  remove-course works!
-</p>
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> Remove Courses(s) from User
+    </h4>
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-6">
+    <label>Select User</label>
+    <ngx-select-dropdown [options]="profiles" [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
+  </div>
+  <div class="col-sm-6 pt-2">
+    <label class="p-1"></label>
+    <button class="btn btn-primary d-block" (click)="lookup()">
+      <span class="fa fa-search"> Lookup</span>
+    </button>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Course Code</th>
+      <th>Course Name</th>
+      <th>Course Description</th>
+      <th>People Manager</th>
+      <th>Approval Required</th>
+      <th>Course Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="courses">
+    <tr *ngFor="let cor of courses; let ind = index">
+      <td>{{cor.courseCode}}</td>
+      <td>{{cor.courseName}}</td>
+      <td>{{cor.courseDescription}}</td>
+      <td>{{cor.coursePeopleManager}}</td>
+      <td>{{cor.courseApprovalRequired}}</td>
+      <td>{{cor.courseCategory}}</td>
+      <td>
+        <span class="btn btn-outline-danger fa fa-trash" (click)="removeCourse(cor,ind)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

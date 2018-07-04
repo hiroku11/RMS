@@ -1,3 +1,193 @@
-<p>
-  course-lookup works!
-</p>
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Course Lookup</h3>
+        <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Course Code</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.code)" [(ngModel)]="lookupOptions.code.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.code.value" (change)="lookupFieldChange(lookupOptions.code)" name="code"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.code.sort" (change)="lookupSortChange(lookupOptions.code)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.code)" [(ngModel)]="lookupOptions.code.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Course Name</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.name)" [(ngModel)]="lookupOptions.name.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.name.value" (change)="lookupFieldChange(lookupOptions.name)" name="buildingName"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.name.sort" (change)="lookupSortChange(lookupOptions.name)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.name)" [(ngModel)]="lookupOptions.name.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Prodile Description</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.description)" [(ngModel)]="lookupOptions.description.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.description.value" (change)="lookupFieldChange(lookupOptions.description)"
+              name="buildingName" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.description.sort" (change)="lookupSortChange(lookupOptions.description)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.description)" [(ngModel)]="lookupOptions.description.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>People Manager</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.peopleManager)" [(ngModel)]="lookupOptions.peopleManager.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <select class="form-control" [(ngModel)]="lookupOptions.peopleManager.value" (change)="lookupFieldChange(lookupOptions.peopleManager)"
+              name="peopleManager">
+              <option></option>
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.peopleManager.sort" (change)="lookupSortChange(lookupOptions.peopleManager)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.peopleManager)" [(ngModel)]="lookupOptions.peopleManager.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Approval Required</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.aaprovalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <select class="form-control" [(ngModel)]="lookupOptions.aaprovalRequired.value" (change)="lookupFieldChange(lookupOptions.aaprovalRequired)"
+              name="aaprovalRequired">
+              <option></option>
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.aaprovalRequired.sort" (change)="lookupSortChange(lookupOptions.aaprovalRequired)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.aaprovalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Course Code</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Approval Required</th>
+              <th>People Manager</th>
+
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cor of searchResult">
+              <td>{{cor.code}}</td>
+              <td>{{cor.name}}</td>
+              <td>{{cor.description}}</td>
+              <td>{{cor.approvalRequired}}</td>
+              <td>{{cor.peopleManager}}</td>
+
+              <td>
+                <span class="fa fa-plus btn btn-sm btn-outline-success" (click)="courseSelected(cor)"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="searchCourses()">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
+        <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

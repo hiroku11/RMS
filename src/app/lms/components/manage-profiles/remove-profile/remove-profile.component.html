@@ -1,3 +1,37 @@
-<p>
-  remove-profile works!
-</p>
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> Remove Profile(s) To User
+    </h4>
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-6">
+    <label>Select User</label>
+    <ngx-select-dropdown [options]="profiles" [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
+  </div>
+  <div class="col-sm-6 pt-2">
+    <label class="p-1"></label>
+    <button class="btn btn-primary d-block" (click)="lookup()">
+      <span class="fa fa-search"> Lookup</span>
+    </button>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Profile Code</th>
+      <th>Profile Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="user">
+    <tr *ngFor="let prof of user.profiles; let ind = index">
+      <td>{{prof.id}}</td>
+      <td>{{prof.description}}</td>
+      <td>
+        <span class="btn btn-outline-danger fa fa-trash" (click)="removeProfile(prof,ind)"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
