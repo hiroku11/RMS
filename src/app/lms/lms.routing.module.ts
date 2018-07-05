@@ -1,3 +1,4 @@
+import { ImportCoursesComponent } from './components/manage-courses/import-courses/import-courses.component';
 import { ManageCoursesComponent } from './components/manage-courses/manage-courses.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { RemoveCourseComponent } from './components/manage-courses/remove-course/remove-course.component';
@@ -57,6 +58,7 @@ const lmsRoutes = [
             { path: 'edit-course/:id', pathMatch: 'full', component: AddCourseComponent },
             { path: 'assign-course', pathMatch: 'full', component: AssignCourseComponent },
             { path: 'remove-course', pathMatch: 'full', component: RemoveCourseComponent },
+            { path: 'import-courses', pathMatch: 'full', component: ImportCoursesComponent },
         ]
     }, { path: 'reports', pathMatch: 'full', component: ReportsComponent }
 
