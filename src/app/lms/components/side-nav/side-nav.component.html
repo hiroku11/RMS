@@ -36,18 +36,18 @@
                 <i class="fa fa-lock"></i> My Progress
             </a>
         </li>
-        <li [ngClass]="{active:thisView == 'manage-courses'}">
+        <li [ngClass]="{active:thisView == 'manage-courses'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/lms/manage-courses']" title="">
                 <i class="fa fa-user"></i> Manage Courses
             </a>
         </li>
-        <li [ngClass]="{active:thisView == 'manage-profiles'}">
+        <li [ngClass]="{active:thisView == 'manage-profiles'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/lms/manage-profiles']" title="">
                 <i class="fa fa-user"></i> Manage Profiles
             </a>
         </li>
 
-        <li [ngClass]="{active:thisView=='reports'}">
+        <li [ngClass]="{active:thisView=='reports'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/lms/reports']" title="">
                 <i class="fa fa-commenting-o"></i> Reports
             </a>

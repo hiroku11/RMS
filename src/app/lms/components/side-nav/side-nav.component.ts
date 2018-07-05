@@ -13,12 +13,15 @@ export class SideNavComponent implements OnInit {
   @Input() thisView: string = 'document';
   userDetails: any;
   isAdmin: boolean;
+  isSupervisor: boolean;
   constructor(private userService: UserService) { 
     this.userDetails = this.userService.userDetails;
     this.isAdmin = this.userService.isAdmin;
   }
 
   ngOnInit() {
+    this.isAdmin = this.userService.isAdmin;
+    this.isSupervisor = this.userService.isSupervisor;
     //this.thisView = this._sharedService.activeView;
   }
   logOut(){
