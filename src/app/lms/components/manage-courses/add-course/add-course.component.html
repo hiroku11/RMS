@@ -1,122 +1,122 @@
 <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
-      <label>Code</label>
-      <input class="form-control" [(ngModel)]="course.code" name="courseid"  />
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Name</label>
-      <input class="form-control" [(ngModel)]="course.name" name="courseName"  />
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Description</label>
-      <input class="form-control" [(ngModel)]="course.description"   />
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Category</label>
-      <input class="form-control" [(ngModel)]="course.courseCategory" name="courseSize"  />
-    </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Code</label>
+    <input class="form-control" [(ngModel)]="course.code" name="courseid" />
   </div>
-  <div class="row pb-2">
-        <div class="col-sm-12 col-md-3">
-          <label>Type</label>
-          <input class="form-control" [(ngModel)]="course.courseType" name="courseid"  />
-        </div>
-        <div class="col-sm-12 col-md-3">
-          <label>Domain</label>
-          <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName"  />
-        </div>
-        <div class="col-sm-12 col-md-3">
-          <label>Duration</label>
-          <input class="form-control" type="number" [(ngModel)]="course.duration" name="numberOfFloors"  />
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <label>Duration Code</label>
-            <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors"  />
-          </div>
-      
-      </div>
-      <div class="row pb-2">
-          <div class="col-sm-12 col-md-3">
-              <label>Learning Type</label>
-              <input class="form-control" [(ngModel)]="course.learningType" name="courseSize"  />
-            </div>
-           
-           
-            <div class="col-sm-12 col-md-3">
-              <label>Venue</label>
-              <input class="form-control" [(ngModel)]="course.venue" name="courseName"  />
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <label>People Manager</label>
-                <select class="form-control" [(ngModel)]="course.peopleManager">
-                    <option [ngValue]="null"></option>
-                    <option value="N">No</option>
-                    <option value="Y">Yes</option>
-                  </select>
-              </div>
-              <div class="col-sm-12 col-md-3">
-                <label>Approval Required</label>
-                <select class="form-control" [(ngModel)]="course.approvalRequired">
-                    <option [ngValue]="null"></option>
-                    <option value="N">No</option>
-                    <option value="Y">Yes</option>
-                  </select>
-              </div>
-           
-          </div>
-          <div class="row pb-2">
-              <div class="col-sm-12 col-md-3">
-                  <label>Pre-requisite</label>
-                  <input class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors"  />
-                </div>
-                <div class="col-sm-12 col-md-3">
-                  <label>Passing Grade</label>
-                  <input class="form-control" [(ngModel)]="course.passingGrade" name="courseSize"  />
-                </div>
-                <div class="col-sm-12 col-md-3">
-                  <label>Faculty Phone</label>
-                  <input class="form-control" [(ngModel)]="course.facultyPhone" name="courseid"  />
-                </div>
-                <div class="col-sm-12 col-md-3">
-                  <label>Cost</label>
-                  <input type="number" class="form-control" [(ngModel)]="course.cost" name="courseName"  />
-                </div>
-                
-              </div>
-              <div class="row pb-2">
-                  <div class="col-sm-12 col-md-3">
-                      <label>Start Date & Time</label>
-                      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" 
-                      [(ngModel)]="course.startDateTime" name="startDateTime" />
-                     <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
-                      <!-- <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors"  /> -->
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                      <label>End Date & Time</label>
-                      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" 
-                      [(ngModel)]="course.endDateTime" name="endDateTime" />
-                     <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
-                      <!-- <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize"  /> -->
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                      <label>Available Seats</label>
-                      <input type="number" class="form-control" [(ngModel)]="course.availableSeats" name="courseid"  />
-                    </div>
-                    <div class="col-sm-12 col-md-3">
-                      <label>Days To Complete</label>
-                      <input type="number" class="form-control" [(ngModel)]="course.daysToComplete" name="courseName"  />
-                    </div>
-                    
-                  </div>
-                  <div class="row pb-2">
-                      <div class="col-sm-12 col-md-12">
-                          <label>Content Description</label>
-                          <input class="form-control" [(ngModel)]="course.contentDescription" name="courseid"  />
-                        </div>
-                  </div>
-                  <div class="row pb-2">
-                      <div class="col-sm-12">
-                        <button class="btn btn-primary" (click)="saveCourse()">Save</button>
-                        <button class="btn btn-primary" (click)="clearCourse()">Clear</button>
-                  </div>
-                      </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="course.name" name="courseName" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Description</label>
+    <input class="form-control" [(ngModel)]="course.description" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Category</label>
+    <input class="form-control" [(ngModel)]="course.courseCategory" name="courseSize" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-3">
+    <label>Type</label>
+    <input class="form-control" [(ngModel)]="course.courseType" name="courseid" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Domain</label>
+    <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Duration</label>
+    <input class="form-control" type="number" [(ngModel)]="course.duration" name="numberOfFloors" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Duration Code</label>
+    <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" />
+  </div>
+
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-3">
+    <label>Learning Type</label>
+    <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" />
+  </div>
+
+
+  <div class="col-sm-12 col-md-3">
+    <label>Venue</label>
+    <input class="form-control" [(ngModel)]="course.venue" name="courseName" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>People Manager</label>
+    <select class="form-control" [(ngModel)]="course.peopleManager">
+      <option [ngValue]="null"></option>
+      <option value="N">No</option>
+      <option value="Y">Yes</option>
+    </select>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Approval Required</label>
+    <select class="form-control" [(ngModel)]="course.approvalRequired">
+      <option [ngValue]="null"></option>
+      <option value="N">No</option>
+      <option value="Y">Yes</option>
+    </select>
+  </div>
+
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-3">
+    <label>Pre-requisite</label>
+    <input class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Passing Grade</label>
+    <input class="form-control" [(ngModel)]="course.passingGrade" name="courseSize" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Faculty Phone</label>
+    <input class="form-control" [(ngModel)]="course.facultyPhone" name="courseid" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Cost</label>
+    <input type="number" class="form-control" [(ngModel)]="course.cost" name="courseName" />
+  </div>
+
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-3">
+    <label>Start Date & Time</label>
+    <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="course.startDateTime" name="startDateTime"
+    />
+    <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
+    <!-- <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors"  /> -->
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>End Date & Time</label>
+    <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="course.endDateTime" name="endDateTime"
+    />
+    <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
+    <!-- <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize"  /> -->
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Available Seats</label>
+    <input type="number" class="form-control" [(ngModel)]="course.availableSeats" name="courseid" />
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Days To Complete</label>
+    <input type="number" class="form-control" [(ngModel)]="course.daysToComplete" name="courseName" />
+  </div>
+
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-12">
+    <label>Content Description</label>
+    <input class="form-control" [(ngModel)]="course.contentDescription" name="courseid" />
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" (click)="saveCourse()">Save</button>
+    <button class="btn btn-primary" (click)="clearCourse()">Clear</button>
+  </div>
+</div>

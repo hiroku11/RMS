@@ -1,38 +1,38 @@
 @import './../../../../_common';
 @import './../../../../assets/styles/_lms';
-.content{
-    border-color: $lmsColor;
-}
+// .content{
+//     border-color: $lmsColor;
+// }
 
-thead {
-    background-color: $lmsColor;
-    color: white;
-}
+// thead {
+//     background-color: $lmsColor;
+//     color: white;
+// }
 
-.btn {
-    &:hover {
-        background-color: $lmsColor;
-    }
-}
+// .btn {
+//     &:hover {
+//         background-color: $lmsColor;
+//     }
+// }
 
-.nav-tabs {
+// .nav-tabs {
   
-    .nav-link {
-        // border-color: $lmsColor;
-        color:  black;
-        cursor: pointer;
-        &:hover, &.active{
-            color:white !important;
-            background-color: $lmsColor;
-            border-color: $lmsColor;
-        }
+//     .nav-link {
+//         // border-color: $lmsColor;
+//         color:  black;
+//         cursor: pointer;
+//         &:hover, &.active{
+//             color:white !important;
+//             background-color: $lmsColor;
+//             border-color: $lmsColor;
+//         }
        
        
-    }
+//     }
    
-         border-bottom: none;
+//          border-bottom: none;
     
-}
+// }
 .badge{
     display: inline-block;
     min-width: 10px;

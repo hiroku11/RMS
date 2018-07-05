@@ -36,17 +36,17 @@
                 <i class="fa fa-lock"></i> My Progress
             </a>
         </li>
-
-        <li [ngClass]="{active:thisView=='manage-profiles'}">
-            <a [routerLink]="['/lms/manage-profiles']" title="">
-                <i class="fa fa-user"></i> Manage Profiles
-            </a>
-        </li>
-        <li [ngClass]="{active:thisView=='manage-courses'}">
+        <li [ngClass]="{active:thisView == 'manage-courses'}">
             <a [routerLink]="['/lms/manage-courses']" title="">
                 <i class="fa fa-user"></i> Manage Courses
             </a>
         </li>
+        <li [ngClass]="{active:thisView == 'manage-profiles'}">
+            <a [routerLink]="['/lms/manage-profiles']" title="">
+                <i class="fa fa-user"></i> Manage Profiles
+            </a>
+        </li>
+
         <li [ngClass]="{active:thisView=='reports'}">
             <a [routerLink]="['/lms/reports']" title="">
                 <i class="fa fa-commenting-o"></i> Reports

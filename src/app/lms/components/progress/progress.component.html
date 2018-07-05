@@ -6,7 +6,7 @@
   <div class="col-lg-2 pl-0 pr-0 d-lg-none">
     <app-sm-menu [thisView]="'progress'"></app-sm-menu>
   </div>
-  
+
   <!-- <ul class="row nav nav-tabs mb-2">
     <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
       <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
@@ -57,72 +57,79 @@
     </tbody>
   </table> -->
   <div class="col-lg-10 col-md-12 col-sm-12 content">
-      <ul class="row nav nav-tabs mb-2">
-          <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
-            <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
-              <span class="badge">{{tab.count}}</span>
-            </a>
-          </li>
-        </ul>
-        <div class="row tab-content">
-        
-          <table class="table table-bordered">
-            <thead>
-              <th>
-                Course Name
-              </th>
-              <th>
-                Due Date
-              </th>
-              <th>
-                Last Accesed 
-              </th>
-              <th>
-                Completed
-              </th>
-             
-              <th>
-                Course Duration
-              </th>
-              <th>
-                Current Score
-              </th>
-              <th>
-                High Score
-              </th>
-              <th>
-               
-              </th>
-            </thead>
-            <tbody *ngIf="courseData.length">
-              <tr *ngFor="let c of courseData">
-                <td>
-                    <a [routerLink]="['user-course-detail', c.courseId]">{{c.courseName}}</a>
+    <div class="row pb-3">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-address-book-o"></span> My Progress
+        </h4>
+      </div>
+    </div>
+    <ul class="row nav nav-tabs mb-2">
+      <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+        <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
+          <span class="badge">{{tab.count}}</span>
+        </a>
+      </li>
+    </ul>
+    <div class="row tab-content">
 
-                </td>
-                <td>
-                  {{c.courseEndDateTime}}
-                </td>
-                <td>
-                  {{c.userCourseLastUpdatedDateTime}}
-                </td>
-                <td>
-                  {{c.userCourseStatusDescription}}
-                </td>
-                <td>
-                  {{c.courseDuration}}
-                </td>
-                <td>
-                  {{c.userCourseGrade}}
-                </td>
-                <td>
+      <table class="table table-bordered">
+        <thead>
+          <th>
+            Course Name
+          </th>
+          <th>
+            Due Date
+          </th>
+          <th>
+            Last Accesed
+          </th>
+          <th>
+            Completed
+          </th>
 
-                </td>
-                <td>
-                  <a>Start Course</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <th>
+            Course Duration
+          </th>
+          <th>
+            Current Score
+          </th>
+          <th>
+            High Score
+          </th>
+          <th>
+
+          </th>
+        </thead>
+        <tbody *ngIf="courseData.length">
+          <tr *ngFor="let c of courseData">
+            <td>
+              <a [routerLink]="['user-course-detail', c.courseId]">{{c.courseName}}</a>
+
+            </td>
+            <td>
+              {{c.courseEndDateTime}}
+            </td>
+            <td>
+              {{c.userCourseLastUpdatedDateTime}}
+            </td>
+            <td>
+              {{c.userCourseStatusDescription}}
+            </td>
+            <td>
+              {{c.courseDuration}}
+            </td>
+            <td>
+              {{c.userCourseGrade}}
+            </td>
+            <td>
+
+            </td>
+            <td>
+              <a>Start Course</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>

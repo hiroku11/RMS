@@ -31,6 +31,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
 import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
 import { CourseLookupComponent } from './components/course-lookup/course-lookup.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 export const MY_MOMENT_FORMATS = {
     parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -46,7 +47,7 @@ export const MY_MOMENT_FORMATS = {
         CourseDetailComponent, CourseListComponent, ManageCoursesComponent, AddCourseComponent,
         ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent,
         AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent, RemoveProfileComponent,
-        MyCoursesDataComponent, UserLookupComponent, CourseLookupComponent, ProfileLookupComponent],
+        MyCoursesDataComponent, UserLookupComponent, CourseLookupComponent, ProfileLookupComponent, ReportsComponent],
     imports: [CommonModule, FormsModule, CoreComponentsModule, LmsRoutingModule,
         SelectDropDownModule, PaginationModule, OwlDateTimeModule,
         OwlMomentDateTimeModule

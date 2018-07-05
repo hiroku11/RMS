@@ -1,40 +1,40 @@
 <div class="row pb-3">
-    <div class="col-md-12">
-      <h4>
-        <span class="fa fa-address-book-o"></span> Assign Course(s) To User
-      </h4>
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> Assign Course(s) To User
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-6 m-0 row">
+    <div class="col-sm-9 p-0">
+      <label>Select Courses</label>
+      <ngx-select-dropdown [options]="profiles" [multiple]="true" [(value)]="selectedCourses"></ngx-select-dropdown>
+    </div>
+    <div class="col-sm-3 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block" (click)="lookup()">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6 m-0 row">
-      <div class="col-sm-9 p-0">
-        <label>Select Courses</label>
-        <ngx-select-dropdown [options]="profiles" [multiple]="true" [(value)]="selectedCourses"></ngx-select-dropdown>
-      </div>
-      <div class="col-sm-3 pt-2 pl-0">
-        <label class="p-1"></label>
-        <button class="btn btn-primary d-block" (click)="lookup()">
-          <span class="fa fa-search"> Lookup</span>
-        </button>
-      </div>
+  <div class="col-sm-12 col-md-6 m-0 row">
+    <div class="col-sm-9 p-0">
+      <label>Select Users</label>
+      <ngx-select-dropdown [options]="users" [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
     </div>
-    <div class="col-sm-12 col-md-6 m-0 row">
-      <div class="col-sm-9 p-0">
-        <label>Select Users</label>
-        <ngx-select-dropdown [options]="users" [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
-      </div>
-      <div class="col-sm-3 pt-2 pl-0">
-        <label class="p-1"></label>
-        <button class="btn btn-primary d-block" (click)="lookup('user')">
-          <span class="fa fa-search"> Lookup</span>
-        </button>
-      </div>
+    <div class="col-sm-3 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block" (click)="lookup('user')">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
     </div>
   </div>
-  <div class="row pt-2">
-    <div class="col-sm-12">
-      <button class="btn btn-primary" (click)="addCoursesToUser()">Assign</button>
-      <button class="btn btn-primary float-right" (click)="clear()">Clear</button>
-    </div>
-  
+</div>
+<div class="row pt-2">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" (click)="addCoursesToUser()">Assign</button>
+    <button class="btn btn-primary float-right" (click)="clear()">Clear</button>
   </div>
+
+</div>

@@ -1,3 +1,5 @@
+import { ManageCoursesComponent } from './components/manage-courses/manage-courses.component';
+import { ReportsComponent } from './components/reports/reports.component';
 import { RemoveCourseComponent } from './components/manage-courses/remove-course/remove-course.component';
 import { AssignCourseComponent } from './components/manage-courses/assign-course/assign-course.component';
 import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
@@ -33,11 +35,11 @@ const lmsRoutes = [
             { path: 'user-course-detail/:id', component: UserCourseDetailComponent, pathMatch: 'full' }
         ]
     },
-    
+
     { path: 'course-detail', component: CourseDetailComponent },
-   
+
     { path: 'progress', component: ProgressComponent },
-  
+
     {
         path: 'manage-profiles', component: ManageProfilesComponent, children: [
             { path: '', pathMatch: 'full', component: ProfilesListComponent },
@@ -49,14 +51,14 @@ const lmsRoutes = [
         ]
     },
     {
-        path: 'manage-courses', component: ManageProfilesComponent, children: [
+        path: 'manage-courses', component: ManageCoursesComponent, children: [
             { path: '', pathMatch: 'full', component: ManageCourseListComponent },
             { path: 'add-course', pathMatch: 'full', component: AddCourseComponent },
             { path: 'edit-course/:id', pathMatch: 'full', component: AddCourseComponent },
             { path: 'assign-course', pathMatch: 'full', component: AssignCourseComponent },
             { path: 'remove-course', pathMatch: 'full', component: RemoveCourseComponent },
         ]
-    },
+    }, { path: 'reports', pathMatch: 'full', component: ReportsComponent }
 
 ]
 @NgModule({
