@@ -5,15 +5,15 @@
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Code</label>
-    <input class="form-control" [(ngModel)]="course.code" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseCode" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Name</label>
-    <input class="form-control" [(ngModel)]="course.name" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course.counamerseName" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Description</label>
-    <input class="form-control" [(ngModel)]="course.description" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseDescription" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Category</label>
@@ -23,11 +23,11 @@
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Type</label>
-    <input class="form-control" [(ngModel)]="course.courseType" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseTypeDescription" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Domain</label>
-    <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseDomainDescription" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Duration</label>
@@ -35,133 +35,132 @@
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Learning Type</label>
-    <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course.learningTypeDescription" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Content Description</label>
-    <input class="form-control" [(ngModel)]="course.contentDescription" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseContentDesc" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Venue</label>
-    <input class="form-control" [(ngModel)]="course.venue" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseVenue" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Pre-requisite</label>
-    <input class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course.coursePreRequisite" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Passing Grade</label>
-    <input class="form-control" [(ngModel)]="course.passingGrade" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course.coursePassingGrade" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Faculty Phone</label>
-    <input class="form-control" [(ngModel)]="course.facultyPhone" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseFacultyPhone" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Cost</label>
-    <input class="form-control" [(ngModel)]="course.cost" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseCost" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Start Date & Time</label>
-    <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseStartDateTime" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>End Date & Time</label>
-    <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseEndDateTime" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Available Seats</label>
-    <input class="form-control" [(ngModel)]="course.availableSeats" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseAvailableSeat" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Days To Complete</label>
-    <input class="form-control" [(ngModel)]="course.daysToComplete" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseDaysToComplete" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Is People Manager Course?</label>
-    <input class="form-control" [(ngModel)]="course.peopleManager" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course.coursePeopleManager" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Approval Required</label>
-    <input class="form-control" [(ngModel)]="course.approvalRequired" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course.courseApprovalRequired" name="courseSize" readonly/>
   </div>
 </div>
 
 <h4>
   Course Progress
 </h4>
+<div class="row">
+  
+</div>
 <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Planned Start Date</label>
-      <input class="form-control" [(ngModel)]="course.code" name="courseid" readonly/>
+      <input class="form-control" [(ngModel)]="course.userCoursePlannedStartDate" name="courseid" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Planned End Date</label>
-      <input class="form-control" [(ngModel)]="course.name" name="courseName" readonly/>
+      <input class="form-control" [(ngModel)]="course.userCoursePlannedEndDate" name="courseName" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Actual Start Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.description" readonly/>
+      <input class="form-control" [(ngModel)]="course.userCourseActualStartDateTime" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Actual End Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.courseCategory" name="courseSize" readonly/>
+      <input class="form-control" [(ngModel)]="course.userCourseActualEndDateTime" name="courseSize" readonly/>
     </div>
   </div>
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Course Approval Status</label>
-      <input class="form-control" [(ngModel)]="course.courseType" name="courseid" readonly/>
+      <input class="form-control" [(ngModel)]="course.userCourseApprovalStatusDescription" name="courseid" readonly/>
     </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Domain</label>
-      <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" readonly/>
+    <div class="col-sm-12 col-md-4">
+      <label>Duration</label>
+      <input class="form-control" [(ngModel)]="course.courseDuration" name="courseName" readonly/>
     </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Percentage Completed</label>
-      <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" readonly/>
+   
+    <div class="col-sm-12 col-md-4">
+      <label>Course Progress Status</label>
+      <input class="form-control" [(ngModel)]="course.userCourseLessonStatus" name="courseSize" readonly/>
     </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Course Status</label>
-      <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" readonly/>
-    </div>
+   
   </div>
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
-      <label>Course Result</label>
-      <input class="form-control" [(ngModel)]="course.contentDescription" name="courseid" readonly/>
+  
+    <div class="col-sm-12 col-md-4">
+      <label>Last Accessed</label>
+      <input class="form-control" [(ngModel)]="course.userCourseLastUpdatedDateTime" name="courseName" readonly/>
     </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Grade</label>
-      <input class="form-control" [(ngModel)]="course.venue" name="courseName" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Duration</label>
-      <input class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-3">
+   
+    <div class="col-sm-12 col-md-4">
       <label>Added Reason</label>
-      <textarea class="form-control" [(ngModel)]="course.passingGrade" name="courseSize" readonly> </textarea>
+      <textarea class="form-control" [(ngModel)]="course.userCourseAddReason" name="courseSize" readonly> </textarea>
     </div>
+    <div class="col-sm-12 col-md-4">
+        <label>Approved Reason</label>
+        <textarea class="form-control" [(ngModel)]="course.userCourseAppprovedReason" name="courseid" readonly></textarea>
+      </div>
   </div>
   <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
-        <label>Approved Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.contentDescription" name="courseid" readonly></textarea>
-      </div>
+          <label>Score</label>
+          <input class="form-control" [(ngModel)]="course.userCourseRawScore" name="courseSize" readonly/>
+        </div>
       <div class="col-sm-12 col-md-4">
         <label>Rejected Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.venue" name="courseName" readonly></textarea>
+        <textarea class="form-control" [(ngModel)]="course.userCourseRejectedReason" name="courseName" readonly></textarea>
       </div>
       <div class="col-sm-12 col-md-4">
         <label>Other Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.prerequisite" name="numberOfFloors" readonly> </textarea>
+        <textarea class="form-control" [(ngModel)]="course.userCourseOtherReason" name="numberOfFloors" readonly> </textarea>
       </div>
      
     </div>

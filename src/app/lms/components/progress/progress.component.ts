@@ -23,8 +23,7 @@ export class ProgressComponent implements OnInit {
     sorts: [
        
     ],
-    filters:  [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
-    {"field":"userCourseStatusCode","operator":"EQ","value":"PENDING"}]
+    filters:  [{"field":"userCourseLessonStatus","operator":"EQ","value":"not attempted"}]
 };
  
   course:any;
@@ -37,7 +36,8 @@ export class ProgressComponent implements OnInit {
 
   ngOnInit() {
     this.getProgress();
-  //  this.getCourse()
+    this.changeTab('Not Started');
+    // this.getCourse()
   }
   getProgress() {
     this._apiService
@@ -45,37 +45,32 @@ export class ProgressComponent implements OnInit {
       .subscribe(data => {
         this.progressData = data;
    
-        this.courseData = data.userCourses;
+        // this.courseData = data.userCourses;
         this.tabs = [
           {
             name: "Not Started",
             tab: 0,
-            count: this.progressData.notStarted
+            count: this.progressData.notStarted || 0
           },
           {
             name: "In Progress",
             tab: 1,
-            count: this.progressData.inProgress
+            count: this.progressData.inProgress || 0
           },
           {
             name: "Completed",
             tab: 2,
-            count: this.progressData.completed
+            count: this.progressData.completed || 0
           },
           {
-            name: "Cancelled",
+            name: "Passed",
             tab: 3,
-            count: this.progressData.cancelled
+            count: this.progressData.cancelled || 0
           },
           {
-            name: "Aborted",
+            name: "Failed",
             tab: 4,
-            count: this.progressData.aborted
-          },
-          {
-            name: "Overdue",
-            tab: 5,
-            count: this.progressData.overdue
+            count: this.progressData.aborted || 0
           }
         ];
         this.currentTab = this.tabs[0];
@@ -83,7 +78,7 @@ export class ProgressComponent implements OnInit {
   }
   getCourse(){
     this._apiService
-    .get("/user-course/search-user-courses")
+    .get("/user-course/search-user-courses", { Search: JSON.stringify(this.searchParams) })
     .subscribe(data => {
       this.course = data.userCourses;
       this.changeTab('Not Started');
@@ -94,26 +89,22 @@ export class ProgressComponent implements OnInit {
     this.courseData = [];
     this.currentTab = tab;
     if(tab.name == 'Not Started'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"NOT_STARTED"},
-      {"field":"userCourseStatusCode","operator":"EQ","value":"PENDING"}]
+      this.searchParams.filters =  [{"field":"userCourseLessonStatus","operator":"EQ","value":"not attempted"}]
     }
     else if(tab.name == 'In Progress'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"IN_PROGRESS"},
-      {"field":"userCourseStatusCode","operator":"EQ","value":"STARTED"}]
+      this.searchParams.filters =  [{"field":"userCourseLessonStatus","operator":"EQ","value":"incomplete"}]
     }
     else if(tab.name == 'Completed'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"COMPLETED"}]
+      this.searchParams.filters =  [{"field":"userCourseLessonStatus","operator":"EQ","value":"completed"}]
     
     }
-    else if(tab.name == 'Aborted'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"ABORTED"}]
+    else if(tab.name == 'Passed'){
+      this.searchParams.filters =  [{"field":"userCourseLessonStatus","operator":"EQ","value":"passed"}]
     }
-    else if(tab.name == 'Cancelled'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"CANCELLED"}]
+    else if(tab.name == 'Failed'){
+      this.searchParams.filters =  [{"field":"userCourseLessonStatus","operator":"EQ","value":"failed"}]
     }
-    else if(tab.name == 'Overdue'){
-      this.searchParams.filters =  [{"field":"userCourseStatusCode","operator":"EQ","value":"OVERDUE"}]
-    }
+ 
 
     this._apiService
       .get("/user-course/my-progress", { Search: JSON.stringify(this.searchParams) })

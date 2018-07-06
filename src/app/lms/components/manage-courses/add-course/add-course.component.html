@@ -19,11 +19,20 @@
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Type</label>
-    <input class="form-control" [(ngModel)]="course.courseType" name="courseid" />
+        
+    <select class="form-control" [(ngModel)]="course.courseType" [compareWith]="selectCompareFunction">
+        <option value="null"></option>
+        <option *ngFor="let opt of dropDownsData.courseTypes" [ngValue]="opt">{{opt.description}}</option>
+      </select>
+    <!-- <input class="form-control" [(ngModel)]="course.courseType" name="courseid" /> -->
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Domain</label>
-    <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" />
+    <select class="form-control" [(ngModel)]="course.courseDomain" [compareWith]="selectCompareFunction">
+      <option value="null"></option>
+      <option *ngFor="let opt of dropDownsData.courseDomain" [ngValue]="opt">{{opt.description}}</option>
+    </select>
+    <!-- <input class="form-control" [(ngModel)]="course.courseDomain" name="courseName" /> -->
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Duration</label>
@@ -31,14 +40,22 @@
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Duration Code</label>
-    <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" />
+    <select class="form-control" [(ngModel)]="course.courseDuration" [compareWith]="selectCompareFunction">
+      <option value="null"></option>
+      <option *ngFor="let opt of dropDownsData.courseDuration" [ngValue]="opt">{{opt.description}}</option>
+    </select>
+    <!-- <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" /> -->
   </div>
 
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Learning Type</label>
-    <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" />
+    <select class="form-control" [(ngModel)]="course.learningType" [compareWith]="selectCompareFunction">
+      <option value="null"></option>
+      <option *ngFor="let opt of dropDownsData.courseLearningTypes" [ngValue]="opt">{{opt.description}}</option>
+    </select>
+    <!-- <input class="form-control" [(ngModel)]="course.learningType" name="courseSize" /> -->
   </div>
 
 
@@ -116,7 +133,8 @@
 </div>
 <div class="row pb-2">
   <div class="col-sm-12">
-    <button class="btn btn-primary" (click)="saveCourse()">Save</button>
+    <button class="btn btn-primary" (click)="saveCourse()" *ngIf="!editMode">Save</button>
+    <button class="btn btn-primary " (click)="updateCourse()" *ngIf="editMode">Update</button>
     <button class="btn btn-primary" (click)="clearCourse()">Clear</button>
   </div>
 </div>

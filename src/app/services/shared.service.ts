@@ -9,7 +9,7 @@ export class SharedService {
     public dropDownsData: any = {};
     public cmsDropDownsData: any = {};
     public pmsDropDownnsData: any = {};
-    public lmsDropDownnsData: any = {};
+    public lmsDropDownsData: any = {};
     public conditionalTabs: [
 
         {
@@ -385,6 +385,10 @@ export class SharedService {
         this.pmsDropDownService.next(this.pmsDropDownnsData);
     }
 
+    propagateNewLmsData() {
+        this.lmsDropDownService.next(this.lmsDropDownsData);
+    }
+
     getPmsCategory() {
         this._apiService
             .get("/table-maintenance/goal-category/goal-categories", {}, false)
@@ -461,13 +465,14 @@ export class SharedService {
         this.getCourseTypes();
         this.getLearningTypes();
         this.getCourseDomain();
+        this.getCourseDuration();
     }
     getCourseTypes() {
         this._apiService
             .get("/table-maintenance/course-type/course-types", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseTypes = data;
+                    this.lmsDropDownsData.courseTypes = data;
                     this.propagateNewData();
                 },
                 (error) => {
@@ -480,7 +485,7 @@ export class SharedService {
             .get("/table-maintenance/learning-type/learning-types", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseLearningTypes = data;
+                    this.lmsDropDownsData.courseLearningTypes = data;
                     this.propagateNewData();
                 },
                 (error) => {
@@ -493,7 +498,7 @@ export class SharedService {
             .get("/table-maintenance/course-domain/course-domains", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseDomain = data;
+                    this.lmsDropDownsData.courseDomain = data;
                     this.propagateNewData();
                 },
                 (error) => {
@@ -506,7 +511,7 @@ export class SharedService {
             .get("/table-maintenance/course-duration/course-durations", {}, false)
             .subscribe(
                 (data) => {
-                    this.dropDownsData.courseDuration = data;
+                    this.lmsDropDownsData.courseDuration = data;
                     this.propagateNewData();
                 },
                 (error) => {

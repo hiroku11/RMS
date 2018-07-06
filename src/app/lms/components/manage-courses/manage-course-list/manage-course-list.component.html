@@ -8,7 +8,7 @@
         <span class="fa fa-plus"></span> Assign Course</button>
       <button class="btn btn-sm btn-primary" [routerLink]="['remove-course']">
         <span class="fa fa-trash"></span> Remove Course</button>
-      <button class="btn btn-sm btn-primary" [routerLink]="['import-courses']">
+      <button class="btn btn-sm btn-primary" [routerLink]="['import-courses']" *ngIf="isSupervisor || isAdmin">
         <span class="fa fa-upload"></span> Import Courses</button>
     </h4>
   </div>
@@ -42,7 +42,7 @@
     <tbody>
       <tr *ngFor="let cor of courses; let ind = index;">
         <td>
-          <a [routerLink]="['edit-course', cor.code]">{{cor.code}}</a>
+          <a [routerLink]="['edit-course', cor.id]">{{cor.code}}</a>
         </td>
         <td>
           {{cor.name}}

@@ -76,57 +76,53 @@
       <table class="table table-bordered">
         <thead>
           <th>
-            Course Name
+            Course Code
           </th>
           <th>
-            Due Date
+           Course Name
           </th>
           <th>
-            Last Accesed
+            Status
           </th>
           <th>
-            Completed
+            Duration
           </th>
 
           <th>
-            Course Duration
+            Score
           </th>
           <th>
-            Current Score
+          Last Accessed
           </th>
+        
           <th>
-            High Score
-          </th>
-          <th>
-
+&nbsp;
           </th>
         </thead>
         <tbody *ngIf="courseData.length">
           <tr *ngFor="let c of courseData">
             <td>
-              <a [routerLink]="['user-course-detail', c.courseId]">{{c.courseName}}</a>
+              <a [routerLink]="['/lms/my-courses/user-course-detail/', c.courseId]">{{c.courseCode}}</a>
 
             </td>
             <td>
-              {{c.courseEndDateTime}}
+              {{c.courseName}}
             </td>
             <td>
-              {{c.userCourseLastUpdatedDateTime}}
-            </td>
-            <td>
-              {{c.userCourseStatusDescription}}
+              {{c.userCourseLessonStatus}}
             </td>
             <td>
               {{c.courseDuration}}
             </td>
             <td>
-              {{c.userCourseGrade}}
+              {{c.userCourseRawScore}}
             </td>
             <td>
-
+              {{c.userCourseLastUpdatedDateTime}}
             </td>
+         
             <td>
-              <a>Start Course</a>
+              <a href="">Start Course</a>
             </td>
           </tr>
         </tbody>
