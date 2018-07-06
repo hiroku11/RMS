@@ -56,6 +56,8 @@
               </tr>
             </tbody>
       </table>
+      <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+ 
     </div>
     <div id="myModal" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
         <div class="modal-dialog modal-lg" role="document">

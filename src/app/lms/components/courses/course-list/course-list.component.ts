@@ -27,13 +27,23 @@ export class CourseListComponent implements OnInit {
      this.userId = userService.userDetails.id;
      }
   courseData : any = [];
+  searchParams: any = {
+    paging: { currentPage: 0, pageSize: 10 },
+    sorts: [
+      {
+        field: "description",
+        order: "ASC"
+      }
+    ],
+    filters: []
+  };
  
   ngOnInit() {
     this.getCourse();
   }
   getCourse(){
     this._apiService
-    .get("/course/search-courses")
+    .get("/course/search-courses", { Search: JSON.stringify(this.searchParams) })
     .subscribe(data => {
       this.courseData = data.courses; 
     });
@@ -48,5 +58,9 @@ export class CourseListComponent implements OnInit {
       this._alertService.success("Course Added successfully.");
     });
   }
-
+  getPageData($event: any) {
+    this.searchParams.paging.currentPage = $event.pageNo - 1;
+    this.searchParams.paging.pageSize = $event.pageSize;
+    this.getCourse();
+  }
 }

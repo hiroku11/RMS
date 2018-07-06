@@ -127,5 +127,6 @@
           </tr>
         </tbody>
       </table>
+      <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
     </div>
   </div>

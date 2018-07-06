@@ -20,6 +20,17 @@ export class MyCoursesComponent implements OnInit {
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef) { }
     courseData =[];
+    itemsCount = 0;
+    searchParams: any = {
+      paging: { currentPage: 0, pageSize: 10 },
+      sorts: [
+        {
+          field: "description",
+          order: "ASC"
+        }
+      ],
+      filters: []
+    };
   ngOnInit() {
     this.getCourse();
   }
@@ -29,5 +40,10 @@ export class MyCoursesComponent implements OnInit {
     .subscribe(data => {
       this.courseData = data.userCourses; 
     });
+  }
+  getPageData($event: any) {
+    this.searchParams.paging.currentPage = $event.pageNo - 1;
+    this.searchParams.paging.pageSize = $event.pageSize;
+    this.getCourse();
   }
 }

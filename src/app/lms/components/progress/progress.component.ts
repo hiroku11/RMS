@@ -112,5 +112,10 @@ export class ProgressComponent implements OnInit {
   
         this.courseData = data.userCourses;})
   }
+  getPageData($event: any) {
+    this.searchParams.paging.currentPage = $event.pageNo - 1;
+    this.searchParams.paging.pageSize = $event.pageSize;
+    this.changeTab(this.currentTab);
+  }
 
 }
