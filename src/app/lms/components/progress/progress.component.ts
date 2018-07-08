@@ -16,6 +16,7 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 })
 export class ProgressComponent implements OnInit {
   progressCount: any;
+  itemsCount = 0;
   progressData: any;
   currentTab: string;
   searchParams: any = {

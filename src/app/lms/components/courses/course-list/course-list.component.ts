@@ -18,6 +18,7 @@ import { UserService } from './../../../../services/user.service';
 export class CourseListComponent implements OnInit {
 
   userId:any;
+  itemsCount = 0;
   reason:any;
   cid:any;
   constructor(private _apiService: ApiService,

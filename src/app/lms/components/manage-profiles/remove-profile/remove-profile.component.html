@@ -8,11 +8,11 @@
 <div class="row pb-2">
   <div class="col-sm-6">
     <label>Select User</label>
-    <ngx-select-dropdown [options]="profiles" [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
+    <ngx-select-dropdown  [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
   </div>
   <div class="col-sm-6 pt-2">
     <label class="p-1"></label>
-    <button class="btn btn-primary d-block" (click)="lookup()">
+    <button class="btn btn-primary d-block" (click)="lookup('user')">
       <span class="fa fa-search"> Lookup</span>
     </button>
   </div>
