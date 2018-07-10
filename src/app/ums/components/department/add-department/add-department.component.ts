@@ -1,3 +1,4 @@
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
 import { OrganizationLookupComponent } from './../../organization-lookup/organization-lookup.component';
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
@@ -5,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { OfficeAddressLookupComponent } from '../../office-address-lookup/office-address-lookup.component';
 
 @Component({
   selector: 'app-add-department',
@@ -101,21 +103,39 @@ export class AddDepartmentComponent implements OnInit {
     )
   }
 
-  lookup() {
+  lookup(type) {
+    let comp: any = OrganizationLookupComponent;
+    if (type === 'add') {
+      comp = OfficeAddressLookupComponent
+    }
+    if (type === 'post') {
+      comp = PostcodeLookupComponent
+    }
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      OrganizationLookupComponent
+      comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
     this.componentRef.instance.lookupType = 'admin';
-    this.componentRef.instance.selectOrg.subscribe((data) => {
-      this.selectOrg(data);
-    });
+    if (type === 'org') {
+      this.componentRef.instance.selectOrg.subscribe((data) => {
+        this.selectOrg(data);
+      });
+    }
+    if (type === 'add') {
+      this.componentRef.instance.selectAddress.subscribe((data) => {
+        this.selectAddress(data);
+      });
+    }
+
     this.componentRef.instance.closeModal.subscribe(() => {
       this.closeModal();
     });
   }
   selectOrg(org) {
     this.department.organization = org;
+  }
+  selectAddress(address) {
+    this.department.officeAddresses.push(address);
   }
   closeModal() {
     this.componentRef.instance.selectOrg.unsubscribe();

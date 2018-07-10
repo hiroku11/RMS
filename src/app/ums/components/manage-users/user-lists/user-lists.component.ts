@@ -44,10 +44,11 @@ export class UserListsComponent implements OnInit {
     this.getUsers();
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: number, index: number) {
     this.api.delete(`/user/delete-user/id/${id}`).subscribe(
       (data) => {
         this.alert.success('User successfully deleted');
+        this.userList.splice(index, 1);
       }, (error) => {
         this.alert.error(error);
       }
