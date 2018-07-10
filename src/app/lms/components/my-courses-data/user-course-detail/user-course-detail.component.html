@@ -5,91 +5,91 @@
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Code</label>
-    <input class="form-control" [(ngModel)]="course.courseCode" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseCode" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Name</label>
-    <input class="form-control" [(ngModel)]="course.counamerseName" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.counamerseName" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Description</label>
-    <input class="form-control" [(ngModel)]="course.courseDescription" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseDescription" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Category</label>
-    <input class="form-control" [(ngModel)]="course.courseCategory" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseCategory" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Type</label>
-    <input class="form-control" [(ngModel)]="course.courseTypeDescription" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseTypeDescription" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Domain</label>
-    <input class="form-control" [(ngModel)]="course.courseDomainDescription" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseDomainDescription" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Duration</label>
-    <input class="form-control" [(ngModel)]="course.courseDuration" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseDuration.description" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Learning Type</label>
-    <input class="form-control" [(ngModel)]="course.learningTypeDescription" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.learningTypeDescription" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Content Description</label>
-    <input class="form-control" [(ngModel)]="course.courseContentDesc" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseContentDesc" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Venue</label>
-    <input class="form-control" [(ngModel)]="course.courseVenue" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseVenue" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Pre-requisite</label>
-    <input class="form-control" [(ngModel)]="course.coursePreRequisite" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.coursePreRequisite" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Passing Grade</label>
-    <input class="form-control" [(ngModel)]="course.coursePassingGrade" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.coursePassingGrade" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Faculty Phone</label>
-    <input class="form-control" [(ngModel)]="course.courseFacultyPhone" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseFacultyPhone" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Cost</label>
-    <input class="form-control" [(ngModel)]="course.courseCost" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseCost" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Start Date & Time</label>
-    <input class="form-control" [(ngModel)]="course.courseStartDateTime" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseStartDateTime" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>End Date & Time</label>
-    <input class="form-control" [(ngModel)]="course.courseEndDateTime" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseEndDateTime" name="courseSize" readonly/>
   </div>
 </div>
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Available Seats</label>
-    <input class="form-control" [(ngModel)]="course.courseAvailableSeat" name="courseid" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseAvailableSeat" name="courseid" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Days To Complete</label>
-    <input class="form-control" [(ngModel)]="course.courseDaysToComplete" name="courseName" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseDaysToComplete" name="courseName" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Is People Manager Course?</label>
-    <input class="form-control" [(ngModel)]="course.coursePeopleManager" name="numberOfFloors" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.coursePeopleManager" name="numberOfFloors" readonly/>
   </div>
   <div class="col-sm-12 col-md-3">
     <label>Approval Required</label>
-    <input class="form-control" [(ngModel)]="course.courseApprovalRequired" name="courseSize" readonly/>
+    <input class="form-control" [(ngModel)]="course && course.courseApprovalRequired" name="courseSize" readonly/>
   </div>
 </div>
 
@@ -97,73 +97,73 @@
   Course Progress
 </h4>
 <div class="row">
-  
+
 </div>
 <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
-      <label>Planned Start Date</label>
-      <input class="form-control" [(ngModel)]="course.userCoursePlannedStartDate" name="courseid" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Planned End Date</label>
-      <input class="form-control" [(ngModel)]="course.userCoursePlannedEndDate" name="courseName" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Actual Start Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.userCourseActualStartDateTime" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <label>Actual End Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.userCourseActualEndDateTime" name="courseSize" readonly/>
-    </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Planned Start Date</label>
+    <input class="form-control" [(ngModel)]="course && course.userCoursePlannedStartDate" name="courseid" readonly/>
   </div>
-  <div class="row pb-2">
-    <div class="col-sm-12 col-md-4">
-      <label>Course Approval Status</label>
-      <input class="form-control" [(ngModel)]="course.userCourseApprovalStatusDescription" name="courseid" readonly/>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <label>Duration</label>
-      <input class="form-control" [(ngModel)]="course.courseDuration" name="courseName" readonly/>
-    </div>
-   
-    <div class="col-sm-12 col-md-4">
-      <label>Course Progress Status</label>
-      <input class="form-control" [(ngModel)]="course.userCourseLessonStatus" name="courseSize" readonly/>
-    </div>
-   
+  <div class="col-sm-12 col-md-3">
+    <label>Planned End Date</label>
+    <input class="form-control" [(ngModel)]="course && course.userCoursePlannedEndDate" name="courseName" readonly/>
   </div>
-  <div class="row pb-2">
-  
-    <div class="col-sm-12 col-md-4">
-      <label>Last Accessed</label>
-      <input class="form-control" [(ngModel)]="course.userCourseLastUpdatedDateTime" name="courseName" readonly/>
-    </div>
-   
-    <div class="col-sm-12 col-md-4">
-      <label>Added Reason</label>
-      <textarea class="form-control" [(ngModel)]="course.userCourseAddReason" name="courseSize" readonly> </textarea>
-    </div>
-    <div class="col-sm-12 col-md-4">
-        <label>Approved Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.userCourseAppprovedReason" name="courseid" readonly></textarea>
-      </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Actual Start Date & Time</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseActualStartDateTime" readonly/>
   </div>
-  <div class="row pb-2">
-      <div class="col-sm-12 col-md-4">
-          <label>Score</label>
-          <input class="form-control" [(ngModel)]="course.userCourseRawScore" name="courseSize" readonly/>
-        </div>
-      <div class="col-sm-12 col-md-4">
-        <label>Rejected Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.userCourseRejectedReason" name="courseName" readonly></textarea>
-      </div>
-      <div class="col-sm-12 col-md-4">
-        <label>Other Reason</label>
-        <textarea class="form-control" [(ngModel)]="course.userCourseOtherReason" name="numberOfFloors" readonly> </textarea>
-      </div>
-     
-    </div>
-    <div class="row pb-2">
-        <button class="btn btn-primary" (click)="goBack()">Back</button>
-      </div>
+  <div class="col-sm-12 col-md-3">
+    <label>Actual End Date & Time</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseActualEndDateTime" name="courseSize" readonly/>
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Course Approval Status</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseApprovalStatusDescription" name="courseid" readonly/>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Duration</label>
+    <input class="form-control" [(ngModel)]="course && course.courseDuration.description" name="courseName" readonly/>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <label>Course Progress Status</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseLessonStatus" name="courseSize" readonly/>
+  </div>
+
+</div>
+<div class="row pb-2">
+
+  <div class="col-sm-12 col-md-4">
+    <label>Last Accessed</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseLastUpdatedDateTime" name="courseName" readonly/>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <label>Added Reason</label>
+    <textarea class="form-control" [(ngModel)]="course && course.userCourseAddReason" name="courseSize" readonly> </textarea>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Approved Reason</label>
+    <textarea class="form-control" [(ngModel)]="course && course.userCourseAppprovedReason" name="courseid" readonly></textarea>
+  </div>
+</div>
+<div class="row pb-2">
+  <div class="col-sm-12 col-md-4">
+    <label>Score</label>
+    <input class="form-control" [(ngModel)]="course && course.userCourseRawScore" name="courseSize" readonly/>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Rejected Reason</label>
+    <textarea class="form-control" [(ngModel)]="course && course.userCourseRejectedReason" name="courseName" readonly></textarea>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <label>Other Reason</label>
+    <textarea class="form-control" [(ngModel)]="course && course.userCourseOtherReason" name="numberOfFloors" readonly> </textarea>
+  </div>
+
+</div>
+<div class="row pb-2">
+  <button class="btn btn-primary" (click)="goBack()">Back</button>
+</div>

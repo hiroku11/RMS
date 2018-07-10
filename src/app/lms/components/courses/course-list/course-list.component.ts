@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { UserService } from './../../../../services/user.service';
-
+declare var $: any;
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -17,17 +17,17 @@ import { UserService } from './../../../../services/user.service';
 })
 export class CourseListComponent implements OnInit {
 
-  userId:any;
+  userId: any;
   itemsCount = 0;
-  reason:any;
-  cid:any;
+  reason: any;
+  cid: any;
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
-  private userService: UserService) {
-     this.userId = userService.userDetails.id;
-     }
-  courseData : any = [];
+    private userService: UserService) {
+    this.userId = userService.userDetails.id;
+  }
+  courseData: any = [];
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [
@@ -38,26 +38,27 @@ export class CourseListComponent implements OnInit {
     ],
     filters: []
   };
- 
+
   ngOnInit() {
     this.getCourse();
   }
-  getCourse(){
+  getCourse() {
     this._apiService
-    .get("/course/search-courses", { Search: JSON.stringify(this.searchParams) })
-    .subscribe(data => {
-      this.courseData = data.courses; 
-    });
+      .get("/course/search-courses", { Search: JSON.stringify(this.searchParams) })
+      .subscribe(data => {
+        this.courseData = data.courses;
+      });
   }
-  addCourse(){
+  addCourse() {
     let payload = {
       "addReason": this.reason
     }
     this._apiService
-    .put(`/user/add-course-to-user/userId/`+this.userId +`/courseId/`+this.cid,payload)
-    .subscribe(data => {
-      this._alertService.success("Course Added successfully.");
-    });
+      .put(`/user/add-course-to-user/userId/` + this.userId + `/courseId/` + this.cid, payload)
+      .subscribe(data => {
+        this._alertService.success("Course Added successfully.");
+        $('#myModal').modal('hide');
+      });
   }
   getPageData($event: any) {
     this.searchParams.paging.currentPage = $event.pageNo - 1;
