@@ -10,6 +10,7 @@ import { AlertsLoaderService } from '../../../../services/alerts-loader.service'
 export class ProfilesListComponent implements OnInit {
   profiles: any = [];
   itemsCount = 0;
+  filter: any;
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [

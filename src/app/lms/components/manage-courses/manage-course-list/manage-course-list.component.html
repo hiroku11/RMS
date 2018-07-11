@@ -1,5 +1,5 @@
 <div class="row pb-3">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <h4>
       <span class="fa fa-address-book-o"></span> Manage Courses |
       <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
@@ -11,6 +11,16 @@
       <button class="btn btn-sm btn-primary" [routerLink]="['import-courses']">
         <span class="fa fa-upload"></span> Import Courses</button>
     </h4>
+  </div>
+  <div class="col-md-4">
+      <div class="searchbox">
+          <div class="input-group stylish-input-group">
+              <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filter">
+              <span class="fa fa-search">
+              </span>
+
+          </div>
+      </div>
   </div>
 </div>
 <div class="row">
@@ -40,7 +50,7 @@
 
     </thead>
     <tbody>
-      <tr *ngFor="let cor of courses; let ind = index;">
+      <tr *ngFor="let cor of courses | searchFilter: filter; let ind = index;">
         <td>
           <a [routerLink]="['edit-course', cor.id]">{{cor.code}}</a>
         </td>

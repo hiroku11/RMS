@@ -18,6 +18,7 @@ declare var $: any;
 export class CourseListComponent implements OnInit {
 
   userId: any;
+  filter: any;
   itemsCount = 0;
   reason: any;
   cid: any;

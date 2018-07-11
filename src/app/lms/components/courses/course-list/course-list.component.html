@@ -1,88 +1,102 @@
-
+<div class="row">
+    <div class="col-md-8">
         <h4>
-          <span class="fa fa-address-book-o"></span> Courses
-          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
-            <span class="fa fa-plus"></span>Add</button> -->
+            <span class="fa fa-address-book-o"></span> Courses
+            <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+                      <span class="fa fa-plus"></span>Add</button> -->
         </h4>
-     
-    <div class="row tab-content">
-      <table class="table table-bordered">
+    </div>
+    <div class="col-md-4">
+        <div class="searchbox">
+            <div class="input-group stylish-input-group">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filter">
+                <span class="fa fa-search">
+                </span>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row tab-content">
+    <table class="table table-bordered">
         <thead>
-          <th>
-             Code
-          </th>
-          <th>
-             Name
-          </th>
-          <th>
-            Description
-          </th>
-        
-          <th>
-              People Manager
-          </th>
-          <th>
-              Approval Required
+            <th>
+                Code
             </th>
-          <th>
-              Category
-          </th>
-          <th></th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+
+            <th>
+                People Manager
+            </th>
+            <th>
+                Approval Required
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
         </thead>
         <tbody *ngIf="courseData.length > 0">
-              <tr *ngFor="let c of courseData">
+            <tr *ngFor="let c of courseData | searchFilter: filter">
                 <td>
                     <a [routerLink]="['course-detail', c.id]">{{c.code}}</a>
                 </td>
                 <td>
-                  {{c.name}}
+                    {{c.name}}
                 </td>
                 <td>
-                  {{c.description}}
+                    {{c.description}}
                 </td>
                 <td>
-                {{c.peopleManager}}
+                    {{c.peopleManager}}
                 </td>
                 <td>
-                  {{c.approvalRequired}}
+                    {{c.approvalRequired}}
                 </td>
                 <td>
-                  {{c.category}}
+                    {{c.category}}
                 </td>
                 <td>
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="cid=c.id">Add</button>
-                  
-                </td>
-              </tr>
-            </tbody>
-      </table>
-      <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
- 
-    </div>
-    <div id="myModal" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Add Course</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-3">
-                            <label>Add Reason</label>
-                        </div>
-                        <div class="col-sm-12 col-md-9 pb-1">
-                            <input class="form-control" [(ngModel)]="reason"
-                            />
-                        </div>
-                        </div>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="cid=c.id">Add</button>
 
-                     <div class="row" ></div> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+
+</div>
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Course</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Add Reason</label>
+                    </div>
+                    <div class="col-sm-12 col-md-9 pb-1">
+                        <input class="form-control" [(ngModel)]="reason" />
+                    </div>
+                </div>
+
+                <div class="row"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" (click)="addCourse()">Add</button>
-                  
+
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
