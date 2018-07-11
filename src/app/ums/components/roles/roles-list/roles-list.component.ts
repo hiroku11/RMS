@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class RolesListComponent implements OnInit {
   rolesList: any = [];
   itemsCount = 0;
+  filter: any;
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [

@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminTeamListComponent implements OnInit {
   teamList: any = [];
   itemsCount = 0;
+  filter: string;
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [

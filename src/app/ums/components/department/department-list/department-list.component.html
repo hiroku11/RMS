@@ -1,10 +1,20 @@
 <div class="row pb-3">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <h4>
       <span class="fa fa-address-book-o"></span> Department |
       <button class="btn btn-sm btn-primary" [routerLink]="['add-department']">
         <span class="fa fa-plus"></span>Add</button>
     </h4>
+  </div>
+  <div class="col-md-4">
+    <div class="searchbox">
+      <div class="input-group stylish-input-group">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filter">
+        <span class="fa fa-search">
+        </span>
+
+      </div>
+    </div>
   </div>
 </div>
 <table class="table table-bordered">
@@ -18,7 +28,7 @@
 
   </thead>
   <tbody>
-    <tr *ngFor="let dep of departmentList; let ind = index;">
+    <tr *ngFor="let dep of departmentList | searchFilter: filter; let ind = index;">
       <td>
         <a [routerLink]="['edit-department',dep.id]">{{dep.id}}</a>
       </td>
