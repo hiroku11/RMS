@@ -141,12 +141,28 @@ export class ApiService {
             })
         }
         for (let key in payload) {
+
+            if (payload[key] === null) {
+                continue;
+            }
+            if (key.indexOf('totalTime') > -1) {
+                continue;
+            }
+
             if (key.indexOf("Time") > -1 && payload[key]) {
+                let val = payload[key];
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY HH:mm:ss").toString();
+                if (payload[key] === 'Invalid date') {
+                    payload[key] = val;
+                }
                 continue;
             }
             if ((key.indexOf("Date") > -1 || key.indexOf('dateOf') > -1) && payload[key]) {
+                let val = payload[key];
                 payload[key] = moment(payload[key]).format("DD/MM/YYYY").toString();
+                if (payload[key] === 'Invalid date') {
+                    payload[key] = val;
+                }
                 continue;
             }
             if (Array.isArray(payload[key]) || typeof payload[key] == 'object') {
@@ -158,14 +174,17 @@ export class ApiService {
     parseDate(response: any) {
         if (Array.isArray(response)) {
             response.forEach(element => {
-                this.parseDate(element);
+                element = this.parseDate(element);
             });
         }
         for (let key in response) {
             if (Array.isArray(response[key])) {
                 response[key].forEach(element => {
-                    this.parseDate(element);
+                    element = this.parseDate(element);
                 });
+            }
+            if (typeof response[key] === 'object') {
+                response[key] = this.parseDate(response[key])
             }
             if ((key.indexOf("Date") > -1 || key.indexOf('dateOf') > -1) && response[key]) {
                 response[key] = moment(response[key], "DD/MM/YYYY HH:mm:ss").toDate();
