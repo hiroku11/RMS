@@ -52,6 +52,12 @@ export class AddUserComponent implements OnInit {
         if (typeof data.officeAddress === 'undefined' || data.officeAddress === null) {
           data.officeAddress = this.initNewAddress();
         }
+        if (typeof data.genderType === 'undefined') {
+          data.genderType = {
+            description: "",
+            id: ""
+          }
+        }
         this.userDetails = data;
       }, (error) => {
         this.alert.error(error);
