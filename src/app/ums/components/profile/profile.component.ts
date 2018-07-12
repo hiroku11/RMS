@@ -46,6 +46,12 @@ export class ProfileComponent implements OnInit {
       (data) => {
         this.originalUserDetails = data;
         this.userDetails = data;
+        if (typeof data.genderType === 'undefined') {
+          data.genderType = {
+            description: "",
+            id: ""
+          }
+        }
       }, (error) => {
         this.alert.error(error);
       }
@@ -66,7 +72,7 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  
+
   lookup(which: string) {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       UserLookupComponent
