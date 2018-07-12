@@ -128,17 +128,24 @@ export class AddDepartmentComponent implements OnInit {
     }
 
     this.componentRef.instance.closeModal.subscribe(() => {
-      this.closeModal();
+      this.closeModal(type);
     });
   }
   selectOrg(org) {
     this.department.organization = org;
+    this.alert.success('Organization selected.')
   }
   selectAddress(address) {
     this.department.officeAddresses.push(address);
   }
-  closeModal() {
-    this.componentRef.instance.selectOrg.unsubscribe();
+  closeModal(type) {
+    if (type === 'org') {
+      this.componentRef.instance.selectOrg.unsubscribe();
+    }
+    if (type === 'add') {
+      this.componentRef.instance.selectAddress.unsubscribe();
+    }
+
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
   }

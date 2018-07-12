@@ -49,6 +49,9 @@ export class AddUserComponent implements OnInit {
         if (typeof data.addresses === 'undefined' || data.addresses.length === 0) {
           data.addresses = [this.initNewAddress()];
         }
+        if (typeof data.officeAddress === 'undefined' || data.officeAddress === null) {
+          data.officeAddress = this.initNewAddress();
+        }
         this.userDetails = data;
       }, (error) => {
         this.alert.error(error);
@@ -145,6 +148,7 @@ export class AddUserComponent implements OnInit {
   }
 
   saveUser() {
+    debugger
     this.api.put(`/user/create-or-update-user`, this.userDetails).subscribe(
       (data) => {
         if (!this.editMode) {
