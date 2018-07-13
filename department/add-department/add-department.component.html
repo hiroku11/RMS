@@ -1,0 +1,112 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> {{editMode?'Update': 'Add'}} Department
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Department Code</label>
+    <input type="text" [(ngModel)]="department.id" class="form-control" />
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Department Name</label>
+    <input type="text" [(ngModel)]="department.description" class="form-control" />
+  </div>
+  <div class="col-md-4 col-sm-12 row">
+    <label class="col-sm-12">Organization</label>
+    <div class="col-sm-8 row m-0 p-0">
+      <input type="text" [(ngModel)]="department.organization.id" class="form-control" />
+    </div>
+    <div class="col-sm-4 p-0">
+      <button class="btn btn-primary" (click)="lookup('org')">
+        <span class="fa fa-search"></span>Lookup</button>
+    </div>
+  </div>
+</div>
+
+
+
+<h5 class="pt-3 pb-3">Office Address |
+  <button class="btn btn-primary btn-sm" (click)="lookup('add')">
+    <span class="fa fa-search"> Lookup</span>
+  </button>
+</h5>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Organization Name (if any)</label>
+    <input [(ngModel)]="address.organizationName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Block #/Name</label>
+    <input [(ngModel)]="address.blockNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Building Name</label>
+    <input [(ngModel)]="address.buildingName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 row m-0 ">
+    <div class="col-sm-4 p-0">
+      <label>Post Code 1</label>
+      <input [(ngModel)]="address.postcode1" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 p-0">
+      <label>Post Code 2</label>
+      <input [(ngModel)]="address.postcode2" type="text" class="form-control">
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Locality Name</label>
+    <input [(ngModel)]="address.localityName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>City</label>
+    <input [(ngModel)]="address.city" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Door #</label>
+    <input [(ngModel)]="address.doorNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Apartment #/Name</label>
+    <input [(ngModel)]="address.apartmentNumber" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Street Name</label>
+    <input [(ngModel)]="address.streetName" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Post Town</label>
+    <input [(ngModel)]="address.postTown" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>County</label>
+    <input [(ngModel)]="address.county" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Country</label>
+    <input [(ngModel)]="address.country" type="text" class="form-control">
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" *ngIf="!editMode" (click)="addDepartment()">Save</button>
+    <button class="btn btn-primary" *ngIf="editMode" (click)="updateDepartment()">Update</button>
+    <button class="btn btn-secondary float-right">Clear</button>
+  </div>
+</div>

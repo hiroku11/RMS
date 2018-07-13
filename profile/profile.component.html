@@ -1,0 +1,168 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'profile'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'profile'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 content">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-eye"></span> My Profile</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>LoginId</label>
+        <input [(ngModel)]="userDetails.loginId" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Title</label>
+        <input [(ngModel)]="userDetails.title" type="text" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>First Name</label>
+        <input type="text" [(ngModel)]="userDetails.firstName" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>Middle Name</label>
+        <input type="text" [(ngModel)]="userDetails.middleName" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="userDetails.lastName" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Name Suffix</label>
+        <input type="text" [(ngModel)]="userDetails.nameSuffix" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>Gender</label>
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.genderType" class="form-control">
+          <option></option>
+          <option [ngValue]="gen" *ngFor="let gen of dropdownsData.genderTypes">{{gen.description}}</option>
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Gender Other</label>
+        <input type="number" [disabled]="userDetails.genderType.id != 'OTHER'" [(ngModel)]="userDetails.genderTypeOther" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Age</label>
+        <input type="number" [(ngModel)]="userDetails.age" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>Date of Birth</label>
+        <input type="text" [(ngModel)]="userDetails.dateOfBirth" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="userDetails.phone" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Alternate Phone</label>
+        <input type="text" [(ngModel)]="userDetails.alternatePhone" class="form-control">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>Fax</label>
+        <input type="text" [(ngModel)]="userDetails.fax" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="userDetails.email" class="form-control">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Employee ID</label>
+        <input type="text" [(ngModel)]="userDetails.employeeId" class="form-control">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label>Date of Joining</label>
+        <input type="text" [(ngModel)]="userDetails.dateOfJoining" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" class="form-control">
+        <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Designation/Position</label>
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.position" class="form-control">
+          <option></option>
+          <option [ngValue]="dep" *ngFor="let dep of dropdownsData.positionsList">{{dep.description}}</option>
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label>Department</label>
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.department" class="form-control">
+          <option></option>
+          <option [ngValue]="dep" *ngFor="let dep of dropdownsData.departmentList">{{dep.description}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-12 row m-0">
+        <label class="col-sm-12">Manager(Level 1)</label>
+        <div class="col-sm-8 row m-0 p-0">
+          <input type="text" [(ngModel)]="userDetails.manager && userDetails.manager.fullName" class="form-control" />
+        </div>
+        <div class="col-sm-4 p-0">
+          <button class="btn btn-primary" (click)="lookup('manager')">
+            <span class="fa fa-search"></span>Lookup</button>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 row m-0">
+        <label class="col-sm-12">Manager(Level 2)</label>
+        <div class="col-sm-8 row m-0 p-0">
+          <input type="text" [(ngModel)]="userDetails.managerLevel2 && userDetails.managerLevel2.fullName" class="form-control" />
+        </div>
+        <div class="col-sm-4 p-0">
+          <button class="btn btn-primary" (click)="lookup('managerLevel2')">
+            <span class="fa fa-search"></span>Lookup</button>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 row m-0">
+        <label class="col-sm-12">Manager(Level 3)</label>
+        <div class="col-sm-8 row m-0 p-0">
+          <input type="text" [(ngModel)]="userDetails.managerLevel3 && userDetails.managerLevel3.fullName" class="form-control" />
+        </div>
+        <div class="col-sm-4 p-0">
+          <button class="btn btn-primary" (click)="lookup('managerLevel3')">
+            <span class="fa fa-search"></span>Lookup</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label>Employee Type</label>
+        <select [compareWith]="selectCompareFunction" [(ngModel)]="userDetails.employeeType" class="form-control">
+          <option></option>
+          <option [ngValue]="emp" *ngFor="let emp of dropdownsData.employeeTypes">{{emp.description}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label>Certification</label>
+        <input type="text" [(ngModel)]="userDetails.certification" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 pt-3">
+        <button class="btn btn-primary " (click)="updateProfile()">Save</button>
+        <button (click)="reset()" class="btn btn-secondary float-right">Reset</button>
+      </div>
+    </div>
+
+  </div>
+</div>

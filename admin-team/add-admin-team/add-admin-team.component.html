@@ -1,0 +1,57 @@
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> {{editMode?'Update': 'Add'}} Admin Team
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <label>Team Name</label>
+    <input [(ngModel)]="team.teamName" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Team Description</label>
+    <input [(ngModel)]="team.teamDescription" type="text" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <label>Team Email</label>
+    <input [(ngModel)]="team.teamEmail" type="text" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-sm-12 row m-0 ">
+    <div class="col-sm-8 p-0">
+      <label>RMS Admins</label>
+      <ngx-select-dropdown [options]="[]" [multiple]="true" [(value)]="team.rmsAdmins" [config]="config"></ngx-select-dropdown>
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block" (click)="adminLookup('rmsAdmins')">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12 row m-0 ">
+    <div class="col-sm-8 p-0">
+      <label>LMS Admins</label>
+      <ngx-select-dropdown [options]="[]" [multiple]="true" [(value)]="team.lmsAdmins" [config]="config"></ngx-select-dropdown>
+    </div>
+    <div class="col-sm-4 pt-2 pl-0">
+      <label class="p-1"></label>
+      <button class="btn btn-primary d-block" (click)="adminLookup('lmsAdmins')">
+        <span class="fa fa-search"> Lookup</span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-sm-12">
+    <button class="btn btn-primary " (click)="addTeam()" *ngIf="!editMode">Add</button>
+    <button class="btn btn-primary " (click)="updateTeam()" *ngIf="editMode">Update</button>
+  </div>
+</div>
