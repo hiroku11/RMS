@@ -78,7 +78,7 @@ export class UserLookupComponent implements OnInit {
     this._apiService
       .get(this.searchUrl, { Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
-        this.searchResult = data;
+        this.searchResult = data.users;
 
       },
         error => {

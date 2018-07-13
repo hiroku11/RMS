@@ -161,7 +161,7 @@
                     <tbody>
                         <tr *ngFor="let user of searchResult">
                             <td>
-                                <a (click)="selectUserForReset(user.userLoginId)">{{user.userLoginId}}</a>
+                                <a style="cursor:pointer;color:blueviolet" (click)="selectUserForReset(user.userLoginId)">{{user.userLoginId}}</a>
                             </td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.lastName}}</td>
