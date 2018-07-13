@@ -56,6 +56,9 @@ export class ApiService {
     }
     get(url: string, headers?: any, showLoader: boolean = true, blob: boolean = false) {
         let apiUrl = url.indexOf('external') != -1 ? this.loginApi : this.apiUrl;
+        if (url == '/search-user' && this._userService.authToken === null) {
+            apiUrl = this.loginApi;
+        }
         if (url.indexOf(`view-feedback-external`) !== -1) {
             apiUrl = this.apiUrl;
         }
@@ -63,7 +66,8 @@ export class ApiService {
         if (!headers) {
             headers = {};
         }
-        if (url.indexOf('external') == -1 || url.indexOf(`view-feedback-external`) !== -1) {
+        if ((url.indexOf('external') == -1 || url.indexOf(`view-feedback-external`) !== -1)
+            && this._userService.authToken !== null) {
             headers["X-AUTH-TOKEN"] = this._userService.authToken;
         }
         let options: any = {
