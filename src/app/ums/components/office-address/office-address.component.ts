@@ -47,7 +47,6 @@ export class OfficeAddressComponent implements OnInit {
       OfficeAddressLookupComponent
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
-    this.componentRef.instance.lookupType = 'manager';
     this.componentRef.instance.selectAddress.subscribe((data) => {
       this.selectAddress(data);
     });

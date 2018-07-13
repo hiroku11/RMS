@@ -238,7 +238,9 @@ ngx-select-dropdown {
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary, .btn-secondary, .btn-info {
+.btn-primary,
+.btn-secondary,
+.btn-info {
     background-color: #9ca3a9 !important;
     border: none;
     :active {
@@ -250,4 +252,20 @@ ngx-select-dropdown {
 }
 .highcharts-credits{
     display: none;
+
+.searchbox {
+    vertical-align: middle;
+    padding-bottom: 10px;
+    float: right;
+    width: 184px;
+    .form-control {
+        border-radius: 20px !important;
+        padding-right: 25px;
+    }
+    span {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        z-index: 999;
+    }
 }

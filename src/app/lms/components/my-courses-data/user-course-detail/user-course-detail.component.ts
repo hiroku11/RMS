@@ -32,7 +32,9 @@ export class UserCourseDetailComponent implements OnInit {
      .get(`/user-course-entity/id/${Id}`)
      .subscribe(data => {
        this.course = data;
-       this._alertService.success("Course Detail fetched successfully.");
+       // this._alertService.success("Course Detail fetched successfully.");
+     },(error)=>{
+       this._alertService.error('Some error occured. Try Again')
      });
    }
    goBack(){

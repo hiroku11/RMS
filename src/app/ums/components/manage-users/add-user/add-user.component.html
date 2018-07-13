@@ -43,7 +43,8 @@
   </div>
   <div class="col-md-4 col-sm-12">
     <label>Gender Other</label>
-    <input type="number" [disabled]="(userDetails.genderType && userDetails.genderType.id != 'OTHER') || userDetails.genderType === null" [(ngModel)]="userDetails.genderTypeOther" class="form-control">
+    <input type="number" [disabled]="(userDetails.genderType && userDetails.genderType.id != 'OTHER') || userDetails.genderType === null"
+      [(ngModel)]="userDetails.genderTypeOther" class="form-control">
   </div>
   <div class="col-md-4 col-sm-12">
     <label>Age</label>
@@ -109,7 +110,7 @@
       <input type="text" [(ngModel)]="userDetails.manager && userDetails.manager.fullName" class="form-control" />
     </div>
     <div class="col-sm-4 p-0">
-      <button class="btn btn-primary" (click)="lookup('manager')">
+      <button class="btn btn-primary" (click)="lookup('user','manager')">
         <span class="fa fa-search"></span>Lookup</button>
     </div>
   </div>
@@ -119,7 +120,7 @@
       <input type="text" [(ngModel)]="userDetails.managerLevel2 && userDetails.managerLevel2.fullName" class="form-control" />
     </div>
     <div class="col-sm-4 p-0">
-      <button class="btn btn-primary" (click)="lookup('managerLevel2')">
+      <button class="btn btn-primary" (click)="lookup('user','managerLevel2')">
         <span class="fa fa-search"></span>Lookup</button>
     </div>
   </div>
@@ -129,7 +130,7 @@
       <input type="text" [(ngModel)]="userDetails.managerLevel3 && userDetails.managerLevel3.fullName" class="form-control" />
     </div>
     <div class="col-sm-4 p-0">
-      <button class="btn btn-primary" (click)="lookup('managerLevel3')">
+      <button class="btn btn-primary" (click)="lookup('user','managerLevel3')">
         <span class="fa fa-search"></span>Lookup</button>
     </div>
   </div>
@@ -237,7 +238,7 @@
 </div>
 
 <h5 class="pb-2 pt-2">Office Address |
-  <button class="btn btn-primary btn-sm">
+  <button class="btn btn-primary btn-sm" (click)="lookup('office', null)">
     <span class="fa fa-search"> Lookup</span>
   </button>
 </h5>
@@ -316,7 +317,7 @@
 <div class="row pt-3">
   <div class="col-sm-12">
     <button class="btn btn-primary" (click)="saveUser()" *ngIf="!editMode">Add</button>
-    <button class="btn btn-primary" (click)="saveUser()"  *ngIf="editMode">Update</button>
+    <button class="btn btn-primary" (click)="saveUser()" *ngIf="editMode">Update</button>
   </div>
 
 </div>

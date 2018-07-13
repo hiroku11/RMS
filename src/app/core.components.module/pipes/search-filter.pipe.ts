@@ -16,7 +16,7 @@ export class SearchFilterPipe implements PipeTransform {
     // kept, false will be filtered out
     return items.filter((item: any) => {
       for (let key in item) {
-        if (typeof item[key] !== "object" && item[key].toString().indexOf(filter) > -1 ) {
+        if (typeof item[key] !== "object" && item[key].toString().toLowerCase().indexOf(filter.toLowerCase()) > -1) {
           return true;
         }
       }

@@ -1,3 +1,4 @@
+import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
@@ -48,6 +49,15 @@ export class AddUserComponent implements OnInit {
       (data) => {
         if (typeof data.addresses === 'undefined' || data.addresses.length === 0) {
           data.addresses = [this.initNewAddress()];
+        }
+        if (typeof data.officeAddress === 'undefined' || data.officeAddress === null) {
+          data.officeAddress = this.initNewAddress();
+        }
+        if (typeof data.genderType === 'undefined') {
+          data.genderType = {
+            description: "",
+            id: ""
+          }
         }
         this.userDetails = data;
       }, (error) => {
@@ -160,17 +170,31 @@ export class AddUserComponent implements OnInit {
   }
 
 
-  lookup(which: string) {
+  lookup(which: string, manager) {
+    let comp: any;
+    if (which == 'office') {
+      comp = OfficeAddressLookupComponent;
+    }
+    if (which == 'user') {
+      comp = UserLookupComponent;
+    }
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      UserLookupComponent
+      comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
-    this.componentRef.instance.lookupType = 'manager';
-    this.componentRef.instance.selectUser.subscribe((data) => {
-      this.selectManager(data, which);
-    });
+    if (which == 'user') {
+      this.componentRef.instance.lookupType = 'manager';
+      this.componentRef.instance.selectUser.subscribe((data) => {
+        this.selectManager(data, manager);
+      });
+    }
+    if (which == 'office') {
+      this.componentRef.instance.selectAddress.subscribe((data) => {
+        this.selectAddress(data);
+      });
+    }
     this.componentRef.instance.closeModal.subscribe(() => {
-      this.closeModal();
+      this.closeModal(which);
     });
   }
 
@@ -178,8 +202,17 @@ export class AddUserComponent implements OnInit {
     this.userDetails[which] = data;;
   }
 
-  closeModal() {
-    this.componentRef.instance.selectUser.unsubscribe();
+  selectAddress(data) {
+    this.userDetails.officeAddress = data;
+  }
+  closeModal(which) {
+    if (which == 'user') {
+      this.componentRef.instance.selectUser.unsubscribe();
+    }
+    if (which == 'office') {
+      this.componentRef.instance.selectAddress.unsubscribe();
+    }
+
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
   }
