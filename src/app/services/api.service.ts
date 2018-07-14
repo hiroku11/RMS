@@ -110,23 +110,27 @@ export class ApiService {
     }
 
     delete(url: string, headers?: any, showLoader: boolean = true) {
-        this._ajaxLoader.showLoader();
         if (!headers) {
             headers = {};
+        }
+        if (showLoader) {
+            this._ajaxLoader.showLoader();
         }
         headers["X-AUTH-TOKEN"] = this._userService.authToken;
         return this._http
             .delete(this.apiUrl + url, { headers: headers })
             .map((res: any) => {
-                res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();
+                res = this.parseDate(res);
                 return res;
             })
             .catch((error: HttpErrorResponse) => {
                 this._ajaxLoader.hideLoader();
                 return Observable.throw(error);
             });
+
     }
+
 
     // getFile(url: string) {
     //     const options = new HttpHeaders();

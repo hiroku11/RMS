@@ -48,6 +48,7 @@ export class CourseListComponent implements OnInit {
       .get("/course/search-courses", { Search: JSON.stringify(this.searchParams) })
       .subscribe(data => {
         this.courseData = data.courses;
+        this.itemsCount = data.totalRecords;
       });
   }
   addCourse() {
@@ -56,9 +57,12 @@ export class CourseListComponent implements OnInit {
     }
     this._apiService
       .put(`/user/add-course-to-user/userId/` + this.userId + `/courseId/` + this.cid, payload)
-      .subscribe(data => {
+      .subscribe((data) => {
         this._alertService.success("Course Added successfully.");
         $('#myModal').modal('hide');
+        this.reason = null;
+      }, (error) => {
+        this._alertService.error(error);
       });
   }
   getPageData($event: any) {

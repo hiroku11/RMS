@@ -39,6 +39,9 @@ export class ManageCourseListComponent implements OnInit {
   }
 
   deleteCourse(course, index) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+  }
     this.api.delete(`/course/delete-course/id/${course.id}`).subscribe(
       (data) => {
         this.alert.success('Course deleted successfully');

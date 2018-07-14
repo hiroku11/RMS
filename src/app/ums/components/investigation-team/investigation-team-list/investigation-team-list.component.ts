@@ -43,6 +43,9 @@ export class InvestigationTeamListComponent implements OnInit {
   }
 
   deleteTeam(team: any, index) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/investigation-team/delete-investigation-team/investigationTeamId/${team.id}`).subscribe(
       (data) => {
         this.alert.success('Investigation team successfully deleted');

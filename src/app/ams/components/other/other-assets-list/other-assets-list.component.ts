@@ -47,6 +47,9 @@ export class OtherAssetsListComponent implements OnInit {
             });
     }
     deleteAsset(asset:any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         this._apiService.delete(`/asset-type-other/delete-asset-type-other/assetTypeOtherId/${asset.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Asset deleteed successfully.");

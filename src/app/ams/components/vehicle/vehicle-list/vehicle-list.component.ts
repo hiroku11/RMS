@@ -48,6 +48,9 @@ export class VehicleListComponent implements OnInit {
             });
     }
     deleteVehicle (vehicle:any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         this._apiService.delete(`/vehicle/delete-vehicle/vehicleId/${vehicle.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Vehicle deleteed successfully.");

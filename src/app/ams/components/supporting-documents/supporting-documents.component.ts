@@ -61,6 +61,9 @@ export class SupportingDocumentsComponent implements OnInit {
   }
 
   deleteDocument(doc: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+  }
     this._apiService.delete(`/document/delete-document/${doc.id}`).subscribe(
       data => {
         this._alertsService.success("Document deleted successfully");

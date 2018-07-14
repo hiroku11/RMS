@@ -50,6 +50,9 @@ export class EquipmentListComponent implements OnInit {
     }
 
     deleteEquipment(equipment:any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         this._apiService.delete(`/equipment/delete-equipment/equipmentId/${equipment.id}`).subscribe(
             (data)=>{
                 this._alertService.success("Equipment deleteed successfully.");

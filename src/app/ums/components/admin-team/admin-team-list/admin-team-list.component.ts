@@ -42,6 +42,9 @@ export class AdminTeamListComponent implements OnInit {
   }
 
   deleteTeam(team: any, index) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/admin-team/delete-admin-team/teamId/${team.id}`).subscribe(
       (data) => {
         this.alert.success('Admin team successfully deleted');

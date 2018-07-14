@@ -42,6 +42,9 @@ export class DepartmentListComponent implements OnInit {
   }
 
   deleteDepartment(dep: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/department/delete-department/departmentCode/${dep.id}`).subscribe(
       (data) => {
         this.alert.success('Organization successfully deleted');

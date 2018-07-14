@@ -260,6 +260,9 @@ export class AddVehicleComponent implements OnInit {
     }
 
     deleteAssignee(user: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         if (!this.vehicle.id) {
             this.vehicle.assignees.forEach((element, index) => {
                 this.vehicle.assignees.splice(index, 1);

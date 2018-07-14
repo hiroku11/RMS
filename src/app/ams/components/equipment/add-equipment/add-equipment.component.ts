@@ -243,6 +243,9 @@ export class AddEquipmentComponent implements OnInit {
     }
 
     deleteAssignee(user: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         //equipment/remove-assignee-from-equipment-by-user-id/equipmentId/116/userId/1
         if (!this.equipment.id) {
             this.equipment.assignees.forEach((element, index) => {

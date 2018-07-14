@@ -136,7 +136,7 @@ export class AddDepartmentComponent implements OnInit {
     this.alert.success('Organization selected.')
   }
   selectAddress(address) {
-    this.department.officeAddresses.push(address);
+    this.address = address;
   }
   closeModal(type) {
     if (type === 'org') {

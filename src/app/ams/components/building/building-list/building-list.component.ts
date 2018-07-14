@@ -57,6 +57,9 @@ export class BuildingListComponent implements OnInit {
     }
 
     deleteBuilding(building: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         this._apiService.delete(`/building/delete-building/buildingId/${building.id}`).subscribe(
             (data) => {
                 this._alertService.success("Building deleted successfully.");

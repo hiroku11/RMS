@@ -74,6 +74,9 @@ export class DocumentListComponent implements OnInit {
   }
 
   deleteDocumnet(doc: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+  }
     this._apiService.delete(`/compliance/delete-compliance-document/complianceDocumentId/${doc.id}`, {}, true).subscribe(
       data => {
         this._alertService.success("Documnet deleted successfully");

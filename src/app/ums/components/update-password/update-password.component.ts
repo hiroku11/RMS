@@ -23,6 +23,11 @@ export class UpdatePasswordComponent implements OnInit {
     this.api.put(`/user/update-user-password`, this.password).subscribe(
       (data) => {
         this.alert.success('Password successfully updated');
+        this.password = {
+          oldPassword: '',
+          newPassword: '',
+          reConfirmNewPassword: ''
+        };
       }, (error) => {
         this.alert.error(error);
       }

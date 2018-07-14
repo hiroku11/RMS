@@ -167,6 +167,9 @@ export class MaintenanceComponent implements OnInit {
         );
     }
     removeMaintenanceFromAsset(amc: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-amc-from-building/buildingId/${
             this.asset.id
         }/amcId/${amc.id}`;

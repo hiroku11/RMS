@@ -24,6 +24,9 @@ export class Three60FeedbackComponent implements OnInit {
   }
 
   deleteInternalFeedback(feed: any) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this._api.delete(`/performance/delete-internal-feedback/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}/internalFeedbackId/${feed.id}`).subscribe(
       (data) => {
         this.cycle.peerComment = data;
@@ -36,6 +39,9 @@ export class Three60FeedbackComponent implements OnInit {
 
   }
   deleteExternalFeedback(feed) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this._api.delete(`/performance/delete-external-feedback/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}/externalFeedbackId/${feed.id}`).subscribe(
       (data) => {
         this.cycle.peerComment = data;

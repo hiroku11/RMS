@@ -164,6 +164,9 @@ export class InspectionComponent implements OnInit {
             );
     }
     removeInspectionFromAsset(inspection: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-inspection-from-building/buildingId/${this.asset.id}/inspectionId/${inspection.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/vehicle/remove-inspection-from-vehicle/vehicleId/${this.asset.id}/inspectionId/${inspection.id}`;

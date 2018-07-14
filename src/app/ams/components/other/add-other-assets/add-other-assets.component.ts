@@ -246,6 +246,9 @@ export class AddOtherAssetsComponent implements OnInit {
     }
 
     deleteAssignee(user: any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         //building/remove-assignee-from-building-by-user-id/buildingId/116/userId/1
         if (!this.asset.id) {
             this.asset.assignees.forEach((element, index) => {

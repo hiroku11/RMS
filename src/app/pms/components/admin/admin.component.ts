@@ -62,6 +62,9 @@ export class AdminComponent implements OnInit {
     this.addCycle = cycle;
   }
   deleteCycle(cycle: any, ind: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this._api.delete(`/performance/delete-performance-cycle/id/${cycle.id}`).subscribe(
       (data) => {
         this._alert.success("Performance cycle successfully deleted");

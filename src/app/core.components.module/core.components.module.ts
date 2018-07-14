@@ -26,10 +26,12 @@ import { PostcodeLookupComponent } from './component/postcode-lookup/postcode-lo
     imports: [CommonModule, FormsModule, RouterModule],
     exports: [HeaderComponent, SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,
         LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, UserLookupComponent],
-    declarations: [HeaderComponent, SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,UserLookupComponent,
-        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, GiveFeedbackExternalComponent, PasswordResetComponent, PostcodeLookupComponent
+    declarations: [HeaderComponent, SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent, UserLookupComponent,
+        LoginComponent, HttpActionDirective, SearchFilterPipe, HomeComponent, SortByPipe, GiveFeedbackExternalComponent,
+        PasswordResetComponent, PostcodeLookupComponent
     ],
-    entryComponents: [SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent, UserLookupComponent]
+    entryComponents: [SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,
+        UserLookupComponent]
 })
 export class CoreComponentsModule {
 

@@ -74,6 +74,9 @@ export class MyAddressesComponent implements OnInit {
   }
 
   deleteAddress(id: number, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     // /address/delete-address/addressId/
     this.api.delete(`/address/delete-address/id/${id}`).subscribe(
       (data) => {

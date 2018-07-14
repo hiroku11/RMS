@@ -176,6 +176,9 @@ export class WarrantyComponent implements OnInit {
         );
     }
     removeWarrantyFromAsset(warranty: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-warranty-from-building/buildingId/${this.asset.id}/warrantyId/${warranty.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/vehicle/remove-warranty-from-vehicle/vehicleId/${this.asset.id}/warrantyId/${warranty.id}`;

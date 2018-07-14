@@ -76,8 +76,8 @@ export class AddBuildingComponent implements OnInit {
             addresses: [],
             organization: null,
             department: {
-                id:null,
-                organization:null
+                id: null,
+                organization: null
             },
             numberOfFloors: null,
             regulatoryCompliance: null,
@@ -144,7 +144,7 @@ export class AddBuildingComponent implements OnInit {
     getBuildingById(buidingId: number) {
         this._apiService.get("/building/buildingId/" + buidingId).subscribe(
             data => {
-               
+
                 data = this.handleNullOrganization(data);
                 this.building = data;
                 this.updateTabs();
@@ -229,6 +229,9 @@ export class AddBuildingComponent implements OnInit {
     }
 
     deleteAssignee(user: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         //building/remove-assignee-from-building-by-user-id/buildingId/116/userId/1
         if (!this.building.id) {
             this.building.assignees.forEach((element, index) => {

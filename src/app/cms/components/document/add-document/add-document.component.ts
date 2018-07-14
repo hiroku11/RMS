@@ -148,6 +148,9 @@ export class AddDocumentComponent implements OnInit {
   }
 
   deleteVersionHistory(ver: any) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+  }
     this._apiService.delete(`/compliance/delete-compliance-document-history/id/${ver.id}`).subscribe(
       (data) => {
         this._alertsService.success("Version history successfully deleted.");

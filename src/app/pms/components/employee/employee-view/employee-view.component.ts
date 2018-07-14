@@ -44,6 +44,9 @@ export class EmployeeViewComponent implements OnInit {
 
 
   removeCycle(cycle: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this._api.delete(`/performance/remove-performance-cycle-from-employee/userPerformanceCycleId/${cycle.userPerfCycleId}`).subscribe(
       (data) => {
         this._alert.success("Performance cycle successfully removed.");

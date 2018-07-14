@@ -21,7 +21,7 @@ export class PasswordResetComponent implements OnInit {
   submit() {
     this._api.passwordReset(`/user/reset-user-password/userLoginId/${this.userLoginId}`).subscribe(
       (data) => {
-        this.alert.success('A mail has been sent to your registered email. Please check mail for password reset')
+        this.alert.success('A mail has been sent to your registered email. Please check mail for password reset');
       }, (error) => {
         this.alert.error(error);
       }

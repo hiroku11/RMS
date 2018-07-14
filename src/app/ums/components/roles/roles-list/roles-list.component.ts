@@ -24,6 +24,7 @@ export class RolesListComponent implements OnInit {
   constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
+    this.getRolesList();
   }
 
   getRolesList() {
@@ -37,17 +38,24 @@ export class RolesListComponent implements OnInit {
     )
   }
   getPageData($event: any) {
-    this.searchParams.paging.currentPage = $event.pageNo - 1;
-    this.searchParams.paging.pageSize = $event.pageSize;
-    this.getRolesList();
+    if (this.searchParams.paging.currentPage !== $event.pageNo - 1
+      || this.searchParams.paging.pageSize !== $event.pageSize) {
+      this.searchParams.paging.currentPage = $event.pageNo - 1;
+      this.searchParams.paging.pageSize = $event.pageSize;
+      this.getRolesList();
+    }
+
   }
 
   deleteRole(role: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/role/delete-role/id/${role.id}`).subscribe(
       (data) => {
-        this.alert.success('Role successfully deleted');
         this.rolesList.splice(index, 1);
         this.itemsCount = this.itemsCount - 1;
+        this.alert.success('Role successfully deleted');
       }, (error) => {
         this.alert.error(error);
       }

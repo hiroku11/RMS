@@ -189,6 +189,9 @@ export class RentOrLeaseComponent implements OnInit {
         );
     }
     removeRentOrLeaseFromAsset(rol: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-rental-or-lease-from-building/buildingId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/vehicle/remove-rental-or-lease-from-vehicle/vehicleId/${this.asset.id}/rentalOrLeaseId/${rol.id}`;

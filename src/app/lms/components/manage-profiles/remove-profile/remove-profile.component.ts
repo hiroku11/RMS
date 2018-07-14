@@ -59,6 +59,9 @@ export class RemoveProfileComponent implements OnInit {
   }
 
   removeProfile(prof, index) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/user/remove-profile-from-user/userId/${this.user.id}/profileCode/${prof.id}`).subscribe(
       (data) => {
         this.alert.success("Profile successfully removed");

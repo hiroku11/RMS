@@ -174,6 +174,9 @@ export class LicenseComponent implements OnInit {
             );
     }
     removeLicenseFromAsset(license: any) {
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-license-from-building/buildingId/${
             this.asset.id
             }/licenseId/${license.id}`;

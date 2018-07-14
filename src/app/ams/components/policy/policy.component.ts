@@ -193,6 +193,9 @@ export class PolicyComponent implements OnInit {
         );
     }
     removePolicyFromAsset(policy: any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-policy-from-building/buildingId/${this.asset.id}/policyId/${policy.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/vehicle/remove-policy-from-vehicle/vehicleId/${this.asset.id}/policyId/${policy.id}`;

@@ -176,6 +176,9 @@ export class ServiceComponent implements OnInit {
         );
     }
     removeServiceFromAsset(service: any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-service-from-building/buildingId/${this.asset.id}/serviceId/${service.id}`;
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = `/vehicle/remove-service-from-vehicle/vehicleId/${this.asset.id}/serviceId/${service.id}`;

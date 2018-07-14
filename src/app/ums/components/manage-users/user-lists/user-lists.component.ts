@@ -46,6 +46,9 @@ export class UserListsComponent implements OnInit {
   }
 
   deleteUser(id: number, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/user/delete-user/id/${id}`).subscribe(
       (data) => {
         this.alert.success('User successfully deleted');

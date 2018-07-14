@@ -64,6 +64,9 @@ export class ManageTemplatesComponent implements OnInit {
   }
 
   deleteTemplate(temp: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this.api.delete(`/import-template/delete-import-template/id/${temp.id}`).subscribe(
       (data) => {
         this.alert.success('Template deleted successfully');

@@ -231,6 +231,8 @@ ngx-select-dropdown {
 }
 
 .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
     table {
         margin-top: 15px;
     }

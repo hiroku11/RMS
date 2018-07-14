@@ -58,6 +58,9 @@ export class DocumentComponent implements OnInit {
     )
   }
   deleteDocumnet(doc: any, index: number) {
+    if (!window.confirm("Are you sure you want to delete this item/record?")) {
+      return;
+    }
     this._api.delete(`/performance/delete-performance-document/userPerformanceCycleId/${this.userPerformanceCycleId}/id/${doc.id}`).subscribe(
       (data) => {
         this._alert.success("Document successfully deleted");

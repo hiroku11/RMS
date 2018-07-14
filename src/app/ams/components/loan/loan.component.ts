@@ -177,6 +177,9 @@ export class LoanComponent implements OnInit {
         );
     }
     removeLoanFromAsset(loan: any){
+        if (!window.confirm("Are you sure you want to delete this item/record?")) {
+            return;
+        }
         let url = `/building/remove-loan-from-building/buildingId/${this.asset.id}/loanId/${loan.id}`;
     if (this.asset.assetCategory.id == "VEHICLE") {
         url = `/vehicle/remove-loan-from-vehicle/vehicleId/${this.asset.id}/loanId/${loan.id}`;
