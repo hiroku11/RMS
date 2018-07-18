@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ApiService } from '../../../../services/api.service';
 import { AlertsLoaderService } from '../../../../services/alerts-loader.service';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-add-profile',
   templateUrl: './add-profile.component.html',
@@ -19,7 +19,8 @@ export class AddProfileComponent implements OnInit {
   }
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,
+  private _location:Location) {
     this.initProfile();
   }
 
@@ -31,6 +32,10 @@ export class AddProfileComponent implements OnInit {
         this.editMode = true;
       }
     });
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   getProfileId(id) {

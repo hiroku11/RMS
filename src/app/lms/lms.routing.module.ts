@@ -20,6 +20,8 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
 import { ProfilesListComponent } from './components/manage-profiles/profiles-list/profiles-list.component';
 import { ManageProfilesComponent } from './components/manage-profiles/manage-profiles.component';
+import {ApproveRejectCourseComponent } from './components/approve-reject-course/approve-reject-course.component';
+import { ApproveRejectInactiveTabComponent} from './components/approve-reject-inactive-tab/approve-reject-inactive-tab.component'
 
 const lmsRoutes = [
     { path: '', redirectTo: "dashboard" },
@@ -60,7 +62,10 @@ const lmsRoutes = [
             { path: 'remove-course', pathMatch: 'full', component: RemoveCourseComponent },
             { path: 'import-courses', pathMatch: 'full', component: ImportCoursesComponent },
         ]
-    }, { path: 'reports', pathMatch: 'full', component: ReportsComponent }
+    }, 
+    { path: 'reports', pathMatch: 'full', component: ReportsComponent },
+    { path: 'approve-course', pathMatch: 'full', component: ApproveRejectCourseComponent },
+    { path: 'approve-tab', pathMatch: 'full', component: ApproveRejectInactiveTabComponent },
 
 ]
 @NgModule({

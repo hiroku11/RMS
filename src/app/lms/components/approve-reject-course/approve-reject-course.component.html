@@ -1,0 +1,84 @@
+<app-header class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'progress'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'progress'"></app-sm-menu>
+  </div>
+
+  
+  <div class="col-lg-10 col-md-12 col-sm-12 content">
+    <div class="row pb-3">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-address-book-o"></span> My Progress
+        </h4>
+      </div>
+    </div>
+    <ul class="row nav nav-tabs mb-2">
+      <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
+        <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
+          <span class="badge">{{tab.count}}</span>
+        </a>
+      </li>
+    </ul>
+    <div class="row tab-content">
+
+      <table class="table table-bordered">
+        <thead>
+          <th>
+            Course Code
+          </th>
+          <th>
+           Course Name
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Duration
+          </th>
+
+          <th>
+            Score
+          </th>
+          <th>
+          Last Accessed
+          </th>
+        
+          <th>
+&nbsp;
+          </th>
+        </thead>
+        <tbody *ngIf="courseData.length">
+          <tr *ngFor="let c of courseData">
+            <td>
+              <a [routerLink]="['/lms/my-courses/user-course-detail/', c.courseId]">{{c.courseCode}}</a>
+
+            </td>
+            <td>
+              {{c.courseName}}
+            </td>
+            <td>
+              {{c.userCourseLessonStatus}}
+            </td>
+            <td>
+              {{c.courseDuration}}
+            </td>
+            <td>
+              {{c.userCourseRawScore}}
+            </td>
+            <td>
+              {{c.userCourseLastUpdatedDateTime | date:'dd/MM/yyyy HH:mm:ss'}}
+            </td>
+         
+            <td>
+              <a href="">Start Course</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+    </div>
+  </div>

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../../../services/user.service';
 import { SharedService } from '../../../../services/shared.service';
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
@@ -13,7 +14,8 @@ import { SharedService } from '../../../../services/shared.service';
 export class AddCourseComponent implements OnInit {
   dropDownsData:any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService,
-    private userService: UserService,  private _sharedService: SharedService ) {
+    private userService: UserService,  private _sharedService: SharedService,
+  private _location: Location ) {
       this._sharedService.lmsDropDownService.subscribe((data) => {
         this.dropDownsData = data;
       });
@@ -56,6 +58,9 @@ export class AddCourseComponent implements OnInit {
         this.editMode = true;
       }
     });
+  }
+  goBack() {
+    this._location.back();
   }
  
   getCourseId(id){

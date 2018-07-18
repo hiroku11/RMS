@@ -8,7 +8,7 @@ import { UserService } from './../../../../services/user.service';
 import { ApiService } from './../../../../services/api.service';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { Component, OnInit } from '@angular/core';
-
+import {Location} from '@angular/common'
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -22,7 +22,8 @@ export class AddUserComponent implements OnInit {
   constructor(private api: ApiService, private user: UserService,
     private alert: AlertsLoaderService, private shared: SharedService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,
+  private _location:Location) {
     if (!this.shared.dropDownsData.departmentList) {
       this.shared.getAllDropdownData();
       this.shared.dropDownsService.subscribe((data) => {
@@ -215,5 +216,8 @@ export class AddUserComponent implements OnInit {
 
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
+  }
+  goBack() {
+    this._location.back();
   }
 }

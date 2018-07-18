@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-add-admin-team',
   templateUrl: './add-admin-team.component.html',
@@ -21,8 +21,12 @@ export class AddAdminTeamComponent implements OnInit {
   }
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,
+  private _location:Location) {
     this.initTeam();
+  }
+  goBack() {
+    this._location.back();
   }
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {

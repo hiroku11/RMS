@@ -33,6 +33,8 @@ import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-
 import { CourseLookupComponent } from './components/course-lookup/course-lookup.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { ImportCoursesComponent } from './components/manage-courses/import-courses/import-courses.component';
+import {ApproveRejectCourseComponent } from './components/approve-reject-course/approve-reject-course.component';
+import { ApproveRejectInactiveTabComponent} from './components/approve-reject-inactive-tab/approve-reject-inactive-tab.component'
 
 export const MY_MOMENT_FORMATS = {
     parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -49,7 +51,7 @@ export const MY_MOMENT_FORMATS = {
         ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent,
         AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent, RemoveProfileComponent,
         MyCoursesDataComponent, UserLookupComponent, CourseLookupComponent, ProfileLookupComponent,
-        ReportsComponent, ImportCoursesComponent],
+        ReportsComponent, ImportCoursesComponent,ApproveRejectCourseComponent,ApproveRejectInactiveTabComponent],
     imports: [CommonModule, FormsModule, CoreComponentsModule, LmsRoutingModule,
         SelectDropDownModule, PaginationModule, OwlDateTimeModule,
         OwlMomentDateTimeModule

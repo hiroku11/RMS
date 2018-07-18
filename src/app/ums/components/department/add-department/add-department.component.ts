@@ -7,7 +7,7 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { OfficeAddressLookupComponent } from '../../office-address-lookup/office-address-lookup.component';
-
+import {Location} from '@angular/common'
 @Component({
   selector: 'app-add-department',
   templateUrl: './add-department.component.html',
@@ -20,7 +20,7 @@ export class AddDepartmentComponent implements OnInit {
   componentRef: any;
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,private _location: Location) {
     this.initDepartment();
   }
 
@@ -148,5 +148,8 @@ export class AddDepartmentComponent implements OnInit {
 
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
+  }
+  goBack() {
+    this._location.back();
   }
 }

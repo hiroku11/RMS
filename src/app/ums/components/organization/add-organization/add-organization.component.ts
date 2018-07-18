@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-add-organization',
   templateUrl: './add-organization.component.html',
@@ -13,7 +13,8 @@ export class AddOrganizationComponent implements OnInit {
   organization: any;
   address: any;
   editMode: boolean;
-  constructor(private api: ApiService, private alert: AlertsLoaderService, private route: ActivatedRoute) {
+  constructor(private api: ApiService, private alert: AlertsLoaderService, private route: ActivatedRoute,
+    private _location: Location) {
     this.initOrganization();
   }
 
@@ -99,5 +100,8 @@ export class AddOrganizationComponent implements OnInit {
         this.alert.error(error);
       }
     )
+  }
+  goBack() {
+    this._location.back();
   }
 }
