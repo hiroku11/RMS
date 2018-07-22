@@ -16,3 +16,72 @@
     <button class="btn btn-primary" (click)="import()">Import</button>
   </div>
 </div>
+
+<div class="row tab-content">
+  <table class="table table-bordered" *ngIf="data.length > 0">
+      <thead>
+          <th>
+              Code
+          </th>
+          <th>
+              Name
+          </th>
+          <th>
+              Cost
+          </th>
+
+          <th>
+              Type
+          </th>
+          <th>
+            Domain
+          </th>
+          <th>
+              Approval Required
+          </th>
+          <th>
+            People Manager?
+          </th>
+          <th>
+              Start Date & Time 
+          </th>
+          <th>
+              End Date & Time 
+          </th>
+      </thead>
+      <tbody >
+          <tr *ngFor="let c of data | searchFilter: filter">
+              <td>
+                  <a [routerLink]="['course-detail', c.id]">{{c.code}}</a>
+              </td>
+              <td>
+                  {{c.name}}
+              </td>
+              <td>
+                  {{c.cost}}
+              </td>
+              <td>
+                  {{c.courseType.description}}
+              </td>
+              <td>
+                  {{c.courseDomain.description}}
+              </td>
+              <td>
+                  {{c.approvalRequired}}
+              </td>
+              <td>
+                {{c.peopleManager}}
+              </td>
+              <td>
+                {{c.startDateTime}}
+              </td>
+              <td>
+                  {{c.endDateTime}}
+
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
+
+</div>

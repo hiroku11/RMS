@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportCoursesComponent implements OnInit {
   importData = new FormData();
+  data:any = [];
   constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class ImportCoursesComponent implements OnInit {
     this.api.post(`/bulk-upload/courses/using-form-submit`, this.importData, true).subscribe(
       (data) => {
         this.alert.success('Courses imported successfully');
+        this.data = data.courses;
       }, (error) => {
         this.alert.error(error);
       }

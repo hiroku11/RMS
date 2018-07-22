@@ -19,7 +19,7 @@
     <ul class="row nav nav-tabs mb-2">
       <li class="nav-item" (click)="changeTab(tab)" *ngFor="let tab of tabs">
         <a class="nav-link" [ngClass]="{'active': currentTab == tab}">{{tab.name}}
-          <span class="badge">{{tab.count}}</span>
+         
         </a>
       </li>
     </ul>
@@ -51,7 +51,7 @@
 &nbsp;
           </th>
         </thead>
-        <tbody *ngIf="courseData.length">
+        <!-- <tbody *ngIf="courseData.length">
           <tr *ngFor="let c of courseData">
             <td>
               <a [routerLink]="['/lms/my-courses/user-course-detail/', c.courseId]">{{c.courseCode}}</a>
@@ -77,7 +77,7 @@
               <a href="">Start Course</a>
             </td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
       <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
     </div>
