@@ -53,17 +53,17 @@
             </a>
         </li>
 
-        <li [ngClass]="{active:thisView=='reports'}" *ngIf="isAdmin || isSupervisor">
+        <li [ngClass]="{active:thisView=='approve-course'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/lms/approve-course']" title="">
                 <i class="fa fa-commenting-o"></i> Approve/Reject Courses
             </a>
         </li>
-        
-        <li [ngClass]="{active:thisView=='reports'}" *ngIf="isAdmin || isSupervisor">
+<!--         
+        <li [ngClass]="{active:thisView=='approve-tab'}" *ngIf="isAdmin || isSupervisor">
             <a [routerLink]="['/lms/approve-tab']" title="">
                 <i class="fa fa-commenting-o"></i> Approve/Reject Inactive-tab
             </a>
-        </li>
+        </li> -->
     </ul>
 
 </div>
