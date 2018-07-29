@@ -1,45 +1,49 @@
 @import "./../../../../_common";
-.side-nav{
+
+.side-nav {
     height: 100%;
     overflow: hidden;
-    position:fixed;
+    position: fixed;
     width: 0;
     position: fixed;
     z-index: 9999;
     top: 0;
     left: 0;
-    overflow-x: hidden; 
-    transition: width 0.5s;  
-    padding-top: 25px; 
-    &.menu-open{
-        width: 180px;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 25px;
+    &.menu-open {
+        width: 250px;
         padding: 5px;
     }
-    ul{
-        padding:5px;
+    ul {
+        padding: 5px;
         padding-top: 25px;
         background-color: #fff;
         height: 100%;
+        li:first-child{
+            background-color: transparent;
+            color: black;
+        }
         li {
             cursor: pointer;
             background-color: #2e2e2e;
             border-bottom: 2px solid white;
             font-size: 13px;
-            
         }
-        li{
+        li {
             text-decoration: none;
             color: #fff;
             display: block;
             &.active {
                 a {
-                    background-color: $amsColor;
+                    background-color: $cmsColor;
                     color: #fff;
                 }
             }
             &:hover {
                 a {
-                    background-color: $amsColor;
+                    background-color: $cmsColor;
                     color: #fff;
                 }
             }
@@ -51,8 +55,15 @@
             }
         }
     }
-    .close-btn{
-        color:#2e2e2e;
+    .close-btn {
+        color: #2e2e2e;
         padding: 2px;
+    }
+    .user-image {
+        width: 50px;
+    }
+    .user-role {
+        min-width: 100px;
+        @extend .text-overflow;
     }
 }

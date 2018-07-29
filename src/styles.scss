@@ -242,7 +242,7 @@ ngx-select-dropdown {
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary,
 .btn-secondary,
-.btn-info {
+.btn-info, .btn-danger, .btn-warning {
     background-color: #9ca3a9 !important;
     border: none;
     :active {
@@ -269,5 +269,15 @@ ngx-select-dropdown {
         right: 10px;
         top: 8px;
         z-index: 999;
+    }
+}
+
+.side-nav.menu-open{
+    padding-left: 0 !   important;
+}
+.navbar-brand{
+    img{
+        min-width: 43px;
+        padding-left: 5px;
     }
 }
