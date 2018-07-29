@@ -10,6 +10,7 @@ export class AdminComponent implements OnInit {
   performanceCycles: any;
   addCycle: any;
   editing: boolean = false;
+  module = "Performance Management System";
   constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {

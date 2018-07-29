@@ -13,6 +13,7 @@ export class ReportsComponent implements OnInit {
   thirdReportData: any;
   fourthReportData: any;
   tab = 1;
+  module = "Learning Management System"
   constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {

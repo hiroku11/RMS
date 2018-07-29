@@ -8,7 +8,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
-
+import { ConfigService } from '../../../services/config.service';
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
@@ -19,6 +19,8 @@ export class ProgressComponent implements OnInit {
   itemsCount = 0;
   progressData: any;
   currentTab: string;
+  config:any;
+  module = "Learning Management System"
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [
@@ -33,7 +35,10 @@ export class ProgressComponent implements OnInit {
 
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
-    private viewContainerRef: ViewContainerRef) { }
+    private viewContainerRef: ViewContainerRef,
+    private _configService: ConfigService) { 
+      this.config = this._configService.config;
+    }
 
   ngOnInit() {
     this.getProgress();

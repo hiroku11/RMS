@@ -1,4 +1,4 @@
-<app-header class="d-none d-lg-block"></app-header>
+<app-header [module]="module" class="d-none d-lg-block"></app-header>
 <div class="row view">
   <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
     <app-side-nav [thisView]="'progress'"></app-side-nav>
@@ -74,7 +74,7 @@
             </td>
          
             <td>
-              <a target="_blank" [href]="config.config.playerBaseUrl+'scorm/bin/player.html?sid='+c.courseId">Start Course</a>
+              <a target="_blank" [href]="config.playerBaseUrl+'scorm/bin/player.html?sid='+c.courseId">Start Course</a>
             </td>
           </tr>
         </tbody>

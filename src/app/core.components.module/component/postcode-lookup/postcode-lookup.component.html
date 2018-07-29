@@ -1,3 +1,67 @@
-<p>
-  postcode-lookup works!
-</p>
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Post code Lookup</h3>
+        <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="row p-2">
+        <div class="col-sm-12 col-md-3">
+          <label>Post Code 1</label>
+        </div>
+        <div class="col-sm-12 col-md-9">
+          <input class="form-control" [(ngModel)]="postcode1" name="postcode1" />
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-sm-12 col-md-3">
+          <label>Post Code 2</label>
+        </div>
+        <div class="col-sm-12 col-md-9">
+          <input class="form-control" [(ngModel)]="postcode2" name="postcode2" />
+        </div>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+          
+            <th>Street Name</th>
+            <th>Locality Name</th>
+            <th>Post Town</th>
+            <th>County</th>
+            <th>Country</th>
+            <th>PostCode 1</th>
+            <th>PostCode 2</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let add of formattedAddresses">
+           
+            <td>{{add.streetName}}</td>
+            <td>{{add.localityName}}</td>
+            <td>{{add.postTown}}</td>
+            <td>{{add.county}}</td>
+            <td>{{add.country}}</td>
+            <td>{{add.postcode1}}</td>
+            <td>{{add.postcode2}}</td>
+            <td>
+              <span class="fa fa-plus btn btn-sm btn-outline-success" (click)="orgSelected(add)"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="lookup()">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
+        <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

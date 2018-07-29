@@ -1,9 +1,13 @@
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OrganizationLookupComponent } from './../../organization-lookup/organization-lookup.component';
+import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { OfficeAddressLookupComponent } from '../../office-address-lookup/office-address-lookup.component';
+import {Location} from '@angular/common'
 @Component({
   selector: 'app-add-organization',
   templateUrl: './add-organization.component.html',
@@ -13,8 +17,10 @@ export class AddOrganizationComponent implements OnInit {
   organization: any;
   address: any;
   editMode: boolean;
-  constructor(private api: ApiService, private alert: AlertsLoaderService, private route: ActivatedRoute,
-    private _location: Location) {
+  componentRef: any;
+  constructor(private api: ApiService, private alert: AlertsLoaderService,
+    private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver,private _location: Location) {
     this.initOrganization();
   }
 
@@ -103,5 +109,44 @@ export class AddOrganizationComponent implements OnInit {
   }
   goBack() {
     this._location.back();
+  }
+  lookup(type) {
+    let comp: any = OrganizationLookupComponent;
+    if (type === 'add') {
+      comp = OfficeAddressLookupComponent
+    }
+    if (type === 'post') {
+      comp = PostcodeLookupComponent;
+
+    }
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      comp
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'admin';
+   
+    if (type === 'add' || type === 'post') {
+      this.componentRef.instance.selectAddress.subscribe((data) => {
+        this.selectAddress(data);
+      });
+    }
+  
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal(type);
+    });
+  }
+  selectAddress(address) {
+    this.address = address;
+  }
+  closeModal(type) {
+    if (type === 'org') {
+      this.componentRef.instance.selectOrg.unsubscribe();
+    }
+    if (type === 'add') {
+      this.componentRef.instance.selectAddress.unsubscribe();
+    }
+
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-courses.component.scss']
 })
 export class ManageCoursesComponent implements OnInit {
-
+  module = "Learning Management System"
   constructor() { }
 
   ngOnInit() {

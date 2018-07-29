@@ -1,4 +1,5 @@
 import { ViewContainerRef } from '@angular/core';
+import { PostcodeLookupComponent } from './../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
 import { OfficeAddressLookupComponent } from './../office-address-lookup/office-address-lookup.component';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
@@ -42,9 +43,14 @@ export class OfficeAddressComponent implements OnInit {
   }
 
 
-  lookup() {
+  lookup(type) {
+    let comp : any= OfficeAddressLookupComponent;
+    if(type == 'post'){
+      comp = PostcodeLookupComponent
+    }
+    
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      OfficeAddressLookupComponent
+      comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
     this.componentRef.instance.selectAddress.subscribe((data) => {

@@ -17,6 +17,7 @@ import { UserService } from './../../../services/user.service';
 })
 export class CourseComponent implements OnInit {
   userId:any;
+  module = "Learning Management System"
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,

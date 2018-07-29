@@ -30,6 +30,7 @@ export class ApproveRejectCourseComponent implements OnInit {
   ];
   cid:any;
   reason:any;
+  itemsCount = 0;
   courseData :any = [];
   currentTab :any;
   searchParams: any = {

@@ -1,5 +1,5 @@
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   userDetails:any;
+  @Input() module : string;
   constructor(private userService: UserService) { 
     this.userDetails = this.userService.userDetails;
   }

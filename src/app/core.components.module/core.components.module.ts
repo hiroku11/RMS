@@ -31,7 +31,7 @@ import { PostcodeLookupComponent } from './component/postcode-lookup/postcode-lo
         PasswordResetComponent, PostcodeLookupComponent
     ],
     entryComponents: [SuccessMessageComponent, AjaxLoaderComponent, ErrorMessageComponent,
-        UserLookupComponent]
+        UserLookupComponent, PostcodeLookupComponent]
 })
 export class CoreComponentsModule {
 

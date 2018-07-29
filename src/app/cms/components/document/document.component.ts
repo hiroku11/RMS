@@ -7,7 +7,7 @@ import { SharedService } from '../../../services/shared.service';
   styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
-
+  module = "Compliance Management System"
   constructor(private _sharedService: SharedService) {
     this._sharedService.getCmsDropdownsData();
    }

@@ -18,6 +18,7 @@ export class AddDepartmentComponent implements OnInit {
   address: any;
   editMode: boolean;
   componentRef: any;
+  formattedAddresses = [];
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,private _location: Location) {
@@ -109,7 +110,8 @@ export class AddDepartmentComponent implements OnInit {
       comp = OfficeAddressLookupComponent
     }
     if (type === 'post') {
-      comp = PostcodeLookupComponent
+      comp = PostcodeLookupComponent;
+
     }
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       comp
@@ -121,12 +123,12 @@ export class AddDepartmentComponent implements OnInit {
         this.selectOrg(data);
       });
     }
-    if (type === 'add') {
+    if (type === 'add' || type === 'post') {
       this.componentRef.instance.selectAddress.subscribe((data) => {
         this.selectAddress(data);
       });
     }
-
+  
     this.componentRef.instance.closeModal.subscribe(() => {
       this.closeModal(type);
     });
@@ -152,4 +154,7 @@ export class AddDepartmentComponent implements OnInit {
   goBack() {
     this._location.back();
   }
+ 
+
+ 
 }

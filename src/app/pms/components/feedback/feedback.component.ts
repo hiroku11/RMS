@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feedback.component.scss']
 })
 export class FeedbackComponent implements OnInit {
+  module = "Performance Management System";
   // hideReqButton: boolean = true;
   constructor(private _route: ActivatedRoute, private router: Router) {
     // this.router.events.subscribe((event: any) => {

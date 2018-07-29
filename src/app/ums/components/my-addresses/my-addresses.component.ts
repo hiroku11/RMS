@@ -1,7 +1,14 @@
-import { UserService } from './../../../services/user.service';
+import { PostcodeLookupComponent } from './../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OrganizationLookupComponent } from './../organization-lookup/organization-lookup.component';
+import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { OfficeAddressLookupComponent } from '../office-address-lookup/office-address-lookup.component';
+import {Location} from '@angular/common'
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-my-addresses',
@@ -11,8 +18,11 @@ import { Component, OnInit } from '@angular/core';
 export class MyAddressesComponent implements OnInit {
   userAddresses: any = [];
   newAddress: any;
-  constructor(private api: ApiService, private user: UserService,
-    private alert: AlertsLoaderService) { }
+  componentRef:any;
+  constructor(private api: ApiService, private alert: AlertsLoaderService,
+    private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver,private _location: Location,
+  private user:UserService) { }
 
   ngOnInit() {
     this.getUserAddresses();
@@ -102,6 +112,51 @@ export class MyAddressesComponent implements OnInit {
           this.alert.error(error);
         }
       )
+  }
+  lookup(type,add) {
+    let comp: any = OrganizationLookupComponent;
+    if (type === 'add') {
+      comp = OfficeAddressLookupComponent
+    }
+    if (type === 'post') {
+      comp = PostcodeLookupComponent;
+
+    }
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      comp
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.lookupType = 'admin';
+   
+    if (type === 'add' || type === 'post') {
+      this.componentRef.instance.selectAddress.subscribe((data) => {
+        this.selectAddress(data,add);
+      });
+    }
+  
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal(type);
+    });
+  }
+  selectAddress(address,add) {
+    add.city = address.city;
+    add.country = address.country;
+    add.county = address.county;
+    add.localityName = address.localityName;
+    add.postcode1 = address.postcode1;
+    add.postcode2 = address.postcode2;
+
+  }
+  closeModal(type) {
+    if (type === 'org') {
+      this.componentRef.instance.selectOrg.unsubscribe();
+    }
+    if (type === 'add') {
+      this.componentRef.instance.selectAddress.unsubscribe();
+    }
+
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 
 }

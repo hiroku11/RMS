@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manager.component.scss']
 })
 export class ManagerComponent implements OnInit {
-
+  module = "Performance Management System";
   constructor() { }
 
   ngOnInit() {

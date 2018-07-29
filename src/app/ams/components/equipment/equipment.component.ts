@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent implements OnInit {
-
+  module = "Asset Management System"
   constructor() { }
 
   ngOnInit() {
