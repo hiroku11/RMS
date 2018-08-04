@@ -31,7 +31,7 @@ export class UserCourseDetailComponent implements OnInit {
      this._apiService
      .get(`/user-course-entity/id/${Id}`)
      .subscribe(data => {
-       this.course = data;
+       this.course = data.course;
        // this._alertService.success("Course Detail fetched successfully.");
      },(error)=>{
        this._alertService.error('Some error occured. Try Again')
