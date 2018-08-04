@@ -69,7 +69,9 @@
         <tbody *ngIf="courseData.length > 0">
           <tr *ngFor="let c of courseData | searchFilter: filter" >
             <td>
-              <a [routerLink]="['course-detail', c.id]">{{c.courseCode}}</a>
+                <a [routerLink]="['/lms/my-courses/user-course-detail/', c.userCourseId]">{{c.courseCode}}</a>
+
+              <!-- <a [routerLink]="['course-detail', c.id]">{{c.courseCode}}</a> -->
             </td>
             <td>
               {{c.courseName}}
