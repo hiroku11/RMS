@@ -19,7 +19,7 @@
         <div class="text-right pt-2">
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="./assets/images/logo.png" alt="gotorisk.co.uk" /> {{userDetails?.firstName}} {{userDetails?.lastName==null?"":userDetails?.lastName}}</a>
+                    <img src="./assets/images/logo.png" alt="gotorisk.co.uk" /> {{userDetails.loginId}}</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" [routerLink]="['/home']">Home</a>
                     <div class="dropdown-divider"></div>

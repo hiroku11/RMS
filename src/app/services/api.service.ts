@@ -28,7 +28,6 @@ export class ApiService {
     ) {
         this.config = this._configService.config;
     }
-   
     post(url: string, data: any, formdata: boolean, headers?: any, showLoader: boolean = true) {
 
         let apiUrl = url.indexOf('login') != -1 || url.indexOf('external') != -1 ? this.loginApi : this.apiUrl;
@@ -235,6 +234,7 @@ export class ApiService {
                 return Observable.throw(error);
             });
     }
+
     postcodelookup(url: string) {
         return this._http.get(url);
     }
