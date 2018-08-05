@@ -63,6 +63,8 @@ export class CourseListComponent implements OnInit {
         this.reason = null;
       }, (error) => {
         this._alertService.error(error);
+        this.reason = null;
+        $('#myModal').modal('hide');
       });
   }
   getPageData($event: any) {

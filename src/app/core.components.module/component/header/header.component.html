@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="userDetails">
-        <h4 class="welcome" *ngIf="module">{{module}}</h4>
+        <h4 class="welcome">{{module ? module: 'Risk Management System'}}</h4>
     </div>
     <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="!userDetails">
         <h4 class="welcome">Welcome to Risk Management System</h4>
