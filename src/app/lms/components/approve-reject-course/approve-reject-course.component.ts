@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 declare var $: any;
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-approve-reject-course',
   templateUrl: './approve-reject-course.component.html',
@@ -23,7 +24,7 @@ export class ApproveRejectCourseComponent implements OnInit {
    
     },
     {
-      name: "In Active",
+      name: "In-Active",
       tab: 1,
   
     }
@@ -42,7 +43,8 @@ export class ApproveRejectCourseComponent implements OnInit {
   };
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
-    private viewContainerRef: ViewContainerRef) { }
+    private viewContainerRef: ViewContainerRef,
+    private _location: Location) { }
      
   ngOnInit() {
     this.changeTab(this.tabs[0]);
@@ -67,7 +69,7 @@ export class ApproveRejectCourseComponent implements OnInit {
       })
   
     }
-    else if (tab.name == 'In Active') {
+    else if (tab.name == 'In-Active') {
       this._apiService
       .get("/manager-course-approval/search-all-inactive-mgr-course-approvals",{ Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
@@ -90,17 +92,18 @@ approve() {
   this._apiService
     .put(`/manager-course-approval/approve-user-course-approval-request` , payload)
     .subscribe((data) => {
-      this._alertService.success("Course Approved successfully.");
-     
       this.reason = null;
+      this._alertService.success("Course Approved successfully.");
+      setTimeout(() => {
+        this.changeTab(this.currentTab);
+      },0)
+   
     }, (error) => {
       this._alertService.error(error);
     });
     
     $('#myModal').modal('hide');
-    setTimeout(() => {
-      this.changeTab(this.currentTab);
-    },0)
+   
 }
 reject() {
   let payload = {
@@ -110,15 +113,13 @@ reject() {
   this._apiService
     .put(`/manager-course-approval/reject-user-course-approval-request` , payload)
     .subscribe((data) => {
-      this._alertService.success("Course Rejected successfully.");
+      this._alertService.success("Course approval request activated successfull");
      
       this.reason = null;
     }, (error) => {
       this._alertService.error(error);
     });
-    setTimeout(() => {
-      this.changeTab(this.currentTab);
-    },0)
+   
     $('#myModal1').modal('hide');
    
 }
@@ -133,6 +134,9 @@ activate() {
       this._alertService.success("Course Approved successfully.");
      
       this.reason = null;
+      setTimeout(() => {
+        this.changeTab(this.currentTab);
+      },0)
     }, (error) => {
       this._alertService.error(error);
     });
