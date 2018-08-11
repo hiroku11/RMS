@@ -130,7 +130,7 @@ activate() {
   this._apiService
     .put(`/manager-course-approval/activate-user-course-approval-request` , payload)
     .subscribe((data) => {
-      this._alertService.success("Course Rejected successfully.");
+      this._alertService.success("Course Approved successfully.");
      
       this.reason = null;
     }, (error) => {
