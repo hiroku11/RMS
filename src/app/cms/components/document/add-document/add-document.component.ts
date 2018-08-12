@@ -105,7 +105,7 @@ export class AddDocumentComponent implements OnInit {
           this.getVersionHistory();
         },
         (error) => {
-          this._alertsService.error("Some error occured while uploading document.");
+          this._alertsService.error(error);
         }
       )
   }
