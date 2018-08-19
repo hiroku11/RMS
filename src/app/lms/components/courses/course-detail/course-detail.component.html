@@ -64,11 +64,11 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Start Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors" readonly/>
+      <input class="form-control" [value]="course.startDateTime | date: 'dd/mm/yyyy'" name="startDateTime" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize" readonly/>
+      <input class="form-control" [value]="course.endDateTime | date: 'dd/mm/yyyy'" name="endDateTime" readonly/>
     </div>
   </div>
   <div class="row pb-2">

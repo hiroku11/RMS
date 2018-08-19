@@ -68,12 +68,12 @@
 
     <div class="col-sm-12 col-md-3">
       <label>Start Date & Time</label>
-      
-      <input class="form-control" [value]="course.courseStartDateTime" name="numberOfFloors" readonly/>
+
+      <input class="form-control" [value]="course.courseStartDateTime | date:'dd/mm/yyyy'" name="numberOfFloors" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date & Time</label>
-      <input class="form-control" [(ngModel)]="course.courseEndDateTime" name="courseSize" readonly/>
+      <input class="form-control" [value]="course.courseEndDateTime | date:'dd/mm/yyyy'" name="courseSize" readonly/>
     </div>
   </div>
   <div class="row pb-2">
@@ -94,7 +94,7 @@
       <input class="form-control" [(ngModel)]="course.userCourseApprovalRequired" name="courseSize" readonly/>
     </div>
   </div>
- <br />
+  <br />
   <h4>
     Course Progress
   </h4>
@@ -124,22 +124,23 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Duration</label>
-      <input class="form-control" [(ngModel)]="course && course.courseDuration + ' ' + course.courseDurationCode" name="courseName" readonly/>
+      <input class="form-control" [(ngModel)]="course && course.courseDuration + ' ' + course.courseDurationCode" name="courseName"
+        readonly/>
     </div>
-  
+
     <div class="col-sm-12 col-md-4">
       <label>Course Progress Status</label>
       <input class="form-control" [(ngModel)]="course && course.userCourseLessonStatus" name="courseSize" readonly/>
     </div>
-  
+
   </div>
   <div class="row pb-2">
-  
+
     <div class="col-sm-12 col-md-4">
       <label>Last Accessed</label>
       <input class="form-control" [(ngModel)]="course && course.userCourseLastUpdatedDateTime" name="courseName" readonly/>
     </div>
-  
+
     <div class="col-sm-12 col-md-4">
       <label>Added Reason</label>
       <textarea class="form-control" [(ngModel)]="course && course.userCourseAddReason" name="courseSize" readonly> </textarea>
@@ -162,8 +163,8 @@
       <label>Other Reason</label>
       <textarea class="form-control" [(ngModel)]="course && course.userCourseOtherReason" name="numberOfFloors" readonly> </textarea>
     </div>
-  <div class="col-sm-12 pb-2">
-    <button class="btn btn-primary" (click)="goBack()">Back</button>
-  </div>
+    <div class="col-sm-12 pb-2">
+      <button class="btn btn-primary" (click)="goBack()">Back</button>
+    </div>
 
-</div>
+  </div>
