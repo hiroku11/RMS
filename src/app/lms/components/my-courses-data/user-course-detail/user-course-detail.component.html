@@ -26,7 +26,7 @@
       <input class="form-control" [(ngModel)]="course.courseTypeDescription" name="courseid" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>Domain</label>courseCategory
+      <label>Domain</label>
       <input class="form-control" [(ngModel)]="course.courseDomainDescription" name="courseName" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -69,7 +69,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Start Date & Time</label>
       
-      <input class="form-control" [(ngModel)]="course.courseStartDateTime" name="numberOfFloors" readonly/>
+      <input class="form-control" [value]="course.courseStartDateTime" name="numberOfFloors" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date & Time</label>
@@ -102,7 +102,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Planned Start Date</label>
-      <input class="form-control" [(ngModel)]="course && course.userCoursePlannedStartDate" name="courseid" readonly/>
+      <input class="form-control" [value]="course && course.userCoursePlannedStartDate" name="courseid" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Planned End Date</label>
@@ -152,7 +152,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Score</label>
-      <input class="form-control" [(ngModel)]="course.userCourseRawScore | number" name="courseSize" readonly/>
+      <input class="form-control" [value]="course.userCourseRawScore | number:1.2-2" name="courseSize" readonly/>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Rejected Reason</label>
