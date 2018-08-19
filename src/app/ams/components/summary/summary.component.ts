@@ -12,13 +12,19 @@ export class SummaryComponent implements OnInit {
   ngOnInit() {
   }
 
-  getFireExtinguishersDisplay(fireExtinguisherTypes: any){
-     if(fireExtinguisherTypes.length > 1){
-       return fireExtinguisherTypes[0].description + " +" + (fireExtinguisherTypes.length - 1) + "more"
-     }
-     if(fireExtinguisherTypes.length === 1){
-       return fireExtinguisherTypes[0].description;
-     }
-     return "";
+  getFireExtinguishersDisplay(fireExtinguisherTypes: any) {
+    let dis = [];
+    // dis = fireExtinguisherTypes[0] ? fireExtinguisherTypes[0].description : '';
+    fireExtinguisherTypes.forEach((element) => {
+      dis.push(element.description);
+    });
+
+    //  if(fireExtinguisherTypes.length > 1){
+    //    return fireExtinguisherTypes[0].description + " +" + (fireExtinguisherTypes.length - 1) + "more"
+    //  }
+    //  if(fireExtinguisherTypes.length === 1){
+    //    return fireExtinguisherTypes[0].description;
+    //  }
+    return dis.toString();
   }
 }
