@@ -8,11 +8,11 @@ import { SharedService } from '../../../../services/shared.service';
 import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-user-course-detail',
-  templateUrl: './user-course-detail.component.html',
-  styleUrls: ['./user-course-detail.component.scss']
+  selector: 'app-user-course-detail-progress',
+  templateUrl: './user-course-detail-progress.component.html',
+  styleUrls: ['./user-course-detail-progress.component.scss']
 })
-export class UserCourseDetailComponent implements OnInit {
+export class UserCourseDetailProgressComponent implements OnInit {
 
   Id:any;
   course:any;
@@ -29,7 +29,7 @@ export class UserCourseDetailComponent implements OnInit {
    }
    getCourseDetail(Id:number){
      this._apiService
-     .get(`/user-course/userCourseId/${Id}`)
+     .get(`/user-course-entity/id/${Id}`)
      .subscribe(data => {
        this.course = data;
        // this._alertService.success("Course Detail fetched successfully.");
