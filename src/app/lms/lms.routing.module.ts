@@ -13,10 +13,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CourseComponent } from './components/courses/course.component';
 import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
-import { UserCourseDetailComponent } from './components/my-courses-data/user-course-detail/user-course-detail.component'
+import { UserCourseDetailComponent } from './components/my-courses-data/user-course-detail/user-course-detail.component';
+import { ProgressDashboardComponent} from './components/progress/progress-dashboard.component';
+import { UserCourseDetailProgressComponent} from './components/progress/user-course-detail-progress/user-course-detail-progress.component'
 import { MyCoursesComponent } from './components/my-courses-data/mycourses/mycourses.component';
 import { CourseListComponent } from './components/courses/course-list/course-list.component';
-import { ProgressComponent } from './components/progress/progress.component';
+import { ProgressComponent } from './components/progress/progress-list/progress.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
 import { ProfilesListComponent } from './components/manage-profiles/profiles-list/profiles-list.component';
 import { ManageProfilesComponent } from './components/manage-profiles/manage-profiles.component';
@@ -41,7 +43,10 @@ const lmsRoutes = [
 
     { path: 'course-detail', component: CourseDetailComponent },
 
-    { path: 'progress', component: ProgressComponent },
+    { path: 'progress', component: ProgressDashboardComponent, children:[
+        { path: '', pathMatch: 'full', component: ProgressComponent },
+        { path: 'user-course-detail-progress/:id', component: UserCourseDetailProgressComponent, pathMatch: 'full' }
+    ] },
 
     {
         path: 'manage-profiles', component: ManageProfilesComponent, children: [

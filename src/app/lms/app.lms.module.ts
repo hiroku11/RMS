@@ -24,9 +24,11 @@ import { SmMenuComponent } from './components/sm-menu/sm-menu.component';
 import { CourseComponent } from './components/courses/course.component';
 import { CourseListComponent } from './components/courses/course-list/course-list.component';
 import { MyCoursesComponent } from './components/my-courses-data/mycourses/mycourses.component'
-import { ProgressComponent } from './components/progress/progress.component';
+import { ProgressComponent } from './components/progress/progress-list/progress.component';
+import { ProgressDashboardComponent} from './components/progress/progress-dashboard.component';
 import { CourseDetailComponent } from './components/courses/course-detail/course-detail.component';
 import { UserCourseDetailComponent } from './components/my-courses-data/user-course-detail/user-course-detail.component';
+import { UserCourseDetailProgressComponent } from './components/progress/user-course-detail-progress/user-course-detail-progress.component'
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { RemoveProfileComponent } from './components/manage-profiles/remove-profile/remove-profile.component';
 import { MyCoursesDataComponent } from './components/my-courses-data/my-courses-data.component';
@@ -46,7 +48,8 @@ export const MY_MOMENT_FORMATS = {
 };
 @NgModule({
     declarations: [DashboardComponent, SideNavComponent, SmMenuComponent,
-        CourseComponent, MyCoursesComponent, ProgressComponent, UserCourseDetailComponent,
+        ProgressDashboardComponent,
+        CourseComponent, MyCoursesComponent, ProgressComponent, UserCourseDetailComponent,UserCourseDetailProgressComponent,
         CourseDetailComponent, CourseListComponent, ManageCoursesComponent, AddCourseComponent,
         ManageProfilesComponent, ProfilesListComponent, AddProfileComponent, ManageCourseListComponent,
         AssignCourseComponent, AssignProfileComponent, RemoveCourseComponent, RemoveProfileComponent,

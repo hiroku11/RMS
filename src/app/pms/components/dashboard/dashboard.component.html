@@ -10,25 +10,27 @@
     <div class="row dashboard">
       <div class="col-sm-12 col-md-6 text-center" *ngIf="isAdmin">
         <a [routerLink]="['/pms/admin']">
-          <span class="fa fa-6 fa-lock"></span>
+          <img src="./assets/images/Admin-V1.png" alt="Admin">
           <h4>Admin</h4>
         </a>
       </div>
       <div class="col-sm-12 col-md-6 text-center" *ngIf="isSupervisor">
         <a [routerLink]="['/pms/manager']">
-          <span class="fa fa-6 fa-users"></span>
+          <img src="./assets/images/Manager-V1.png" alt="Manager">
           <h4>Manager</h4>
         </a>
       </div>
       <div class="col-sm-12 col-md-6 text-center">
         <a [routerLink]="['/pms/employee']">
-          <span class="fa fa-6 fa-user"></span>
+          <img src="./assets/images/Employee-V1.png" alt="Employee">
           <h4>Employee</h4>
         </a>
       </div>
       <div class="col-sm-12 col-md-6 text-center">
         <a [routerLink]="['/pms/feedback']">
-          <span class="fa fa-6 fa-commenting-o"></span>
+         
+          <img src="./assets/images/Feedback-V1.png" alt="Feedback">
+      
           <h4>Feedback</h4>
         </a>
       </div>
