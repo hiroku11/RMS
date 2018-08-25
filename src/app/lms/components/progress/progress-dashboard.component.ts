@@ -14,31 +14,13 @@ import { ConfigService } from '../../../services/config.service';
   templateUrl: './progress-dashboard.component.html',
   styleUrls: ['./progress-dashboard.component.scss']
 })
-export class ProgressDashboardComponent  {
-  progressCount: any;
-  itemsCount = 0;
-  progressData: any;
-  currentTab: string;
-  config:any;
+export class ProgressDashboardComponent {
+
   module = "Learning Management System"
-  searchParams: any = {
-    paging: { currentPage: 0, pageSize: 10 },
-    sorts: [
 
-    ],
-    filters: [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "not attempted" }]
-  };
+  constructor() {
+    // this.config = this._configService.config;
+  }
 
-  course: any;
-  public courseData = [];
-  tabs: any;
 
-  constructor(private _apiService: ApiService,
-    private _alertService: AlertsLoaderService,
-    private viewContainerRef: ViewContainerRef,
-    private _configService: ConfigService) { 
-      this.config = this._configService.config;
-    }
-
- 
 }

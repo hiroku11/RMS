@@ -5,7 +5,8 @@ import { AlertsLoaderService } from '../../../../services/alerts-loader.service'
 import {
   Component,
   ComponentFactoryResolver,
-  ViewContainerRef
+  ViewContainerRef,
+  NgZone
 } from '@angular/core';
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { ConfigService } from '../../../../services/config.service';
@@ -19,7 +20,7 @@ export class ProgressComponent implements OnInit {
   itemsCount = 0;
   progressData: any;
   currentTab: string;
-  config:any;
+  config: any;
   module = "Learning Management System"
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
@@ -36,9 +37,9 @@ export class ProgressComponent implements OnInit {
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
-    private _configService: ConfigService) { 
-      this.config = this._configService.config;
-    }
+    private _configService: ConfigService, private ngzone: NgZone) {
+    this.config = this._configService.config;
+  }
 
   ngOnInit() {
     this.getProgress();
@@ -50,36 +51,38 @@ export class ProgressComponent implements OnInit {
       .get("/user-course/my-progress")
       .subscribe(data => {
         this.progressData = data;
-
+        this.ngzone.run(() => {
+          this.tabs = [
+            {
+              name: "Not Started",
+              tab: 0,
+              count: this.progressData.notStarted || 0
+            },
+            {
+              name: "In Progress",
+              tab: 1,
+              count: this.progressData.inProgress || 0
+            },
+            {
+              name: "Completed",
+              tab: 2,
+              count: this.progressData.completed || 0
+            },
+            {
+              name: "Passed",
+              tab: 3,
+              count: this.progressData.cancelled || 0
+            },
+            {
+              name: "Failed",
+              tab: 4,
+              count: this.progressData.aborted || 0
+            }
+          ];
+          this.currentTab = this.tabs[0];
+        });
         // this.courseData = data.userCourses;
-        this.tabs = [
-          {
-            name: "Not Started",
-            tab: 0,
-            count: this.progressData.notStarted || 0
-          },
-          {
-            name: "In Progress",
-            tab: 1,
-            count: this.progressData.inProgress || 0
-          },
-          {
-            name: "Completed",
-            tab: 2,
-            count: this.progressData.completed || 0
-          },
-          {
-            name: "Passed",
-            tab: 3,
-            count: this.progressData.cancelled || 0
-          },
-          {
-            name: "Failed",
-            tab: 4,
-            count: this.progressData.aborted || 0
-          }
-        ];
-        this.currentTab = this.tabs[0];
+
       });
   }
   getCourse() {

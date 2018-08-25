@@ -1,3 +1,4 @@
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
 import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
@@ -8,7 +9,7 @@ import { UserService } from './../../../../services/user.service';
 import { ApiService } from './../../../../services/api.service';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common'
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -23,7 +24,7 @@ export class AddUserComponent implements OnInit {
     private alert: AlertsLoaderService, private shared: SharedService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
-  private _location:Location) {
+    private _location: Location) {
     if (!this.shared.dropDownsData.departmentList) {
       this.shared.getAllDropdownData();
       this.shared.dropDownsService.subscribe((data) => {
@@ -159,7 +160,7 @@ export class AddUserComponent implements OnInit {
     this.api.put(`/user/create-or-update-user`, this.userDetails).subscribe(
       (data) => {
         if (!this.editMode) {
-          this.alert.success('USer added successfully');
+          this.alert.success('User added successfully');
           this.initUser();
           return;
         }
@@ -179,6 +180,10 @@ export class AddUserComponent implements OnInit {
     if (which == 'user') {
       comp = UserLookupComponent;
     }
+    if (which === 'post') {
+      comp = PostcodeLookupComponent;
+
+    }
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       comp
     );
@@ -194,6 +199,13 @@ export class AddUserComponent implements OnInit {
         this.selectAddress(data);
       });
     }
+    if (which === 'post') {
+      this.componentRef.instance.selectAddress.subscribe((data) => {
+        this.userDetails.addresses[0] = data;
+      });
+    }
+
+
     this.componentRef.instance.closeModal.subscribe(() => {
       this.closeModal(which);
     });

@@ -1,9 +1,10 @@
+import { CourseLookupComponent } from './../../course-lookup/course-lookup.component';
 import { Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ApiService } from '../../../../services/api.service';
 import { AlertsLoaderService } from '../../../../services/alerts-loader.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-add-profile',
   templateUrl: './add-profile.component.html',
@@ -20,7 +21,7 @@ export class AddProfileComponent implements OnInit {
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
-  private _location:Location) {
+    private _location: Location) {
     this.initProfile();
   }
 
@@ -78,8 +79,27 @@ export class AddProfileComponent implements OnInit {
       }
     )
   }
-  courseLookup(){
-    
+  courseLookup() {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      CourseLookupComponent
+    );
+    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.selectCourse.subscribe((data) => {
+      this.selectCourse(data);
+    });
+    this.componentRef.instance.closeModal.subscribe(() => {
+      this.closeModal();
+    });
+  }
+
+  selectCourse(course) {
+    this.profile.courses.push(course);
+    this.profile.courses = [...this.profile.courses];
+  }
+  closeModal() {
+    this.componentRef.instance.selectCourse.unsubscribe();
+    this.componentRef.instance.closeModal.unsubscribe();
+    this.componentRef.destroy();
   }
 
 }
