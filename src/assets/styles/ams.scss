@@ -1,6 +1,5 @@
-@import './../../../../_common';
-@import './../../../../assets/styles/ams';
-.content{
+@import './../../_common';
+.content {
     border-color: $amsColor;
 }
 
@@ -11,7 +10,7 @@ thead {
 
 .btn {
     &:hover {
-        background-color: $amsColor;
+        background-color: $amsColor !important;
     }
 }
 
@@ -19,13 +18,13 @@ thead {
     border-bottom: 1px solid $amsColor;
     .nav-link {
         border-color: $amsColor;
-        color:  $amsColor;
-        &:hover, &.active{
-            color:white !important;
+        color: $amsColor;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            color: white !important;
             background-color: $amsColor;
             border-color: $amsColor;
         }
-       
-       
     }
 }

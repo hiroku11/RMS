@@ -1,5 +1,6 @@
 @import './../../../../_common';
-.content{
+@import './../../../../assets/styles/ams';
+.content {
     border-color: $amsColor;
 }
 
@@ -18,13 +19,12 @@ thead {
     border-bottom: 1px solid $amsColor;
     .nav-link {
         border-color: $amsColor;
-        color:  $amsColor;
-        &:hover, &.active{
-            color:white !important;
+        color: $amsColor;
+        &:hover,
+        &.active {
+            color: white !important;
             background-color: $amsColor;
             border-color: $amsColor;
         }
-       
-       
     }
 }
