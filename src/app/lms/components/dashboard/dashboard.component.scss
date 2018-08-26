@@ -6,7 +6,14 @@
 .dashboard {
     img {
         height: 200px;
-        width: 100%;
        
     }
+}
+
+a{
+    color: $lmsColor;
+}
+.card{
+    border: none;
+    background: transparent;
 }
