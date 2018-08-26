@@ -1,6 +1,5 @@
 {	
     "loginUrl":"https://125ae965.ngrok.io/rmsrest/p",	
     "apiUrl":"https://125ae965.ngrok.io/rmrest/s",	
-    "feedbackUrlPrefix": "https://hiroku11.github.io/RMS/",
-    "playerBaseUrl": "https://125ae965.ngrok.io/"	
+    "feedbackUrlPrefix": "https://hiroku11.github.io/RMS/"	
 }

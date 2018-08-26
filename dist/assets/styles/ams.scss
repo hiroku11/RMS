@@ -1,0 +1,30 @@
+@import './../../_common';
+.content {
+    border-color: $amsColor;
+}
+
+thead {
+    background-color: $amsColor;
+    color: white;
+}
+
+.btn {
+    &:hover {
+        background-color: $amsColor !important;
+    }
+}
+
+.nav-tabs {
+    border-bottom: 1px solid $amsColor;
+    .nav-link {
+        border-color: $amsColor;
+        color: $amsColor;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            color: white !important;
+            background-color: $amsColor;
+            border-color: $amsColor;
+        }
+    }
+}
