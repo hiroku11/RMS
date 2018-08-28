@@ -201,7 +201,13 @@ export class AddUserComponent implements OnInit {
     }
     if (which === 'post') {
       this.componentRef.instance.selectAddress.subscribe((data) => {
-        this.userDetails.addresses[0] = data;
+        if(manager == 'officePost'){
+          this.userDetails.officeAddress = data;
+        }
+        else{
+          this.userDetails.addresses[0] = data;
+        }
+       
       });
     }
 
