@@ -167,7 +167,7 @@
   </div>
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Regulatory Compliance</label>
       <select class="form-control" [(ngModel)]="equipment.regulatoryCompliance">
         <option [ngValue]="null"></option>
@@ -175,35 +175,35 @@
         <option value="N">No</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
       <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [(ngModel)]="equipment.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
       <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'"  [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
       [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt8></owl-date-time>
     </div>
-    <div class="col-sm-12 col-md-3">
+    <!-- <div class="col-sm-12 col-md-3">
       <label>Fire Exits</label>
       <select class="form-control" [(ngModel)]="equipment.fireExits">
         <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
-    </div>
+    </div> -->
   </div>
 
 
 
   <div class="row pb-2">
-    <div class="col-sm-12 col-md-3">
+    <!-- <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location</label>
       <input class="form-control" [disabled]="equipment.fireExits != 'Y'" [(ngModel)]="equipment.fireExitsLoc" name="fireExitsLoc"
       />
-    </div>
-    <div class="col-sm-12 col-md-3">
+    </div> -->
+    <div class="col-sm-12 col-md-4">
       <label>Fire Exitinguishers Present</label>
       <select class="form-control" [(ngModel)]="equipment.fireExtinguishers">
         <option [ngValue]="null"></option>
@@ -212,12 +212,12 @@
       </select>
     </div>
 
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Fire Extinguisher</label>
       <ngx-select-dropdown [ngClass]="{'disabled':equipment.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
         [multiple]="true" [config]="multiselectConfig" [(value)]="equipment.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <label>Fire Extinguisher Location</label>
       <input class="form-control" [disabled]="equipment.fireExtinguishers != 'Y'" [(ngModel)]="equipment.fireExtinguisherLoc" name="fireExtinguisherLoc"
       />

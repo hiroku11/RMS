@@ -145,7 +145,7 @@
         <label>Equipment Tag</label>: {{asset.equipmentTag}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
@@ -160,7 +160,7 @@
         <label>Equipment Cost</label>: {{asset.equipmentCost}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Length</label>: {{asset.equipmentLength}}
@@ -175,7 +175,7 @@
         <label>Weight</label>: {{asset.equipmentWeight}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Quantity</label>: {{asset.equipmentQuantity}}
@@ -190,7 +190,7 @@
         <label>Model</label>: {{asset.equipmentModel}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Purchased Date</label>: {{asset.equipmentPurchasedDate | date:'dd/MM/yyyy'}}
@@ -205,7 +205,7 @@
         <label>Company Email</label>: {{asset.equipmentCompanyEmail}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>Contact Person</label>: {{asset.equipmentCompanyContactPerson}}
@@ -222,7 +222,7 @@
         <label>Purchase Comments</label>: {{asset.equipmentCompanyComments}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>Equipment Returned</label>: {{asset.equipmentReturned}}
@@ -234,13 +234,13 @@
         <label>Refund Amount</label>: {{asset.refundAmount}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12">
         <label>Return Reason</label>: {{asset.equipmentReturnedReason}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
@@ -251,21 +251,21 @@
       <div class="col-sm-12 col-md-3">
         <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate | date:'dd/MM/yyyy'}}
       </div>
-      <div class="col-sm-12 col-md-3">
+      <div class="col-sm-12 col-md-3" *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
         <label>Fire Exits</label>: {{asset.fireExits}}
       </div>
     </div>
-  
-  
-  
+
+
+
     <div class="row pb-2">
-      <div class="col-sm-12 col-md-3">
+      <div class="col-sm-12 col-md-3" *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
         <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
       </div>
       <div class="col-sm-12 col-md-3">
         <label>Fire Exitinguishers Present</label>: {{asset.fireExtinguishers}}
       </div>
-  
+
       <div class="col-sm-12 col-md-3">
         <label>Fire Extinguisher</label>: {{getFireExtinguishersDisplay(asset.fireExtinguisherTypes)}}
       </div>
@@ -273,7 +273,7 @@
         <label>Fire Extinguisher Location</label>: {{asset.fireExtinguisherLoc}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
@@ -288,7 +288,7 @@
         <label>Loan</label>: {{asset.loanPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Policy</label>: {{asset.insurancePresent}}
@@ -303,7 +303,7 @@
         <label>Warranty</label>: {{asset.warrantyPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Condition</label>: {{asset.assetCondition?.description}}
@@ -312,7 +312,7 @@
         <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Status</label>: {{asset.assetStatus?.description}}
@@ -328,8 +328,8 @@
       <div class="col-sm-12 col-md-6">
         <label>Asset Type Other</label>: {{asset.assetTypeOther}}
       </div>
-    </div>  
-    
+    </div>
+
     <div class="row pb-2">
       <div class="col-sm-12">
         <label>Damage Description</label>: {{asset.equipmentDamageDesc}}
@@ -352,7 +352,7 @@
         <label>Asset Tag</label>: {{asset.assetTag}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
@@ -367,7 +367,7 @@
         <label>Asset Cost</label>: {{asset.assetCost}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Length</label>: {{asset.assetLength}}
@@ -382,7 +382,7 @@
         <label>Weight</label>: {{asset.assetWeight}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Quantity</label>: {{asset.assetQuantity}}
@@ -397,7 +397,7 @@
         <label>Model</label>: {{asset.assetModel}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Purchase Date</label>: {{asset.purchasedDate | date:'dd/MM/yyyy'}}
@@ -412,7 +412,7 @@
         <label>Company Email</label>: {{asset.purchaseCompanyEmail}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>Company Contact Person</label>: {{asset.purchaseCompanyContactPerson}}
@@ -424,13 +424,13 @@
         <label>Invoice #</label>: {{asset.invoiceNumber}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12">
         <label>Purchase Comments</label>: {{asset.purchaseComments}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>Asset Returned</label>: {{asset.assetReturned}}
@@ -442,7 +442,7 @@
         <label>Refund Amount</label>: {{asset.refundAmount}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Return Reason</label>: {{asset.assetReturnReason}}
@@ -451,7 +451,7 @@
         <label>Asset Damage Description</label>: {{asset.assetDamageDescription}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-">
         <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
@@ -466,9 +466,9 @@
         <label>Fire Exits</label>: {{asset.fireExits}}
       </div>
     </div>
-  
-  
-  
+
+
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
@@ -483,7 +483,7 @@
         <label>Fire Extinguisher Location</label>: {{asset.fireExtinguisherLoc}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
@@ -498,7 +498,7 @@
         <label>Loan</label>: {{asset.loanPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Policy</label>: {{asset.insurancePresent}}
@@ -513,7 +513,7 @@
         <label>Warranty</label>: {{asset.warrantyPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Condition</label>: {{asset.assetCondition?.description}}
@@ -522,7 +522,7 @@
         <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Status</label>: {{asset.assetStatus?.description}}
@@ -559,7 +559,7 @@
         <label>Chasis #</label>: {{asset.chassisNumber}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
@@ -571,7 +571,7 @@
         <label>Department</label>: {{asset.department?.description}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Make</label>: {{asset.make}}
@@ -586,7 +586,7 @@
         <label>Month Of Manufacturing</label>: {{asset.monthOfManufacturing?.description}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Vehicle Type</label>: {{asset.vehicleType?.description}}
@@ -595,7 +595,7 @@
         <label>Asset Type Other</label>: {{asset.vehicleTypeOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Tax</label>: {{asset.taxApplicable}}
@@ -610,7 +610,7 @@
         <label>Tax End Date Time</label>: {{asset.taxEndDateTime| date:'dd/MM/yyyy HH:mm:ss'}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>MOT</label>: {{asset.motApplicable}}
@@ -622,7 +622,7 @@
         <label>MOT Place</label>: {{asset.motPlace}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-4">
         <label>MOT Start Date Time</label>: {{asset.motStartDateTime | date:'dd/MM/yyyy'}}
@@ -634,8 +634,8 @@
         <label>MOT Obtained Date</label>: {{asset.motObtainedDate | date: 'dd/MM/yyyy'}}
       </div>
     </div>
-  
-  
+
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Vehicle Damage Type</label>: {{getFireExtinguishersDisplay(asset.vehicleDamageTypes)}}
@@ -644,7 +644,7 @@
         <label>Vehicle Damage Type Other</label> : {{asset.vehicleDamageTypeOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Regulatory Compliance</label>: {{asset.regulatoryCompliance}}
@@ -659,11 +659,11 @@
         <label>Fire Exits</label>: {{asset.fireExits}}
       </div>
     </div>
-  
-  
-  
+
+
+
     <div class="row pb-2">
-  
+
       <div class="col-sm-12 col-md-3">
         <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
       </div>
@@ -677,7 +677,7 @@
         <label>Fire Extinguisher Location</label>:{{asset.fireExtinguisherLoc}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Annual Maintenance Contract</label>: {{asset.amcPresent}}
@@ -692,7 +692,7 @@
         <label>Loan</label>: {{asset.loanPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-3">
         <label>Policy</label>: {{asset.insurancePresent}}
@@ -707,7 +707,7 @@
         <label>Warranty</label>: {{asset.warrantyPresent}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Condition</label>: {{asset.assetCondition?.description}}
@@ -716,7 +716,7 @@
         <label>Asset Condition Other</label>: {{asset.assetConditionOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12 col-md-6">
         <label>Asset Status</label>: {{asset.assetStatus?.description}}
@@ -733,7 +733,7 @@
         <label>Asset Type Other</label>: {{asset.assetTypeOther}}
       </div>
     </div>
-  
+
     <div class="row pb-2">
       <div class="col-sm-12">
         <label>Comment/Description</label>: {{asset.commentDescription}}
