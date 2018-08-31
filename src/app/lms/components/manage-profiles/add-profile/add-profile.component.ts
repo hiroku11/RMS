@@ -73,7 +73,7 @@ export class AddProfileComponent implements OnInit {
   updateProfile() {
     this.api.put(`/profile/update-profile`, this.profile).subscribe(
       (data) => {
-        this.alert.success('Prodile updated successfully');
+        this.alert.success('Profile updated successfully');
       }, (error) => {
         this.alert.error(error);
       }

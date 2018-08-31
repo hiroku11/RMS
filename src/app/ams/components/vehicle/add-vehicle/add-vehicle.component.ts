@@ -128,8 +128,6 @@ export class AddVehicleComponent implements OnInit {
             regulatoryCompliance: null,
             regulatoryAuthorityName: null,
             regCompObtainedDate: null,
-            fireExits: null,
-            fireExitsLoc: null,
             fireExtinguishers: null,
             fireExtinguisherLoc: null,
             amcPresent: "N",

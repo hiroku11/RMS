@@ -30,7 +30,7 @@ export class CourseLookupComponent implements OnInit {
   }
   initSearchParams() {
     this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-    let propsArray = ['code', 'name', 'description', 'peopleManager', 'aaprovalRequired'];
+    let propsArray = ['code', 'name', 'description', 'peopleManager', 'approvalRequired'];
     propsArray.forEach((prop) => {
       this.lookupOptions[prop] = {
         field: prop,

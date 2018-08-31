@@ -87,7 +87,7 @@ export class AddCourseComponent implements OnInit {
   updateCourse() {
     this._api.put(`/course/update-course`, this.course).subscribe(
       (data) => {
-        this._alert.success('Prodile updated successfully');
+        this._alert.success('Course updated successfully');
       }, (error) => {
         this._alert.error(error);
       }

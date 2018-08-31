@@ -66,7 +66,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12 col-md-3">
-            <label>Prodile Description</label>
+            <label>Description</label>
           </div>
 
           <div class="col-sm-12 col-md-3">
@@ -128,7 +128,7 @@
           </div>
 
           <div class="col-sm-12 col-md-3">
-            <select class="form-control" (change)="lookupFieldChange(lookupOptions.aaprovalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.operator">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.approvalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.operator">
               <option value="EQ" selected>Equals</option>
               <option value="NEQ">Not equals</option>
               <option value="STARTS_WITH">Starts with</option>
@@ -138,7 +138,7 @@
             </select>
           </div>
           <div class="col-sm-12 col-md-4">
-            <select class="form-control" [(ngModel)]="lookupOptions.aaprovalRequired.value" (change)="lookupFieldChange(lookupOptions.aaprovalRequired)"
+            <select class="form-control" [(ngModel)]="lookupOptions.approvalRequired.value" (change)="lookupFieldChange(lookupOptions.aaprovalRequired)"
               name="aaprovalRequired">
               <option></option>
               <option value="Y">Yes</option>
@@ -147,9 +147,9 @@
           </div>
           <div class="col-sm-12 col-md-2">
             <span>
-              <input type="checkbox" [(ngModel)]="lookupOptions.aaprovalRequired.sort" (change)="lookupSortChange(lookupOptions.aaprovalRequired)"> Sort
+              <input type="checkbox" [(ngModel)]="lookupOptions.approvalRequired.sort" (change)="lookupSortChange(lookupOptions.aaprovalRequired)"> Sort
             </span>
-            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.aaprovalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.order">
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.approvalRequired)" [(ngModel)]="lookupOptions.aaprovalRequired.order">
               <option value="ASC">ASC</option>
               <option value="DESC">DESC</option>
             </select>
