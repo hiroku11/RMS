@@ -102,19 +102,20 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Planned Start Date</label>
-      <input class="form-control" [value]="course && course.userCoursePlannedStartDate" name="courseid" readonly/>
+      <input class="form-control" [value]="course && course.userCoursePlannedStartDate | date:'dd/mm/yyyy'" name="courseid" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Planned End Date</label>
-      <input class="form-control" [(ngModel)]="course && course.userCoursePlannedEndDate" name="courseName" readonly/>
+      <input class="form-control" [ngModel]="course && course.userCoursePlannedEndDate | date:'dd/mm/yyyy'" name="courseName" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Actual Start Date & Time</label>
-      <input class="form-control" [(ngModel)]="course && course.userCourseActualStartDateTime" readonly/>
+      <input class="form-control" [ngModel]="course && course.userCourseActualStartDateTime | date:'dd/mm/yyyy'" readonly/>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Actual End Date & Time</label>
-      <input class="form-control" [(ngModel)]="course && course.userCourseActualEndDateTime" name="courseSize" readonly/>
+      <input class="form-control" [ngModel]="course && course.userCourseActualEndDateTime | date:'dd/mm/yyyy'" name="courseSize"
+        readonly/>
     </div>
   </div>
   <div class="row pb-2">
@@ -138,7 +139,8 @@
 
     <div class="col-sm-12 col-md-4">
       <label>Last Accessed</label>
-      <input class="form-control" [(ngModel)]="course && course.userCourseLastUpdatedDateTime" name="courseName" readonly/>
+      <input class="form-control" [ngModel]="course && course.userCourseLastUpdatedDateTime | date:'dd/mm/yyyy'" name="courseName"
+        readonly/>
     </div>
 
     <div class="col-sm-12 col-md-4">
@@ -153,7 +155,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Score</label>
-      <input class="form-control" [value]="course.userCourseRawScore | number:1.2-2" name="courseSize" readonly/>
+      <input class="form-control" [value]="course.userCourseRawScore | number" name="courseSize" readonly/>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Rejected Reason</label>

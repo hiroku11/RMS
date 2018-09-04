@@ -16,7 +16,7 @@ import { ConfigService } from '../../../services/config.service';
 })
 export class ProgressDashboardComponent {
 
-  module = "Learning Management System"
+  module = "Learning Management System";
 
   constructor() {
     // this.config = this._configService.config;

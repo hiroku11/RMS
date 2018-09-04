@@ -6,16 +6,17 @@ import {
   Component,
   ComponentFactoryResolver,
   ViewContainerRef,
-  NgZone
+  NgZone,
+  ChangeDetectorRef
 } from '@angular/core';
-import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { OnInit, AfterViewInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { ConfigService } from '../../../../services/config.service';
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.scss']
 })
-export class ProgressComponent implements OnInit {
+export class ProgressComponent implements OnInit, AfterViewInit {
   progressCount: any;
   itemsCount = 0;
   progressData: any;
@@ -31,16 +32,20 @@ export class ProgressComponent implements OnInit {
   };
 
   course: any;
-  public courseData = [];
+  courseData = [];
   tabs: any;
 
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
-    private _configService: ConfigService, private ngzone: NgZone) {
+    private _configService: ConfigService, private ngzone: NgZone,
+    private cdr: ChangeDetectorRef) {
     this.config = this._configService.config;
   }
 
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
   ngOnInit() {
     this.getProgress();
     this.changeTab('Not Started');
@@ -51,36 +56,37 @@ export class ProgressComponent implements OnInit {
       .get("/user-course/my-progress")
       .subscribe(data => {
         this.progressData = data;
-        this.ngzone.run(() => {
-          this.tabs = [
-            {
-              name: "Not Started",
-              tab: 0,
-              count: this.progressData.notStarted || 0
-            },
-            {
-              name: "In Progress",
-              tab: 1,
-              count: this.progressData.inProgress || 0
-            },
-            {
-              name: "Completed",
-              tab: 2,
-              count: this.progressData.completed || 0
-            },
-            {
-              name: "Passed",
-              tab: 3,
-              count: this.progressData.cancelled || 0
-            },
-            {
-              name: "Failed",
-              tab: 4,
-              count: this.progressData.aborted || 0
-            }
-          ];
-          this.currentTab = this.tabs[0];
-        });
+
+        this.tabs = [
+          {
+            name: "Not Started",
+            tab: 0,
+            count: this.progressData.notStarted || 0
+          },
+          {
+            name: "In Progress",
+            tab: 1,
+            count: this.progressData.inProgress || 0
+          },
+          {
+            name: "Completed",
+            tab: 2,
+            count: this.progressData.completed || 0
+          },
+          {
+            name: "Passed",
+            tab: 3,
+            count: this.progressData.cancelled || 0
+          },
+          {
+            name: "Failed",
+            tab: 4,
+            count: this.progressData.aborted || 0
+          }
+        ];
+        this.currentTab = this.tabs[0];
+
+        this.cdr.detectChanges();
         // this.courseData = data.userCourses;
 
       });
@@ -90,12 +96,12 @@ export class ProgressComponent implements OnInit {
       .get("/user-course/search-user-courses", { Search: JSON.stringify(this.searchParams) })
       .subscribe(data => {
         this.course = data.userCourses;
-        this.changeTab('Not Started');
+        this.changeTab({ name: 'Not Started' });
       });
 
   }
   changeTab(tab) {
-    this.courseData = [];
+
     this.currentTab = tab;
     if (tab.name == 'Not Started') {
       this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "not attempted" }]
@@ -118,8 +124,11 @@ export class ProgressComponent implements OnInit {
     this._apiService
       .get("/user-course/my-progress", { Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
-        this.courseData = data.userCourses;
-        this.itemsCount = data.totalRecords;
+        this.ngzone.run(() => {
+          this.courseData = data.userCourses;
+          this.itemsCount = data.totalRecords;
+        });
+
       }, (error) => {
         this._alertService.error('Some error occured. Try Again')
       })
