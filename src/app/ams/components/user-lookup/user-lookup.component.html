@@ -92,35 +92,6 @@
                         </select>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-12 col-md-3">
-                        <label>Full Name</label>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3">
-                        <select class="form-control" (change)="lookupFieldChange(lookupOptions.fullName)" [(ngModel)]="lookupOptions.fullName.operator">
-                            <option value="EQ" selected>Equals</option>
-                            <option value="NEQ">Not equals</option>
-                            <option value="STARTS_WITH">Starts with</option>
-                            <option value="ENDS_WITH">Ends with</option>
-                            <option value="CONTAINS">Contains</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <input class="form-control" [(ngModel)]="lookupOptions.fullName.value" (change)="lookupFieldChange(lookupOptions.fullName)"
-                            name="fullName">
-                    </div>
-                    <div class="col-sm-12 col-md-2">
-                        <span>
-                            <input type="checkbox" [(ngModel)]="lookupOptions.fullName.sort" (change)="lookupSortChange(lookupOptions.fullName)"> Sort
-                        </span>
-                        <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.fullName)" [(ngModel)]="lookupOptions.fullName.order">
-                            <option value="ASC">ASC</option>
-                            <option value="DESC">DESC</option>
-                        </select>
-                    </div>
-                </div>
                 <table class="table table-bordered">
                     <thead>
                         <tr>

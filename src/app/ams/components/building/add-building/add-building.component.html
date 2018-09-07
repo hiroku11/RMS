@@ -96,7 +96,7 @@
 
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
-      <label>Fire Exit Location</label>
+      <label>Fire Exit Location(s)</label>
       <input class="form-control" [disabled]="building.fireExits != 'Y'" [(ngModel)]="building.fireExitsLoc" name="fireExitsLoc"
       />
     </div>
@@ -114,7 +114,7 @@
         [multiple]="true" [config]="multiselectConfig" [(value)]="building.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>Fire Extinguisher Location</label>
+      <label>Fire Extinguisher Location(s)</label>
       <input class="form-control" [disabled]="building.fireExtinguishers != 'Y'" [(ngModel)]="building.fireExtinguisherLoc" name="fireExtinguisherLoc"
       />
     </div>

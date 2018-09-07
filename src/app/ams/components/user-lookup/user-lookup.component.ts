@@ -20,26 +20,26 @@ export class UserLookupComponent implements OnInit {
   searchParams: any = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
   constructor(private _sharedService: SharedService,
     private _apiService: ApiService,
-    private _alertsService: AlertsLoaderService ) { }
+    private _alertsService: AlertsLoaderService) { }
 
   ngOnInit() {
     this.display = true;
-        this.initSearchParams();
+    this.initSearchParams();
   }
 
   initSearchParams() {
     this.searchParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
-    let propsArray = ['userLoginId', 'firstName', 'lastName', 'fullName'];
+    let propsArray = ['userLoginId', 'firstName', 'lastName'];
     propsArray.forEach((prop) => {
-        this.lookupOptions[prop] = {
-            field: prop,
-            operator: "EQ",
-            value: null,
-            order: "ASC",
-            sort: false
-        }
+      this.lookupOptions[prop] = {
+        field: prop,
+        operator: "EQ",
+        value: null,
+        order: "ASC",
+        sort: false
+      }
     });
-}
+  }
   lookupFieldChange({ field, operator, value }) {
     let fil = {
       field,
@@ -79,19 +79,19 @@ export class UserLookupComponent implements OnInit {
     this._apiService
       .get(this.searchUrl, { Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
-        this.searchResult= data;
-        
+        this.searchResult = data;
+
       },
-      error => {
-        this._alertsService.error("Error getting search Data");
-      });
+        error => {
+          this._alertsService.error("Error getting search Data");
+        });
   }
 
   close() {
     this.display = false;
     this.closeModal.emit();
   }
-  assignUserToAsset(user: any){
+  assignUserToAsset(user: any) {
     this.assignUser.emit(user);
   }
 }

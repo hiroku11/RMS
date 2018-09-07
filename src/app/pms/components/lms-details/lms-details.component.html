@@ -1,97 +1,93 @@
-
-
-
-    <div class="row pb-3">
-      <div class="col-md-12">
-        <h4>
-          <span class="fa fa-address-book-o"></span> My Courses 
-          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> My Courses
+      <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
             <span class="fa fa-plus"></span>Add</button> -->
-        </h4>
-      </div>
-    </div>
-    <div class="row tab-content">
-      <table class="table table-bordered">
-        <thead>
-          <th>
-            Course Code
-          </th>
-          <th>
-            Course Name
-          </th>
-          <th>
-            Description
-          </th>
-        
-          <th>
-            Planned Start Date
-          </th>
-          <th>
-              Planned End Date
-            </th>
-            <th>
-              Actual Start Date
-            </th>
-            <th>
-                Actual End Date
-              </th>
-             
-              <th>
-              Passing  Grade
-              </th>
-              <th>
-                Is People Manager Course?
-              </th>
-              <th>
-                Approval Required?
+    </h4>
+  </div>
+</div>
+<div class="row tab-content">
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Course Code
+      </th>
+      <th>
+        Course Name
+      </th>
+      <th>
+        Description
+      </th>
 
-              </th>
-          <th>
-            Approval Status
-          </th>
-  
-        </thead>
-        <tbody *ngIf="courseData.length > 0">
-              <tr *ngFor="let c of courseData">
-                <td>
-                  <a [routerLink]="['/lms/my-courses/user-course-detail/', c.userCourseId]">{{c.courseCode}}</a>
-              
-                </td>
-                <td>
-                  {{c.courseName}}
-                </td>
-                <td>
-                  {{c.courseDescription}}
-                </td>
-                <td>
-                {{c.userCoursePlannedStartDate}}
-                </td>
-                <td>
-                  {{c.userCoursePlannedEndDate}}
-                </td>
-                <td>
-                  {{c.userCourseActualStartDateTime}}
-                </td>
-                <td>
-                  {{c.userCourseActualEndDateTime}}
-                </td>
-                <td>
-                  {{c.coursePassingGrade}}
-                </td>
-                <td>
-                  {{c.coursePeopleManager}}
-                </td>
-                <td>
-                  {{c.userCourseApprovalRequired}}
-                </td>
-                <td>
-                  {{c.userCourseApprovalStatusCode}}
-                </td>
-              
-            
-              </tr>
-            </tbody>
-      </table>
-      <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
-    </div>
-  
+      <th>
+        Planned Start Date
+      </th>
+      <th>
+        Planned End Date
+      </th>
+      <th>
+        Actual Start Date
+      </th>
+      <th>
+        Actual End Date
+      </th>
+
+      <th>
+        Passing Grade
+      </th>
+      <th>
+        Is People Manager Course
+      </th>
+      <th>
+        Approval Required
+
+      </th>
+      <th>
+        Approval Status
+      </th>
+
+    </thead>
+    <tbody *ngIf="courseData.length > 0">
+      <tr *ngFor="let c of courseData">
+        <td>
+          <a [routerLink]="['/lms/my-courses/user-course-detail/', c.userCourseId]">{{c.courseCode}}</a>
+
+        </td>
+        <td>
+          {{c.courseName}}
+        </td>
+        <td>
+          {{c.courseDescription}}
+        </td>
+        <td>
+          {{c.userCoursePlannedStartDate}}
+        </td>
+        <td>
+          {{c.userCoursePlannedEndDate}}
+        </td>
+        <td>
+          {{c.userCourseActualStartDateTime}}
+        </td>
+        <td>
+          {{c.userCourseActualEndDateTime}}
+        </td>
+        <td>
+          {{c.coursePassingGrade}}
+        </td>
+        <td>
+          {{c.coursePeopleManager}}
+        </td>
+        <td>
+          {{c.userCourseApprovalRequired}}
+        </td>
+        <td>
+          {{c.userCourseApprovalStatusCode}}
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
+</div>

@@ -102,14 +102,14 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax Start Date Time</label>
-      <input [disabled]="vehicle.taxApplicable == 'N'" class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
-      [(ngModel)]="vehicle.taxStartDateTime" name="taxStartDateTime" />
-      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time> 
+      <input [disabled]="vehicle.taxApplicable == 'N'" class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="vehicle.taxStartDateTime"
+        name="taxStartDateTime" />
+      <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Tax End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [disabled]="vehicle.taxApplicable == 'N'"
-      [(ngModel)]="vehicle.taxEndDateTime" name="taxEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [disabled]="vehicle.taxApplicable == 'N'" [(ngModel)]="vehicle.taxEndDateTime"
+        name="taxEndDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
   </div>
@@ -136,20 +136,20 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>MOT Start Date Time</label>
-      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
-      [(ngModel)]="vehicle.motStartDateTime" name="motStartDateTime" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="vehicle.motStartDateTime" name="motStartDateTime"
+      />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4"
-      [(ngModel)]="vehicle.motEndDateTime" name="motEndDateTime" />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" [(ngModel)]="vehicle.motEndDateTime" name="motEndDateTime"
+      />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt4></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>MOT Obtained Date</label>
-      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
-      [(ngModel)]="vehicle.motObtainedDate" name="motObtainedDate" />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="vehicle.motObtainedDate" name="motObtainedDate"
+      />
       <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
     </div>
   </div>
@@ -163,7 +163,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If other Specify</label>
-      <input class="form-control" [disabled]="enabledOthers" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther" />
+      <input class="form-control" [disabled]="enabledOthers" [(ngModel)]="vehicle.vehicleDamageTypeOther" name="vehicleDamageTypeOther"
+      />
     </div>
   </div>
 
@@ -178,12 +179,13 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [disabled]="vehicle.regulatoryCompliance != 'Y'" [(ngModel)]="vehicle.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+      <input class="form-control" [disabled]="vehicle.regulatoryCompliance != 'Y'" [(ngModel)]="vehicle.regulatoryAuthorityName"
+        name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
       <input class="form-control" [disabled]="vehicle.regulatoryCompliance != 'Y'" [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
-      [(ngModel)]="vehicle.regCompObtainedDate" name="regCompObtainedDate" />
+        [(ngModel)]="vehicle.regCompObtainedDate" name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt8></owl-date-time>
     </div>
   </div>
@@ -201,12 +203,12 @@
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Fire Extinguisher</label>
+      <label>Fire Extinguishers</label>
       <ngx-select-dropdown [ngClass]="{'disabled': vehicle.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
         [multiple]="true" [config]="multiselectConfig" [(value)]="vehicle.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Fire Extinguisher Location</label>
+      <label>Fire Extinguishers Location</label>
       <input class="form-control" [disabled]="vehicle.fireExtinguishers !='Y'" [(ngModel)]="vehicle.fireExtinguisherLoc" name="description"
       />
     </div>
@@ -336,7 +338,7 @@
   <table class="table table-bordered">
     <thead>
       <th>
-        Login Id
+        Login ID
       </th>
       <th>
         First Name
@@ -348,7 +350,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let assignee of vehicle.assignees">
-        
+
         <td>{{assignee.userLoginId || assignee.loginId}}
         </td>
         <td>{{assignee.firstName}}</td>

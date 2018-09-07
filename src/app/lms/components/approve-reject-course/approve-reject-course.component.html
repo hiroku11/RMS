@@ -16,14 +16,14 @@
         </h4>
       </div>
       <div class="col-md-4">
-          <div class="searchbox">
-              <div class="input-group stylish-input-group">
-                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filter">
-                  <span class="fa fa-search">
-                  </span>
-  
-              </div>
+        <div class="searchbox">
+          <div class="input-group stylish-input-group">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filter">
+            <span class="fa fa-search">
+            </span>
+
           </div>
+        </div>
       </div>
     </div>
     <ul class="row nav nav-tabs mb-2">
@@ -36,7 +36,7 @@
 
     <div class="row tab-content">
 
-      <table class="table table-bordered" >
+      <table class="table table-bordered">
         <thead>
           <th>
             Code
@@ -54,7 +54,7 @@
           </th>
 
           <th>
-            People Manager?
+            People Manager
           </th>
           <th>
             Cost
@@ -67,9 +67,9 @@
           </th>
         </thead>
         <tbody *ngIf="courseData.length > 0">
-          <tr *ngFor="let c of courseData | searchFilter: filter" >
+          <tr *ngFor="let c of courseData | searchFilter: filter">
             <td>
-                <a [routerLink]="['/lms/my-courses/user-course-detail/', c.userCourseId]">{{c.courseCode}}</a>
+              <a [routerLink]="['/lms/my-courses/user-course-detail/', c.userCourseId]">{{c.courseCode}}</a>
 
               <!-- <a [routerLink]="['course-detail', c.id]">{{c.courseCode}}</a> -->
             </td>
@@ -93,7 +93,7 @@
             <td>
               {{c.managerCourseApprovalStatusFlag}}
             </td>
-      
+
             <td>
               <button class="btn btn-success" data-toggle="modal" data-target="#myModal" (click)="cid=c.managerCourseApprovalId" *ngIf=" currentTab.name == 'Active'">Approve</button>
 
@@ -168,37 +168,36 @@
         </div>
       </div>
     </div>
-    </div>
-    <div id="myModal2" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
+  </div>
+  <div id="myModal2" class="modal fade" role="dialog" tabindex="-1" style="top:30%">
 
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title">Activate Course</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Activate Course</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <label>Add Reason</label>
             </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-sm-12 col-md-3">
-                  <label>Add Reason</label>
-                </div>
-                <div class="col-sm-12 col-md-9 pb-1">
-                  <input class="form-control" [(ngModel)]="reason" />
-                </div>
-              </div>
-    
-              <div class="row"></div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="activate()">Activate</button>
-    
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
+            <div class="col-sm-12 col-md-9 pb-1">
+              <input class="form-control" [(ngModel)]="reason" />
             </div>
           </div>
-       
+
+          <div class="row"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="activate()">Activate</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
-      
-        </div>
-       
+      </div>
+
+    </div>
+
+  </div>

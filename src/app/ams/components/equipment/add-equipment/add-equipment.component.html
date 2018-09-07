@@ -213,12 +213,12 @@
     </div>
 
     <div class="col-sm-12 col-md-4">
-      <label>Fire Extinguisher</label>
+      <label>Fire Extinguishers</label>
       <ngx-select-dropdown [ngClass]="{'disabled':equipment.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
         [multiple]="true" [config]="multiselectConfig" [(value)]="equipment.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-4">
-      <label>Fire Extinguisher Location</label>
+      <label>Fire Extinguishers Location</label>
       <input class="form-control" [disabled]="equipment.fireExtinguishers != 'Y'" [(ngModel)]="equipment.fireExtinguisherLoc" name="fireExtinguisherLoc"
       />
     </div>
@@ -347,7 +347,7 @@
   <table class="table table-bordered">
     <thead>
       <th>
-        Login Id
+        Login I
       </th>
       <th>
         First Name

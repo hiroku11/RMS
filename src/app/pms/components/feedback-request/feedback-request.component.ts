@@ -8,7 +8,8 @@ import { UserLookupComponent } from '../user-lookup/user-lookup.component';
 
 @Component({
   selector: 'app-feedback-request',
-  templateUrl: './feedback-request.component.html'
+  templateUrl: './feedback-request.component.html',
+  styleUrls: ['./feedback-request.component.scss']
 })
 export class FeedbackRequestComponent implements OnInit {
   cycle: any;

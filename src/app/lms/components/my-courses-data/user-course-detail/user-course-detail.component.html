@@ -155,7 +155,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Score</label>
-      <input class="form-control" [value]="course.userCourseRawScore | number" name="courseSize" readonly/>
+      <input class="form-control" [value]="course.userCourseRawScore | number : '1.2-2'" name="courseSize" readonly/>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Rejected Reason</label>
