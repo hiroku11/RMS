@@ -63,7 +63,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Cost</label>
-      <input class="form-control" [(ngModel)]="course.courseCost" name="courseName" readonly/>
+      <input class="form-control" [value]="course.courseCost | number: '1.2-2'" name="courseCost" readonly/>
     </div>
 
     <div class="col-sm-12 col-md-3">
