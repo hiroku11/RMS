@@ -28,9 +28,4 @@ export class SideNavComponent implements OnInit {
     this.userService.logOut();
   }
 
-  // navigateToView(view){
-  //   this.thisView = view;
-  //   this._sharedService.activeView = view;
-  // }
-
 }
