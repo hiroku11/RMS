@@ -1,3 +1,4 @@
+import { AddressLookupComponent } from './../../address-lookup/address-lookup.component';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { ApiService } from './../../../../services/api.service';
 import { SharedService } from './../../../../services/shared.service';
@@ -124,7 +125,7 @@ export class AddEquipmentComponent implements OnInit {
             },
             department: {
                 id: null,
-                organization:null
+                organization: null
             },
             regulatoryCompliance: null,
             regulatoryAuthorityName: null,
@@ -171,8 +172,8 @@ export class AddEquipmentComponent implements OnInit {
     getEquipmentById(id: number) {
         this._apiService.get("/equipment/equipmentId/" + id).subscribe(
             data => {
-               
-               data = this.handleNullOrganization(data);
+
+                data = this.handleNullOrganization(data);
                 this.equipment = data;
                 this.updateTabs();
             },
@@ -274,25 +275,28 @@ export class AddEquipmentComponent implements OnInit {
         }
     }
     lookup(type) {
-        let comp : any= OfficeAddressLookupComponent;
-        if(type == 'post'){
-          comp = PostcodeLookupComponent
+        let comp: any = OfficeAddressLookupComponent;
+        if (type == 'post') {
+            comp = PostcodeLookupComponent
         }
-        
+        if (type === 'address') {
+            comp = AddressLookupComponent
+        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-          comp
+            comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
         this.componentRef.instance.selectAddress.subscribe((data) => {
-          this.selectAddress(data);
+            this.selectAddress(data);
         });
         this.componentRef.instance.closeModal.subscribe(() => {
-          this.closeModal();
+            this.closeModal();
         });
-      }
-    
-      selectAddress(data) {
+    }
+
+    selectAddress(data) {
         this.equipment.addresses[0] = data;;
-      }
-    
+    }
+
 }

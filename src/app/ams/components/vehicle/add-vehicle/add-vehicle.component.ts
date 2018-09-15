@@ -1,3 +1,4 @@
+import { AddressLookupComponent } from './../../address-lookup/address-lookup.component';
 import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { SharedService } from './../../../../services/shared.service';
@@ -145,7 +146,7 @@ export class AddVehicleComponent implements OnInit {
             fireExtinguisherTypes: []
         };
     }
-    
+
     getVehicleById(id: number) {
         this._apiService.get("/vehicle/vehicleId/" + id).subscribe(
             data => {
@@ -282,24 +283,26 @@ export class AddVehicleComponent implements OnInit {
         )
     }
     lookup(type) {
-        let comp : any= OfficeAddressLookupComponent;
-        if(type == 'post'){
-          comp = PostcodeLookupComponent
+        let comp: any = OfficeAddressLookupComponent;
+        if (type == 'post') {
+            comp = PostcodeLookupComponent
         }
-        
+        if (type === 'address') {
+            comp = AddressLookupComponent
+        }
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-          comp
+            comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
         this.componentRef.instance.selectAddress.subscribe((data) => {
-          this.selectAddress(data);
+            this.selectAddress(data);
         });
         this.componentRef.instance.closeModal.subscribe(() => {
-          this.closeModal();
+            this.closeModal();
         });
-      }
-    
-      selectAddress(data) {
+    }
+
+    selectAddress(data) {
         this.vehicle.addresses[0] = data;;
-      }
+    }
 }

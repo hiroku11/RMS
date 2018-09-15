@@ -1,3 +1,4 @@
+import { AddressLookupComponent } from './../../address-lookup/address-lookup.component';
 import { SharedService } from './../../../../services/shared.service';
 import { ApiService } from './../../../../services/api.service';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
@@ -12,12 +13,12 @@ import { OfficeAddressLookupComponent } from './../../office-address-lookup/offi
     styleUrls: ["./add-other-assets.component.scss"]
 })
 export class AddOtherAssetsComponent implements OnInit {
-    asset: any ;
+    asset: any;
     public currentTab: any;
     public tabs: any;
     public dropDownsData: any;
     public editMode: boolean;
-    componentRef:any;
+    componentRef: any;
     constructor(
         private _sharedService: SharedService,
         private _apiService: ApiService,
@@ -33,7 +34,7 @@ export class AddOtherAssetsComponent implements OnInit {
         this._sharedService.dropDownsService.subscribe(data => {
             this.dropDownsData = data;
         });
-        
+
     }
     ngOnInit() {
         this.dropDownsData = this._sharedService.dropDownsData;
@@ -45,14 +46,14 @@ export class AddOtherAssetsComponent implements OnInit {
             }
         });
     }
-    selectCompareFunction(item1:any,item2:any) {
-        if(item1 == null || item2 ==null){
+    selectCompareFunction(item1: any, item2: any) {
+        if (item1 == null || item2 == null) {
             return false;
         }
         return item1.id == item2.id;
     }
-    initAssetOther(){
-        this.asset= {
+    initAssetOther() {
+        this.asset = {
             id: null,
             assets: null,
             statusFlag: null,
@@ -61,7 +62,7 @@ export class AddOtherAssetsComponent implements OnInit {
             assetTypeOtherName: null,
             assetCategory: {
                 id: "OTHER",
-                description:"Other"
+                description: "Other"
             },
             addresses: [{
                 "id": null,
@@ -126,8 +127,8 @@ export class AddOtherAssetsComponent implements OnInit {
                 id: null
             },
             department: {
-                id:null,
-                organization:null
+                id: null,
+                organization: null
             },
             amcPresent: "N",
             insurancePresent: "N",
@@ -136,7 +137,7 @@ export class AddOtherAssetsComponent implements OnInit {
             warrantyPresent: "N",
             inspectionPresent: "N",
             servicePresent: "N",
-            rentalOrLeasePresent:"N",
+            rentalOrLeasePresent: "N",
             fireExtinguishers: null,
             fireExits: null,
             fireExitsLoc: null,
@@ -175,8 +176,8 @@ export class AddOtherAssetsComponent implements OnInit {
         this._apiService
             .get("/asset-type-other/assetTypeOtherId/" + id)
             .subscribe(
-                data => { 
-                   data = this.handleNullOrganization(data);
+                data => {
+                    data = this.handleNullOrganization(data);
                     this.asset = data;
                     this.updateTabs();
                 },
@@ -187,7 +188,7 @@ export class AddOtherAssetsComponent implements OnInit {
                 }
             );
     }
-    addedToAsset($event:any){
+    addedToAsset($event: any) {
         this.asset = $event;
     }
     save() {
@@ -226,30 +227,30 @@ export class AddOtherAssetsComponent implements OnInit {
             this.closeModal();
         });
     }
-    closeModal(){
+    closeModal() {
         this.componentRef.instance.assignUser.unsubscribe();
         this.componentRef.instance.closeModal.unsubscribe();
         this.componentRef.destroy();
     }
-    assignUser(user: any){
+    assignUser(user: any) {
         if (!this.asset.id) {
             this.asset.assignees == null ? this.asset.assignees = [] : "";
             this.asset.assignees.push(user);
             return;
         }
-        this._apiService.put(`/asset-type-other/add-assignee-to-asset-type-other-by-user-id/assetTypeOtherId/${this.asset.id}/userId/${user.id}`,null).subscribe(
-            (data)=>{
+        this._apiService.put(`/asset-type-other/add-assignee-to-asset-type-other-by-user-id/assetTypeOtherId/${this.asset.id}/userId/${user.id}`, null).subscribe(
+            (data) => {
                 this.asset = data;
                 this._alertsService.success("Asset successfully assigned to user.")
             },
-            (error)=>{
+            (error) => {
                 this._alertsService.error(error)
             }
         )
         console.log("assigning user")
     }
 
-    deleteAssignee(user: any){
+    deleteAssignee(user: any) {
         if (!window.confirm("Are you sure you want to delete this item/record?")) {
             return;
         }
@@ -261,34 +262,37 @@ export class AddOtherAssetsComponent implements OnInit {
             return;
         }
         this._apiService.delete(`/asset-type-other/remove-assignee-from-asset-type-other-by-user-id/assetTypeOtherId/${this.asset.id}/userId/${user.id}`).subscribe(
-            (data)=>{
+            (data) => {
                 this.asset = data;
                 this._alertsService.success("Assignee successfully removed from asset.");
             },
-            (error)=>{
+            (error) => {
                 this._alertsService.error(error);
             }
         )
     }
     lookup(type) {
-        let comp : any= OfficeAddressLookupComponent;
-        if(type == 'post'){
-          comp = PostcodeLookupComponent
+        let comp: any = OfficeAddressLookupComponent;
+        if (type == 'post') {
+            comp = PostcodeLookupComponent
         }
-        
+        if (type === 'address') {
+            comp = AddressLookupComponent
+        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-          comp
+            comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
         this.componentRef.instance.selectAddress.subscribe((data) => {
-          this.selectAddress(data);
+            this.selectAddress(data);
         });
         this.componentRef.instance.closeModal.subscribe(() => {
-          this.closeModal();
+            this.closeModal();
         });
-      }
-    
-      selectAddress(data) {
+    }
+
+    selectAddress(data) {
         this.asset.addresses[0] = data;;
-      }
+    }
 }

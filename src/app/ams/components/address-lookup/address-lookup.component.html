@@ -1,0 +1,340 @@
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" [ngClass]="{'show backdrop d-block':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Address Lookup</h3>
+        <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Organization Name</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.organizationName)" [(ngModel)]="lookupOptions.organizationName.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.organizationName.value" (change)="lookupFieldChange(lookupOptions.organizationName)"
+              name="organizationName" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.organizationName.sort" (change)="lookupSortChange(lookupOptions.organizationName)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.organizationName)" [(ngModel)]="lookupOptions.organizationName.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Building Name</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.buildingName.value" (change)="lookupFieldChange(lookupOptions.buildingName)"
+              name="buildingName" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.buildingName.sort" (change)="lookupSortChange(lookupOptions.buildingName)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.buildingName)" [(ngModel)]="lookupOptions.buildingName.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Street Name</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.streetName)" [(ngModel)]="lookupOptions.streetName.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.streetName.value" (change)="lookupFieldChange(lookupOptions.streetName)"
+              name="streetName" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.streetName.sort" (change)="lookupSortChange(lookupOptions.streetName)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.streetName)" [(ngModel)]="lookupOptions.streetName.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Locality Name</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.localityName)" [(ngModel)]="lookupOptions.localityName.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.localityName.value" (change)="lookupFieldChange(lookupOptions.localityName)"
+              name="localityName" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.localityName.sort" (change)="lookupSortChange(lookupOptions.localityName)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.localityName)" [(ngModel)]="lookupOptions.localityName.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Post Town</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.postTown)" [(ngModel)]="lookupOptions.postTown.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.postTown.value" (change)="lookupFieldChange(lookupOptions.postTown)"
+              name="postTown" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.postTown.sort" (change)="lookupSortChange(lookupOptions.postTown)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.postTown)" [(ngModel)]="lookupOptions.postTown.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>County</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.county)" [(ngModel)]="lookupOptions.county.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.county.value" (change)="lookupFieldChange(lookupOptions.county)" name="county"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.county.sort" (change)="lookupSortChange(lookupOptions.county)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.county)" [(ngModel)]="lookupOptions.county.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>City</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.city)" [(ngModel)]="lookupOptions.city.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.city.value" (change)="lookupFieldChange(lookupOptions.city)" name="city"
+            />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.city.sort" (change)="lookupSortChange(lookupOptions.city)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.city)" [(ngModel)]="lookupOptions.city.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Country</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.country)" [(ngModel)]="lookupOptions.country.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.country.value" (change)="lookupFieldChange(lookupOptions.country)"
+              name="country" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.country.sort" (change)="lookupSortChange(lookupOptions.country)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.country)" [(ngModel)]="lookupOptions.country.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Post Code 1</label>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.postcode1)" [(ngModel)]="lookupOptions.postcode1.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.postcode1.value" (change)="lookupFieldChange(lookupOptions.postcode1)"
+              name="postcode1" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.postcode1.sort" (change)="lookupSortChange(lookupOptions.postcode1)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.postcode1)" [(ngModel)]="lookupOptions.postcode1.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <label>Post Code 2</label>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <select class="form-control" (change)="lookupFieldChange(lookupOptions.postcode2)" [(ngModel)]="lookupOptions.postcode2.operator">
+              <option value="EQ" selected>Equals</option>
+              <option value="NEQ">Not equals</option>
+              <option value="STARTS_WITH">Starts with</option>
+              <option value="ENDS_WITH">Ends with</option>
+              <option value="CONTAINS">Contains</option>
+
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <input class="form-control" [(ngModel)]="lookupOptions.postcode2.value" (change)="lookupFieldChange(lookupOptions.postcode2)"
+              name="postcode2" />
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <span>
+              <input type="checkbox" [(ngModel)]="lookupOptions.postcode2.sort" (change)="lookupSortChange(lookupOptions.postcode2)"> Sort
+            </span>
+            <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.postcode2)" [(ngModel)]="lookupOptions.postcode2.order">
+              <option value="ASC">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Door/Block/Apt No.</th>
+              <th>Org Name</th>
+              <th>Building Name</th>
+              <th>Street Name</th>
+              <th>Locality Name</th>
+              <th>Post Town</th>
+              <th>County</th>
+              <th>Country</th>
+              <th>PostCode 1</th>
+              <th>PostCode 2</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let add of searchResult">
+              <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
+              <td>{{add.organizationName}}</td>
+              <td>{{add.buildingName}}</td>
+              <td>{{add.streetName}}</td>
+              <td>{{add.localityName}}</td>
+              <td>{{add.postTown}}</td>
+              <td>{{add.county}}</td>
+              <td>{{add.country}}</td>
+              <td>{{add.postcode1}}</td>
+              <td>{{add.postcode2}}</td>
+              <td>
+                <span class="fa fa-plus btn btn-sm btn-outline-success" (click)="orgSelected(add)"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="searchOrgs()">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
+        <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { AddressLookupComponent } from './../../address-lookup/address-lookup.component';
 import { AlertsLoaderService } from './../../../../services/alerts-loader.service';
 import { SharedService } from './../../../../services/shared.service';
 import { ApiService } from './../../../../services/api.service';
@@ -211,7 +212,7 @@ export class AddBuildingComponent implements OnInit {
             this.closeModal();
         });
     }
-    
+
     assignUser(user: any) {
         if (!this.building.id) {
             this.building.assignees == null ? this.building.assignees = [] : "";
@@ -251,30 +252,33 @@ export class AddBuildingComponent implements OnInit {
         )
     }
     lookup(type) {
-        let comp : any= OfficeAddressLookupComponent;
-        if(type == 'post'){
-          comp = PostcodeLookupComponent
+        let comp: any = OfficeAddressLookupComponent;
+        if (type == 'post') {
+            comp = PostcodeLookupComponent
         }
-        
+        if (type === 'address') {
+            comp = AddressLookupComponent
+        }
+
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-          comp
+            comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
         this.componentRef.instance.selectAddress.subscribe((data) => {
-          this.selectAddress(data);
+            this.selectAddress(data);
         });
         this.componentRef.instance.closeModal.subscribe(() => {
-          this.closeModal();
+            this.closeModal();
         });
-      }
-    
-      selectAddress(data) {
+    }
+
+    selectAddress(data) {
         this.building.addresses[0] = data;;
-      }
-    
-      closeModal() {
+    }
+
+    closeModal() {
         this.componentRef.instance.selectAddress.unsubscribe();
         this.componentRef.instance.closeModal.unsubscribe();
         this.componentRef.destroy();
-      }
+    }
 }

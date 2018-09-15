@@ -99,9 +99,9 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Purchased Date</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" 
-      name="equipmentPurchasedDate" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" />
-     <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" name="equipmentPurchasedDate" [owlDateTime]="dt1"
+        [owlDateTimeTrigger]="dt1" />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Purchased From</label>
@@ -149,20 +149,22 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Return Date</label>
-      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" 
-      [(ngModel)]="equipment.equipmentReturnedDate" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" name="equipmentReturnedDate" />
+      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.equipmentReturnedDate"
+        [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" name="equipmentReturnedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>
-      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.refundAmount" name="refundAmount" />
+      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.refundAmount" name="refundAmount"
+      />
     </div>
   </div>
 
   <div class="row pb-2">
     <div class="col-sm-12">
       <label>Return Reason</label>
-      <textarea [disabled]="equipment.equipmentReturned !='Y'" class="form-control" [(ngModel)]="equipment.equipmentReturnedReason" name="equipmentReturnedReason"></textarea>
+      <textarea [disabled]="equipment.equipmentReturned !='Y'" class="form-control" [(ngModel)]="equipment.equipmentReturnedReason"
+        name="equipmentReturnedReason"></textarea>
     </div>
   </div>
 
@@ -177,12 +179,13 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Regulatory Authority</label>
-      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [(ngModel)]="equipment.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [(ngModel)]="equipment.regulatoryAuthorityName"
+        name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'"  [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
-      [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
+      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
+        [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt8></owl-date-time>
     </div>
     <!-- <div class="col-sm-12 col-md-3">
@@ -252,7 +255,7 @@
     <div class="col-sm-12 col-md-3">
       <label>Loan</label>
       <select class="form-control" [(ngModel)]="equipment.loanPresent" (change)="updateTabs()">
-          <option [ngValue]="null"></option>
+        <option [ngValue]="null"></option>
         <option value="Y">Yes</option>
         <option value="N">No</option>
       </select>
@@ -359,7 +362,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let assignee of equipment.assignees">
-        
+
         <td>{{assignee.userLoginId || assignee.loginId}}
         </td>
         <td>{{assignee.firstName}}</td>
@@ -378,7 +381,9 @@
   </div>
   <div class="row pb-3">
     <div class="col-sm-12">
-
+      <button class="btn btn-primary" (click)="lookup('address')">
+        <span class="fa fa-search">Address Lookup</span>
+      </button>
       <button class="btn btn-primary" (click)="lookup()">
         <span class="fa fa-search"> Office Address Lookup</span>
       </button>

@@ -74,12 +74,13 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Regulatory Authority</label>
-      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regulatoryAuthorityName" name="regulatoryAuthorityName" />
+      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regulatoryAuthorityName"
+        name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
       <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="building.regulatoryCompliance != 'Y'"
-       [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
+        [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -255,7 +256,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let assignee of building.assignees">
-        
+
         <td>{{assignee.userLoginId || assignee.loginId }}
         </td>
         <td>{{assignee.firstName}}</td>
@@ -274,6 +275,9 @@
   </div>
   <div class="row pb-3">
     <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="lookup('address')">
+        <span class="fa fa-search">Address Lookup</span>
+      </button>
 
       <button class="btn btn-primary" (click)="lookup()">
         <span class="fa fa-search"> Office Address Lookup</span>

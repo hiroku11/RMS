@@ -1,3 +1,4 @@
+import { AddressLookupComponent } from './components/address-lookup/address-lookup.component';
 import { SmMenuComponent } from './components/sm-menu/sm-menu.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { CoreComponentsModule } from './../core.components.module/core.components.module';
@@ -46,7 +47,7 @@ export const MY_MOMENT_FORMATS = {
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
-  };
+};
 
 
 @NgModule({
@@ -78,7 +79,8 @@ export const MY_MOMENT_FORMATS = {
         SummaryComponent,
         SideNavComponent,
         SmMenuComponent,
-        OfficeAddressLookupComponent
+        OfficeAddressLookupComponent,
+        AddressLookupComponent
     ],
     imports: [FormsModule, CommonModule, AmsRoutingModule,
         PaginationModule, SelectDropDownModule, OwlDateTimeModule,
@@ -86,7 +88,7 @@ export const MY_MOMENT_FORMATS = {
     providers: [
         { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
     ],
-    exports: [ ],
-    entryComponents: [DashboardComponent, SearchComponent, UserLookupComponent, OfficeAddressLookupComponent]
+    exports: [],
+    entryComponents: [AddressLookupComponent, DashboardComponent, SearchComponent, UserLookupComponent, OfficeAddressLookupComponent]
 })
 export class AmsModule { }
