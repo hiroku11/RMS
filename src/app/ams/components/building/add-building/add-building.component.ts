@@ -2,6 +2,8 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { SharedService } from './../../../../services/shared.service';
 import { ApiService } from './../../../../services/api.service';
 import { UserLookupComponent } from './../../user-lookup/user-lookup.component';
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import * as moment from 'moment';
@@ -13,6 +15,7 @@ import { HttpErrorResponse } from "@angular/common/http";
     styleUrls: ["./add-building.component.scss"]
 })
 export class AddBuildingComponent implements OnInit {
+    add: any;
     public building: any;
     public currentTab: any;
     public tabs: any;
@@ -73,7 +76,10 @@ export class AddBuildingComponent implements OnInit {
                 id: "BUILDING",
                 description: "Building"
             },
-            addresses: [],
+            addresses: [{
+                "id": null,
+                "statusFlag": "ACTIVE"
+            }],
             organization: null,
             department: {
                 id: null,
@@ -205,12 +211,7 @@ export class AddBuildingComponent implements OnInit {
             this.closeModal();
         });
     }
-    closeModal() {
-        this.componentRef.instance.assignUser.unsubscribe();
-        this.componentRef.instance.closeModal.unsubscribe();
-        this.componentRef.destroy();
-
-    }
+    
     assignUser(user: any) {
         if (!this.building.id) {
             this.building.assignees == null ? this.building.assignees = [] : "";
@@ -249,4 +250,31 @@ export class AddBuildingComponent implements OnInit {
             }
         )
     }
+    lookup(type) {
+        let comp : any= OfficeAddressLookupComponent;
+        if(type == 'post'){
+          comp = PostcodeLookupComponent
+        }
+        
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+          comp
+        );
+        this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+        this.componentRef.instance.selectAddress.subscribe((data) => {
+          this.selectAddress(data);
+        });
+        this.componentRef.instance.closeModal.subscribe(() => {
+          this.closeModal();
+        });
+      }
+    
+      selectAddress(data) {
+        this.building.addresses[0] = data;;
+      }
+    
+      closeModal() {
+        this.componentRef.instance.selectAddress.unsubscribe();
+        this.componentRef.instance.closeModal.unsubscribe();
+        this.componentRef.destroy();
+      }
 }

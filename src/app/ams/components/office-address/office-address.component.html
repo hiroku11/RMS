@@ -1,0 +1,102 @@
+<app-header [module] = "'User Management System'" class="d-none d-lg-block"></app-header>
+<div class="row view">
+  <div class="col-lg-2 pl-0 pr-0 d-none d-lg-block side-nav-lms">
+    <app-side-nav [thisView]="'office-address'"></app-side-nav>
+  </div>
+  <div class="col-lg-2 pl-0 pr-0 d-lg-none">
+    <app-sm-menu [thisView]="'office-address'"></app-sm-menu>
+  </div>
+  <div class="col-lg-10 col-md-12 content">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>
+          <span class="fa fa-address-book-o"></span> Office Addresses</h4>
+      </div>
+    </div>
+    <div *ngIf="add">
+      <div class="row pb-3">
+        <div class="col-sm-12">
+          <label class="d-block">Office Address Lookup</label>
+          <button class="btn btn-primary" (click)="lookup()">
+            <span class="fa fa-search"> Lookup</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label>Organization Name (if any)</label>
+          <input disabled [(ngModel)]="add.organizationName" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Block #/Name</label>
+          <input disabled [(ngModel)]="add.blockNumber" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Building Name</label>
+          <input disabled [(ngModel)]="add.buildingName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 row m-0 ">
+          <div class="col-sm-4 p-0">
+            <label>Postcode</label>
+            <input disabled [(ngModel)]="add.postcode1" type="text" class="form-control">
+          </div>
+          <div class="col-sm-4 p-0" style="padding-top:32px !important">
+            <!-- <label>Post Code 2</label> -->
+            <input disabled [(ngModel)]="add.postcode2" type="text" class="form-control">
+          </div>
+          <div class="col-sm-4 pt-2 pl-0">
+            <label class="p-1"></label>
+            <button class="btn btn-primary d-block" (click)="lookup('post')">
+              <span class="fa fa-search"> Lookup</span>
+            </button>
+
+          </div>
+
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Locality Name</label>
+          <input disabled [(ngModel)]="add.localityName" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>City</label>
+          <input disabled [(ngModel)]="add.city" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label>Door #</label>
+          <input disabled [(ngModel)]="add.doorNumber" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Apartment #/Name</label>
+          <input disabled [(ngModel)]="add.apartmentNumber" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Street Name</label>
+          <input disabled [(ngModel)]="add.streetName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label>Post Town</label>
+          <input disabled [(ngModel)]="add.postTown" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>County</label>
+          <input disabled [(ngModel)]="add.county" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label>Country</label>
+          <input disabled [(ngModel)]="add.country" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col-sm-12">
+          <button (click)="updateAddress()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

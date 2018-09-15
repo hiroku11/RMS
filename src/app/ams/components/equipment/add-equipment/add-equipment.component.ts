@@ -4,7 +4,8 @@ import { SharedService } from './../../../../services/shared.service';
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { UserLookupComponent } from '../../user-lookup/user-lookup.component';
-
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 @Component({
     selector: "app-add-equipment",
     templateUrl: "./add-equipment.component.html",
@@ -62,7 +63,10 @@ export class AddEquipmentComponent implements OnInit {
                 id: "EQUIPMENT",
                 description: "Equipment"
             },
-            addresses: [],
+            addresses: [{
+                "id": null,
+                "statusFlag": "ACTIVE"
+            }],
             insurancePolicies: null,
             rentalOrLeaseAgreements: null,
             loanAgreements: null,
@@ -269,4 +273,26 @@ export class AddEquipmentComponent implements OnInit {
             this.equipment.refundAmount = null;
         }
     }
+    lookup(type) {
+        let comp : any= OfficeAddressLookupComponent;
+        if(type == 'post'){
+          comp = PostcodeLookupComponent
+        }
+        
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+          comp
+        );
+        this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+        this.componentRef.instance.selectAddress.subscribe((data) => {
+          this.selectAddress(data);
+        });
+        this.componentRef.instance.closeModal.subscribe(() => {
+          this.closeModal();
+        });
+      }
+    
+      selectAddress(data) {
+        this.equipment.addresses[0] = data;;
+      }
+    
 }

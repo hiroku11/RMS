@@ -14,7 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserService } from './../services/user.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { OfficeAddressLookupComponent } from './components/office-address-lookup/office-address-lookup.component';
 
 
 const amsRoutes: Routes = [

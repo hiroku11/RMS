@@ -272,6 +272,86 @@
       <textarea class="form-control" [(ngModel)]="building.notes"></textarea>
     </div>
   </div>
+  <div class="row pb-3">
+    <div class="col-sm-12">
+
+      <button class="btn btn-primary" (click)="lookup()">
+        <span class="fa fa-search"> Office Address Lookup</span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <label>Organization Name (if any)</label>
+      <input disabled [(ngModel)]="building.addresses[0].organizationName" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Block #/Name</label>
+      <input disabled [(ngModel)]="building.addresses[0].blockNumber" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Building Name</label>
+      <input disabled [(ngModel)]="building.addresses[0].buildingName" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12 row m-0 ">
+      <div class="col-sm-4 p-0">
+        <label>Postcode</label>
+        <input disabled [(ngModel)]="building.addresses[0].postcode1" type="text" class="form-control">
+      </div>
+      <div class="col-sm-4 p-0" style="padding-top:32px !important">
+        <!-- <label>Post Code 2</label> -->
+        <input disabled [(ngModel)]="building.addresses[0].postcode2" type="text" class="form-control">
+      </div>
+      <div class="col-sm-4 pt-2 pl-0">
+        <label class="p-1"></label>
+        <button class="btn btn-primary d-block" (click)="lookup('post')">
+          <span class="fa fa-search"> Lookup</span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Locality Name</label>
+      <input disabled [(ngModel)]="building.addresses[0].localityName" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>City</label>
+      <input disabled [(ngModel)]="building.addresses[0].city" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <label>Door #</label>
+      <input disabled [(ngModel)]="building.addresses[0].doorNumber" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Apartment #/Name</label>
+      <input disabled [(ngModel)]="building.addresses[0].apartmentNumber" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Street Name</label>
+      <input disabled [(ngModel)]="building.addresses[0].streetName" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <label>Post Town</label>
+      <input disabled [(ngModel)]="building.addresses[0].postTown" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>County</label>
+      <input disabled [(ngModel)]="building.addresses[0].county" type="text" class="form-control">
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label>Country</label>
+      <input disabled [(ngModel)]="building.addresses[0].country" type="text" class="form-control">
+    </div>
+  </div>
+
+
   <div class="row pb-2">
     <div class="col-sm-12">
       <button class="btn btn-primary" (click)="save()">{{editMode?'Update':'Save'}}</button>

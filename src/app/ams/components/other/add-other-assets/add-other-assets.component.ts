@@ -4,7 +4,8 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { UserLookupComponent } from "../../user-lookup/user-lookup.component";
-
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 @Component({
     selector: "app-add-other-assets",
     templateUrl: "./add-other-assets.component.html",
@@ -62,7 +63,10 @@ export class AddOtherAssetsComponent implements OnInit {
                 id: "OTHER",
                 description:"Other"
             },
-            addresses: [],
+            addresses: [{
+                "id": null,
+                "statusFlag": "ACTIVE"
+            }],
             insurancePolicies: null,
             rentalOrLeaseAgreements: null,
             loanAgreements: null,
@@ -266,4 +270,25 @@ export class AddOtherAssetsComponent implements OnInit {
             }
         )
     }
+    lookup(type) {
+        let comp : any= OfficeAddressLookupComponent;
+        if(type == 'post'){
+          comp = PostcodeLookupComponent
+        }
+        
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+          comp
+        );
+        this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+        this.componentRef.instance.selectAddress.subscribe((data) => {
+          this.selectAddress(data);
+        });
+        this.componentRef.instance.closeModal.subscribe(() => {
+          this.closeModal();
+        });
+      }
+    
+      selectAddress(data) {
+        this.asset.addresses[0] = data;;
+      }
 }

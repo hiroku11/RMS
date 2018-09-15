@@ -36,6 +36,8 @@ import { RouterModule } from "@angular/router";
 import { PaginationModule } from "ngx-pagination-bootstrap";
 import { SelectDropDownModule } from "ngx-select-dropdown";
 import { AmsRoutingModule } from './ams.routing.module';
+import { OfficeAddressLookupComponent } from './components/office-address-lookup/office-address-lookup.component';
+
 
 export const MY_MOMENT_FORMATS = {
     parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -75,7 +77,8 @@ export const MY_MOMENT_FORMATS = {
         UserLookupComponent,
         SummaryComponent,
         SideNavComponent,
-        SmMenuComponent
+        SmMenuComponent,
+        OfficeAddressLookupComponent
     ],
     imports: [FormsModule, CommonModule, AmsRoutingModule,
         PaginationModule, SelectDropDownModule, OwlDateTimeModule,
@@ -84,6 +87,6 @@ export const MY_MOMENT_FORMATS = {
         { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
     ],
     exports: [ ],
-    entryComponents: [DashboardComponent, SearchComponent, UserLookupComponent]
+    entryComponents: [DashboardComponent, SearchComponent, UserLookupComponent, OfficeAddressLookupComponent]
 })
 export class AmsModule { }

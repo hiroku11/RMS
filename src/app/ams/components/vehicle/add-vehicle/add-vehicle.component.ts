@@ -4,7 +4,8 @@ import { SharedService } from './../../../../services/shared.service';
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
-
+import { PostcodeLookupComponent } from './../../../../core.components.module/component/postcode-lookup/postcode-lookup.component';
+import { OfficeAddressLookupComponent } from './../../office-address-lookup/office-address-lookup.component';
 @Component({
     selector: "app-add-vehicle",
     templateUrl: "./add-vehicle.component.html",
@@ -69,7 +70,10 @@ export class AddVehicleComponent implements OnInit {
                 id: "VEHICLE",
                 description: "Vehicle"
             },
-            addresses: [],
+            addresses: [{
+                "id": null,
+                "statusFlag": "ACTIVE"
+            }],
             insurancePolicies: null,
             rentalOrLeaseAgreements: null,
             loanAgreements: null,
@@ -277,4 +281,25 @@ export class AddVehicleComponent implements OnInit {
             }
         )
     }
+    lookup(type) {
+        let comp : any= OfficeAddressLookupComponent;
+        if(type == 'post'){
+          comp = PostcodeLookupComponent
+        }
+        
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+          comp
+        );
+        this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+        this.componentRef.instance.selectAddress.subscribe((data) => {
+          this.selectAddress(data);
+        });
+        this.componentRef.instance.closeModal.subscribe(() => {
+          this.closeModal();
+        });
+      }
+    
+      selectAddress(data) {
+        this.vehicle.addresses[0] = data;;
+      }
 }
