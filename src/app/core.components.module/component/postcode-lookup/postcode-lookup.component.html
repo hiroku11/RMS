@@ -9,26 +9,23 @@
       </div>
 
       <div class="row p-2">
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <label>Post Code 1</label>
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-6 col-md-4">
           <input class="form-control" [(ngModel)]="postcode1" name="postcode1" />
         </div>
-      </div>
-      <div class="row p-2">
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <label>Post Code 2</label>
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-6 col-md-4">
           <input class="form-control" [(ngModel)]="postcode2" name="postcode2" />
         </div>
       </div>
-
       <table class="table table-bordered">
         <thead>
           <tr>
-          
+
             <th>Street Name</th>
             <th>Locality Name</th>
             <th>Post Town</th>
@@ -41,7 +38,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let add of formattedAddresses">
-           
+
             <td>{{add.streetName}}</td>
             <td>{{add.localityName}}</td>
             <td>{{add.postTown}}</td>
