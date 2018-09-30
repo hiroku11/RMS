@@ -8,7 +8,7 @@
 <div class="row pb-2">
   <div class="col-sm-6">
     <label>Select User</label>
-    <ngx-select-dropdown  [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
+    <ngx-select-dropdown [config]="{displayKey:'fullName'}" [multiple]="false" [(value)]="selectedUser"></ngx-select-dropdown>
   </div>
   <div class="col-sm-6 pt-2">
     <label class="p-1"></label>
@@ -35,3 +35,8 @@
     </tr>
   </tbody>
 </table>
+<div class="row">
+  <div class="col-sm-12">
+    <p class="pt-2">*Please use lookup to find users.</p>
+  </div>
+</div>

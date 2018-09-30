@@ -1,64 +1,60 @@
-
-
-
-    <div class="row pb-3">
-      <div class="col-md-12">
-        <h4>
-          <span class="fa fa-address-book-o"></span> My Courses 
-          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
+<div class="row pb-3">
+  <div class="col-md-12">
+    <h4>
+      <span class="fa fa-address-book-o"></span> My Courses
+      <!-- <button class="btn btn-sm btn-primary" [routerLink]="['add-course']">
             <span class="fa fa-plus"></span>Add</button> -->
-        </h4>
-      </div>
-    </div>
-    <div class="row tab-content">
-      <table class="table table-bordered">
-        <thead>
-          <th>
-            Course Code
-          </th>
-          <th>
-            Course Name
-          </th>
-          <th>
-            Description
-          </th>
-        
-          <th>
-            Planned Start Date
-          </th>
-          <th>
-              Planned End Date
-            </th>
-          <th>
-            Status
-          </th>
-  
-        </thead>
-        <tbody *ngIf="courseData.length > 0">
-              <tr *ngFor="let c of courseData">
-                <td>
-                  <a [routerLink]="['user-course-detail', c.userCourseId]">{{c.courseCode}}</a>
-              
-                </td>
-                <td>
-                  {{c.courseName}}
-                </td>
-                <td>
-                  {{c.courseDescription}}
-                </td>
-                <td>
-                {{c.userCoursePlannedStartDate}}
-                </td>
-                <td>
-                  {{c.userCoursePlannedEndDate}}
-                </td>
-                <td>
-                  {{c.userCourseLessonStatus}}
-                </td>
-            
-              </tr>
-            </tbody>
-      </table>
-      <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
-    </div>
-  
+    </h4>
+  </div>
+</div>
+<div class="row tab-content">
+  <table class="table table-bordered">
+    <thead>
+      <th>
+        Course Code
+      </th>
+      <th>
+        Course Name
+      </th>
+      <th>
+        Description
+      </th>
+
+      <th>
+        Planned Start Date
+      </th>
+      <th>
+        Planned End Date
+      </th>
+      <th>
+        Status
+      </th>
+
+    </thead>
+    <tbody *ngIf="courseData.length > 0">
+      <tr *ngFor="let c of courseData">
+        <td>
+          <a [routerLink]="['user-course-detail', c.userCourseId]">{{c.courseCode}}</a>
+
+        </td>
+        <td>
+          {{c.courseName}}
+        </td>
+        <td>
+          {{c.courseDescription}}
+        </td>
+        <td>
+          {{c.userCoursePlannedStartDate}}
+        </td>
+        <td>
+          {{c.userCoursePlannedEndDate}}
+        </td>
+        <td>
+          {{c.userCourseLessonStatus | titlecase}}
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
+</div>
