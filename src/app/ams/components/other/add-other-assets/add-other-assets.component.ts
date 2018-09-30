@@ -284,6 +284,9 @@ export class AddOtherAssetsComponent implements OnInit {
             comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+        if(type == 'post'){
+            this.componentRef.instance.mod = 'ams';
+        }
         this.componentRef.instance.selectAddress.subscribe((data) => {
             this.selectAddress(data);
         });

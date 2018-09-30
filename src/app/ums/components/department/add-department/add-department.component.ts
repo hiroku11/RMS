@@ -7,7 +7,7 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { OfficeAddressLookupComponent } from '../../office-address-lookup/office-address-lookup.component';
-import {Location} from '@angular/common'
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-add-department',
   templateUrl: './add-department.component.html',
@@ -21,7 +21,7 @@ export class AddDepartmentComponent implements OnInit {
   formattedAddresses = [];
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,private _location: Location) {
+    private componentFactoryResolver: ComponentFactoryResolver, private _location: Location) {
     this.initDepartment();
   }
 
@@ -117,6 +117,9 @@ export class AddDepartmentComponent implements OnInit {
       comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    if (type == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
     this.componentRef.instance.lookupType = 'admin';
     if (type === 'org') {
       this.componentRef.instance.selectOrg.subscribe((data) => {
@@ -128,7 +131,7 @@ export class AddDepartmentComponent implements OnInit {
         this.selectAddress(data);
       });
     }
-  
+
     this.componentRef.instance.closeModal.subscribe(() => {
       this.closeModal(type);
     });
@@ -154,7 +157,7 @@ export class AddDepartmentComponent implements OnInit {
   goBack() {
     this._location.back();
   }
- 
 
- 
+
+
 }

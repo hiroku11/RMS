@@ -1,6 +1,6 @@
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
     selector: 'app-postcode-lookup',
@@ -19,6 +19,7 @@ export class PostcodeLookupComponent implements OnInit {
     display: boolean;
     @Output() closeModal: EventEmitter<any> = new EventEmitter();
     @Output() selectAddress: EventEmitter<any> = new EventEmitter();
+    @Input() mod: string;
     constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
     ngOnInit() {

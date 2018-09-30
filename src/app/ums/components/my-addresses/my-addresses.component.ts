@@ -127,7 +127,9 @@ export class MyAddressesComponent implements OnInit {
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
     this.componentRef.instance.lookupType = 'admin';
-   
+    if (type == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
     if (type === 'add' || type === 'post') {
       this.componentRef.instance.selectAddress.subscribe((data) => {
         this.selectAddress(data,add);

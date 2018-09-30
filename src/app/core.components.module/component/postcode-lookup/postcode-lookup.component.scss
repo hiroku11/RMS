@@ -7,3 +7,26 @@
     width: 100%;
     height: 100vh;
 }
+
+.btn {
+    &.lms {
+        &:hover {
+            background-color: $lmsColor !important;
+        }
+    }
+    &.pms {
+        &:hover {
+            background-color: $pmsColor !important;
+        }
+    }
+    &.ams {
+        &:hover {
+            background-color: $amsColor !important;
+        }
+    }
+    &.cms {
+        &:hover {
+            background-color: $cmsColor !important;
+        }
+    }
+}

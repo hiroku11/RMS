@@ -53,6 +53,9 @@ export class OfficeAddressComponent implements OnInit {
       comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    if (type == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
     this.componentRef.instance.selectAddress.subscribe((data) => {
       this.selectAddress(data);
     });

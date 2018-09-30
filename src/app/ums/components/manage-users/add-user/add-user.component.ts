@@ -188,6 +188,12 @@ export class AddUserComponent implements OnInit {
       comp
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
+    if (which == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
+    if (which == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
     if (which == 'user') {
       this.componentRef.instance.lookupType = 'manager';
       this.componentRef.instance.selectUser.subscribe((data) => {
@@ -201,13 +207,13 @@ export class AddUserComponent implements OnInit {
     }
     if (which === 'post') {
       this.componentRef.instance.selectAddress.subscribe((data) => {
-        if(manager == 'officePost'){
+        if (manager == 'officePost') {
           this.userDetails.officeAddress = data;
         }
-        else{
+        else {
           this.userDetails.addresses[0] = data;
         }
-       
+
       });
     }
 

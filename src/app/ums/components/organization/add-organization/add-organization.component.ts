@@ -7,7 +7,7 @@ import { AlertsLoaderService } from './../../../../services/alerts-loader.servic
 import { ApiService } from './../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { OfficeAddressLookupComponent } from '../../office-address-lookup/office-address-lookup.component';
-import {Location} from '@angular/common'
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-add-organization',
   templateUrl: './add-organization.component.html',
@@ -20,7 +20,7 @@ export class AddOrganizationComponent implements OnInit {
   componentRef: any;
   constructor(private api: ApiService, private alert: AlertsLoaderService,
     private route: ActivatedRoute, private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,private _location: Location) {
+    private componentFactoryResolver: ComponentFactoryResolver, private _location: Location) {
     this.initOrganization();
   }
 
@@ -124,13 +124,15 @@ export class AddOrganizationComponent implements OnInit {
     );
     this.componentRef = this.viewContainerRef.createComponent(componentFactory);
     this.componentRef.instance.lookupType = 'admin';
-   
+    if (type == 'post') {
+      this.componentRef.instance.mod = 'lms';
+    }
     if (type === 'add' || type === 'post') {
       this.componentRef.instance.selectAddress.subscribe((data) => {
         this.selectAddress(data);
       });
     }
-  
+
     this.componentRef.instance.closeModal.subscribe(() => {
       this.closeModal(type);
     });

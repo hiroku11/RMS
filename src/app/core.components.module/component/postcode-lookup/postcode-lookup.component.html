@@ -54,9 +54,12 @@
       </table>
       <!-- <ng-pagination *ngIf="searchResult" [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="lookup()">Submit</button>
-        <button type="button" class="btn btn-primary" (click)="initSearchParams()">Clear</button>
-        <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+        <button type="button" [ngClass]="{'pms':mod == 'pms', 'lms':mod == 'lms', 'ams':mod == 'ams', 'cms':mod == 'cms'}" class="btn btn-primary"
+          (click)="lookup()">Submit</button>
+        <button type="button" [ngClass]="{'pms':mod == 'pms', 'lms':mod == 'lms', 'ams':mod == 'ams', 'cms':mod == 'cms'}" class="btn btn-primary"
+          (click)="initSearchParams()">Clear</button>
+        <button type="button" [ngClass]="{'pms':mod == 'pms', 'lms':mod == 'lms', 'ams':mod == 'ams', 'cms':mod == 'cms'}" class="btn btn-secondary"
+          (click)="close()" data-dismiss="modal">Close</button>
       </div>
     </div>
 
