@@ -29,7 +29,7 @@ export class UserCourseDetailProgressComponent implements OnInit {
    }
    getCourseDetail(Id:number){
      this._apiService
-     .get(`/user-course/userCourseId/${Id}`)
+     .get(`/user-course/my-progress/id/${Id}`)
      .subscribe(data => {
        this.course = data;
        // this._alertService.success("Course Detail fetched successfully.");
