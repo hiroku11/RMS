@@ -8,6 +8,21 @@
     height: 100vh;
 }
 
+thead {
+    &.lms {
+        background-color: $lmsColor !important;
+    }
+    &.pms {
+        background-color: $pmsColor !important;
+    }
+    &.ams {
+        background-color: $amsColor !important;
+    }
+    &.cms {
+        background-color: $cmsColor !important;
+    }
+}
+
 .btn {
     &.lms {
         &:hover {

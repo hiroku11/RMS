@@ -23,9 +23,8 @@
         </div>
       </div>
       <table class="table table-bordered">
-        <thead>
+        <thead [ngClass]="{'pms':mod == 'pms', 'lms':mod == 'lms', 'ams':mod == 'ams', 'cms':mod == 'cms'}">
           <tr>
-
             <th>Street Name</th>
             <th>Locality Name</th>
             <th>Post Town</th>

@@ -1,8 +1,47 @@
 @import "~assets/styles/_lms";
-img{
+img {
     height: 200px;
 }
 
-a{
+a {
     color: $lmsColor;
+}
+
+.single-banner {
+    overflow: hidden;
+    max-width: 200px;
+    margin: auto;
+}
+
+.cont {
+    overflow: auto;
+}
+
+.single-banner {
+    img {
+        width: 100%;
+        max-width: 200px;
+    }
+    position: relative;
+}
+
+.single-banner a:before {
+    animation-duration: 0.5s;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    width: 0;
+    max-height: 200px;
+}
+
+.single-banner:hover a:before {
+    opacity: 1;
+    border-radius: 50%;
+    width: 200px;
+    max-width: 200px;
 }
