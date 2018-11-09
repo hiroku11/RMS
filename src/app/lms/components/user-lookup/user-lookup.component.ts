@@ -96,7 +96,7 @@ export class UserLookupComponent implements OnInit {
 
   userSelected(user: any) {
     this.selectUser.emit(user);
-    this._alertsService.success('User selecetd/added');
+    this._alertsService.success('User selected/added');
   }
 
   getPageData($event) {

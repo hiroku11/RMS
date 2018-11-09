@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col-md-4 col-sm-12">
     <label>Organization Code</label>
-    <input [(ngModel)]="organization.id" type="text" class="form-control">
+    <input [disabled]="editMode" [(ngModel)]="organization.id" type="text" class="form-control">
   </div>
   <div class="col-md-4 col-sm-12">
     <label>Organization Name</label>

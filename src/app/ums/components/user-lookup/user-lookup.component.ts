@@ -107,7 +107,7 @@ export class UserLookupComponent implements OnInit {
 
   userSelected(user: any) {
     this.selectUser.emit(user);
-    let msg = this.lookupType.charAt(0).toUpperCase() + this.lookupType.substr(1, 25) + ' selecetd/added';
+    let msg = this.lookupType.charAt(0).toUpperCase() + this.lookupType.substr(1, 25) + ' selected/added';
     this._alertsService.success(msg);
   }
 

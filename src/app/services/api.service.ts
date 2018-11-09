@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { AlertsLoaderService } from "./alerts-loader.service";
 import { Injectable } from "@angular/core";
 import {
@@ -6,7 +5,6 @@ import {
     HttpHeaders,
     HttpErrorResponse,
 } from "@angular/common/http";
-import { ResponseContentType } from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
@@ -17,8 +15,8 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = "https://125ae965.ngrok.io/rmsrest/s";
-    loginApi: string = "https://125ae965.ngrok.io/rmsrest/p";
+    apiUrl = "https://gotorisk.co.uk:8443/rmsrest/s";
+    loginApi = "https://gotorisk.co.uk:8443/rmrest/p";
     config: any;
     constructor(
         private _http: HttpClient,

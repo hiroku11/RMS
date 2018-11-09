@@ -96,7 +96,7 @@ export class CourseLookupComponent implements OnInit {
 
   courseSelected(cor: any) {
     this.selectCourse.emit(cor);
-    this._alertsService.success('Course selecetd/added');
+    this._alertsService.success('Course selected/added');
   }
 
   getPageData($event) {

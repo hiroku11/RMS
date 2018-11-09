@@ -97,7 +97,7 @@ export class ProfileLookupComponent implements OnInit {
 
   profileSelected(user: any) {
     this.selectProfile.emit(user);
-    this._alertsService.success('Profile selecetd/added');
+    this._alertsService.success('Profile selected/added');
   }
 
   getPageData($event) {

@@ -58,6 +58,7 @@ export function getAppConfig(_configService: ConfigService) {
       return false;
     } else {
       _configService.config = data;
+      return true;
     }
   });
 }

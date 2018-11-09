@@ -297,8 +297,8 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Door/Block/Apt No.</th>
               <th>Org Name</th>
+              <th>Door/Block/Apt No.</th>
               <th>Building Name</th>
               <th>Street Name</th>
               <th>Locality Name</th>
@@ -312,8 +312,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let add of searchResult">
-              <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
               <td>{{add.organizationName}}</td>
+              <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
               <td>{{add.buildingName}}</td>
               <td>{{add.streetName}}</td>
               <td>{{add.localityName}}</td>
