@@ -15,8 +15,8 @@ import { ConfigService } from './config.service';
 
 @Injectable()
 export class ApiService {
-    apiUrl = "https://gotorisk.co.uk:8443/rmsrest/s";
-    loginApi = "https://gotorisk.co.uk:8443/rmrest/p";
+    apiUrl: string = 'https://gotorisk.co.uk:8443/rmsrest/s';
+    loginApi: string = 'https://gotorisk.co.uk:8443/rmsrest/p';
     config: any;
     constructor(
         private _http: HttpClient,
@@ -25,6 +25,8 @@ export class ApiService {
         private _configService: ConfigService
     ) {
         this.config = this._configService.config;
+        this.apiUrl = this.config.apiUrl;
+        this.loginApi = this.config.loginApi;
     }
     post(url: string, data: any, formdata: boolean, headers?: any, showLoader: boolean = true) {
 
