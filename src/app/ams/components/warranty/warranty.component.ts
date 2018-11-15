@@ -161,7 +161,7 @@ export class WarrantyComponent implements OnInit {
         this._apiService.put("/warranty/create-or-update-warranty", this.warranty).subscribe(
             data => {
                 this.warranty = data;
-                this.editing = Object.assign(this.editing,data);
+                this.editing = Object.assign(this.editing, data);
                 this._alertsService.success(
                     "Warranty successfully updated."
                 );
@@ -210,7 +210,15 @@ export class WarrantyComponent implements OnInit {
             operator,
             value
         }
-        const exists = this.lookupParams.filters.filter(filt => filt.field === field);
+        let existIndex: number;
+        const exists = this.lookupParams.filters.filter((filt, index) => {
+            if (filt.field === field) {
+                existIndex = index;
+                return true;
+            } else {
+                return false;
+            }
+        });
         const obj = {};
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
@@ -219,6 +227,9 @@ export class WarrantyComponent implements OnInit {
         } else {
             exists[0].value = value;
             exists[0].operator = operator;
+        }
+        if (!fil.value) {
+            this.lookupParams.filters.splice(existIndex, 1);
         }
     }
 
