@@ -39,6 +39,7 @@ export class MyCoursesComponent implements OnInit {
     .get("/user-course/my-courses")
     .subscribe(data => {
       this.courseData = data.userCourses; 
+      this.itemsCount = data.totalRecords;
     });
   }
   getPageData($event: any) {

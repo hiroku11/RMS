@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
         const equipmentProps = ['equipmentId', 'equipmentName', 'equipmentTag', 'equipmentMake', 'equipmentModel', 'orderNumber', 'invoiceNumber', 'serialNumber'];
         const assetotherProps = ['assetTypeOtherId', 'assetTypeOtherName', 'assetTypeOtherDescription', 'assetTag', 'assetMake',
             'assetModel', 'assetSerialNumber', 'purchasedDate'];
-        const vehicletProps = ['vehicleRegistrationId','engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
+        const vehicletProps = ['vehicleRegistrationId', 'engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
             'monthOfManufacturing'];
         let propsArray = ['department', 'assetCondition', 'assetStatus', 'assetType', 'regulatoryCompliance', 'amcPresent', 'insurancePresent', 'loanPresent',
             'licensePresent', 'warrantyPresent', 'inspectionPresent', 'servicePresent', 'rentalOrLeasePresent'];
@@ -101,7 +101,15 @@ export class SearchComponent implements OnInit {
             operator,
             value
         }
-        const exists = this.searchParams.filters.filter(filt => filt.field === field);
+        let existIndex: number;
+        const exists = this.searchParams.filters.filter((filt, index) => {
+            if (filt.field === field) {
+                existIndex = index;
+                return true;
+            } else {
+                return false;
+            }
+        });
         const obj = {};
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
@@ -110,6 +118,9 @@ export class SearchComponent implements OnInit {
         } else {
             exists[0].value = value;
             exists[0].operator = operator;
+        }
+        if (!fil.value) {
+            this.searchParams.filters.splice(existIndex, 1);
         }
     }
 

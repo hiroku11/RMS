@@ -146,6 +146,24 @@ export class AddBuildingComponent implements OnInit {
                 }
             }
         }
+        if (!data.addresses || data.addresses.length === 0) {
+            data.addresses = [];
+            data.addresses.push({
+                organizationName: '',
+                blockNumber: '',
+                equipmentName: '',
+                postcode1: '',
+                postcode2: '',
+                localityName: '',
+                city: '',
+                doorNumber: '',
+                apartmentNumber: '',
+                streetName: '',
+                postTown: '',
+                county: '',
+                country: '',
+            })
+        }
         return data;
     }
     getBuildingById(buidingId: number) {
@@ -264,7 +282,7 @@ export class AddBuildingComponent implements OnInit {
             comp
         );
         this.componentRef = this.viewContainerRef.createComponent(componentFactory);
-        if(type == 'post'){
+        if (type == 'post') {
             this.componentRef.instance.mod = 'ams';
         }
         this.componentRef.instance.selectAddress.subscribe((data) => {
@@ -280,7 +298,9 @@ export class AddBuildingComponent implements OnInit {
     }
 
     closeModal() {
-        this.componentRef.instance.selectAddress.unsubscribe();
+        if (this.componentRef.instance.selectAddress) {
+            this.componentRef.instance.selectAddress.unsubscribe();
+        }
         this.componentRef.instance.closeModal.unsubscribe();
         this.componentRef.destroy();
     }

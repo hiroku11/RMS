@@ -1,7 +1,7 @@
 <div class="row pb-3">
   <div class="col-md-9">
     <h4>
-      <span class="fa fa-plus"></span> Add Course
+      <span class="fa fa-plus"></span> {{editMode?'Update': 'Add'}} Course
     </h4>
   </div>
 </div>
@@ -111,15 +111,13 @@
 <div class="row pb-2">
   <div class="col-sm-12 col-md-3">
     <label>Start Date & Time</label>
-    <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="course.startDateTime" name="startDateTime"
-    />
+    <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="course.startDateTime" name="startDateTime" />
     <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     <!-- <input class="form-control" [(ngModel)]="course.startDateTime" name="numberOfFloors"  /> -->
   </div>
   <div class="col-sm-12 col-md-3">
     <label>End Date & Time</label>
-    <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="course.endDateTime" name="endDateTime"
-    />
+    <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="course.endDateTime" name="endDateTime" />
     <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     <!-- <input class="form-control" [(ngModel)]="course.endDateTime" name="courseSize"  /> -->
   </div>

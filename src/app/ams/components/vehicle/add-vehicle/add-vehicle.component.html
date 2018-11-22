@@ -36,7 +36,7 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="vehicle.department.organization">
+      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="vehicle && vehicle.department && vehicle.department.organization">
         <option [ngValue]="null"></option>
         <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
       </select>

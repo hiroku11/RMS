@@ -64,7 +64,8 @@
         </td>
 
         <td>
-          <a target="_blank" [href]="config.playerBaseUrl+'scorm/bin/player.html?sid='+c.userCourseId">Start Course</a>
+          <a [ngClass]="{'disabled': c.userCourseApprovalRequired === 'Y' &&  c.userCourseApprovalStatusCode === 'PENDING'}" target="_blank"
+            [href]="config.playerBaseUrl+'scorm/bin/player.html?sid='+c.userCourseId">Start Course</a>
         </td>
       </tr>
     </tbody>

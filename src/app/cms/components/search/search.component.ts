@@ -89,18 +89,28 @@ export class SearchComponent implements OnInit {
             field,
             operator,
             value
-        }
-        const exists = this.searchParams.filters.filter(filt => filt.field === field);
-        const obj = {};
-        
-        obj[field] = value;
-        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
-        if (!exists.length) {
+          }
+          let existIndex: number;
+          const exists = this.searchParams.filters.filter((filt, index) => {
+            if (filt.field === field) {
+              existIndex = index;
+              return true;
+            } else {
+              return false;
+            }
+          });
+          const obj = {};
+          obj[field] = value;
+          fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+          if (!exists.length) {
             this.searchParams.filters.push(fil);
-        } else {
+          } else {
             exists[0].value = value;
             exists[0].operator = operator;
-        }
+          }
+          if (!fil.value) {
+            this.searchParams.filters.splice(existIndex, 1);
+          }
     }
 
     lookupSortChange({ field, sort, order }) {

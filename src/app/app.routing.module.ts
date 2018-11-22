@@ -4,7 +4,7 @@ import { HomeComponent } from './core.components.module/component/home/home.comp
 import { UserService } from './services/user.service';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './core.components.module/component/login/login.component';
 
 const appRoutes: Routes = [
@@ -22,7 +22,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules, useHash: true })
     ],
     exports: [RouterModule],
     providers: []

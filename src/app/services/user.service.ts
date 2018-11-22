@@ -32,7 +32,8 @@ export class UserService implements CanActivate, CanLoad {
                 return false;
             } else {
                 this.userDetails = decryptedUserDetails;
-                this.userDetails.roles.forEach((role) => {
+                const roles = this.userDetails.roles || this.userDetails.userRoles;
+                roles.forEach((role) => {
                     if (role.roleName.toLowerCase() === 'admin') {
                         this.isAdmin = true;
                     }

@@ -10,13 +10,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
     styleUrls: ["./service.component.scss"]
 })
 export class ServiceComponent implements OnInit {
-    service: any ;
+    service: any;
     @Input() asset: any;
     editMode: boolean = false;
     @Output() addedToAsset: EventEmitter<any> = new EventEmitter();
     lookupParams: any;
-    lookupItems:any;
-    lookupOptions :any;
+    lookupItems: any;
+    lookupOptions: any;
     editing: any;
 
     constructor(
@@ -36,62 +36,62 @@ export class ServiceComponent implements OnInit {
                 field: 'serviceNumber',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceCompanyName: {
                 field: 'serviceCompanyName',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceCompanyDescription: {
                 field: 'serviceCompanyDescription',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceCompanyContactPerson: {
                 field: 'serviceCompanyContactPerson',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceDoneBy: {
                 field: 'serviceDoneBy',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceDoneDateTime: {
                 field: 'serviceDoneDateTime',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             serviceDueDate: {
                 field: 'serviceDueDate',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             },
             nextServiceDueDate: {
                 field: 'nextServiceDueDate',
                 operator: "EQ",
                 value: null,
-                order:"ASC",
-                sort:false
+                order: "ASC",
+                sort: false
             }
         }
     }
-    initService(){
-        this.service= {
+    initService() {
+        this.service = {
             id: null,
             statusFlag: null,
             serviceNumber: null,
@@ -118,7 +118,7 @@ export class ServiceComponent implements OnInit {
         };
     }
     save() {
-        if(this.editMode){
+        if (this.editMode) {
             this.updateService();
             return;
         }
@@ -139,7 +139,7 @@ export class ServiceComponent implements OnInit {
                 this.asset = data;
                 this._alertsService.success(
                     "Service successfully added to " +
-                        this.asset.assetCategory.description
+                    this.asset.assetCategory.description
                 );
                 this.initService();
                 this.addedToAsset.emit(data);
@@ -152,16 +152,16 @@ export class ServiceComponent implements OnInit {
         );
     }
 
-    editService(service: any){
+    editService(service: any) {
         this.service = JSON.parse(JSON.stringify(service));
         this.editing = service;
         this.editMode = true;
     }
-    updateService(){
-        this._apiService.put("/service/create-or-update-service",this.service).subscribe(
+    updateService() {
+        this._apiService.put("/service/create-or-update-service", this.service).subscribe(
             data => {
                 this.service = data;
-                this.editing = Object.assign(this.editing,data);
+                this.editing = Object.assign(this.editing, data);
                 this._alertsService.success(
                     "Service successfully updated."
                 );
@@ -170,12 +170,12 @@ export class ServiceComponent implements OnInit {
             },
             error => {
                 this._alertsService.error(
-                   error
+                    error
                 );
             }
         );
     }
-    removeServiceFromAsset(service: any){
+    removeServiceFromAsset(service: any) {
         if (!window.confirm("Are you sure you want to delete this item/record?")) {
             return;
         }
@@ -187,13 +187,13 @@ export class ServiceComponent implements OnInit {
             url = `/equipment/remove-service-from-equipment/equipmentId/${this.asset.id}/serviceId/${service.id}`;
         }
         if (this.asset.assetCategory.id == "OTHER") {
-            url =  `/asset-type-other/remove-service-from-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;;
+            url = `/asset-type-other/remove-service-from-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;;
         }
         this._apiService.delete(url).subscribe(
             data => {
                 this.asset = data;
                 this._alertsService.success(
-                    "Service successfully removed from " +this.asset.assetCategory.description
+                    "Service successfully removed from " + this.asset.assetCategory.description
                 );
                 this.addedToAsset.emit(data);
             },
@@ -204,43 +204,54 @@ export class ServiceComponent implements OnInit {
             }
         );
     }
-    lookupFieldChange({field,operator,value}){
+    lookupFieldChange({ field, operator, value }) {
         let fil = {
             field,
             operator,
             value
         }
-        const exists = this.lookupParams.filters.filter(filt=> filt.field === field);
+        let existIndex: number;
+        const exists = this.lookupParams.filters.filter((filt, index) => {
+            if (filt.field === field) {
+                existIndex = index;
+                return true;
+            } else {
+                return false;
+            }
+        });
         const obj = {};
         obj[field] = value;
         fil.value = this._apiService.parseDateToApiFormat(obj)[field];
-        if(!exists.length){
+        if (!exists.length) {
             this.lookupParams.filters.push(fil);
-        }else{
+        } else {
             exists[0].value = value;
             exists[0].operator = operator;
         }
+        if (!fil.value) {
+            this.lookupParams.filters.splice(existIndex, 1);
+        }
     }
 
-    lookupSortChange({field,sort,order}){
-        let sor={
+    lookupSortChange({ field, sort, order }) {
+        let sor = {
             field,
             order
         }
-        const exists = this.lookupParams.sorts.filter(s=> s.field === field);
-        if(!exists.length && sort){
+        const exists = this.lookupParams.sorts.filter(s => s.field === field);
+        if (!exists.length && sort) {
             this.lookupParams.sorts.push(sor);
-        }else if(exists.length && sort){
+        } else if (exists.length && sort) {
             exists[0].order = order;
-        }else{
+        } else {
             const ind = this.lookupParams.sorts.indexOf(exists[0]);
-            this.lookupParams.sorts.splice(ind,1);
+            this.lookupParams.sorts.splice(ind, 1);
         }
 
     }
-    lookupService($event ?: any) {
-        if($event){
-            this.lookupParams.paging.currentPage = $event.pageNo -1;
+    lookupService($event?: any) {
+        if ($event) {
+            this.lookupParams.paging.currentPage = $event.pageNo - 1;
             this.lookupParams.paging.pageSize = $event.pageSize;
         }
         this._apiService.get('/service/search-services', { "Search": JSON.stringify(this.lookupParams) }).subscribe(
@@ -254,10 +265,10 @@ export class ServiceComponent implements OnInit {
 
     }
 
-    addExistingServiceToAsset(service: any){
+    addExistingServiceToAsset(service: any) {
         let url = `/building/add-existing-service-to-building/buildingId/${this.asset.id}/serviceId/${service.id}`;
         if (this.asset.assetCategory.id == "OTHER") {
-            url =`/asset-type-other/add-existing-service-to-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;
+            url = `/asset-type-other/add-existing-service-to-asset-type-other/assetTypeOtherId/${this.asset.id}/serviceId/${service.id}`;
         }
         if (this.asset.assetCategory.id == "EQUIPMENT") {
             url = `/equipment/add-existing-service-to-equipment/equipmentId/${this.asset.id}/serviceId/${service.id}`;
@@ -265,12 +276,12 @@ export class ServiceComponent implements OnInit {
         if (this.asset.assetCategory.id == "VEHICLE") {
             url = url = `/vehicle/add-existing-service-to-vehicle/vehicleId/${this.asset.id}/serviceId/${service.id}`;
         }
-        this._apiService.put(url,null).subscribe(
-            data=>{
+        this._apiService.put(url, null).subscribe(
+            data => {
                 this.addedToAsset.emit(data);
                 this._alertsService.success("Service successfully added to " + this.asset.assetCategory.description);
             },
-            error=>{
+            error => {
                 this._alertsService.error(error);
             }
         );

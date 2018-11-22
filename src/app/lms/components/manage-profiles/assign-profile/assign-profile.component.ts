@@ -52,7 +52,6 @@ export class AssignProfileComponent implements OnInit {
   }
 
   closeModal() {
-    this.componentRef.instance.selectUser.unsubscribe();
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
   }

@@ -69,7 +69,6 @@ export class OfficeAddressComponent implements OnInit {
   }
 
   closeModal() {
-    this.componentRef.instance.selectAddress.unsubscribe();
     this.componentRef.instance.closeModal.unsubscribe();
     this.componentRef.destroy();
   }

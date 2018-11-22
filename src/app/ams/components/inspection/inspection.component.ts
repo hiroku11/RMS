@@ -192,21 +192,32 @@ export class InspectionComponent implements OnInit {
     }
 
     lookupFieldChange({ field, operator, value }) {
-        let fil = {
-            field,
-            operator,
-            value
-        }
-        const exists = this.lookupParams.filters.filter(filt => filt.field === field);
-        const obj = {};
-        obj[field] = value;
-        fil.value = this._apiService.parseDateToApiFormat(obj)[field];
-        if (!exists.length) {
-            this.lookupParams.filters.push(fil);
-        } else {
-            exists[0].value = value;
-            exists[0].operator = operator;
-        }
+       let fil = {
+      field,
+      operator,
+      value
+    }
+    let existIndex: number;
+    const exists = this.lookupParams.filters.filter((filt, index) => {
+      if (filt.field === field) {
+        existIndex = index;
+        return true;
+      } else {
+        return false;
+      }
+    });
+    const obj = {};
+    obj[field] = value;
+    fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+    if (!exists.length) {
+      this.lookupParams.filters.push(fil);
+    } else {
+      exists[0].value = value;
+      exists[0].operator = operator;
+    }
+    if (!fil.value) {
+      this.lookupParams.filters.splice(existIndex, 1);
+    }
     }
 
     lookupSortChange({ field, sort, order }) {

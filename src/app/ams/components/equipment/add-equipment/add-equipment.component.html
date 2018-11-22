@@ -40,7 +40,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Organization</label>
-      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="equipment.department.organization">
+      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="equipment && equipment.department && equipment.department.organization">
         <option [ngValue]="null"></option>
         <option *ngFor="let org of dropDownsData.organizationList" [ngValue]="org">{{org.description}}</option>
       </select>
@@ -99,8 +99,8 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Purchased Date</label>
-      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" name="equipmentPurchasedDate" [owlDateTime]="dt1"
-        [owlDateTimeTrigger]="dt1" />
+      <input class="form-control" [(ngModel)]="equipment.equipmentPurchasedDate" name="equipmentPurchasedDate"
+        [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" />
       <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -155,8 +155,8 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Refund Amount</label>
-      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.refundAmount" name="refundAmount"
-      />
+      <input class="form-control" [disabled]="equipment.equipmentReturned !='Y'" [(ngModel)]="equipment.refundAmount"
+        name="refundAmount" />
     </div>
   </div>
 
@@ -184,8 +184,8 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
-        [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
+      <input class="form-control" [disabled]="equipment.regulatoryCompliance != 'Y'" [owlDateTime]="dt8"
+        [owlDateTimeTrigger]="dt8" [(ngModel)]="equipment.regCompObtainedDate" name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt8></owl-date-time>
     </div>
     <!-- <div class="col-sm-12 col-md-3">
@@ -222,8 +222,8 @@
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Fire Extinguishers Location</label>
-      <input class="form-control" [disabled]="equipment.fireExtinguishers != 'Y'" [(ngModel)]="equipment.fireExtinguisherLoc" name="fireExtinguisherLoc"
-      />
+      <input class="form-control" [disabled]="equipment.fireExtinguishers != 'Y'" [(ngModel)]="equipment.fireExtinguisherLoc"
+        name="fireExtinguisherLoc" />
     </div>
   </div>
 
@@ -307,8 +307,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!equipment.assetCondition || equipment.assetCondition.id != 'OTHER'" [(ngModel)]="equipment.assetConditionOther"
-        name="description" />
+      <input class="form-control" [disabled]="!equipment.assetCondition || equipment.assetCondition.id != 'OTHER'"
+        [(ngModel)]="equipment.assetConditionOther" name="description" />
     </div>
   </div>
 
@@ -322,8 +322,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!equipment.assetStatus || equipment.assetStatus.id != 'OTHER'" [(ngModel)]="equipment.assetStatusOther"
-        name="description" />
+      <input class="form-control" [disabled]="!equipment.assetStatus || equipment.assetStatus.id != 'OTHER'"
+        [(ngModel)]="equipment.assetStatusOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -474,5 +474,6 @@
 <app-rent-or-lease *ngIf="currentTab.tab==7" (addedToAsset)="addedToAsset($event)" [asset]="equipment"></app-rent-or-lease>
 <app-service *ngIf="currentTab.tab==8" (addedToAsset)="addedToAsset($event)" [asset]="equipment"></app-service>
 <app-warranty *ngIf="currentTab.tab==9" (addedToAsset)="addedToAsset($event)" [asset]="equipment"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="equipment" [addTo]="'equipment'"></app-supporting-documents>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="equipment"
+  [addTo]="'equipment'"></app-supporting-documents>
 <asset-summary [asset]="equipment" *ngIf="currentTab.tab==11"></asset-summary>

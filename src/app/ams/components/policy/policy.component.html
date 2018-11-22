@@ -55,7 +55,7 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Policy Type</label>
-      <select class="form-control" [(ngModel)]="policy.policyType" name="policyType">
+      <select class="form-control" [(ngModel)]="policy.policyType" name="policyType" [compareWith]="selectCompareFunction">
         <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.policyTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
@@ -67,7 +67,7 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Type</label>
-      <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType">
+      <select class="form-control" [(ngModel)]="policy.policyRenewalType" name="policyRenewalType" [compareWith]="selectCompareFunction">
         <option [ngValue]="null"></option>
         <option *ngFor="let renew of dropDownsData.renewalTypeList" [ngValue]="renew">{{renew.description}}</option>
       </select>
@@ -147,7 +147,7 @@
           {{policy.policyCoverAmount}}
         </td>
         <td>
-          {{policy.policyType?.id}}
+          {{policy.policyType?.description}}
         </td>
         <td>
           <span class="fa fa-pencil btn btn-sm btn-outline-primary" (click)="editPolicy(policy)"></span>

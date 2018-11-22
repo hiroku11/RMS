@@ -170,6 +170,24 @@ export class AddOtherAssetsComponent implements OnInit {
                 }
             }
         }
+        if (!data.addresses || data.addresses.length === 0) {
+            data.addresses = [];
+            data.addresses.push({
+                organizationName: '',
+                blockNumber: '',
+                equipmentName: '',
+                postcode1: '',
+                postcode2: '',
+                localityName: '',
+                city: '',
+                doorNumber: '',
+                apartmentNumber: '',
+                streetName: '',
+                postTown: '',
+                county: '',
+                country: '',
+            })
+        }
         return data;
     }
     getAssetById(id: number) {
