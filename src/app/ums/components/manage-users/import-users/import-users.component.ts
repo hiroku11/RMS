@@ -9,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportUsersComponent implements OnInit {
   importData = new FormData();
+  sendEmail = 'N';
+  importResult: any;
+  showImportSummary: boolean;
+  filterText: string;
   constructor(private api: ApiService, private alert: AlertsLoaderService) { }
 
   ngOnInit() {
@@ -18,9 +22,12 @@ export class ImportUsersComponent implements OnInit {
     this.importData.append('file', $event.target.files[0]);
   }
   import() {
+    this.importData.append('sendEmail', this.sendEmail);
     this.api.post(`/bulk-upload/users/using-form-submit`, this.importData, true).subscribe(
       (data) => {
-        this.alert.success('User imported successfully');
+        this.importResult = data;
+        this.showImportSummary = true;
+        this.alert.success('Users imported successfully');
       }, (error) => {
         this.alert.error(error);
       }

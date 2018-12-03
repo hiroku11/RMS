@@ -1,87 +1,157 @@
 <div class="row pb-3">
-  <div class="col-md-12">
-    <h4>
-      <span class="fa fa-address-book-o"></span> Import Course
-    </h4>
-  </div>
+    <div class="col-md-12">
+        <h4>
+            <span class="fa fa-address-book-o"></span> Import Course
+        </h4>
+    </div>
 </div>
 <div class="row">
-  <div class="col-sm-12">
-    <label>Import File</label>
-    <input (change)="fileSelected($event)" type="file" class="form-control">
-  </div>
+    <div class="col-sm-12">
+        <label>Import File</label>
+        <input (change)="fileSelected($event)" type="file" class="form-control">
+    </div>
 </div>
 <div class="row pb-3 pt-3">
-  <div class="col-sm-12">
-    <button class="btn btn-primary" (click)="import()">Import</button>
-  </div>
+    <div class="col-sm-12">
+        <button class="btn btn-primary" (click)="import()">Import</button>
+    </div>
 </div>
 
-<div class="row tab-content">
-  <table class="table table-bordered" *ngIf="data.length > 0">
-      <thead>
-          <th>
-              Code
-          </th>
-          <th>
-              Name
-          </th>
-          <th>
-              Cost
-          </th>
+<!-- <div class="row tab-content">
+    <table class="table table-bordered" *ngIf="data.length > 0">
+        <thead>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Cost
+            </th>
 
-          <th>
-              Type
-          </th>
-          <th>
-            Domain
-          </th>
-          <th>
-              Approval Required
-          </th>
-          <th>
-            People Manager?
-          </th>
-          <th>
-              Start Date & Time 
-          </th>
-          <th>
-              End Date & Time 
-          </th>
-      </thead>
-      <tbody >
-          <tr *ngFor="let c of data | searchFilter: filter">
-              <td>
-                  <a [routerLink]="['course-detail', c.id]">{{c.code}}</a>
-              </td>
-              <td>
-                  {{c.name}}
-              </td>
-              <td>
-                  {{c.cost}}
-              </td>
-              <td>
-                  {{c.courseType.description}}
-              </td>
-              <td>
-                  {{c.courseDomain.description}}
-              </td>
-              <td>
-                  {{c.approvalRequired}}
-              </td>
-              <td>
-                {{c.peopleManager}}
-              </td>
-              <td>
-                {{c.startDateTime}}
-              </td>
-              <td>
-                  {{c.endDateTime}}
+            <th>
+                Type
+            </th>
+            <th>
+                Domain
+            </th>
+            <th>
+                Approval Required
+            </th>
+            <th>
+                People Manager?
+            </th>
+            <th>
+                Start Date & Time
+            </th>
+            <th>
+                End Date & Time
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of data | searchFilter: filter">
+                <td>
+                    <a [routerLink]="['course-detail', c.id]">{{c.code}}</a>
+                </td>
+                <td>
+                    {{c.name}}
+                </td>
+                <td>
+                    {{c.cost}}
+                </td>
+                <td>
+                    {{c.courseType.description}}
+                </td>
+                <td>
+                    {{c.courseDomain.description}}
+                </td>
+                <td>
+                    {{c.approvalRequired}}
+                </td>
+                <td>
+                    {{c.peopleManager}}
+                </td>
+                <td>
+                    {{c.startDateTime}}
+                </td>
+                <td>
+                    {{c.endDateTime}}
 
-              </td>
-          </tr>
-      </tbody>
-  </table>
-  <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
 
+</div> -->
+
+
+<div class="row " *ngIf="showImportSummary">
+    <div class="col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+                <th colspan="2">
+                    Import Courses Summary
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total no. of courses supplied</td>
+                    <td>{{importResult.totalCoursesSupplied}}</td>
+                </tr>
+                <tr>
+                    <td>Total no. of couurses created</td>
+                    <td>{{importResult.totalCoursesCreated}}</td>
+                </tr>
+                <tr>
+                    <td>Total no. of courses failed</td>
+                    <td>{{importResult.totalCoursesFailed}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" *ngIf="showImportSummary && importResult.failedUsers.length > 0">
+    <div class="col-sm-12 col-md-6">
+        <h5>Courses failed to import</h5>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <input class="form-control" placeholder="Filter" type="text" [(ngModel)]="filterText">
+    </div>
+    <div class="col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                    <th>Domain</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let cou of importResult.coursesFailed | searchFilter: filterText;">
+                    <td>
+                        {{cou.code}}
+                    </td>
+                    <td>
+                        {{cou.name}}
+                    </td>
+                    <td>
+                        {{cou.cost}}
+                    </td>
+                    <td>
+                        {{cou.courseType?.description}}
+                    </td>
+                    <td>
+                        {{cou.courseDomain?.description}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="importResult.coursesFailed.length" [data]="importResult.coursesFailed"></ng-pagination>
+
+    </div>
 </div>

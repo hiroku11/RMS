@@ -6,13 +6,88 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 col-md -6">
     <label>Import File</label>
     <input (change)="fileSelected($event)" type="file" class="form-control">
+  </div>
+  <div class="col-sm-12 col-md -6">
+    <label>Send Email</label>
+    <select class="form-control" [(ngModel)]="sendEmail">
+      <option value="N">No</option>
+      <option value="Y">Yes</option>
+    </select>
   </div>
 </div>
 <div class="row pb-3 pt-3">
   <div class="col-sm-12">
     <button class="btn btn-primary" (click)="import()">Import</button>
+  </div>
+</div>
+
+<div class="row " *ngIf="showImportSummary">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <thead>
+        <th colspan="2">
+          Import Users Summary
+        </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total no. of users supplied</td>
+          <td>{{importResult.totalUsersSupplied}}</td>
+        </tr>
+        <tr>
+          <td>Total no. of users created</td>
+          <td>{{importResult.totalUsersCreated}}</td>
+        </tr>
+        <tr>
+          <td>Total no. of users failed</td>
+          <td>{{importResult.totalUsersFailed}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row" *ngIf="showImportSummary && importResult.failedUsers.length > 0">
+  <div class="col-sm-12 col-md-6">
+    <h5>Users failed to import</h5>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <input class="form-control" placeholder="Filter" type="text" [(ngModel)]="filterText">
+  </div>
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Login Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of importResult.failedUsers | searchFilter: filterText;">
+          <td>
+            {{user.loginId}}
+          </td>
+          <td>
+            {{user.firstName}}
+          </td>
+          <td>
+            {{user.lastName}}
+          </td>
+          <td>
+            {{user.phone}}
+          </td>
+          <td>
+            {{user.email}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="importResult.failedUsers.length" [data]="importResult.failedUsers"></ng-pagination>
   </div>
 </div>
