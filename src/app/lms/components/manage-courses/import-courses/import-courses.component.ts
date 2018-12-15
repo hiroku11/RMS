@@ -24,7 +24,7 @@ export class ImportCoursesComponent implements OnInit {
     this.api.post(`/bulk-upload/courses/using-form-submit`, this.importData, true).subscribe(
       (data) => {
         this.showImportSummary = true;
-        this.importData = data;
+        this.importResult = data;
         this.alert.success('Courses imported successfully');
       }, (error) => {
         this.alert.error(error);
