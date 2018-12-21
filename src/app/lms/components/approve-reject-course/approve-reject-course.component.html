@@ -54,7 +54,7 @@
           </th>
 
           <th>
-            People Manager
+            Requested By
           </th>
           <th>
             Cost
@@ -85,7 +85,7 @@
             </td>
 
             <td>
-              {{c.coursePeopleManager}}
+              {{c.userFullName}}
             </td>
             <td>
               {{c.courseCost | number: '1.2-2'}}
@@ -95,10 +95,13 @@
             </td>
 
             <td>
-              <button class="btn btn-success" data-toggle="modal" data-target="#myModal" (click)="cid=c.managerCourseApprovalId" *ngIf=" currentTab.name == 'Active'">Approve</button>
+              <button class="btn btn-success" data-toggle="modal" data-target="#myModal" (click)="cid=c.managerCourseApprovalId"
+                *ngIf=" currentTab.name == 'Active'">Approve</button>
 
-              <button class="btn btn-danger" data-toggle="modal" data-target="#myModal1" (click)="cid=c.managerCourseApprovalId" *ngIf=" currentTab.name == 'Active'">Reject</button>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" (click)="cid=c.managerCourseApprovalId" *ngIf=" currentTab.name != 'Active'">Activate</button>
+              <button class="btn btn-danger" data-toggle="modal" data-target="#myModal1" (click)="cid=c.managerCourseApprovalId"
+                *ngIf=" currentTab.name == 'Active'">Reject</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" (click)="cid=c.managerCourseApprovalId"
+                *ngIf=" currentTab.name != 'Active'">Activate</button>
 
 
             </td>

@@ -63,7 +63,7 @@ export class RemoveCourseComponent implements OnInit {
     if (!window.confirm("Are you sure you want to delete this item/record?")) {
       return;
     }
-    this.api.delete(`/user/remove-course-from-user/userId/${this.selectedUser[0].id}/courseId/${course.id}`).subscribe(
+    this.api.delete(`/user/remove-course-from-user/userId/${this.selectedUser[0].id}/courseId/${course.courseId}`).subscribe(
       (data) => {
         this.alert.success("Course successfully removed");
         this.courses.splice(index, 1);
