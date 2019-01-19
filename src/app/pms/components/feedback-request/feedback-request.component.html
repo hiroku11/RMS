@@ -7,7 +7,7 @@
         Start Date
       </td>
       <td>
-        01/01/2017
+        {{cycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}
       </td>
     </tr>
     <tr>
@@ -15,7 +15,7 @@
         End Date
       </td>
       <td>
-        01/01/2017
+        {{cycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}
       </td>
     </tr>
     <tr>
@@ -23,7 +23,7 @@
         Status
       </td>
       <td>
-        Active
+        {{cycle?.performanceCycleStatus}}
       </td>
     </tr>
     <tr>
@@ -31,7 +31,7 @@
         Mid Year Open?
       </td>
       <td>
-        No
+        {{cycle?.performanceCycleMidYearStatus}}
       </td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@
         Full Year Open?
       </td>
       <td>
-        No
+        {{cycle?.performanceCycleFullYearStatus}}
       </td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@
         Manager
       </td>
       <td>
-        Karthik
+        {{userDetails?.manager?.fullName}}
       </td>
     </tr>
   </tbody>

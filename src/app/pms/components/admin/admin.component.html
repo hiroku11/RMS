@@ -51,9 +51,12 @@
           <td>{{cycle.openFullYearReview}}</td>
 
           <td>
-            <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Email"></span>
-            <span class="fa fa-pencil btn btn-sm btn-outline-info" (click)="editCycle(cycle)" data-toggle="tooltip" title="Edit"></span>
-            <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteCycle(cycle, i)" data-toggle="tooltip" title="Delete"></span>
+            <span class="fa fa-share btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip"
+              title="Publish"></span>
+            <span class="fa fa-pencil btn btn-sm btn-outline-info" (click)="editCycle(cycle)" data-toggle="tooltip"
+              title="Edit"></span>
+            <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteCycle(cycle, i)" data-toggle="tooltip"
+              title="Delete"></span>
           </td>
         </tr>
       </tbody>
@@ -84,14 +87,14 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <label>Start Date</label>
-        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="addCycle.cycleStartDate " name="publishedDate"
-        />
+        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="addCycle.cycleStartDate "
+          name="publishedDate" />
         <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
       </div>
       <div class="col-12 col-md-4">
         <label>End Date</label>
-        <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="addCycle.cycleEndDate " name="publishedDate"
-        />
+        <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="addCycle.cycleEndDate "
+          name="publishedDate" />
         <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
       </div>
       <div class="col-12 col-md-4 pt-3">

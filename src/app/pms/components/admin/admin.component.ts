@@ -80,8 +80,10 @@ export class AdminComponent implements OnInit {
   publish(cycle: any) {
     this._api.put(`/performance/publish-performance-cycle-admin/performanceCycleId/${cycle.id}`, null).subscribe(
       (data) => {
+        this._alert.hideLoader();
         this._alert.success('Performance cycle successfully published');
       }, (error) => {
+        this._alert.hideLoader();
         this._alert.error(error);
       }
     )

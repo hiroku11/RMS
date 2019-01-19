@@ -53,7 +53,7 @@ export function getUserDetails(userService: UserService) {
 
 export function getAppConfig(_configService: ConfigService) {
   return () => _configService.getConfig().then((data) => {
-    console.log(data);
+    // console.log(data);
     if (!data) {
       return false;
     } else {

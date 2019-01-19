@@ -82,7 +82,13 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   updateDepartment() {
-    this.department.officeAddresses[0] = this.address;
+    // this.department.officeAddresses[0] = this.address;
+    if (this.department.officeAddresses.length === 0) {
+      this.department.officeAddresses.push({ ...this.address });
+    } else {
+      this.address.id = this.department.officeAddresses[0].id;
+      this.department.officeAddresses[0] = { ...this.address };
+    }
     this.api.put(`/department/update-department`, this.department).subscribe(
       (data) => {
         this.alert.success('Department updated successfully');

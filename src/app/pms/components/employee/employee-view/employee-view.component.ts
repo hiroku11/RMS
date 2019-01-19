@@ -33,11 +33,14 @@ export class EmployeeViewComponent implements OnInit {
     }
   }
   getPerfomanceCycles() {
+    this._alert.showLoader();
     this._api.get(`/performance/employee-view`).subscribe(
       (data) => {
         this.cycles = data;
+        this._alert.hideLoader();
       }, (error) => {
-        console.log(error);
+        this._alert.hideLoader();
+        this._alert.error('Error getting performace cycles. Try again.')
       }
     )
   }

@@ -84,8 +84,13 @@ export class AddOrganizationComponent implements OnInit {
   }
 
   updateOrganization() {
-    this.organization.statusFlag = this.organization.statusFlag === 'Y' ? 'ACTIVE' : null
-    this.organization.officeAddresses[0] = this.address;
+    this.organization.statusFlag = this.organization.statusFlag === 'Y' ? 'ACTIVE' : null;
+    if (this.organization.officeAddresses.length === 0) {
+      this.organization.officeAddresses.push({ ...this.address });
+    } else {
+      this.address.id = this.organization.officeAddresses[0].id;
+      this.organization.officeAddresses[0] = { ...this.address };
+    }
     this.api.put(`/organization/update-organization`, this.organization).subscribe(
       (data) => {
         this.alert.success('Organization updated successfully');

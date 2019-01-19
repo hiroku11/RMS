@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { ConfigService } from './../../../services/config.service';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
 import { ApiService } from './../../../services/api.service';
@@ -18,6 +19,7 @@ export class FeedbackRequestComponent implements OnInit {
   selectedUsers: any[] = [];
   usersOptions: any[] = [];
   emails: string;
+  userDetails: any;
   request: any =
     {
       "requestorComments": "",
@@ -28,18 +30,21 @@ export class FeedbackRequestComponent implements OnInit {
       "publicURL": "",
       "securedURL": ""
     }
-  constructor(private route: ActivatedRoute, private _api: ApiService,
+  constructor(private route: ActivatedRoute, private _api: ApiService, private userService: UserService,
     private _alert: AlertsLoaderService, private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver, private config: ConfigService) {
 
   }
 
   ngOnInit() {
+    this.userService.getUserDetails().then((data) => {
+      this.userDetails = data;
+    });
     this.route.params.subscribe((params: Params) => {
       this.userPerformanceCycleId = params["cycleId"];
-      // if (this.userPerformanceCycleId) {
-      //   this.getCycle(Id);
-      // }
+      if (this.userPerformanceCycleId) {
+        this.getCycle(this.userPerformanceCycleId);
+      }
     });
   }
 
