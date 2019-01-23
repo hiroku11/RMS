@@ -39,7 +39,13 @@ export class FeedbackQueueComponent implements OnInit {
     // )
   }
   getPerfId(feed: any) {
-    let temp = feed.url.split("/");
+    let temp;
+    if (feed.url) {
+      temp = feed.url.split("/");
+    }
+    if (feed.queueUrl) {
+      temp = feed.queueUrl.split("/");
+    }
     return temp[temp.length - 1];
   }
   getPageData($event) {
