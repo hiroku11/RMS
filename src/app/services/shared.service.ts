@@ -114,7 +114,7 @@ export class SharedService {
         this.getRoles();
     }
 
-    getRoles(){
+    getRoles() {
         this._apiService.get(`/role/roles`, {}, false).subscribe(
             data => {
                 this.dropDownsData.rolesList = data;
@@ -373,7 +373,7 @@ export class SharedService {
         this.getCmsDocumentVersionStatuses();
         this.getDepartmentList();
     }
- 
+
 
     propagateNewData() {
         this.dropDownsService.next(this.dropDownsData);
@@ -432,8 +432,22 @@ export class SharedService {
         this.getPmsCategory();
         this.getPmsCycleStauts();
         this.getPmsRating();
+        this.getGoalStatuses();
     }
 
+    getGoalStatuses() {
+        this._apiService
+            .get("/table-maintenance/goal-status/goal-statuses", {}, false)
+            .subscribe(
+                (data) => {
+                    this.pmsDropDownnsData.goalStatusTypes = data;
+                    this.propagateNewData();
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
     getGenderTypes() {
         this._apiService
             .get("/table-maintenance/gender-type/gender-types", {}, false)
@@ -479,7 +493,7 @@ export class SharedService {
                     console.log(error);
                 }
             );
-    }   
+    }
     getLearningTypes() {
         this._apiService
             .get("/table-maintenance/learning-type/learning-types", {}, false)

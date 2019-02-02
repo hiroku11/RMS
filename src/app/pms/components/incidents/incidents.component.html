@@ -11,7 +11,7 @@
     <tbody *ngFor="let d of data.reportedIncidents">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
@@ -36,7 +36,7 @@
     <tbody *ngFor="let d of data.incidentSuspects">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -60,7 +60,7 @@
     <tbody *ngFor="let d of data.accidentInjuredPersons">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -84,7 +84,7 @@
     <tbody *ngFor="let d of data.accidentWitnesses">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -109,7 +109,7 @@
     <tbody *ngFor="let d of data.crimeSuspects">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -134,7 +134,7 @@
     <tbody *ngFor="let d of data.crimeWitnesses">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -159,7 +159,7 @@
     <tbody *ngFor="let d of data.incidentInvestigations">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -183,7 +183,7 @@
     <tbody *ngFor="let d of data.claimsHandled">
       <tr>
         <td>
-          {{d.uniqueIncidentId}}
+          <a href="javascript:void(0)" (click)="getIncidentDetails(d)" data-toggle="modal" data-target="#myModal">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime}}</td>
@@ -193,4 +193,314 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Incident Details</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="incident">
+          <h4>Incident Details</h4>
+          <div class="row">
+
+            <div class="col-md-4 col-sm-12">
+              <label>Reported By:</label>
+              <label class="summary-text">{{incident.incidentReportedBy?.fullName}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <label>Organization:</label>
+              <label class="summary-text">{{incident.incidentReportedBy?.department?.organization?.name}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <label>Department:</label>
+              <label class="summary-text">{{incident.incidentReportedBy?.department?.description}}</label>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+              <label>Place Of Incident:</label>
+              <label class="summary-text">{{incident.placeOfIncident}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentType && incident.incidentType.id != 'OTHER'">
+              <label>Incident Type:</label>
+              <label class="summary-text">{{incident.incidentType?.description}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentType && incident.incidentType.id == 'OTHER'">
+              <label>Incident Type:</label>
+              <label class="summary-text">{{incident.incidentTypeOther}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.entryPoint && incident.entryPoint.id != 'OTHER'">
+              <label>Entry Point:</label>
+              <label class="summary-text">{{incident.entryPoint?.description}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.entryPoint && incident.entryPoint.id == 'OTHER'">
+              <label>Entry Point:</label>
+              <label class="summary-text">{{incident.entryPointOther}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-12">
+              <label>Incident Location:</label>
+              <label class="summary-text">{{incident.incidentLocation?.description}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentLocation && incident.incidentLocation.id != 'OTHER'">
+              <label>Incident Location Details:</label>
+              <label class="summary-text">{{incident.incidentLocationDetail?.description}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentLocation && incident.incidentLocation.id == 'OTHER'">
+              <label>Incident Location Details:</label>
+              <label class="summary-text">{{incident.incidentLocationOther}}</label>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <label>Date Of Incident:</label>
+              <label class="summary-text">{{incident.incidentOpenedDateTime | date:'dd/MM/yyyy'}}</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4 col-lg-4">
+              <label>Asset Damage:</label>
+              <label class="summary-text">{{incident.assetDamage}}</label>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+              <label>Criminal Attack:</label>
+              <label class="summary-text">{{incident.criminalAttack}}</label>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+              <label>Accident Damange:</label>
+              <label class="summary-text">{{incident.accidentDamage}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <label>Incident Description:</label>
+              <label class="summary-text">{{incident.incidentDescription}}</label>
+            </div>
+          </div>
+          <h4 *ngIf="incident.suspects.length>0">Suspects</h4>
+          <table class="table table-bordered" *ngIf="incident.suspects.length>0">
+            <thead>
+              <tr>
+                <th>Suspect type</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>County</th>
+                <th>PostCode</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr ng-repeat="suspect in incident.suspects">
+                <td>
+                  {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description :
+                  suspect.suspectTypeOther}}
+                </td>
+                <td>
+                  {{suspect.firstName}} {{suspect.middleName}} {{suspect.lastName}}
+                </td>
+                <td>
+                  {{suspect.age}}
+                </td>
+                <td>
+                  {{suspect.genderType != 'OTHER' ? suspect.genderType.description :
+                  suspect.genderTypeOther}}
+                </td>
+
+                <td>
+                  {{suspect.addresses[0].organizationName}} {{suspect.addresses[0].buildingName}}
+                  {{suspect.addresses[0].localityName}} {{suspect.addresses[0].streetName}}
+                </td>
+                <td>
+                  {{suspect.addresses[0].city}}
+                </td>
+                <td>
+                  {{suspect.addresses[0].county}}
+                </td>
+                <td>
+                  {{suspect.addresses[0].postcode1}}{{suspect.addresses[0].postcode2}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 *ngIf="incident.reportedLosses.length">Reported Losses</h4>
+          <table class="table table-bordered" *ngIf="incident.reportedLosses.length">
+            <thead>
+              <tr>
+                <th>Loss Type</th>
+                <th>Loss value</th>
+                <th>External Agency</th>
+                <th>Cost Estimation</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr ng-repeat="loss in incident.reportedLosses">
+                <td>{{loss.losType.id != 'OTHER'?loss.lossType.description : loss.losTypeOther}}</td>
+                <td>
+                  {{loss.lossValue}}
+                </td>
+                <td>
+                  {{loss.externalAgency.id != 'OTHER'? loss.externalAgency.description :
+                  loss.externalAgencyTypeOther}}
+                </td>
+                <td>
+                  {{loss.costEstimation}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 *ngIf="incident.accident">Accident Details</h4>
+          <div class="row" *ngIf="incident.accident">
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Type:</label>
+              <label class="summary-text">{{incident.accident?.accidentType?.description}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Description:</label>
+              <label class="summary-text">{{incident.accident?.accidentDescription}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Date/Time:</label>
+              <label class="summary-text">{{incident.accident?.accidentDateTime}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.accident">
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Place:</label>
+              <label class="summary-text">{{incident.accident?.accidentPlace}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Location:</label>
+              <label class="summary-text">{{incident.accident && incident.accident.accidentLocation &&
+                incident.accident.accidentLocation.id !='OTHER' ?
+                incident.accident?.accidentLocation?.description
+                : incident.accident?.accidentLocationOther}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Accident Location Details:</label>
+              <label class="summary-text">{{incident.accident?.accidentLocationDetails?.description}}</label>
+            </div>
+          </div>
+          <!-- witnesses -->
+          <table class="table table-bordered" *ngIf="incident.accident && incident.accident.witnesses.length>0">
+            <thead>
+              <tr>
+                <th colspan="8" class="text-center">Witnesses</th>
+              </tr>
+              <tr>
+                <th>Witness type</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>County</th>
+                <th>PostCode</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr ng-repeat="witness in incident.accident.witnesses">
+                <td>
+                  {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                  witness.witnessTypeOther}}
+                </td>
+                <td>
+                  {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
+                </td>
+                <td>
+                  {{witness.age}}
+                </td>
+                <td>
+                  {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                  witness.genderTypeOther}}
+                </td>
+
+                <td>
+                  {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}}
+                  {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                </td>
+                <td>
+                  {{witness.addresses[0].city}}
+                </td>
+                <td>
+                  {{witness.addresses[0].county}}
+                </td>
+                <td>
+                  {{witness.addresses[0].postcode1}} {{witness.addresses[0].postcode2}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+          <!-- injuredPersons -->
+          <table class="table table-bordered" *ngIf="incident.accident && incident.accident.injuredPersons.length>0">
+            <thead>
+              <tr>
+                <th colspan="8" class="text-center">Injured Persons</th>
+              </tr>
+              <tr>
+                <th>Person type</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>County</th>
+                <th>PostCode</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr ng-repeat="injuredPerson in incident.accident.injuredPersons">
+                <td>
+                  {{injuredPerson.injuredPersonType != 'OTHER' ?
+                  injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
+                </td>
+                <td>
+                  {{injuredPerson.firstName}} {{injuredPerson.middleName}}
+                  {{injuredPerson.lastName}}
+                </td>
+                <td>
+                  {{injuredPerson.age}}
+                </td>
+                <td>
+                  {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description :
+                  injuredPerson.genderTypeOther}}
+                </td>
+
+                <td>
+                  {{injuredPerson.addresses[0].organizationName}}
+                  {{injuredPerson.addresses[0].buildingName}}
+                  {{injuredPerson.addresses[0].localityName}}
+                  {{injuredPerson.addresses[0].streetName}}
+                </td>
+                <td>
+                  {{injuredPerson.addresses[0].city}}
+                </td>
+                <td>
+                  {{injuredPerson.addresses[0].county}}
+                </td>
+                <td>
+                  {{injuredPerson.addresses[0].postcode1}}{{injuredPerson.addresses[0].postcode2}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

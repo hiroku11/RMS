@@ -2,6 +2,14 @@
   <tbody>
     <tr>
       <td>
+        Title
+      </td>
+      <td>
+        {{cycle?.performanceCycleTitle}}
+      </td>
+    </tr>
+    <tr>
+      <td>
         Start Date
       </td>
       <td>
@@ -22,16 +30,16 @@
       </td>
       <td>
         <span *ngIf="!isManager">
-       
-            {{cycle?.performanceCycleStatus}}
+
+          {{cycle?.performanceCycleStatus}}
         </span>
-    
-          <select class="form-control"  *ngIf="isManager" [(ngModel)]="goalStatus" [compareWith]="selectCompareFunction"
+
+        <select class="form-control" *ngIf="isManager" [(ngModel)]="goalStatus" [compareWith]="selectCompareFunction"
           (change)="statusUpdate()">
-              <option value="null"></option>
-              <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
-            </select>
-  
+          <option value="null"></option>
+          <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
+        </select>
+
       </td>
     </tr>
     <tr>
@@ -75,7 +83,8 @@
   </li>
 </ul>
 <div *ngIf="cycle">
-  <app-goal-details (update)="updatedCycle($event)" [cycle]="cycle" [userPerformanceCycleId]="Id" [isManager]="isManager" *ngIf="currentTab.tab == 1"></app-goal-details>
+  <app-goal-details (update)="updatedCycle($event)" [cycle]="cycle" [userPerformanceCycleId]="Id" [isManager]="isManager"
+    *ngIf="currentTab.tab == 1"></app-goal-details>
   <app-incidents (update)="updatedCycle($event)" [cycle]="cycle" *ngIf="currentTab.tab == 4"></app-incidents>
   <app-360-feedback (update)="updatedCycle($event)" [cycle]="cycle" *ngIf="currentTab.tab == 2"></app-360-feedback>
   <app-document (update)="updatedCycle($event)" [cycle]="cycle" [userPerformanceCycleId]="Id" *ngIf="currentTab.tab == 3"></app-document>

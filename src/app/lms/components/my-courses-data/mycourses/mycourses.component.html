@@ -44,10 +44,10 @@
           {{c.courseDescription}}
         </td>
         <td>
-          {{c.userCoursePlannedStartDate}}
+          {{c.userCoursePlannedStartDate | date :'dd/MM/yyyy'}}
         </td>
         <td>
-          {{c.userCoursePlannedEndDate}}
+          {{c.userCoursePlannedEndDate | date :'dd/MM/yyyy'}}
         </td>
         <td>
           {{c.userCourseLessonStatus | titlecase}}

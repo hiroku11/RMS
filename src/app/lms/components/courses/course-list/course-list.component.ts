@@ -21,6 +21,8 @@ export class CourseListComponent implements OnInit {
   filter: any;
   itemsCount = 0;
   reason: any;
+  plannedStartDate: any;
+  plannedEndDate: any;
   cid: any;
   constructor(private _apiService: ApiService,
     private _alertService: AlertsLoaderService,
@@ -53,7 +55,9 @@ export class CourseListComponent implements OnInit {
   }
   addCourse() {
     let payload = {
-      "addReason": this.reason
+      "addReason": this.reason,
+      "plannedStartDate": this.plannedStartDate,
+      "plannedEndDate": this.plannedEndDate
     }
     this._apiService
       .put(`/user/add-course-to-user/userId/` + this.userId + `/courseId/` + this.cid, payload)

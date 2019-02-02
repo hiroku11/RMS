@@ -45,7 +45,7 @@
           <label>Goal Status</label>
           <select class="form-control" [disabled]="isManager || !g.isEdit" [(ngModel)]="g.goalStatus" [compareWith]="selectCompareFunction">
             <option value="null"></option>
-            <option *ngFor="let opt of dropDownsData.status" [ngValue]="opt">{{opt.description}}</option>
+            <option *ngFor="let opt of dropDownsData.goalStatusTypes" [ngValue]="opt">{{opt.description}}</option>
           </select>
         </div>
       </div>

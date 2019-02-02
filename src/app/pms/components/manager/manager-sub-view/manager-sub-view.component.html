@@ -3,6 +3,14 @@
     <tbody>
       <tr>
         <td>
+          Title
+        </td>
+        <td>
+          {{cycle?.performanceCycleTitle}}
+        </td>
+      </tr>
+      <tr>
+        <td>
           Start Date
         </td>
         <td>
@@ -77,8 +85,8 @@
         <td>
           <a href="mailto:{{c.userEmail}}">{{c.userEmail}}</a>
         </td>
-        <td>{{c.performanceCycleMidYearStatus == 'N' ? 'No' : 'Yes'}}</td>
-        <td> {{c.performanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}} </td>
+        <td>{{c.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
+        <td> {{c.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}} </td>
 
         <td>
           {{c.userPerfCycleStatus != null ? c.userPerfCycleStatus.description : null }}
