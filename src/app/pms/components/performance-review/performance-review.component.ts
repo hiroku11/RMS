@@ -14,9 +14,10 @@ import { SharedService } from '../../../services/shared.service';
 export class PerformanceReviewComponent implements OnInit {
   Id: number;
   headerCycle: any;
-  isManager: boolean = false;
-  goalStatus:any;
-  dropDownsData:any;
+  isManager = false;
+  goalStatus: any;
+  dropDownsData: any;
+  cycleForUser: any;
   tabs: any[] = [
     {
       tab: 1,
@@ -29,23 +30,18 @@ export class PerformanceReviewComponent implements OnInit {
     {
       tab: 3,
       name: 'Documents'
-    },
-    {
-      tab: 4,
-      name: 'Incidents'
-    },
-    {
-      tab: 5,
-      name: 'LMS'
     }
   ];
   cycle: any;
   currentTab: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService,
-    private userService: UserService,  private _sharedService: SharedService ) {
+    private userService: UserService, private _sharedService: SharedService) {
     this.currentTab = this.tabs[0];
     this._sharedService.pmsDropDownService.subscribe((data) => {
       this.dropDownsData = data;
+      if (this.dropDownsData.status && !this.goalStatus && this.cycle) {
+        this.setCycleStatus();
+      }
     });
     this.dropDownsData = this._sharedService.pmsDropDownnsData;
     if (!this._sharedService.pmsDropDownnsData.category) {
@@ -59,15 +55,35 @@ export class PerformanceReviewComponent implements OnInit {
       let userId = params["name"];
       if (this.Id && userId) {
         this.isManager = true;
+        this.tabs = [...this.tabs, {
+          tab: 4,
+          name: 'Incidents'
+        },
+        {
+          tab: 5,
+          name: 'LMS'
+        }];
         this.getUserPerfomanceCycle(this.Id, userId);
       } else if (this.Id) {
         userId = this.userService.userDetails.loginId;
         this.isManager = false;
         this.getCycle(this.Id);
       }
+
+      this.getUserById(userId);
       this.getHeaderInfo();
       // this.getUserPerfomanceCycle(this.Id, userId);
     });
+  }
+
+  getUserById(userId) {
+    this._api.get(`/user/loginId/${userId}`).subscribe(
+      (data) => {
+        this.cycleForUser = data;
+      }, (error) => {
+        this._alert.error(error);
+      }
+    )
   }
 
   getCycle(id: number) {
@@ -77,7 +93,7 @@ export class PerformanceReviewComponent implements OnInit {
       }, (error) => {
         this._alert.error(error);
       }
-    )
+    );
   }
 
   getHeaderInfo() {
@@ -86,32 +102,43 @@ export class PerformanceReviewComponent implements OnInit {
         this.headerCycle = data;
       }, (error) => {
         this._alert.error(error);
-      })
+      });
   }
   getUserPerfomanceCycle(id: number, userId: string) {
     this._api.get(`/performance/employee-sub-view/userLoginId/${userId}/userPerformanceCycleId/${id}`).subscribe(
       (data) => {
         this.cycle = data;
-        this.goalStatus = this.cycle.performanceCycleStatus;
+        if (this.dropDownsData.status && !this.goalStatus) {
+          this.setCycleStatus();
+        }
+        // this.goalStatus = this.cycle.userPerformanceCycleStatusCode;
       }, (error) => {
         this._alert.error(error);
       }
     )
   }
 
+  setCycleStatus() {
+    this.dropDownsData.status.forEach(element => {
+      if (element.id === this.cycle.userPerformanceCycleStatusCode) {
+        this.goalStatus = { ...element };
+      }
+    });
+  }
+
   changeTab(tab: any) {
     this.currentTab = tab;
   }
 
-  updatedCycle(cycle: any){
+  updatedCycle(cycle: any) {
     this.cycle = cycle;
   }
 
   statusUpdate() {
-   
-    this._api.put(`/performance/update-employee-performance-review-status/userPerformanceCycleId/${this.Id}/statusCode/${this.goalStatus.id}`,'')
+    this._api.
+      put(`/performance/update-employee-performance-review-status/userPerformanceCycleId/${this.Id}/statusCode/${this.goalStatus.id}`, '')
       .subscribe((data) => {
-       this._alert.success('stauts updated successfully');
+        this._alert.success('stauts updated successfully');
       }, (error) => {
         this._alert.error(error);
       })
@@ -120,9 +147,9 @@ export class PerformanceReviewComponent implements OnInit {
     if (item1 == null || item2 == null) {
       return false;
     }
-    return item1.id == item2.id;
+    return item1.id === item2.id;
   }
 
- 
+
 }
 

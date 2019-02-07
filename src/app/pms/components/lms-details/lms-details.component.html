@@ -17,10 +17,6 @@
         Course Name
       </th>
       <th>
-        Description
-      </th>
-
-      <th>
         Planned Start Date
       </th>
       <th>
@@ -40,6 +36,9 @@
         Is People Manager Course
       </th>
       <th>
+        Score
+      </th>
+      <th>
         Status
       </th>
 
@@ -52,9 +51,6 @@
         </td>
         <td>
           {{c.courseName}}
-        </td>
-        <td>
-          {{c.courseDescription}}
         </td>
         <td>
           {{c.userCoursePlannedStartDate | date :'dd/MM/yyyy'}}
@@ -73,6 +69,9 @@
         </td>
         <td>
           {{c.coursePeopleManager}}
+        </td>
+        <td>
+          {{c.userCourseRawScore}}
         </td>
         <td>
           {{c.userCourseLessonStatus}}

@@ -30,8 +30,7 @@
       </td>
       <td>
         <span *ngIf="!isManager">
-
-          {{cycle?.performanceCycleStatus}}
+          {{cycle?.userPerformanceCycleStatusDescription}}
         </span>
 
         <select class="form-control" *ngIf="isManager" [(ngModel)]="goalStatus" [compareWith]="selectCompareFunction"
@@ -70,9 +69,10 @@
 </table>
 <div class="row">
 
-  <div class="col-md-6">
+  <div class="col-sm-12">
     <h4>
-      <span class="fa fa-building"></span> Employee | Performance Review
+      <span class="fa fa-building"></span> Employee | Performance Review <span *ngIf="isManager && cycleForUser">:
+        {{cycleForUser?.fullName}}</span>
     </h4>
   </div>
 </div>

@@ -25,8 +25,8 @@
       </td>
       <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
-      <td>{{cycle.userPerformanceCycleMidYearStatus == 'N' ? 'No' : 'Yes'}}</td>
-      <td>{{cycle.userPerformanceCycleFullYearStatus == 'N' ? 'No' : 'Yes'}}</td>
+      <td>{{cycle.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
+      <td>{{cycle.userPerfCycleFullYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
       <td>{{cycle.userPerfCycleStatus?.description}}</td>
       <td>
         <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle, index)" data-toggle="tooltip" title="Delete"></span>

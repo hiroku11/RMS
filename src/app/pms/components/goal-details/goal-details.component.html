@@ -16,7 +16,7 @@
         </div>
         <div class="col-6 col-md-3">
           <label>Category Other</label>
-          <input type="text" class="form-control" [(ngModel)]="g.goalCategoryOther" [disabled]="!g.goalCategory || g.goalCategory.id != 'OTHER'">
+          <input type="text" class="form-control"  [(ngModel)]="g.goalCategoryOther" [disabled]="!g.goalCategory || g.goalCategory.id != 'OTHER' || isManager">
         </div>
       </div>
       <div class="row">

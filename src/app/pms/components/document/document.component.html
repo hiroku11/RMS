@@ -1,17 +1,17 @@
-<h5>Upload File</h5>
-<div class="row pb-2">
+<h5 *ngIf="!isManager">Upload File</h5>
+<div class="row pb-2" *ngIf="!isManager">
   <div class="col-sm-12">
     <label>File Description</label>
     <textarea class="form-control" name="documentDescription" maxlength="256" [(ngModel)]="file.fileDescription"></textarea>
   </div>
 </div>
-<div class="row pb-2">
+<div class="row pb-2" *ngIf="!isManager">
   <div class="col-sm-12">
     <label>Comments</label>
     <textarea class="form-control" [(ngModel)]="file.comments" name="comments" maxlength="256"></textarea>
   </div>
 </div>
-<div class="row pb-2">
+<div class="row pb-2" *ngIf="!isManager">
   <div class="col-sm-12 col-md-4">
     <label>File</label>
     <input class="form-control" (change)="documentSelected($event)" type="file" />

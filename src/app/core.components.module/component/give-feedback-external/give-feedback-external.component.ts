@@ -46,7 +46,7 @@ export class GiveFeedbackExternalComponent implements OnInit {
       (data) => {
         this.feedbackData = data;
       }, (error) => {
-
+        this._alert.error('Error getting feedback request try again.');
       }
     )
   }

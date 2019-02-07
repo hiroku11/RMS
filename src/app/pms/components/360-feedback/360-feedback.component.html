@@ -1,7 +1,8 @@
 <div class="row pb-2">
   <div class="col-sm-12">
     <h5 style="height:40px;">Feedback
-      <button class="btn btn-info btn-sm float-right" [routerLink]="['/pms/employee/request-feedback',cycle.userPerformanceCycleId]">Request Feedback</button>
+      <button *ngIf="!isManager" class="btn btn-info btn-sm float-right" [routerLink]="['/pms/employee/request-feedback',cycle.userPerformanceCycleId]">Request
+        Feedback</button>
     </h5>
   </div>
 </div>
@@ -9,7 +10,8 @@
 <div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
-      <h6 class="mb-0" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <h6 class="mb-0" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+        aria-controls="collapseOne">
         Internal
       </h6>
     </div>
@@ -36,7 +38,7 @@
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Date: {{feedback?.commentGivenDate}}
+                    Date: {{feedback?.commentGivenDate | date: 'dd/MM/yyyy'}}
                   </div>
                   <div class="col-12 col-md-4">
                     Phone: {{feedback?.user?.phone}}
@@ -49,7 +51,6 @@
                   <div class="col-sm-12">
                     Comments:{{feedback.comment}}
                   </div>
-
                 </div>
               </div>
             </div>
@@ -60,7 +61,8 @@
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
-      <h6 class="mb-0 btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <h6 class="mb-0 btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+        aria-controls="collapseTwo">
         External
       </h6>
     </div>
@@ -69,30 +71,32 @@
         <div class="row" *ngFor="let feedback of externalFeedbacks;let ind = index;">
           <div class="col-sm-12">
             <div class="card mb-1">
-              <h5 class="card-header">{{ind+1}}. {{feedback.user.fullName}}
+              <h5 class="card-header">{{ind+1}}. {{feedback.firstName}}
                 <span (click)="deleteExternalFeedback(feedback, ind)" class="btn btn-sm btn-outline-danger fa fa-trash float-right"></span>
               </h5>
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Position: {{feedback?.user?.position?.description}}
+                    Given By: {{feedback?.firstName}} {{feedback?.middleName}} {{feedback?.lastName}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Department: {{feedback?.user?.department?.description}}
+                    Phone: {{feedback?.phone}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Organization: {{feedback?.user?.department?.organozation?.description}}
+                    Email: {{feedback?.email}}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    Date: {{feedback?.commentGivenDate}}
+                    Date: {{feedback?.commentGivenDate | date: 'dd/MM/yyyy'}}
                   </div>
                   <div class="col-12 col-md-4">
-                    Phone: {{feedback?.user?.phone}}
+                    Job Title: {{feedback?.jobTitle}}
                   </div>
-                  <div class="col-12 col-md-4">
-                    Email: {{feedback?.user?.email}}
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    Comment:{{feedback?.comment}}
                   </div>
                 </div>
               </div>

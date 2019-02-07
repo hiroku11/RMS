@@ -8,15 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  userDetails:any;
-  @Input() module : string;
-  constructor(private userService: UserService) { 
+  userDetails: any;
+  @Input() module: string;
+  @Input() hideOptions = false;
+  constructor(private userService: UserService) {
     this.userDetails = this.userService.userDetails;
   }
 
   ngOnInit() {
   }
-  logOut(){
+  logOut() {
     this.userService.logOut();
   }
 }

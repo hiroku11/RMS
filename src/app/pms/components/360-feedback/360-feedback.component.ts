@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { AlertsLoaderService } from './../../../services/alerts-loader.service';
@@ -14,13 +15,25 @@ export class Three60FeedbackComponent implements OnInit {
   @Output() update: EventEmitter<any> = new EventEmitter();
   externalFeedbacks: any = [];
   internalFeedbacks: any = [];
-  constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
+  isManager: boolean;
+  constructor(private _api: ApiService, private _alert: AlertsLoaderService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     if (this.cycle.peerComment) {
       this.internalFeedbacks = this.cycle.peerComment.peerCommentsInternal;
       this.externalFeedbacks = this.cycle.peerComment.peerCommentsExternal;
     }
+
+    this.route.params.subscribe((params: Params) => {
+      let Id = params["cycleId"];
+      let userId = params["name"];
+      if (Id && userId) {
+        this.isManager = true;
+        // this.getUserPerfomanceCycle(this.Id, userId);
+      } else if (Id) {
+        this.isManager = false;
+      }
+    });
   }
 
   deleteInternalFeedback(feed: any, ind) {

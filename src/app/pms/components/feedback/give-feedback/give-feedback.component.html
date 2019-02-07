@@ -2,6 +2,10 @@
 <table class="table table-bordered">
   <tbody>
     <tr>
+      <td>Title</td>
+      <td>{{feedbackData?.performanceCycleTitle}}</td>
+    </tr>
+    <tr>
       <td>Start Date</td>
       <td>{{feedbackData?.performanceCycleStartDate | date:'dd/MM/yyyy'}}</td>
     </tr>
@@ -10,8 +14,12 @@
       <td>{{feedbackData?.performanceCycleEndDate | date:'dd/MM/yyyy'}}</td>
     </tr>
     <tr>
-      <td>Requeted By</td>
+      <td>Requested By</td>
       <td>{{feedbackData?.feedbackRequestedBy}}</td>
+    </tr>
+    <tr>
+      <td>Requestor Comments</td>
+      <td>{{feedbackData?.requestorComments}}</td>
     </tr>
   </tbody>
 </table>

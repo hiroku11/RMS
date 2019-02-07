@@ -1,15 +1,19 @@
-<app-header class="d-none d-lg-block"></app-header>
+<app-header class="d-none d-lg-block" [hideOptions]="true"></app-header>
 
 <div class="row view content cont p-4">
   <div class="col-sm-12">
-      <h5>Give Feedback</h5>
+    <h5>Give Feedback</h5>
   </div>
 
   <table class="table table-bordered">
     <tbody>
       <tr>
+        <td>Title</td>
+        <td>{{feedbackData?.performanceCycleTitle}}</td>
+      </tr>
+      <tr>
         <td>Start Date</td>
-        <td>{{feedbackData?.performanceCycleEndDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{feedbackData?.performanceCycleStartDate | date:'dd/MM/yyyy'}}</td>
       </tr>
       <tr>
         <td>End Date</td>
@@ -19,10 +23,10 @@
         <td>Requeted By</td>
         <td>{{feedbackData?.feedbackRequestedBy}}</td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>Requestor Comments</td>
-        <td>{{feedbackData?.feedbackComments}}</td>
-      </tr>
+        <td>{{feedbackData?.requestorComments}}</td>
+      </tr> -->
     </tbody>
   </table>
 
@@ -64,7 +68,7 @@
       <input class="form-control" [(ngModel)]="feedback.email">
     </div>
     <div class="col-sm-12 col-md-3">
-      <label>Date</label>
+      <label>Date</label><br>
       <span>{{feedback?.feedbackGivenDate | date: 'dd/MM/yyyy'}}</span>
     </div>
 

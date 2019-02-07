@@ -18,11 +18,24 @@ export class DocumentComponent implements OnInit {
   formData: FormData;
   fileInput: any;
   file: any = {};
+  isManager: boolean;
   comments: string;
-  constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private _api: ApiService,
+    private _alert: AlertsLoaderService, private userService: UserService) { }
 
   ngOnInit() {
-    this.getDocument()
+    this.getDocument();
+
+    this.route.params.subscribe((params: Params) => {
+      let Id = params["cycleId"];
+      let userId = params["name"];
+      if (Id && userId) {
+        this.isManager = true;
+        // this.getUserPerfomanceCycle(this.Id, userId);
+      } else if (Id) {
+        this.isManager = false;
+      }
+    });
   }
   clearSelectedFile() {
     this.file = {};

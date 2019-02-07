@@ -15,10 +15,11 @@
     <div class="col-lg-4 col-sm-12 text-center pt-2" *ngIf="!userDetails">
         <h4 class="welcome">Welcome to Risk Management System</h4>
     </div>
-    <div class="col-lg-4 col-sm-12" *ngIf="userDetails" style="cursor: pointer;">
+    <div class="col-lg-4 col-sm-12" *ngIf="userDetails && !hideOptions" style="cursor: pointer;">
         <div class="text-right pt-2">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle zero-padding" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">
                     <img src="./assets/images/logo.png" alt="gotorisk.co.uk" /> {{userDetails.loginId}}</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" [routerLink]="['/home']">Home</a>
