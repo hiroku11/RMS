@@ -72,11 +72,15 @@ export class FeedbackRequestComponent implements OnInit {
   }
 
   addUserToSelected(user: any) {
-    this.selectedUsers.push(user);
-    this.usersOptions.push(user);
-    this.usersOptions = [...this.usersOptions];
-    this.selectedUsers = [...this.selectedUsers];
-    this._alert.success('User selected for request.');
+    const exists = this.selectedUsers.filter((us) => us.id === user.id);
+    if (exists.length === 0) {
+      this.selectedUsers.push(user);
+      this.usersOptions.push(user);
+      this.usersOptions = [...this.usersOptions];
+      this.selectedUsers = [...this.selectedUsers];
+      this._alert.success('User selected for request.');
+    }
+
   }
   closeModal() {
     this.componentRef.instance.selectUser.unsubscribe();

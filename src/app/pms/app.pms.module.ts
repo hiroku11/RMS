@@ -31,6 +31,7 @@ import { AddCycleComponent } from './components/employee/add-cycle/add-cycle.com
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { LmsDetailsComponent } from './components/lms-details/lms-details.component';
 import { UserLookupComponent } from './components/user-lookup/user-lookup.component';
+import { ViewFeedbacksComponent } from './components/feedback/view-feedbacks/view-feedbacks.component';
 
 const MY_MOMENT_FORMATS = {
   parseInput: 'DD/MM/YYYY HH:mm:ss',
@@ -50,7 +51,7 @@ const MY_MOMENT_FORMATS = {
   entryComponents: [UserLookupComponent],
   declarations: [DashboardComponent, SideNavComponent, SmMenuComponent, AdminComponent, FeedbackComponent, ManagerComponent, EmployeeComponent,
     Three60FeedbackComponent, FeedbackRequestComponent, GiveFeedbackComponent, FeedbackQueueComponent, EmployeeViewComponent, AddCycleComponent,
-    IncidentsComponent, ManagerViewComponent, ManagerSubViewComponent, PerformanceReviewComponent,
+    IncidentsComponent, ManagerViewComponent, ManagerSubViewComponent, PerformanceReviewComponent, ViewFeedbacksComponent,
     ManagerSubViewComponent, GoalDetailsComponent, DocumentComponent, LmsDetailsComponent, UserLookupComponent],
   providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }],
 })

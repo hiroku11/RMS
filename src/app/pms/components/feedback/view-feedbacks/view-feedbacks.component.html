@@ -1,0 +1,54 @@
+<h5>Your Feedbacks Comments</h5>
+<table class="table table-bordered cms-table">
+  <tbody>
+    <tr>
+      <td>
+        Title
+      </td>
+      <td>
+        {{headerCycle?.performanceCycleTitle}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Start Date
+      </td>
+      <td>
+        {{headerCycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        End Date
+      </td>
+      <td>
+        {{headerCycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Requested By
+      </td>
+      <td>
+        {{headerCycle?.userFullName}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="card" *ngFor="let comment of feedbacks.peerCommentsInternal; let i = index;">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <label>Sl. No.:</label>
+        {{ i+1 }}
+      </div>
+      <div class="col-sm-6">
+        <label>Given Date:</label>
+        {{comment.feedbackGivenDate | date:'dd/MM/yyyy hh:mm'}}
+      </div>
+      <div class="col-sm-12">
+        <textarea disabled class="form-control" [value]="comment.feedbackComment"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

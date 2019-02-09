@@ -5,20 +5,23 @@
     <th>Give Feedback</th>
     <th>Requested By</th>
     <th>Status</th>
-
+    <th></th>
   </thead>
   <tbody>
     <tr *ngFor="let feed of feedbackQueue; let ind = index;">
       <td>{{ind + 1}}</td>
       <td>
-        <a [routerLink]="['/pms/feedback/give-feedback',getPerfId(feed)]">{{feed.perfCycleTitle}}</a>
+        <a *ngIf="feed.queueFeedbackStatusCode == 'PENDING'" [routerLink]="['/pms/feedback/give-feedback',getPerfId(feed)]">{{feed.perfCycleTitle}}</a>
+        <span *ngIf="feed.queueFeedbackStatusCode != 'PENDING'">{{feed.perfCycleTitle}}</span>
       </td>
       <td>
         {{feed.feedbackRequestedBy}}
       </td>
       <td>{{feed.queueFeedbackStatusCode}}</td>
+      <td>
+        <span [routerLink]="['/pms/feedback/view-feedbacks',getPerfId(feed)]" class="btn btn-outline-info fa fa-eye"></span>
+      </td>
     </tr>
   </tbody>
-
 </table>
 <ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>

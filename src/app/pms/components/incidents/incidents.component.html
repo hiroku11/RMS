@@ -39,7 +39,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -63,7 +63,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -87,7 +87,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -112,7 +112,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -137,7 +137,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -162,7 +162,7 @@
           <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -186,7 +186,7 @@
           <a href="javascript:void(0)" (click)="getIncidentDetails(d)" data-toggle="modal" data-target="#myModal">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
-        <td>{{d.incidentOpenedDateTime}}</td>
+        <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
         <td>{{d.incidentType}}</td>
         <td>{{d.incidentStatus}}</td>
 
@@ -300,7 +300,7 @@
             <tbody>
               <tr *ngFor="let suspect of incident.suspects">
                 <td>
-                  {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description :
+                  {{suspect.suspectType && suspect.suspectType.id != 'OTHER' ? suspect.suspectType.description :
                   suspect.suspectTypeOther}}
                 </td>
                 <td>
@@ -310,22 +310,22 @@
                   {{suspect.age}}
                 </td>
                 <td>
-                  {{suspect.genderType != 'OTHER' ? suspect.genderType.description :
+                  {{suspect.genderType && suspect.genderType.id != 'OTHER' ? suspect.genderType.description :
                   suspect.genderTypeOther}}
                 </td>
 
                 <td>
-                  {{suspect.addresses[0].organizationName}} {{suspect.addresses[0].buildingName}}
-                  {{suspect.addresses[0].localityName}} {{suspect.addresses[0].streetName}}
+                  {{suspect.addresses[0]?.organizationName}} {{suspect.addresses[0]?.buildingName}}
+                  {{suspect.addresses[0]?.localityName}} {{suspect.addresses[0]?.streetName}}
                 </td>
                 <td>
-                  {{suspect.addresses[0].city}}
+                  {{suspect.addresses[0]?.city}}
                 </td>
                 <td>
-                  {{suspect.addresses[0].county}}
+                  {{suspect.addresses[0]?.county}}
                 </td>
                 <td>
-                  {{suspect.addresses[0].postcode1}}{{suspect.addresses[0].postcode2}}
+                  {{suspect.addresses[0]?.postcode1}}{{suspect.addresses[0]?.postcode2}}
                 </td>
 
               </tr>
@@ -413,7 +413,7 @@
             <tbody>
               <tr *ngFor="let witness of incident.accident.witnesses">
                 <td>
-                  {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                  {{witness.witnessType && witness.witnessType.id != 'OTHER' ? witness.witnessType.description :
                   witness.witnessTypeOther}}
                 </td>
                 <td>
@@ -423,22 +423,22 @@
                   {{witness.age}}
                 </td>
                 <td>
-                  {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                  {{witness.genderType && witness.genderType.id != 'OTHER' ? witness.genderType.description :
                   witness.genderTypeOther}}
                 </td>
 
                 <td>
-                  {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}}
-                  {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                  {{witness.addresses[0]?.organizationName}} {{witness.addresses[0]?.buildingName}}
+                  {{witness.addresses[0]?.localityName}} {{witness.addresses[0]?.streetName}}
                 </td>
                 <td>
-                  {{witness.addresses[0].city}}
+                  {{witness.addresses[0]?.city}}
                 </td>
                 <td>
-                  {{witness.addresses[0].county}}
+                  {{witness.addresses[0]?.county}}
                 </td>
                 <td>
-                  {{witness.addresses[0].postcode1}} {{witness.addresses[0].postcode2}}
+                  {{witness.addresses[0]?.postcode1}} {{witness.addresses[0]?.postcode2}}
                 </td>
 
               </tr>
@@ -465,8 +465,8 @@
             <tbody>
               <tr *ngFor="let injuredPerson of incident.accident.injuredPersons">
                 <td>
-                  {{injuredPerson.injuredPersonType != 'OTHER' ?
-                  injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
+                  {{injuredPerson.injuredPersonType && injuredPerson.injuredPersonType.id != 'OTHER' ?
+                  injuredPerson.injuredPersonType.description : injuredPerson.injuredPersonTypeOther}}
                 </td>
                 <td>
                   {{injuredPerson.firstName}} {{injuredPerson.middleName}}
@@ -476,26 +476,519 @@
                   {{injuredPerson.age}}
                 </td>
                 <td>
-                  {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description :
+                  {{injuredPerson.genderType && injuredPerson.genderType.id != 'OTHER' ?
+                  injuredPerson.genderType.description :
                   injuredPerson.genderTypeOther}}
                 </td>
 
                 <td>
-                  {{injuredPerson.addresses[0].organizationName}}
-                  {{injuredPerson.addresses[0].buildingName}}
-                  {{injuredPerson.addresses[0].localityName}}
-                  {{injuredPerson.addresses[0].streetName}}
+                  {{injuredPerson.addresses[0]?.organizationName}}
+                  {{injuredPerson.addresses[0]?.buildingName}}
+                  {{injuredPerson.addresses[0]?.localityName}}
+                  {{injuredPerson.addresses[0]?.streetName}}
                 </td>
                 <td>
-                  {{injuredPerson.addresses[0].city}}
+                  {{injuredPerson.addresses[0]?.city}}
                 </td>
                 <td>
-                  {{injuredPerson.addresses[0].county}}
+                  {{injuredPerson.addresses[0]?.county}}
                 </td>
                 <td>
-                  {{injuredPerson.addresses[0].postcode1}}{{injuredPerson.addresses[0].postcode2}}
+                  {{injuredPerson.addresses[0]?.postcode1}}{{injuredPerson.addresses[0]?.postcode2}}
                 </td>
 
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h4>Asset Details</h4>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Asset Category:</label>
+              <label class="summary-text">{{incident?.asset?.assetCategory?.description}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Other Description:</label>
+              <label class="summary-text">{{incident?.asset?.otherDescription}}</label>
+            </div>
+          </div>
+          <table class="table table-bordered" *ngIf="incident.asset.vehicles.length >0">
+            <thead>
+              <tr>
+                <th>Registration ID</th>
+                <th>Engine Number</th>
+                <th>Chasis Number</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vehicle of incident.asset.vehicles">
+                <td>{{vehicle.vehicleRegistrationId}}</td>
+                <td>{{vehicle.engineNumber}}</td>
+                <td>{{vehicle.chasisNumber}}</td>
+                <td>{{vehicle.commentDescription}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered" *ngIf="incident.asset.equipments.length >0">
+            <thead>
+              <tr>
+                <th>Equipment ID</th>
+                <th>Serial Number</th>
+                <th>Equipment Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let equipment of incident.asset.equipments">
+                <td>{{equipment.equipmentId}}</td>
+                <td>{{equipment.serialNumber}}</td>
+                <td>{{equipment.equipmentDetails}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered" *ngIf="incident.asset.buildings.length >0">
+            <thead>
+              <tr>
+                <th>Building ID</th>
+                <th>Building Name</th>
+                <th>Building Description</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let building of incident.asset.buildings">
+                <td>{{building.buildingId}}</td>
+                <td>{{building.buildingName}}</td>
+                <td>{{building.buildingDescription}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered" *ngIf="incident.asset.assetTypeOthers.length >0">
+            <thead>
+              <tr>
+                <th>Asset ID</th>
+                <th>Asset Name</th>
+                <th>Asset Description</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let asset of incident.asset.assetTypeOthers">
+                <td>{{asset.assetTypeOtherId}}</td>
+                <td>{{asset.assetTypeOtherName}}</td>
+                <td>{{asset.assetTypeOtherDescription}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Crime Details</h4>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Crime Description:</label>
+              <label class="summary-text">{{incident?.crime?.crimeDescription}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Crime Date Time:</label>
+              <label class="summary-text">{{incident?.crime?.crimeDateTime | date :'dd/MM/yyyy hh:mm'}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Any Witness:</label>
+              <label class="summary-text">{{incident?.crime?.anyWitness}}</label>
+            </div>
+          </div>
+          <table class="table table-bordered" *ngIf="incident.crime && incident.crime.crimeSuspects.length>0">
+            <thead>
+              <tr>
+                <th colspan="8" class="text-center">Crime Suspects</th>
+              </tr>
+              <tr>
+                <th>Suspect Type</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>County</th>
+                <th>PostCode</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr *ngFor="let crimeSuspect of incident.crime.crimeSuspects">
+                <td>
+                  {{crimeSuspect.crimeSuspectType && crimeSuspect.crimeSuspectType.id != 'OTHER' ?
+                  crimeSuspect.crimeSuspectType.description :
+                  crimeSuspect.crimeSuspectTypeOther}}
+                </td>
+                <td>
+                  {{crimeSuspect.firstName}} {{crimeSuspect.middleName}}
+                  {{crimeSuspect.lastName}}
+                </td>
+                <td>
+                  {{crimeSuspect.age}}
+                </td>
+                <td>
+                  {{crimeSuspect.genderType && crimeSuspect.genderType.id != 'OTHER' ?
+                  crimeSuspect.genderType.description :
+                  crimeSuspect.genderTypeOther}}
+                </td>
+
+                <td>
+                  {{crimeSuspect.addresses[0]?.organizationName}}
+                  {{crimeSuspect.addresses[0]?.buildingName}}
+                  {{crimeSuspect.addresses[0]?.localityName}}
+                  {{crimeSuspect.addresses[0]?.streetName}}
+                </td>
+                <td>
+                  {{crimeSuspect.addresses[0]?.city}}
+                </td>
+                <td>
+                  {{crimeSuspect.addresses[0]?.county}}
+                </td>
+                <td>
+                  {{crimeSuspect.addresses[0].postcode1}}{{crimeSuspect.addresses[0].postcode2}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered" *ngIf="incident.crime && incident.crime.witnesses.length>0">
+            <thead>
+              <tr>
+                <th colspan="8" class="text-center">Crime Witnesses</th>
+              </tr>
+              <tr>
+                <th>Witness type</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>County</th>
+                <th>PostCode</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr *ngFor="let witness of incident.crime.witnesses">
+                <td>
+                  {{witness.witnessType && witness.witnessType.id != 'OTHER' ? witness.witnessType.description :
+                  witness.witnessTypeOther}}
+                </td>
+                <td>
+                  {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
+                </td>
+                <td>
+                  {{witness.age}}
+                </td>
+                <td>
+                  {{witness.genderType && witness.genderType.id != 'OTHER' ? witness.genderType.description :
+                  witness.genderTypeOther}}
+                </td>
+
+                <td>
+                  {{witness.addresses[0]?.organizationName}} {{witness.addresses[0]?.buildingName}}
+                  {{witness.addresses[0]?.localityName}} {{witness.addresses[0]?.streetName}}
+                </td>
+                <td>
+                  {{witness.addresses[0]?.city}}
+                </td>
+                <td>
+                  {{witness.addresses[0]?.county}}
+                </td>
+                <td>
+                  {{witness.addresses[0]?.postcode1}}{{witness.addresses[0]?.postcode2}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h4 *ngIf="incident.claim">Claim Details</h4>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim ID:</label>
+              <label class="summary-text">{{incident.claim?.claimId}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claimant Name:</label>
+              <label class="summary-text">{{incident.claim?.claimantName}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Insured Name:</label>
+              <label class="summary-text">{{incident.claim?.insuredName}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Status:</label>
+              <label class="summary-text">{{incident.claim?.claimStatus?.description}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Type:</label>
+              <label class="summary-text">{{incident.claim.claimType && incident.claim.claimType.id
+                !='OTHER'?incident.claim?.claimType?.description :
+                incident.claim?.claimTypeOther}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Request Type:</label>
+              <label class="summary-text">{{incident.claim.claimRequestRegistrationType &&
+                incident.claim.claimRequestRegistrationType.id !=
+                'OTHER'?incident.claim?.claimRequestRegistrationType?.description
+                : incident.claim?.claimRequestRegistrationTypeOther}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Policy No.:</label>
+              <label class="summary-text">{{incident.claim?.policyNumber}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Policy Holder Name:</label>
+              <label class="summary-text">{{incident.claim?.policyHolderName}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Policy Type:</label>
+              <label class="summary-text">{{incident.claim.policyType && incident.claim.policyType.id !='OTHER' ?
+                incident.claim?.policyType?.description :
+                incident.claim?.policyTypeOther}}
+              </label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Security Requested:</label>
+              <label class="summary-text">{{incident.claim?.securityRequested}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Training Requested:</label>
+              <label class="summary-text">{{incident.claim?.trainingRequested}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr class="text-center">
+                    <td colspan="3">Claim Handler Details</td>
+                  </tr>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      {{incident.claim?.claimHandler?.fullName}}
+                    </td>
+                    <td>
+                      {{incident.claim?.claimHandler?.phone}}
+                    </td>
+                    <td>
+                      {{incident.claim?.claimHandler?.email}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Requested Amount:</label>
+              <label class="summary-text">{{incident.claim?.claimRequestedAmount}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Requested Date:</label>
+              <label class="summary-text">{{incident.claim?.claimRequestedDate}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Requested By:</label>
+              <label class="summary-text">{{incident.claim?.claimRequestedBy}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Approved By:</label>
+              <label class="summary-text">{{incident.claim?.claimApprovedBy}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Approved Amount:</label>
+              <label class="summary-text">{{incident.claim?.claimApprovedAmount}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Approved Date:</label>
+              <label class="summary-text">{{incident.claim?.claimApprovedDate}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Settlement By:</label>
+              <label class="summary-text">{{incident.claim?.claimSettlementBy}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Settlement Amount:</label>
+              <label class="summary-text">{{incident.claim?.claimSettlementAmount}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Settlement Date:</label>
+              <label class="summary-text">{{incident.claim?.claimSettlementDate}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Declined By:</label>
+              <label class="summary-text">{{incident.claim?.claimDeclinedBy}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Declined Date:</label>
+              <label class="summary-text">{{incident.claim?.claimDeclinedDate}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Declined Comments:</label>
+              <label class="summary-text">{{incident.claim?.claimDeclinedComments}}</label>
+            </div>
+          </div>
+          <div class="row" *ngIf="incident.claim">
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Reopened By:</label>
+              <label class="summary-text">{{incident.claim?.claimReopenedBy}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Reopened Date:</label>
+              <label class="summary-text">{{incident.claim?.claimReopenedDate}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Claim Reopened Comments:</label>
+              <label class="summary-text">{{incident.claim?.claimReopenedComments}}</label>
+            </div>
+          </div>
+          <h4>Investigation</h4>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Security Requested:</label>
+              <label class="summary-text">{{incident.investigation?.securityRequested}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Training Requested:</label>
+              <label class="summary-text">{{incident.investigation?.trainingRequested}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Investigation Records:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedInvestigationRecords}}</label>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed CCTV:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedCCTV}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Pictures:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedPictures}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Witness Statement:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedWitnessStatement}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Learner Records:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedLearnerRecords}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Asset Records:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedAssetRecords}}</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <label>Reviewed Compliance Records:</label>
+              <label class="summary-text">{{incident.investigation?.reviewedComplianceRecords}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Investigator Statement:</label>
+              <label class="summary-text">{{incident.investigation?.investigatorStatement}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered" *ngIf="incident.investigation && incident.investigation.investigator">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      {{incident.investigation?.investigator?.firstName}}
+                      {{incident.investigation?.investigator?.lastName}}
+                    </td>
+                    <td>
+                      {{incident.investigation?.investigator?.teamLeadPhone}}
+                    </td>
+                    <td>
+                      {{incident.investigation?.investigator?.teamLeadEmail}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div *ngIf="incident.investigation && incident.investigation.investigator && incident.investigation.investigator.investigationTeams.length > 0"
+            class="row">
+            <div class="col-sm-12" *ngFor="let team of incident.investigation.investigator.investigationTeams">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th colspan="3">{{team.teamDescription}}: Team Leads</th>
+                  </tr>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="team.investigationTeamLeads.length > 0">
+                  <tr *ngFor="let lead of team.investigationTeamLeads">
+                    <td>{{lead.teamLeadFirstName}} {{lead.teamLeadLastName}}</td>
+                    <td>{{lead.phone}}</td>
+                    <td>{{lead.email}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+
+
+          <h4>Supporting Documents</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Document Type</th>
+                <th>Document Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let doc of incident.documents">
+                <td>{{doc.fileContentType}}</td>
+                <td>{{doc.originalFileName}}</td>
+                <td>{{doc.fileDescription}}</td>
               </tr>
             </tbody>
           </table>

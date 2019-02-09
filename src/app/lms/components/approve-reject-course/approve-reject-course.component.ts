@@ -21,19 +21,19 @@ export class ApproveRejectCourseComponent implements OnInit {
     {
       name: "Active",
       tab: 0,
-   
+
     },
     {
       name: "In-Active",
       tab: 1,
-  
+
     }
   ];
-  cid:any;
-  reason:any;
+  cid: any;
+  reason: any;
   itemsCount = 0;
-  courseData :any = [];
-  currentTab :any;
+  courseData: any = [];
+  currentTab: any;
   searchParams: any = {
     paging: { currentPage: 0, pageSize: 10 },
     sorts: [
@@ -45,7 +45,7 @@ export class ApproveRejectCourseComponent implements OnInit {
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
     private _location: Location) { }
-     
+
   ngOnInit() {
     this.changeTab(this.tabs[0]);
   }
@@ -54,96 +54,95 @@ export class ApproveRejectCourseComponent implements OnInit {
     this.searchParams.paging.pageSize = $event.pageSize;
     this.changeTab(this.currentTab);
   }
- 
+
   changeTab(tab) {
     this.courseData = [];
     this.currentTab = tab;
     if (tab.name == 'Active') {
       this._apiService
-      .get("/manager-course-approval/search-all-active-mgr-course-approvals",{ Search: JSON.stringify(this.searchParams) })
-      .subscribe((data) => {
-        this.courseData = data.managerCourseApprovals;
-     
-      }, (error) => {
-        this._alertService.error('Some error occured. Try Again')
-      })
-  
-    }
-    else if (tab.name == 'In-Active') {
+        .get("/manager-course-approval/search-all-active-mgr-course-approvals", { Search: JSON.stringify(this.searchParams) })
+        .subscribe((data) => {
+          this.courseData = data.managerCourseApprovals;
+
+        }, (error) => {
+          this._alertService.error('Some error occured. Try Again')
+        })
+
+    } else if (tab.name == 'In-Active') {
       this._apiService
-      .get("/manager-course-approval/search-all-inactive-mgr-course-approvals",{ Search: JSON.stringify(this.searchParams) })
-      .subscribe((data) => {
-        this.courseData = data.managerCourseApprovals;
-     
-      }, (error) => {
-        this._alertService.error('Some error occured. Try Again')
-      })
+        .get("/manager-course-approval/search-all-inactive-mgr-course-approvals", { Search: JSON.stringify(this.searchParams) })
+        .subscribe((data) => {
+          this.courseData = data.managerCourseApprovals;
+
+        }, (error) => {
+          this._alertService.error('Some error occured. Try Again')
+        })
     }
-  
 
 
 
-}
-approve() {
-  let payload = {
-    "id": this.cid,
-    "approveReason": this.reason
+
   }
-  this._apiService
-    .put(`/manager-course-approval/approve-user-course-approval-request` , payload)
-    .subscribe((data) => {
-      this.reason = null;
-      this._alertService.success("Course Approved successfully.");
-      setTimeout(() => {
-        this.changeTab(this.currentTab);
-      },0)
-   
-    }, (error) => {
-      this._alertService.error(error);
-    });
-    
+  approve() {
+    let payload = {
+      "id": this.cid,
+      "approveReason": this.reason
+    }
+    this._apiService
+      .put(`/manager-course-approval/approve-user-course-approval-request`, payload)
+      .subscribe((data) => {
+        this.reason = null;
+        this._alertService.success("Course Approved successfully.");
+        setTimeout(() => {
+          this.changeTab(this.currentTab);
+        }, 0)
+
+      }, (error) => {
+        this._alertService.error(error);
+      });
+
     $('#myModal').modal('hide');
-   
-}
-reject() {
-  let payload = {
-    "id": this.cid,
-    "rejectedReason": this.reason
+
   }
-  this._apiService
-    .put(`/manager-course-approval/reject-user-course-approval-request` , payload)
-    .subscribe((data) => {
-      this._alertService.success("Course approval request activated successfull");
-     
-      this.reason = null;
-    }, (error) => {
-      this._alertService.error(error);
-    });
-   
-    $('#myModal1').modal('hide');
-   
-}
-activate() {
-  let payload = {
-    "id": this.cid,
-    "rejectedReason": this.reason
-  }
-  this._apiService
-    .put(`/manager-course-approval/activate-user-course-approval-request` , payload)
-    .subscribe((data) => {
-      this._alertService.success("Course Approved successfully.");
-     
-      this.reason = null;
-      setTimeout(() => {
+  reject() {
+    let payload = {
+      "id": this.cid,
+      "rejectedReason": this.reason
+    }
+    this._apiService
+      .put(`/manager-course-approval/reject-user-course-approval-request`, payload)
+      .subscribe((data) => {
+        // this._alertService.success("Course approval request activated successfull");
+        this.reason = null;
         this.changeTab(this.currentTab);
-      },0)
-    }, (error) => {
-      this._alertService.error(error);
-    });
+      }, (error) => {
+        this._alertService.error(error);
+      });
+
+    $('#myModal1').modal('hide');
+
+  }
+  activate() {
+    let payload = {
+      "id": this.cid,
+      "rejectedReason": this.reason
+    }
+    this._apiService
+      .put(`/manager-course-approval/activate-user-course-approval-request`, payload)
+      .subscribe((data) => {
+        this._alertService.success("Course approval request activated successfully.");
+
+        this.reason = null;
+        setTimeout(() => {
+          this.changeTab(this.currentTab);
+        }, 0)
+      }, (error) => {
+        this._alertService.error(error);
+      });
     $('#myModal2').modal('hide');
     setTimeout(() => {
       this.changeTab(this.currentTab);
-    },0)
-  
-}
+    }, 0);
+
+  }
 }

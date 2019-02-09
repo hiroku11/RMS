@@ -19,8 +19,8 @@
         <td>{{cycle.cycleStartDate |date:'dd/MM/yyyy' }}</td>
         <td>{{cycle.cycleEndDate |date:'dd/MM/yyyy'}}</td>
         <td> {{cycle.published}}</td>
-        <td>{{cycle.openMidYearReview}}</td>
-        <td>{{cycle.openFullYearReview}}</td>
+        <td>{{cycle.openMidYearReview == 'Y'? 'Yes' : 'No'}}</td>
+        <td>{{cycle.openFullYearReview == 'Y'? 'Yes' : 'No'}}</td>
 
         <td>
           <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Email"></span>

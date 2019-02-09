@@ -39,7 +39,7 @@
         Mid Year Open?
       </td>
       <td>
-        {{cycle?.performanceCycleMidYearStatus}}
+        {{cycle?.performanceCycleMidYearStatus == 'Y'? 'Yes' : 'No'}}
       </td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@
         Full Year Open?
       </td>
       <td>
-        {{cycle?.performanceCycleFullYearStatus}}
+        {{cycle?.performanceCycleFullYearStatus == 'Y'? 'Yes' : 'No'}}
       </td>
     </tr>
     <tr>

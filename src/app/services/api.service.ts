@@ -40,7 +40,9 @@ export class ApiService {
             if (!formdata) {
                 data = this.parseDateToApiFormat(JSON.parse(JSON.stringify(data)));
             }
-
+        }
+        if (url.indexOf('add-feedback-external') > - 1) {
+            delete headers["X-AUTH-TOKEN"];
         }
         return this._http
             .post(apiUrl + url, data, { headers: headers })

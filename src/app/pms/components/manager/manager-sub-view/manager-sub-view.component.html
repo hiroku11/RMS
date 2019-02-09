@@ -38,7 +38,7 @@
           Mid Year Open
         </td>
         <td>
-          {{cycle?.performanceCycleMidYearStatus}}
+          {{cycle?.performanceCycleMidYearStatus == 'Y'? 'Yes' : 'No'}}
         </td>
       </tr>
       <tr>
@@ -46,7 +46,7 @@
           Full Year Open
         </td>
         <td>
-          {{cycle?.performanceCycleFullYearStatus}}
+          {{cycle?.performanceCycleFullYearStatus == 'Y'? 'Yes' : 'No'}}
         </td>
       </tr>
       <tr>
@@ -86,11 +86,9 @@
           <a href="mailto:{{c.userEmail}}">{{c.userEmail}}</a>
         </td>
         <td>{{c.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
-        <td> {{c.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}} </td>
-
+        <td> {{c.userPerfCycleFullYearStatus == 'Y' ? 'Yes' : 'No'}} </td>
         <td>
           {{c.userPerfCycleStatus != null ? c.userPerfCycleStatus.description : null }}
-
         </td>
       </tr>
     </tbody>

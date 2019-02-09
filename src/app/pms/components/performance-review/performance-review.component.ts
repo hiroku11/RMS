@@ -132,6 +132,7 @@ export class PerformanceReviewComponent implements OnInit {
 
   updatedCycle(cycle: any) {
     this.cycle = cycle;
+    this.getHeaderInfo();
   }
 
   statusUpdate() {
