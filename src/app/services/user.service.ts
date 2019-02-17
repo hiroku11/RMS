@@ -29,6 +29,7 @@ export class UserService implements CanActivate, CanLoad {
         if (decryptedUserDetails) {
             //check if the token has expired
             if (new Date(decryptedUserDetails.expires) < new Date()) {
+                this.logOut();
                 return false;
             } else {
                 this.userDetails = decryptedUserDetails;

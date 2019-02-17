@@ -12,6 +12,7 @@ import { UserService } from './../../../../services/user.service';
 export class EmployeeViewComponent implements OnInit {
   cycles: any = [];
   addCycle: any;
+  searchText: any;
   constructor(private route: ActivatedRoute, private _api: ApiService, private _alert: AlertsLoaderService, private userService: UserService) {
     this.initAddCycle();
   }

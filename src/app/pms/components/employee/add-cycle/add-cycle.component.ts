@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCycleComponent implements OnInit {
   cycles: any;
+  searchText: any;
   constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {

@@ -21,6 +21,7 @@ export class IncidentsComponent implements OnInit {
   // }
 
   getIncidentDetails(incident) {
+    this.incident = null;
     this._alert.showLoader();
     this._apiService.get('/incident/uniqueIncidentId/' + incident.uniqueIncidentId).subscribe((data) => {
       this.incident = data;

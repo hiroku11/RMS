@@ -1,3 +1,11 @@
+<!-- <div class="col-sm-12">
+  <div class="input-group search float-right">
+    <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+    <span class="input-group-addon">
+      <span class="fa fa-search"></span>
+    </span>
+  </div>
+</div> -->
 <div class="col s12">
   <table class="table table-bordered cms-table">
     <thead>
@@ -12,7 +20,7 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let cycle of performanceCycles; let i = index;">
+      <tr *ngFor="let cycle of performanceCycles | searchFilter : searchText; let i = index;">
         <td>
           <a [routerLink]="['manager-subview',cycle.id]">{{cycle.title}}</a>
         </td>
@@ -23,7 +31,8 @@
         <td>{{cycle.openFullYearReview == 'Y'? 'Yes' : 'No'}}</td>
 
         <td>
-          <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Email"></span>
+          <span class="fa fa-envelope btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip"
+            title="Email"></span>
         </td>
       </tr>
     </tbody>

@@ -44,10 +44,13 @@
       </div>
       <div class="col-sm-6">
         <label>Given Date:</label>
-        {{comment.feedbackGivenDate | date:'dd/MM/yyyy hh:mm'}}
+        {{comment.feedbackGivenDate | date:'dd/MM/yyyy'}}
       </div>
       <div class="col-sm-12">
         <textarea disabled class="form-control" [value]="comment.feedbackComment"></textarea>
+      </div>
+      <div class="col-sm-12">
+        <button class="btn btn-secondary" [routerLink]="['/pms/feedback']">Back</button>
       </div>
     </div>
   </div>

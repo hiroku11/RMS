@@ -13,15 +13,13 @@
           <span class="fa fa-building"></span> Performance | Admin
         </h4>
       </div>
-      <div class="col-md-6">
-        <!-- <button class="btn btn-info btn-sm float-right ml-2">
-          <span class="fa fa-search"></span> Advance Search</button>
+      <div class="col-md-6 col-sm-12">
         <div class="input-group search float-right">
-          <input class="form-control form-control-sm " placeholder="Search" />
+          <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
           <span class="input-group-addon">
             <span class="fa fa-search"></span>
           </span>
-        </div> -->
+        </div>
 
       </div>
     </div>
@@ -39,7 +37,7 @@
         <th></th>
       </thead>
       <tbody>
-        <tr *ngFor="let cycle of performanceCycles; let i = index;">
+        <tr *ngFor="let cycle of performanceCycles | searchFilter : searchText; let i = index;">
           <td>
             <a>{{cycle.title}}</a>
           </td>
@@ -51,8 +49,7 @@
           <td>{{cycle.openFullYearReview == 'Y'? 'Yes' : 'No'}}</td>
 
           <td>
-            <span class="fa fa-share btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip"
-              title="Publish"></span>
+            <span class="fa fa-share btn btn-sm  btn-outline-info" (click)="publish(cycle)" data-toggle="tooltip" title="Publish"></span>
             <span class="fa fa-pencil btn btn-sm btn-outline-info" (click)="editCycle(cycle)" data-toggle="tooltip"
               title="Edit"></span>
             <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="deleteCycle(cycle, i)" data-toggle="tooltip"
@@ -61,6 +58,7 @@
         </tr>
       </tbody>
     </table>
+    <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
 
     <div class="row">
       <div class="col-12 col-md-4">

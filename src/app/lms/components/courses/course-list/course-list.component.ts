@@ -64,6 +64,8 @@ export class CourseListComponent implements OnInit {
       .subscribe((data) => {
         this._alertService.success("Course Added successfully.");
         $('#myModal').modal('hide');
+        this.plannedEndDate = null;
+        this.plannedStartDate = null;
         this.reason = null;
       }, (error) => {
         this._alertService.error(error);

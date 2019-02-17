@@ -61,6 +61,15 @@
   </table>
 </div>
 
+<div class="col-sm-12">
+  <div class="input-group search float-right">
+    <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+    <span class="input-group-addon">
+      <span class="fa fa-search"></span>
+    </span>
+  </div>
+</div>
+
 <div class="col s12">
   <table class="table table-bordered cms-table">
     <thead>
@@ -74,7 +83,7 @@
 
       <th>Status</th>
     </thead>
-    <tbody *ngFor="let c of performanceCycles; let i = index;">
+    <tbody *ngFor="let c of performanceCycles | searchFilter: searchText; let i = index;">
       <tr>
         <td>
           <a *ngIf="c?.userPerfCycleId && c?.userLoginId" [routerLink]="['/pms/manager/manager-subview',c?.userPerfCycleId,c?.userLoginId]">{{c.userLoginId}}</a>
@@ -93,4 +102,5 @@
       </tr>
     </tbody>
   </table>
+  <!-- <ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination> -->
 </div>

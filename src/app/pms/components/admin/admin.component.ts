@@ -11,6 +11,18 @@ export class AdminComponent implements OnInit {
   addCycle: any;
   editing: boolean = false;
   module = "Performance Management System";
+  itemsCount: number;
+  searchText: string;
+  searchParams: any = {
+    paging: { currentPage: 0, pageSize: 10 },
+    sorts: [
+      {
+        field: "description",
+        order: "ASC"
+      }
+    ],
+    filters: []
+  };
   constructor(private _api: ApiService, private _alert: AlertsLoaderService) { }
 
   ngOnInit() {
@@ -31,7 +43,7 @@ export class AdminComponent implements OnInit {
     }
   }
   getPerformanceCycles() {
-    this._api.get("/performance/admin-view").subscribe(
+    this._api.get("/performance/admin-view", { Search: JSON.stringify(this.searchParams) }).subscribe(
       (data) => {
         this.performanceCycles = data;
       },
@@ -40,6 +52,12 @@ export class AdminComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  getPageData($event: any) {
+    this.searchParams.paging.currentPage = $event.pageNo - 1;
+    this.searchParams.paging.pageSize = $event.pageSize;
+    this.getPerformanceCycles();
   }
   addUpdatePerformanceCycle() {
     this._api.put('/performance/add-or-update-performance-cycle', this.addCycle).subscribe(

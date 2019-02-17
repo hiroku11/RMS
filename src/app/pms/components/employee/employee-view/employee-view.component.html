@@ -4,6 +4,14 @@
       <span class="fa fa-building"></span> Employee
     </h4>
   </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+  </div>
 </div>
 <table class="table table-bordered cms-table">
   <thead>
@@ -19,17 +27,18 @@
     <th></th>
   </thead>
   <tbody *ngIf="cycles.length > 0">
-    <tr *ngFor="let cycle of cycles; let i = index">
+    <tr *ngFor="let cycle of cycles | searchFilter : searchText; let i = index">
       <td>
-        <a [routerLink]="['performance-review',cycle?.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
+        <a *ngIf="cycle.userPerfCycleId" [routerLink]="['performance-review',cycle?.userPerfCycleId]">{{cycle.performanceCycleTitle}}</a>
       </td>
-      <td>{{cycle.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
-      <td>{{cycle.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
-      <td>{{cycle.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
-      <td>{{cycle.userPerfCycleFullYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
-      <td>{{cycle.userPerfCycleStatus?.description}}</td>
+      <td>{{cycle?.performanceCycleStartDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{cycle?.performanceCycleEndDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{cycle?.userPerfCycleMidYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
+      <td>{{cycle?.userPerfCycleFullYearStatus == 'Y' ? 'Yes' : 'No'}}</td>
+      <td>{{cycle?.userPerfCycleStatus?.description}}</td>
       <td>
-        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle, index)" data-toggle="tooltip" title="Delete"></span>
+        <span class="fa fa-trash btn btn-sm btn-outline-danger" (click)="removeCycle(cycle, index)" data-toggle="tooltip"
+          title="Delete"></span>
       </td>
     </tr>
   </tbody>

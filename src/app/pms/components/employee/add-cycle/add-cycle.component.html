@@ -4,6 +4,14 @@
       <span class="fa fa-building"></span> Employee | Add Cycle
     </h4>
   </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="input-group search float-right">
+      <input class="form-control form-control-sm " [(ngModel)]="searchText" placeholder="Search" />
+      <span class="input-group-addon">
+        <span class="fa fa-search"></span>
+      </span>
+    </div>
+  </div>
 </div>
 <table class="table table-bordered cms-table">
   <thead>
@@ -14,7 +22,7 @@
     <th></th>
   </thead>
   <tbody>
-    <tr *ngFor="let cycle of cycles">
+    <tr *ngFor="let cycle of cycles | searchFilter : searchText">
       <td>
         <a>{{cycle.title}}</a>
       </td>

@@ -59,7 +59,7 @@ export class Three60FeedbackComponent implements OnInit {
     this._api.delete(`/performance/delete-external-feedback/userPerformanceCycleId/${this.cycle.userPerformanceCycleId}/externalFeedbackId/${feed.id}`).subscribe(
       (data) => {
         // this.cycle.peerComment = data;
-        this.internalFeedbacks.splice(ind, 1);
+        this.externalFeedbacks.splice(ind, 1);
         this.update.emit(this.cycle);
         this._alert.success("Feedback successfully deleted");
       }, (error) => {
