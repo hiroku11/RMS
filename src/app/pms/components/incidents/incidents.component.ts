@@ -43,5 +43,19 @@ export class IncidentsComponent implements OnInit {
     if (this.incident.accident.injuredPersons) {
       this.incident.accident.injuredPersons = this.incident.accident.injuredPersons.concat(this.incident.accident.employeeInjuredPersons);
     }
+
+    // crime details
+    if (!this.incident.crime) {
+      this.incident.crime = {};
+    }
+    if (this.incident.crime.witnesses) {
+      this.incident.crime.witnesses = this.incident.crime.witnesses.concat(this.incident.crime.employeeWitnesses);
+    }
+    if (this.incident.crime.crimeSuspects) {
+      this.incident.crime.crimeSuspects = this.incident.crime.crimeSuspects.concat(this.incident.crime.employeeCrimeSuspects);
+    }
+    // if (this.incident.accident.injuredPersons) {
+    //   this.incident.crime.injuredPersons = this.incident.crime.injuredPersons.concat(this.incident.crime.employeeInjuredPersons);
+    // }
   }
 }

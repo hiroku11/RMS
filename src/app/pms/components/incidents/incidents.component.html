@@ -11,7 +11,8 @@
     <tbody *ngFor="let d of data.reportedIncidents">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
@@ -36,7 +37,8 @@
     <tbody *ngFor="let d of data.incidentSuspects">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -60,7 +62,8 @@
     <tbody *ngFor="let d of data.accidentInjuredPersons">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -84,7 +87,8 @@
     <tbody *ngFor="let d of data.accidentWitnesses">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -109,7 +113,8 @@
     <tbody *ngFor="let d of data.crimeSuspects">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -134,7 +139,8 @@
     <tbody *ngFor="let d of data.crimeWitnesses">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -159,7 +165,8 @@
     <tbody *ngFor="let d of data.incidentInvestigations">
       <tr>
         <td>
-          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"
+            (click)="getIncidentDetails(d)">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -183,7 +190,8 @@
     <tbody *ngFor="let d of data.claimsHandled">
       <tr>
         <td>
-          <a href="javascript:void(0)" (click)="getIncidentDetails(d)" data-toggle="modal" data-target="#myModal">{{d.uniqueIncidentId}}</a>
+          <a href="javascript:void(0)" (click)="getIncidentDetails(d)" data-toggle="modal"
+            data-target="#myModal">{{d.uniqueIncidentId}}</a>
         </td>
         <td> {{d.incidentDescription}}</td>
         <td>{{d.incidentOpenedDateTime | date :'dd/MM/yyyy hh:mm'}}</td>
@@ -248,11 +256,13 @@
               <label>Incident Location:</label>
               <label class="summary-text">{{incident.incidentLocation?.description}}</label>
             </div>
-            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentLocation && incident.incidentLocation.id != 'OTHER'">
+            <div class="col-md-4 col-sm-12"
+              *ngIf="incident.incidentLocation && incident.incidentLocation.id != 'OTHER'">
               <label>Incident Location Details:</label>
               <label class="summary-text">{{incident.incidentLocationDetail?.description}}</label>
             </div>
-            <div class="col-md-4 col-sm-12" *ngIf="incident.incidentLocation && incident.incidentLocation.id == 'OTHER'">
+            <div class="col-md-4 col-sm-12"
+              *ngIf="incident.incidentLocation && incident.incidentLocation.id == 'OTHER'">
               <label>Incident Location Details:</label>
               <label class="summary-text">{{incident.incidentLocationOther}}</label>
             </div>
@@ -513,7 +523,8 @@
               <label class="summary-text">{{incident?.asset?.otherDescription}}</label>
             </div>
           </div>
-          <table class="table table-bordered" *ngIf="incident.asset.vehicles.length >0">
+          <table class="table table-bordered"
+            *ngIf="incident.asset && incident.asset.vehicles && incident.asset.vehicles.length >0">
             <thead>
               <tr>
                 <th>Registration ID</th>
@@ -531,7 +542,8 @@
               </tr>
             </tbody>
           </table>
-          <table class="table table-bordered" *ngIf="incident.asset.equipments.length >0">
+          <table class="table table-bordered"
+            *ngIf="incident.asset && incident.asset.equipments && incident.asset.equipments.length >0">
             <thead>
               <tr>
                 <th>Equipment ID</th>
@@ -547,7 +559,8 @@
               </tr>
             </tbody>
           </table>
-          <table class="table table-bordered" *ngIf="incident.asset.buildings.length >0">
+          <table class="table table-bordered"
+            *ngIf="incident.asset && incident.asset.buildings && incident.asset.buildings.length >0">
             <thead>
               <tr>
                 <th>Building ID</th>
@@ -564,7 +577,8 @@
               </tr>
             </tbody>
           </table>
-          <table class="table table-bordered" *ngIf="incident.asset.assetTypeOthers.length >0">
+          <table class="table table-bordered"
+            *ngIf="incident.asset && incident.asset.assetTypeOthers && incident.asset.assetTypeOthers.length >0">
             <thead>
               <tr>
                 <th>Asset ID</th>
@@ -648,14 +662,15 @@
                   {{crimeSuspect.addresses[0]?.county}}
                 </td>
                 <td>
-                  {{crimeSuspect.addresses[0].postcode1}}{{crimeSuspect.addresses[0].postcode2}}
+                  {{crimeSuspect.addresses[0]?.postcode1}}{{crimeSuspect.addresses[0]?.postcode2}}
                 </td>
 
               </tr>
             </tbody>
           </table>
 
-          <table class="table table-bordered" *ngIf="incident.crime && incident.crime.witnesses.length>0">
+          <table class="table table-bordered"
+            *ngIf="incident.crime && incident.crime.witnesses && incident.crime.witnesses.length>0">
             <thead>
               <tr>
                 <th colspan="8" class="text-center">Crime Witnesses</th>
@@ -753,7 +768,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Policy Type:</label>
-              <label class="summary-text">{{incident.claim.policyType && incident.claim.policyType.id !='OTHER' ?
+              <label class="summary-text">{{incident.claim && incident.claim.policyType && incident.claim.policyType.id !='OTHER' ?
                 incident.claim?.policyType?.description :
                 incident.claim?.policyTypeOther}}
               </label>
@@ -806,7 +821,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Requested Date:</label>
-              <label class="summary-text">{{incident.claim?.claimRequestedDate}}</label>
+              <label class="summary-text">{{incident.claim?.claimRequestedDate | date: 'dd/MM/yyyy'}}</label>
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Requested By:</label>
@@ -824,7 +839,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Approved Date:</label>
-              <label class="summary-text">{{incident.claim?.claimApprovedDate}}</label>
+              <label class="summary-text">{{incident.claim?.claimApprovedDate | date: 'dd/MM/yyyy'}}</label>
             </div>
           </div>
           <div class="row" *ngIf="incident.claim">
@@ -838,7 +853,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Settlement Date:</label>
-              <label class="summary-text">{{incident.claim?.claimSettlementDate}}</label>
+              <label class="summary-text">{{incident.claim?.claimSettlementDate | date: 'dd/MM/yyyy'}}</label>
             </div>
           </div>
           <div class="row" *ngIf="incident.claim">
@@ -848,7 +863,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Declined Date:</label>
-              <label class="summary-text">{{incident.claim?.claimDeclinedDate}}</label>
+              <label class="summary-text">{{incident.claim?.claimDeclinedDate | date: 'dd/MM/yyyy'}}</label>
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Declined Comments:</label>
@@ -862,7 +877,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Reopened Date:</label>
-              <label class="summary-text">{{incident.claim?.claimReopenedDate}}</label>
+              <label class="summary-text">{{incident.claim?.claimReopenedDate | date: 'dd/MM/yyyy'}}</label>
             </div>
             <div class="col-sm-12 col-md-4">
               <label>Claim Reopened Comments:</label>
@@ -947,13 +962,17 @@
             </div>
           </div>
 
-          <div *ngIf="incident.investigation && incident.investigation.investigator && incident.investigation.investigator.investigationTeams.length > 0"
+          <div
+            *ngIf="incident.investigation && incident.investigation.investigator && incident.investigation.investigator.investigationTeams.length > 0"
             class="row">
             <div class="col-sm-12" *ngFor="let team of incident.investigation.investigator.investigationTeams">
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th colspan="3">{{team.teamDescription}}: Team Leads</th>
+                    <th colspan="3">{{team.teamDescription}}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="3">Team Leads</th>
                   </tr>
                   <tr>
                     <th>Full Name</th>
