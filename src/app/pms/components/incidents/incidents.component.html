@@ -951,10 +951,10 @@
                       {{incident.investigation?.investigator?.lastName}}
                     </td>
                     <td>
-                      {{incident.investigation?.investigator?.teamLeadPhone}}
+                      {{incident.investigation?.investigator?.phone}}
                     </td>
                     <td>
-                      {{incident.investigation?.investigator?.teamLeadEmail}}
+                      {{incident.investigation?.investigator?.email}}
                     </td>
                   </tr>
                 </tbody>
@@ -983,8 +983,8 @@
                 <tbody *ngIf="team.investigationTeamLeads.length > 0">
                   <tr *ngFor="let lead of team.investigationTeamLeads">
                     <td>{{lead.teamLeadFirstName}} {{lead.teamLeadLastName}}</td>
-                    <td>{{lead.phone}}</td>
-                    <td>{{lead.email}}</td>
+                    <td>{{lead.teamLeadPhone}}</td>
+                    <td>{{lead.teamLeadEmail}}</td>
                   </tr>
                 </tbody>
               </table>
