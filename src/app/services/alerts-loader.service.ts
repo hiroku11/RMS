@@ -77,5 +77,6 @@ export class AlertsLoaderService {
             return "Some server error occured please try again.";
         }
 
+        return "Some error occured please try again.";
     }
 }

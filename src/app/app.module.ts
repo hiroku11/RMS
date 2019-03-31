@@ -1,3 +1,4 @@
+import { HttpInterceptorService } from './services/http-interceptor.service';
 import { ConfigService } from './services/config.service';
 import { CoreComponentsModule } from './core.components.module/core.components.module';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -37,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
       useFactory: getAppConfig,
       deps: [ConfigService],
       multi: true
-    }, AlertsLoaderService, SharedService],
+    }, AlertsLoaderService, SharedService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

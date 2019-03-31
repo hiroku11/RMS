@@ -9,7 +9,7 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./password-reset.component.scss']
 })
 export class PasswordResetComponent implements OnInit {
-  userLoginId: any;
+  userInput: any;
   public componentRef: any;
   constructor(private _api: ApiService, private alert: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
@@ -19,27 +19,16 @@ export class PasswordResetComponent implements OnInit {
   }
 
   submit() {
-    this._api.passwordReset(`/user/reset-user-password/userLoginId/${this.userLoginId}`).subscribe(
+    if (!this.userInput) {
+      return;
+    }
+    this._api.passwordReset(`/user/reset-user-password`, { userInput: this.userInput }).subscribe(
       (data) => {
         this.alert.success('A mail has been sent to your registered email. Please check mail for password reset');
       }, (error) => {
         this.alert.error(error);
       }
-    )
-
-  }
-  openUserLookup() {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      UserLookupComponent
     );
-    this.componentRef = this.viewContainerRef.createComponent(componentFactory);
-    this.componentRef.instance.selectUser.subscribe((data) => {
-      this.userLoginId = data;
-      this.closeModal();
-    });
-    this.componentRef.instance.closeModal.subscribe(() => {
-      this.closeModal();
-    });
 
   }
 

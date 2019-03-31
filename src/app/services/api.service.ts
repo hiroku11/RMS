@@ -222,10 +222,10 @@ export class ApiService {
         return this.put(url, data);
     }
 
-    passwordReset(url: any) {
+    passwordReset(url: any, data: any) {
         this._ajaxLoader.showLoader();
         return this._http
-            .put(this.loginApi + url, {}, { headers: {} })
+            .post(this.loginApi + url, data, { headers: {} })
             .map((res: any) => {
                 res = this.parseDate(res);
                 this._ajaxLoader.hideLoader();

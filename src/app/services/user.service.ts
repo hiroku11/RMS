@@ -9,6 +9,7 @@ export class UserService implements CanActivate, CanLoad {
     constructor(private injector: Injector) {
         this.getUserDetails().then((data) => {
             this.userDetails = data;
+            this.checkTokenExpiry();
             if (this.userDetails && this.userDetails.roles) {
                 this.userDetails.roles.forEach((role) => {
                     if (role.roleName.toLowerCase() === 'admin') {
@@ -23,11 +24,29 @@ export class UserService implements CanActivate, CanLoad {
         });
 
     }
+    checkTokenExpiry() {
+        const token = localStorage.getItem('rmsAuthToken');
+        if (!token) {
+            this.logOut();
+            return true;
+        }
+        const base64Url = token.split('.')[0];
+        const decryptedUserDetails = JSON.parse(window.atob(base64Url));
+        if (new Date(decryptedUserDetails.expires) < new Date()) {
+            this.logOut();
+            return true;
+        }
+        return false;
+    }
     decryptToken(token: any) {
+        if (!token) {
+            this.logOut();
+            return false;
+        }
         var base64Url = token.split(".")[0];
         var decryptedUserDetails = JSON.parse(window.atob(base64Url));
         if (decryptedUserDetails) {
-            //check if the token has expired
+            // check if the token has expired
             if (new Date(decryptedUserDetails.expires) < new Date()) {
                 this.logOut();
                 return false;
