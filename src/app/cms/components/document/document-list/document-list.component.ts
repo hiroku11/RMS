@@ -33,22 +33,27 @@ export class DocumentListComponent implements OnInit {
     private _alertService: AlertsLoaderService,
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver) {
-    this.getDocuments();
   }
 
   ngOnInit() {
+    this.getDocuments();
   }
 
   getDocuments() {
-    this._apiService.get("/compliance/search-compliance-document-and-version-history", { Search: JSON.stringify(this.searchParams) }).subscribe(
-      (data) => {
-        this.documentsList = data.complianceDocuments;
-        this.itemsCount = data.totalRecords;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._alertService.showLoader();
+    this._apiService.get("/compliance/search-compliance-document-and-version-history",
+      { Search: JSON.stringify(this.searchParams) }).subscribe(
+        (data) => {
+          this._alertService.hideLoader();
+          this.documentsList = data.complianceDocuments;
+          this.itemsCount = data.totalRecords;
+        },
+        (error) => {
+          this._alertService.hideLoader();
+          this._alertService.error(error);
+          // console.log(error);
+        }
+      );
   }
 
   getPageData($event: any) {
@@ -76,7 +81,7 @@ export class DocumentListComponent implements OnInit {
   deleteDocumnet(doc: any, index: number) {
     if (!window.confirm("Are you sure you want to delete this item/record?")) {
       return;
-  }
+    }
     this._apiService.delete(`/compliance/delete-compliance-document/complianceDocumentId/${doc.id}`, {}, true).subscribe(
       data => {
         this._alertService.success("Documnet deleted successfully");

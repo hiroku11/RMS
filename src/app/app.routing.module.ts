@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './core.components.module/component/login/login.component';
+import { CmsGuardService } from './services/cms-guard.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: "full" },
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'password-reset', component: PasswordResetComponent },
     { path: 'give-feedback-external/:cycleId', component: GiveFeedbackExternalComponent },
-    { path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule", canLoad: [UserService], canActivate: [UserService] },
+    { path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule", canLoad: [UserService, CmsGuardService], canActivate: [UserService] },
     { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'pms', loadChildren: "app/pms/app.pms.module#PmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'lms', loadChildren: "app/lms/app.lms.module#LmsModule", canLoad: [UserService], canActivate: [UserService] },

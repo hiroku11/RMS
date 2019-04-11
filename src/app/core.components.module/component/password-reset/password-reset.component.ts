@@ -29,7 +29,7 @@ export class PasswordResetComponent implements OnInit {
         this.alert.error(error);
       }
     );
-
+    return false;
   }
 
   closeModal() {

@@ -24,10 +24,12 @@ export class UserService implements CanActivate, CanLoad {
         });
 
     }
-    checkTokenExpiry() {
+    checkTokenExpiry(donotRedirect?) {
         const token = localStorage.getItem('rmsAuthToken');
         if (!token) {
-            this.logOut();
+            if (!donotRedirect) {
+                this.logOut();
+            }
             return true;
         }
         const base64Url = token.split('.')[0];

@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CmsGuardService } from './services/cms-guard.service';
 
 
 
@@ -27,7 +28,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule, HttpClientModule,
     FormsModule, CoreComponentsModule
   ],
-  providers: [UserService,
+  providers: [UserService, CmsGuardService,
     {
       provide: APP_INITIALIZER,
       useFactory: getUserDetails,
