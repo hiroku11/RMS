@@ -14,7 +14,10 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'password-reset', component: PasswordResetComponent },
     { path: 'give-feedback-external/:cycleId', component: GiveFeedbackExternalComponent },
-    { path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule", canLoad: [UserService, CmsGuardService], canActivate: [UserService] },
+    {
+        path: 'cms', loadChildren: "app/cms/app.cms.module#CmsModule", canLoad: [UserService, CmsGuardService],
+        canActivate: [UserService, CmsGuardService]
+    },
     { path: 'ams', loadChildren: "app/ams/app.ams.module#AmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'pms', loadChildren: "app/pms/app.pms.module#PmsModule", canLoad: [UserService], canActivate: [UserService] },
     { path: 'lms', loadChildren: "app/lms/app.lms.module#LmsModule", canLoad: [UserService], canActivate: [UserService] },

@@ -1,4 +1,4 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector, EventEmitter } from "@angular/core";
 import { Router, CanActivate, CanLoad } from "@angular/router";
 @Injectable()
 export class UserService implements CanActivate, CanLoad {
@@ -6,6 +6,7 @@ export class UserService implements CanActivate, CanLoad {
     authToken: any;
     isAdmin: boolean = false;
     isSupervisor: boolean = false;
+    userLoggedOut = new EventEmitter<boolean>();
     constructor(private injector: Injector) {
         this.getUserDetails().then((data) => {
             this.userDetails = data;
@@ -86,6 +87,7 @@ export class UserService implements CanActivate, CanLoad {
         this.authToken = null;
         this.isAdmin = null;
         this.isSupervisor = null;
+        this.userLoggedOut.emit(true);
         let router = this.injector.get(Router);
         router.navigate(["login"]);
     }

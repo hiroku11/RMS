@@ -1,3 +1,5 @@
+import { CanActivate } from '@angular/router';
+import { ApiService } from './api.service';
 import { CanLoad } from '@angular/router';
 import { AlertsLoaderService } from "./alerts-loader.service";
 import { Injectable } from "@angular/core";
@@ -15,33 +17,57 @@ import * as moment from 'moment';
 import { ConfigService } from './config.service';
 
 @Injectable()
-export class CmsGuardService implements CanLoad {
-   apiUrl: string = 'https://gotorisk.co.uk:8443/rmsrest/s';
-   loginApi: string = 'https://gotorisk.co.uk:8443/rmsrest/p';
-   config: any;
+export class CmsGuardService implements CanLoad, CanActivate {
+   isCmsUser: boolean;
    constructor(
-      private _http: HttpClient,
       private _alerts: AlertsLoaderService,
-      private _configService: ConfigService
+      private _apiService: ApiService, private user: UserService
    ) {
-      this.config = this._configService.config;
-      this.apiUrl = this.config.apiUrl;
-      this.loginApi = this.config.loginApi;
+      this.user.userLoggedOut.subscribe((logout) => {
+         this.isCmsUser = null;
+      });
    }
 
-   canLoad(): Promise<boolean> {
-      return new Promise((resolve: Function, reject: Function) => {
-         this._http.get('/rmsrest/s/compliance/access-compliance-module').subscribe((data) => {
+   canLoad(): Promise<boolean> | boolean {
+      if (this.isCmsUser) {
+         return true;
+      }
+      return new Promise((resolve, reject) => {
+         this._apiService.get('/compliance/access-compliance-module').subscribe((data) => {
             resolve(true);
+            this.isCmsUser = true;
          }, (error) => {
             if (error.status === 403) {
                reject(false);
+               this._alerts.hideLoader();
             } else {
-               this._alerts.error(error);
                reject(false);
             }
+            this._alerts.error(error);
          });
+         // setTimeout(() => resolve(false), 1000); // (*)
       });
+   }
 
+   canActivate(): Promise<boolean> | boolean {
+      if (this.isCmsUser) {
+         return true;
+      }
+      return new Promise((resolve, reject) => {
+         this._apiService.get('/compliance/access-compliance-module').subscribe((data) => {
+            resolve(true);
+            this.isCmsUser = true;
+         }, (error) => {
+            if (error.status === 403) {
+               reject(false);
+               this._alerts.hideLoader();
+            } else {
+               reject(false);
+            }
+            this._alerts.error(error);
+         });
+         // setTimeout(() => resolve(false), 1000); // (*)
+      });
    }
 }
+
