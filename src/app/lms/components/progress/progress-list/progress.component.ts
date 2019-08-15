@@ -28,7 +28,7 @@ export class ProgressComponent implements OnInit, AfterViewInit {
     sorts: [
 
     ],
-    filters: [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "not attempted" }]
+    filters: [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": 'not attempted' }]
   };
 
   course: any;
@@ -53,33 +53,33 @@ export class ProgressComponent implements OnInit, AfterViewInit {
   }
   getProgress() {
     this._apiService
-      .get("/user-course/my-progress")
+      .get('/user-course/my-progress')
       .subscribe(data => {
         this.progressData = data;
 
         this.tabs = [
           {
-            name: "Not Started",
+            name: 'Not Started',
             tab: 0,
             count: this.progressData.notStarted || 0
           },
           {
-            name: "In Progress",
+            name: 'In Progress',
             tab: 1,
             count: this.progressData.inProgress || 0
           },
           {
-            name: "Completed",
+            name: 'Completed',
             tab: 2,
             count: this.progressData.completed || 0
           },
           {
-            name: "Passed",
+            name: 'Passed',
             tab: 3,
-            count: this.progressData.cancelled || 0
+            count: this.progressData.passed || 0
           },
           {
-            name: "Failed",
+            name: 'Failed',
             tab: 4,
             count: this.progressData.aborted || 0
           }
@@ -93,7 +93,7 @@ export class ProgressComponent implements OnInit, AfterViewInit {
   }
   getCourse() {
     this._apiService
-      .get("/user-course/search-user-courses", { Search: JSON.stringify(this.searchParams) })
+      .get('/user-course/search-user-courses', { Search: JSON.stringify(this.searchParams) })
       .subscribe(data => {
         this.course = data.userCourses;
         this.changeTab({ name: 'Not Started' });
@@ -103,26 +103,22 @@ export class ProgressComponent implements OnInit, AfterViewInit {
   changeTab(tab) {
 
     this.currentTab = tab;
-    if (tab.name == 'Not Started') {
-      this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "not attempted" }]
-    }
-    else if (tab.name == 'In Progress') {
-      this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "incomplete" }]
-    }
-    else if (tab.name == 'Completed') {
-      this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "completed" }]
+    if (tab.name === 'Not Started') {
+      this.searchParams.filters = [{ 'field': 'userCourseLessonStatus', 'operator': 'EQ', 'value': 'not attempted' }];
+    } else if (tab.name === 'In Progress') {
+      this.searchParams.filters = [{ 'field': 'userCourseLessonStatus', 'operator': 'EQ', 'value': 'incomplete' }];
+    } else if (tab.name === 'Completed') {
+      this.searchParams.filters = [{ 'field': 'userCourseLessonStatus', 'operator': 'EQ', 'value': 'completed' }];
 
-    }
-    else if (tab.name == 'Passed') {
-      this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "passed" }]
-    }
-    else if (tab.name == 'Failed') {
-      this.searchParams.filters = [{ "field": "userCourseLessonStatus", "operator": "EQ", "value": "failed" }]
+    } else if (tab.name === 'Passed') {
+      this.searchParams.filters = [{ 'field': 'userCourseLessonStatus', 'operator': 'EQ', 'value': 'passed' }];
+    } else if (tab.name === 'Failed') {
+      this.searchParams.filters = [{ 'field': 'userCourseLessonStatus', 'operator': 'EQ', 'value': 'failed' }];
     }
 
 
     this._apiService
-      .get("/user-course/my-progress", { Search: JSON.stringify(this.searchParams) })
+      .get('/user-course/my-progress', { Search: JSON.stringify(this.searchParams) })
       .subscribe((data) => {
         this.ngzone.run(() => {
           this.courseData = data.userCourses;
@@ -130,8 +126,8 @@ export class ProgressComponent implements OnInit, AfterViewInit {
         });
 
       }, (error) => {
-        this._alertService.error('Some error occured. Try Again')
-      })
+        this._alertService.error('Some error occured. Try Again');
+      });
   }
   getPageData($event: any) {
     this.searchParams.paging.currentPage = $event.pageNo - 1;
