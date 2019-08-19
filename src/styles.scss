@@ -4,6 +4,7 @@
 
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 @import "./_common";
+
 html,
 body {
     height: 100%;
@@ -79,6 +80,7 @@ a:hover {
 .btn-icon {
     padding: 0;
     background: none;
+
     &:hover {
         background-color: none;
     }
@@ -98,12 +100,15 @@ a:hover {
         border-radius: 0 20px 20px 0;
         border-left: none;
     }
+
     input {
         border-right: 0;
         border-radius: 20px 0 0 20px;
     }
+
     width: 145px;
     max-height: 30px;
+
     span {
         background-color: white;
         border-radius: 0 20px 20px 0;
@@ -112,9 +117,12 @@ a:hover {
 
 .nav-tabs {
     border-bottom: 1px solid $amsColor;
+
     .nav-link {
         border-color: $amsColor;
         color: $amsColor;
+        padding: 8px 8px;
+
         &:hover,
         &.active {
             color: white !important;
@@ -200,11 +208,13 @@ ngx-select-dropdown {
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+
     ul {
         li {
             white-space: normal !important;
         }
     }
+
     /deep/button.ngx-dropdown-button {
         padding: 7px 12px !important;
     }
@@ -233,6 +243,7 @@ ngx-select-dropdown {
 .modal-body {
     max-height: 400px;
     overflow-y: auto;
+
     table {
         margin-top: 15px;
     }
@@ -242,28 +253,36 @@ ngx-select-dropdown {
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary,
 .btn-secondary,
-.btn-info, .btn-danger, .btn-warning {
+.btn-info,
+.btn-danger,
+.btn-warning {
     background-color: #9ca3a9 !important;
     border: none;
+
     :active {
         color: #fff;
     }
+
     &:focus {
         box-shadow: 0 0 0 0.2rem rgba(90, 115, 143, 0.5) !important;
     }
 }
-.highcharts-credits{
-    display: none;}
+
+.highcharts-credits {
+    display: none;
+}
 
 .searchbox {
     vertical-align: middle;
     padding-bottom: 10px;
     float: right;
     width: 184px;
+
     .form-control {
         border-radius: 20px !important;
         padding-right: 25px;
     }
+
     span {
         position: absolute;
         right: 10px;
@@ -272,20 +291,21 @@ ngx-select-dropdown {
     }
 }
 
-.side-nav.menu-open{
-    padding-left: 0 !   important;
+.side-nav.menu-open {
+    padding-left: 0 ! important;
 }
-.navbar-brand{
-    img{
+
+.navbar-brand {
+    img {
         min-width: 43px;
         padding-left: 5px;
     }
 }
 
-table{
+table {
     margin-right: 5px !important;
 }
 
-.input-group.search{
+.input-group.search {
     z-index: 99;
 }

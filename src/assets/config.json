@@ -1,7 +1,7 @@
 {
-    "loginUrl": "https://live.gotorisk.co.uk/rmsrest/p",
-    "apiUrl": "https://live.gotorisk.co.uk/rmsrest/s",
-    "loginApi": "https://live.gotorisk.co.uk/rmsrest/p",
+    "loginUrl": "https://dev.gotorisk.co.uk:8443/rmsrest/p",
+    "apiUrl": "https://dev.gotorisk.co.uk:8443/rmsrest/s",
+    "loginApi": "https://dev.gotorisk.co.uk:8443/rmsrest/p",
     "feedbackUrlPrefix": "https://hiroku11.github.io/RMS/#/",
     "playerBaseUrl": "https://gotorisk.co.uk:8445/"
 }

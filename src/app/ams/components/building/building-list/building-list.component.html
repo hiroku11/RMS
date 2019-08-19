@@ -10,7 +10,7 @@
     <button class="btn btn-info btn-sm float-right ml-2" (click)="advancedSearch()">
       <span class="fa fa-search"></span>Search</button>
     <div class="input-group search float-right">
-      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText"/>
+      <input class="form-control form-control-sm " placeholder="Search" [(ngModel)]="searchText" />
       <span class="input-group-addon">
         <span class="fa fa-search"></span>
       </span>
@@ -18,7 +18,7 @@
 
   </div>
 </div>
-<table class="table table-bordered" >
+<table class="table table-bordered">
   <thead>
     <th>
       Building ID
@@ -46,7 +46,7 @@
         {{building.buildingName}}
       </td>
       <td>
-        {{building.department?.organization?.description}}
+        {{building.department?.organization?.name || building.organizationName}}
       </td>
       <td>
         {{building.department?.description}}
@@ -60,5 +60,6 @@
     </tr>
   </tbody>
 </table>
-<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount"
+  (getPageData)="getPageData($event)"></ng-pagination>
 <app-ajax-loader *ngIf="!buildingList"></app-ajax-loader>

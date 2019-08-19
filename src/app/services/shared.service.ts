@@ -1,6 +1,6 @@
 import { ApiService } from './api.service';
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs/Subject";
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 
 @Injectable()
@@ -13,25 +13,25 @@ export class SharedService {
     public conditionalTabs: [
 
         {
-            name: "Rental/Lease";
+            name: 'Rental/Lease';
             tab: 7;
         },
         {
-            name: "Service";
+            name: 'Service';
             tab: 8;
         }
     ];
     public tabs = [
         {
-            name: "Asset Details",
+            name: 'Asset Details',
             tab: 1
         },
         {
-            name: "Documents",
+            name: 'Documents',
             tab: 10
         },
         {
-            name: "Summary",
+            name: 'Summary',
             tab: 11
         }
     ];
@@ -47,34 +47,34 @@ export class SharedService {
         if (item1 == null || item2 == null) {
             return false;
         }
-        return item1.id == item2.id;
+        return item1.id === item2.id;
     }
     getTabstoShow(tabConditions: any) {
         const tabs = JSON.parse(JSON.stringify(this.tabs));
-        if (tabConditions.amcPresent == "Y") {
-            tabs.push({ name: "Maintenance", tab: 2 });
-        }
-        if (tabConditions.insurancePresent == "Y") {
-            tabs.push({ name: "Policy", tab: 6 });
-        }
-        if (tabConditions.loanPresent == "Y") {
-            tabs.push({ name: "Loan", tab: 5 });
-        }
-        if (tabConditions.licensePresent == "Y") {
-            tabs.push({ name: "License", tab: 4 });
-        }
-        if (tabConditions.warrantyPresent == "Y") {
-            tabs.push({ name: "Warranty", tab: 9 });
-        }
-        if (tabConditions.inspectionPresent == "Y") {
-            tabs.push({ name: "Inspection", tab: 3 });
-        }
-        if (tabConditions.rentalOrLeasePresent == "Y") {
-            tabs.push({ name: "Rental/Lease", tab: 7 });
-        }
-        if (tabConditions.servicePresent == "Y") {
-            tabs.push({ name: "Service", tab: 8 });
-        }
+        // if (tabConditions.amcPresent == "Y") {
+        tabs.push({ name: 'Maintenance', tab: 2 });
+        // }
+        // if (tabConditions.insurancePresent == "Y") {
+        tabs.push({ name: 'Policy', tab: 6 });
+        // }
+        // if (tabConditions.loanPresent == "Y") {
+        tabs.push({ name: 'Loan', tab: 5 });
+        // }
+        // if (tabConditions.licensePresent == "Y") {
+        tabs.push({ name: 'License', tab: 4 });
+        // }
+        // if (tabConditions.warrantyPresent == "Y") {
+        tabs.push({ name: 'Warranty', tab: 9 });
+        // }
+        // if (tabConditions.inspectionPresent == "Y") {
+        tabs.push({ name: 'Inspection', tab: 3 });
+        // }
+        // if (tabConditions.rentalOrLeasePresent == "Y") {
+        tabs.push({ name: 'Rental/Lease', tab: 7 });
+        // }
+        // if (tabConditions.servicePresent == "Y") {
+        tabs.push({ name: 'Service', tab: 8 });
+        // }
         return tabs.sort((a, b) => {
             return a.tab - b.tab;
         });
@@ -82,7 +82,7 @@ export class SharedService {
 
     getAssetType() {
         this._apiService
-            .get("/table-maintenance/asset-type/asset-types", {}, false)
+            .get('/table-maintenance/asset-type/asset-types', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.assetTypeList = data;
@@ -127,7 +127,7 @@ export class SharedService {
     }
 
     getPositions() {
-        //positionsList
+        // positionsList
         this._apiService.get(`/table-maintenance/position/positions`, {}, false).subscribe(
             data => {
                 this.dropDownsData.positionsList = data;
@@ -141,7 +141,7 @@ export class SharedService {
     }
     getOrganizationsList() {
         this._apiService
-            .get("/table-maintenance/organization/organizations", {}, false)
+            .get('/table-maintenance/organization/organizations', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.organizationList = data;
@@ -155,7 +155,7 @@ export class SharedService {
 
     getDepartmentList() {
         this._apiService
-            .get("/table-maintenance/department/departments", {}, false)
+            .get('/table-maintenance/department/departments', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.departmentList = data;
@@ -170,7 +170,7 @@ export class SharedService {
 
     getPolicyTypeList() {
         this._apiService
-            .get("/table-maintenance/policy-type/policy-types", {}, false)
+            .get('/table-maintenance/policy-type/policy-types', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.policyTypeList = data;
@@ -185,7 +185,7 @@ export class SharedService {
     getVehicleDamageTypeList() {
         this._apiService
             .get(
-                "/table-maintenance/vehicle-damage-type/vehicle-damage-types", {}, false
+                '/table-maintenance/vehicle-damage-type/vehicle-damage-types', {}, false
             )
             .subscribe(
                 data => {
@@ -201,7 +201,7 @@ export class SharedService {
     getFireExtinguisherTypeList() {
         this._apiService
             .get(
-                "/table-maintenance/fire-extinguisher-type/fire-extinguisher-types", {}, false
+                '/table-maintenance/fire-extinguisher-type/fire-extinguisher-types', {}, false
             )
             .subscribe(
                 data => {
@@ -216,7 +216,7 @@ export class SharedService {
 
     getAssetCategoriesList() {
         this._apiService
-            .get("/table-maintenance/asset-category/asset-categories", {}, false)
+            .get('/table-maintenance/asset-category/asset-categories', {}, false)
             .subscribe(
                 (data) => {
                     this.dropDownsData.assetCategoriesList = data;
@@ -229,7 +229,7 @@ export class SharedService {
     }
     getRentOrLeaseType() {
         this._apiService
-            .get("/table-maintenance/rental-or-lease-type/rental-or-lease-types", {}, false)
+            .get('/table-maintenance/rental-or-lease-type/rental-or-lease-types', {}, false)
             .subscribe(
                 (data) => {
                     this.dropDownsData.rentOrLeaseTypeList = data;
@@ -243,7 +243,7 @@ export class SharedService {
 
     getAssetConditionList() {
         this._apiService
-            .get("/table-maintenance/asset-condition/asset-conditions", {}, false)
+            .get('/table-maintenance/asset-condition/asset-conditions', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.assetConditionList = data;
@@ -257,7 +257,7 @@ export class SharedService {
 
     getAssetStatusList() {
         this._apiService
-            .get("/table-maintenance/asset-status/asset-statuses", {}, false)
+            .get('/table-maintenance/asset-status/asset-statuses', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.assetStatusList = data;
@@ -271,7 +271,7 @@ export class SharedService {
 
     getRenewalTypeList() {
         this._apiService
-            .get("/table-maintenance/renewal-type/renewal-types", {}, false)
+            .get('/table-maintenance/renewal-type/renewal-types', {}, false)
             .subscribe(
                 (data) => {
                     this.dropDownsData.renewalTypeList = data;
@@ -285,7 +285,7 @@ export class SharedService {
 
     getVehicleTypeList() {
         this._apiService
-            .get("/table-maintenance/vehicle-type/vehicle-types", {}, false)
+            .get('/table-maintenance/vehicle-type/vehicle-types', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.vehicleTypeList = data;
@@ -298,7 +298,7 @@ export class SharedService {
     }
     getMonthTypeList() {
         this._apiService
-            .get("/table-maintenance/month-type/month-types", {}, false)
+            .get('/table-maintenance/month-type/month-types', {}, false)
             .subscribe(
                 data => {
                     this.dropDownsData.monthTypeList = data;
@@ -312,7 +312,7 @@ export class SharedService {
 
     getCmsDocumentStatuses() {
         this._apiService
-            .get("/table-maintenance/document-status/document-statuses", {}, false)
+            .get('/table-maintenance/document-status/document-statuses', {}, false)
             .subscribe(
                 (data) => {
                     this.cmsDropDownsData.documentStatuses = data;
@@ -326,7 +326,7 @@ export class SharedService {
 
     getCmsDocumentClassifications() {
         this._apiService
-            .get("/table-maintenance/document-classification/document-classifications", {}, false)
+            .get('/table-maintenance/document-classification/document-classifications', {}, false)
             .subscribe(
                 (data) => {
                     this.cmsDropDownsData.documentClassifications = data;
@@ -340,7 +340,7 @@ export class SharedService {
 
     getCmsDocumentApprovalLevels() {
         this._apiService
-            .get("/table-maintenance/approval-level/approval-levels", {}, false)
+            .get('/table-maintenance/approval-level/approval-levels', {}, false)
             .subscribe(
                 (data) => {
                     this.cmsDropDownsData.approvalLevels = data;
@@ -354,7 +354,7 @@ export class SharedService {
 
     getCmsDocumentVersionStatuses() {
         this._apiService
-            .get("/table-maintenance/document-history-status/document-history-statuses", {}, false)
+            .get('/table-maintenance/document-history-status/document-history-statuses', {}, false)
             .subscribe(
                 (data) => {
                     this.cmsDropDownsData.versionStatuses = data;
@@ -391,7 +391,7 @@ export class SharedService {
 
     getPmsCategory() {
         this._apiService
-            .get("/table-maintenance/goal-category/goal-categories", {}, false)
+            .get('/table-maintenance/goal-category/goal-categories', {}, false)
             .subscribe(
                 (data) => {
                     this.pmsDropDownnsData.category = data;
@@ -404,7 +404,7 @@ export class SharedService {
     }
     getPmsRating() {
         this._apiService
-            .get("/table-maintenance/performance-rating/performance-ratings", {}, false)
+            .get('/table-maintenance/performance-rating/performance-ratings', {}, false)
             .subscribe(
                 (data) => {
                     this.pmsDropDownnsData.rating = data;
@@ -417,7 +417,7 @@ export class SharedService {
     }
     getPmsCycleStauts() {
         this._apiService
-            .get("/table-maintenance/performance-cycle-status/performance-cycle-statuses", {}, false)
+            .get('/table-maintenance/performance-cycle-status/performance-cycle-statuses', {}, false)
             .subscribe(
                 (data) => {
                     this.pmsDropDownnsData.status = data;
@@ -437,7 +437,7 @@ export class SharedService {
 
     getGoalStatuses() {
         this._apiService
-            .get("/table-maintenance/goal-status/goal-statuses", {}, false)
+            .get('/table-maintenance/goal-status/goal-statuses', {}, false)
             .subscribe(
                 (data) => {
                     this.pmsDropDownnsData.goalStatusTypes = data;
@@ -450,7 +450,7 @@ export class SharedService {
     }
     getGenderTypes() {
         this._apiService
-            .get("/table-maintenance/gender-type/gender-types", {}, false)
+            .get('/table-maintenance/gender-type/gender-types', {}, false)
             .subscribe(
                 (data) => {
                     this.dropDownsData.genderTypes = data;
@@ -464,7 +464,7 @@ export class SharedService {
 
     getEmployeeTypes() {
         this._apiService
-            .get("/table-maintenance/employee-type/employee-types", {}, false)
+            .get('/table-maintenance/employee-type/employee-types', {}, false)
             .subscribe(
                 (data) => {
                     this.dropDownsData.employeeTypes = data;
@@ -483,7 +483,7 @@ export class SharedService {
     }
     getCourseTypes() {
         this._apiService
-            .get("/table-maintenance/course-type/course-types", {}, false)
+            .get('/table-maintenance/course-type/course-types', {}, false)
             .subscribe(
                 (data) => {
                     this.lmsDropDownsData.courseTypes = data;
@@ -496,7 +496,7 @@ export class SharedService {
     }
     getLearningTypes() {
         this._apiService
-            .get("/table-maintenance/learning-type/learning-types", {}, false)
+            .get('/table-maintenance/learning-type/learning-types', {}, false)
             .subscribe(
                 (data) => {
                     this.lmsDropDownsData.courseLearningTypes = data;
@@ -509,7 +509,7 @@ export class SharedService {
     }
     getCourseDomain() {
         this._apiService
-            .get("/table-maintenance/course-domain/course-domains", {}, false)
+            .get('/table-maintenance/course-domain/course-domains', {}, false)
             .subscribe(
                 (data) => {
                     this.lmsDropDownsData.courseDomain = data;
@@ -522,7 +522,7 @@ export class SharedService {
     }
     getCourseDuration() {
         this._apiService
-            .get("/table-maintenance/course-duration/course-durations", {}, false)
+            .get('/table-maintenance/course-duration/course-durations', {}, false)
             .subscribe(
                 (data) => {
                     this.lmsDropDownsData.courseDuration = data;

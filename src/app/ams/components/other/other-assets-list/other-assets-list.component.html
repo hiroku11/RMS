@@ -46,7 +46,7 @@
         {{other.assetTypeOtherName}}
       </td>
       <td>
-        {{other.department?.organization?.description}}
+        {{other.department?.organization?.name || other.organizationName}}
       </td>
       <td>
         {{other.department?.description}}
@@ -60,5 +60,6 @@
     </tr>
   </tbody>
 </table>
-<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount" (getPageData)="getPageData($event)"></ng-pagination>
+<ng-pagination *ngIf="itemsCount" [position]="'left'" [pageSize]="pageSize" [itemsCount]="itemsCount"
+  (getPageData)="getPageData($event)"></ng-pagination>
 <app-ajax-loader *ngIf="!otherAssetList"></app-ajax-loader>
