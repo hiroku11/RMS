@@ -40,11 +40,13 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>License Holder Company Description</label>
-      <textarea class="form-control" [(ngModel)]="license.licenseHolderDescription" name="licenseHolderDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="license.licenseHolderDescription"
+        name="licenseHolderDescription"></textarea>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Provider Description</label>
-      <textarea class="form-control" [(ngModel)]="license.licenseProviderDescription" name="licenseProviderDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="license.licenseProviderDescription"
+        name="licenseProviderDescription"></textarea>
     </div>
   </div>
 
@@ -55,8 +57,8 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Issued Date</label>
-      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" [(ngModel)]="license.issuedDate" name="issuedDate"
-      />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" [(ngModel)]="license.issuedDate"
+        name="issuedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
 
     </div>
@@ -66,8 +68,8 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Date</label>
-      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="license.renewalDate" name="renewalDate"
-      />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="license.renewalDate"
+        name="renewalDate" />
       <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
     </div>
   </div>
@@ -76,20 +78,20 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-4">
       <label>Start Date Time</label>
-      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="license.startDateTime" name="startDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="license.startDateTime"
+        name="startDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="license.endDateTime" name="endDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="license.endDateTime"
+        name="endDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Grace Date Time</label>
-      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="license.graceDateTime" name="graceDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="license.graceDateTime"
+        name="graceDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
   </div>
@@ -152,7 +154,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title">Inspection Lookup</h6>
+          <h6 class="modal-title">License Lookup</h6>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -163,11 +165,12 @@
               <label>License #</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.licenseNumber.value" (change)="lookupFieldChange(lookupOptions.licenseNumber)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseNumber.value"
+                (change)="lookupFieldChange(lookupOptions.licenseNumber)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseNumber)" [(ngModel)]="lookupOptions.licenseNumber.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseNumber)"
+                [(ngModel)]="lookupOptions.licenseNumber.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -178,9 +181,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.licenseNumber.sort" (change)="lookupSortChange(lookupOptions.licenseNumber)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseNumber.sort"
+                  (change)="lookupSortChange(lookupOptions.licenseNumber)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseNumber)" [(ngModel)]="lookupOptions.licenseNumber.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseNumber)"
+                [(ngModel)]="lookupOptions.licenseNumber.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -191,11 +196,12 @@
               <label>Holding Company</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.licenseHoldingCompany.value" (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseHoldingCompany.value"
+                (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)" [(ngModel)]="lookupOptions.licenseHoldingCompany.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHoldingCompany)"
+                [(ngModel)]="lookupOptions.licenseHoldingCompany.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -206,9 +212,12 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHoldingCompany.sort" (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHoldingCompany.sort"
+                  (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)" [(ngModel)]="lookupOptions.licenseHoldingCompany.order">
+              <select class="form-control d-inline w-50"
+                (change)="lookupSortChange(lookupOptions.licenseHoldingCompany)"
+                [(ngModel)]="lookupOptions.licenseHoldingCompany.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -219,11 +228,12 @@
               <label>Holder Name</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.licenseHolderName.value" (change)="lookupFieldChange(lookupOptions.licenseHolderName)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseHolderName.value"
+                (change)="lookupFieldChange(lookupOptions.licenseHolderName)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHolderName)" [(ngModel)]="lookupOptions.licenseHolderName.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseHolderName)"
+                [(ngModel)]="lookupOptions.licenseHolderName.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -234,9 +244,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHolderName.sort" (change)="lookupSortChange(lookupOptions.licenseHolderName)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseHolderName.sort"
+                  (change)="lookupSortChange(lookupOptions.licenseHolderName)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseHolderName)" [(ngModel)]="lookupOptions.licenseHolderName.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseHolderName)"
+                [(ngModel)]="lookupOptions.licenseHolderName.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -247,11 +259,12 @@
               <label>Provided By</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidedBy.value" (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidedBy.value"
+                (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)" [(ngModel)]="lookupOptions.licenseProvidedBy.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidedBy)"
+                [(ngModel)]="lookupOptions.licenseProvidedBy.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -262,9 +275,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidedBy.sort" (change)="lookupSortChange(lookupOptions.licenseProvidedBy)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidedBy.sort"
+                  (change)="lookupSortChange(lookupOptions.licenseProvidedBy)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseProvidedBy)" [(ngModel)]="lookupOptions.licenseProvidedBy.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseProvidedBy)"
+                [(ngModel)]="lookupOptions.licenseProvidedBy.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -276,11 +291,12 @@
               <label>Provided Authority</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidingAuthority.value" (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.licenseProvidingAuthority.value"
+                (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)" [(ngModel)]="lookupOptions.licenseProvidingAuthority.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.licenseProvidingAuthority)"
+                [(ngModel)]="lookupOptions.licenseProvidingAuthority.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -291,9 +307,12 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidingAuthority.sort" (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.licenseProvidingAuthority.sort"
+                  (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)" [(ngModel)]="lookupOptions.licenseProvidingAuthority.order">
+              <select class="form-control d-inline w-50"
+                (change)="lookupSortChange(lookupOptions.licenseProvidingAuthority)"
+                [(ngModel)]="lookupOptions.licenseProvidingAuthority.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -305,11 +324,12 @@
               <label>Place Issued</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.placeIssued.value" (change)="lookupFieldChange(lookupOptions.placeIssued)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.placeIssued.value"
+                (change)="lookupFieldChange(lookupOptions.placeIssued)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.placeIssued)" [(ngModel)]="lookupOptions.placeIssued.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.placeIssued)"
+                [(ngModel)]="lookupOptions.placeIssued.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -318,9 +338,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.placeIssued.sort" (change)="lookupSortChange(lookupOptions.placeIssued)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.placeIssued.sort"
+                  (change)="lookupSortChange(lookupOptions.placeIssued)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.placeIssued)" [(ngModel)]="lookupOptions.placeIssued.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.placeIssued)"
+                [(ngModel)]="lookupOptions.placeIssued.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -332,12 +354,14 @@
               <label>Start Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.startDateTime.value"
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt"
+                [(ngModel)]="lookupOptions.startDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.startDateTime)" />
               <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.startDateTime)"
+                [(ngModel)]="lookupOptions.startDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -346,9 +370,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.startDateTime.sort" (change)="lookupSortChange(lookupOptions.startDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.startDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.startDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.startDateTime)"
+                [(ngModel)]="lookupOptions.startDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -359,12 +385,14 @@
               <label>End Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.endDateTime.value"
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd"
+                [(ngModel)]="lookupOptions.endDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.endDateTime)" />
               <owl-date-time [pickerType]="'calendar'" #dtd></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)"
+                [(ngModel)]="lookupOptions.endDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -373,9 +401,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.endDateTime.sort" (change)="lookupSortChange(lookupOptions.endDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.endDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.endDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.endDateTime)"
+                [(ngModel)]="lookupOptions.endDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -397,14 +427,16 @@
                 <td>{{licns.startDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>{{licns.endDateTime | date:'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>{{licns.renewalDate | date:'dd/MM/yyyy'}}</td>
-                <td><span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingLicenseToAsset(licns)"></span></td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-danger"
+                    (click)="addExistingLicenseToAsset(licns)"></span></td>
               </tr>
             </tbody>
           </table>
-          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupLicense($event)"></ng-pagination>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10"
+            (getPageData)="lookupLicense($event)"></ng-pagination>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary float-right" (click)="lookupLicense()">Search</button>
+          <button class="btn btn-primary float-right" (click)="lookupLicense()">Search</button>
           <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>

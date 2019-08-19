@@ -21,15 +21,16 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-6">
       <label>Rental or Lease Type</label>
-      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="rent.rentalOrLeaseType" name="rentalOrLeaseType">
+      <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="rent.rentalOrLeaseType"
+        name="rentalOrLeaseType">
         <option [ngValue]="null"></option>
         <option *ngFor="let type of dropDownsData.rentOrLeaseTypeList" [ngValue]="type">{{type.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Others, Specify</label>
-      <input disabled class="form-control" [disabled]="!rent.rentalOrLeaseType || rent.rentalOrLeaseType.id != 'OTHER'" [(ngModel)]="rent.rentalOrLeaseTypeOther"
-        name="rentalOrLeaseTypeOther" />
+      <input disabled class="form-control" [disabled]="!rent.rentalOrLeaseType || rent.rentalOrLeaseType.id != 'OTHER'"
+        [(ngModel)]="rent.rentalOrLeaseTypeOther" name="rentalOrLeaseTypeOther" />
     </div>
   </div>
 
@@ -55,14 +56,14 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="rent.startDateTime" name="startDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="rent.startDateTime"
+        name="startDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="rent.endDateTime" name="endDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="rent.endDateTime"
+        name="endDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
   </div>
@@ -79,8 +80,8 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="rent.graceDateTime" name="graceDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="rent.graceDateTime"
+        name="graceDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -149,7 +150,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title">Inspection Lookup</h6>
+          <h6 class="modal-title">Rent or Lease Lookup</h6>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -160,11 +161,12 @@
               <label>Agreement ID</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.agreementId.value" (change)="lookupFieldChange(lookupOptions.agreementId)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.agreementId.value"
+                (change)="lookupFieldChange(lookupOptions.agreementId)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementId)" [(ngModel)]="lookupOptions.agreementId.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementId)"
+                [(ngModel)]="lookupOptions.agreementId.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -175,9 +177,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.agreementId.sort" (change)="lookupSortChange(lookupOptions.agreementId)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.agreementId.sort"
+                  (change)="lookupSortChange(lookupOptions.agreementId)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementId)" [(ngModel)]="lookupOptions.agreementId.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementId)"
+                [(ngModel)]="lookupOptions.agreementId.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -188,11 +192,12 @@
               <label>Agreement Name</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.agreementName.value" (change)="lookupFieldChange(lookupOptions.agreementName)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.agreementName.value"
+                (change)="lookupFieldChange(lookupOptions.agreementName)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementName)" [(ngModel)]="lookupOptions.agreementName.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementName)"
+                [(ngModel)]="lookupOptions.agreementName.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -203,9 +208,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.agreementName.sort" (change)="lookupSortChange(lookupOptions.agreementName)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.agreementName.sort"
+                  (change)="lookupSortChange(lookupOptions.agreementName)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementName)" [(ngModel)]="lookupOptions.agreementName.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementName)"
+                [(ngModel)]="lookupOptions.agreementName.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -216,11 +223,12 @@
               <label>Agreement Description</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.agreementDescription.value" (change)="lookupFieldChange(lookupOptions.agreementDescription)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.agreementDescription.value"
+                (change)="lookupFieldChange(lookupOptions.agreementDescription)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementDescription)" [(ngModel)]="lookupOptions.agreementDescription.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.agreementDescription)"
+                [(ngModel)]="lookupOptions.agreementDescription.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -231,9 +239,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.agreementDescription.sort" (change)="lookupSortChange(lookupOptions.agreementDescription)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.agreementDescription.sort"
+                  (change)="lookupSortChange(lookupOptions.agreementDescription)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementDescription)" [(ngModel)]="lookupOptions.agreementDescription.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.agreementDescription)"
+                [(ngModel)]="lookupOptions.agreementDescription.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -244,11 +254,12 @@
               <label>Company Name</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.companyName.value" (change)="lookupFieldChange(lookupOptions.companyName)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.companyName.value"
+                (change)="lookupFieldChange(lookupOptions.companyName)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.companyName)" [(ngModel)]="lookupOptions.companyName.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.companyName)"
+                [(ngModel)]="lookupOptions.companyName.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -259,9 +270,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.companyName.sort" (change)="lookupSortChange(lookupOptions.companyName)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.companyName.sort"
+                  (change)="lookupSortChange(lookupOptions.companyName)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.companyName)" [(ngModel)]="lookupOptions.companyName.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.companyName)"
+                [(ngModel)]="lookupOptions.companyName.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -273,11 +286,12 @@
               <label>Contact Person</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.companyContactPerson.value" (change)="lookupFieldChange(lookupOptions.companyContactPerson)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.companyContactPerson.value"
+                (change)="lookupFieldChange(lookupOptions.companyContactPerson)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.companyContactPerson)" [(ngModel)]="lookupOptions.companyContactPerson.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.companyContactPerson)"
+                [(ngModel)]="lookupOptions.companyContactPerson.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -288,9 +302,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.companyContactPerson.sort" (change)="lookupSortChange(lookupOptions.companyContactPerson)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.companyContactPerson.sort"
+                  (change)="lookupSortChange(lookupOptions.companyContactPerson)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.companyContactPerson)" [(ngModel)]="lookupOptions.companyContactPerson.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.companyContactPerson)"
+                [(ngModel)]="lookupOptions.companyContactPerson.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -303,12 +319,14 @@
               <label>Start Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.startDateTime.value"
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt"
+                [(ngModel)]="lookupOptions.startDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.startDateTime)" />
               <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.startDateTime)"
+                [(ngModel)]="lookupOptions.startDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -317,9 +335,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.startDateTime.sort" (change)="lookupSortChange(lookupOptions.startDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.startDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.startDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.startDateTime)" [(ngModel)]="lookupOptions.startDateTime.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.startDateTime)"
+                [(ngModel)]="lookupOptions.startDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -330,12 +350,14 @@
               <label>End Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.endDateTime.value"
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd"
+                [(ngModel)]="lookupOptions.endDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.endDateTime)" />
               <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtd></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)"
+                [(ngModel)]="lookupOptions.endDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -344,9 +366,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.endDateTime.sort" (change)="lookupSortChange(lookupOptions.endDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.endDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.endDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.endDateTime.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.endDateTime)"
+                [(ngModel)]="lookupOptions.endDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -385,12 +409,14 @@
                   {{rol.rentalOrLeaseType?.description}}
                 </td>
                 <td>
-                  <span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingRentalOrLeaseToAsset(rol)"></span>
+                  <span class="fa fa-plus btn btn-sm btn-outline-danger"
+                    (click)="addExistingRentalOrLeaseToAsset(rol)"></span>
                 </td>
               </tr>
             </tbody>
           </table>
-          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupRentOrLease($event)"></ng-pagination>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10"
+            (getPageData)="lookupRentOrLease($event)"></ng-pagination>
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary float-right" (click)="lookupRentOrLease()">Search</button>

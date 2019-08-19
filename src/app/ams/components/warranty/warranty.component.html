@@ -26,7 +26,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>Provider Description</label>
-      <textarea class="form-control" [(ngModel)]="warranty.warrantyProviderDescription" name="warrantyProviderDescription"></textarea>
+      <textarea class="form-control" [(ngModel)]="warranty.warrantyProviderDescription"
+        name="warrantyProviderDescription"></textarea>
     </div>
   </div>
 
@@ -37,32 +38,33 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Provider Contact Person</label>
-      <input class="form-control" [(ngModel)]="warranty.warrantyProviderContactPerson" name="warrantyProviderContactPerson" />
+      <input class="form-control" [(ngModel)]="warranty.warrantyProviderContactPerson"
+        name="warrantyProviderContactPerson" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Provided Date</label>
-      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="warranty.warrantyProvidedDate" name="warrantyProvidedDate"
-      />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+        [(ngModel)]="warranty.warrantyProvidedDate" name="warrantyProvidedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
   </div>
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Start Date Time</label>
-      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="warranty.warrantyStartDateTime" name="warrantywarrantyStartDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2"
+        [(ngModel)]="warranty.warrantyStartDateTime" name="warrantywarrantyStartDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt2></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>End Date Time</label>
-      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [(ngModel)]="warranty.warrantyEndDateTime" name="warrantyEndDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3"
+        [(ngModel)]="warranty.warrantyEndDateTime" name="warrantyEndDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt3></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Grace Date Time</label>
-      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" [(ngModel)]="warranty.warrantyGraceDateTime" name="warrantyGraceDateTime"
-      />
+      <input class="form-control" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4"
+        [(ngModel)]="warranty.warrantyGraceDateTime" name="warrantyGraceDateTime" />
       <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt4></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -79,8 +81,8 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Renewal Date</label>
-      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" [(ngModel)]="warranty.warrantyRenewalDate" name="warrantyRenewalDate"
-      />
+      <input class="form-control" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
+        [(ngModel)]="warranty.warrantyRenewalDate" name="warrantyRenewalDate" />
       <owl-date-time [pickerType]="'both'" #dt5></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -151,7 +153,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title">Inspection Lookup</h6>
+          <h6 class="modal-title">Warranty Lookup</h6>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -162,11 +164,12 @@
               <label>Warranty #</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyNumber.value" (change)="lookupFieldChange(lookupOptions.warrantyNumber)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyNumber.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyNumber)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyNumber)" [(ngModel)]="lookupOptions.warrantyNumber.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyNumber)"
+                [(ngModel)]="lookupOptions.warrantyNumber.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -177,9 +180,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyNumber.sort" (change)="lookupSortChange(lookupOptions.warrantyNumber)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyNumber.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyNumber)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyNumber)" [(ngModel)]="lookupOptions.warrantyNumber.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyNumber)"
+                [(ngModel)]="lookupOptions.warrantyNumber.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -190,11 +195,12 @@
               <label>Warranty Name</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyName.value" (change)="lookupFieldChange(lookupOptions.warrantyName)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyName.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyName)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyName)" [(ngModel)]="lookupOptions.warrantyName.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyName)"
+                [(ngModel)]="lookupOptions.warrantyName.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -205,9 +211,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyName.sort" (change)="lookupSortChange(lookupOptions.warrantyName)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyName.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyName)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyName)" [(ngModel)]="lookupOptions.warrantyName.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyName)"
+                [(ngModel)]="lookupOptions.warrantyName.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -218,11 +226,12 @@
               <label>Warranty Description</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyDescription.value" (change)="lookupFieldChange(lookupOptions.warrantyDescription)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyDescription.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyDescription)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyDescription)" [(ngModel)]="lookupOptions.warrantyDescription.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyDescription)"
+                [(ngModel)]="lookupOptions.warrantyDescription.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -233,9 +242,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyDescription.sort" (change)="lookupSortChange(lookupOptions.warrantyDescription)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyDescription.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyDescription)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyDescription)" [(ngModel)]="lookupOptions.warrantyDescription.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyDescription)"
+                [(ngModel)]="lookupOptions.warrantyDescription.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -246,11 +257,12 @@
               <label>Provided By</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProvidedBy.value" (change)="lookupFieldChange(lookupOptions.warrantyProvidedBy)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProvidedBy.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyProvidedBy)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProvidedBy)" [(ngModel)]="lookupOptions.warrantyProvidedBy.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProvidedBy)"
+                [(ngModel)]="lookupOptions.warrantyProvidedBy.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -261,9 +273,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProvidedBy.sort" (change)="lookupSortChange(lookupOptions.warrantyProvidedBy)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProvidedBy.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyProvidedBy)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyProvidedBy)" [(ngModel)]="lookupOptions.warrantyProvidedBy.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyProvidedBy)"
+                [(ngModel)]="lookupOptions.warrantyProvidedBy.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -275,11 +289,12 @@
               <label>Provider Description</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProviderDescription.value" (change)="lookupFieldChange(lookupOptions.warrantyProviderDescription)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProviderDescription.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyProviderDescription)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProviderDescription)" [(ngModel)]="lookupOptions.warrantyProviderDescription.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProviderDescription)"
+                [(ngModel)]="lookupOptions.warrantyProviderDescription.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="STARTS_WITH">Starts With</option>
@@ -290,9 +305,12 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProviderDescription.sort" (change)="lookupSortChange(lookupOptions.warrantyProviderDescription)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProviderDescription.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyProviderDescription)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyProviderDescription)" [(ngModel)]="lookupOptions.warrantyProviderDescription.order">
+              <select class="form-control d-inline w-50"
+                (change)="lookupSortChange(lookupOptions.warrantyProviderDescription)"
+                [(ngModel)]="lookupOptions.warrantyProviderDescription.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -304,11 +322,12 @@
               <label>Contact Person</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.value" (change)="lookupFieldChange(lookupOptions.warrantyProviderContactPerson)"
-              />
+              <input class="form-control" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.value"
+                (change)="lookupFieldChange(lookupOptions.warrantyProviderContactPerson)" />
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProviderContactPerson)" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyProviderContactPerson)"
+                [(ngModel)]="lookupOptions.warrantyProviderContactPerson.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -317,9 +336,12 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.sort" (change)="lookupSortChange(lookupOptions.warrantyProviderContactPerson)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyProviderContactPerson)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyProviderContactPerson)" [(ngModel)]="lookupOptions.warrantyProviderContactPerson.order">
+              <select class="form-control d-inline w-50"
+                (change)="lookupSortChange(lookupOptions.warrantyProviderContactPerson)"
+                [(ngModel)]="lookupOptions.warrantyProviderContactPerson.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -331,12 +353,14 @@
               <label>Start Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt" [(ngModel)]="lookupOptions.warrantyStartDateTime.value"
+              <input class="form-control" [owlDateTime]="dtdt" [owlDateTimeTrigger]="dtdt"
+                [(ngModel)]="lookupOptions.warrantyStartDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.warrantyStartDateTime)" />
               <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtdt></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyStartDateTime)" [(ngModel)]="lookupOptions.warrantyStartDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.warrantyStartDateTime)"
+                [(ngModel)]="lookupOptions.warrantyStartDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -345,9 +369,12 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyStartDateTime.sort" (change)="lookupSortChange(lookupOptions.warrantyStartDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyStartDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyStartDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyStartDateTime)" [(ngModel)]="lookupOptions.warrantyStartDateTime.order">
+              <select class="form-control d-inline w-50"
+                (change)="lookupSortChange(lookupOptions.warrantyStartDateTime)"
+                [(ngModel)]="lookupOptions.warrantyStartDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -358,12 +385,14 @@
               <label>End Date Time</label>
             </div>
             <div class="col-sm-12 col-md-4">
-              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd" [(ngModel)]="lookupOptions.warrantyEndDateTime.value"
+              <input class="form-control" [owlDateTime]="dtd" [owlDateTimeTrigger]="dtd"
+                [(ngModel)]="lookupOptions.warrantyEndDateTime.value"
                 (dateTimeChange)="lookupFieldChange(lookupOptions.warrantyEndDateTime)" />
               <owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dtd></owl-date-time>
             </div>
             <div class="col-sm-12 col-md-3">
-              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)" [(ngModel)]="lookupOptions.warrantyEndDateTime.operator">
+              <select class="form-control" (change)="lookupFieldChange(lookupOptions.endDateTime)"
+                [(ngModel)]="lookupOptions.warrantyEndDateTime.operator">
                 <option value="EQ">Equals</option>
                 <option value="NEQ">Not equals</option>
                 <option value="GT"> Greater than</option>
@@ -372,9 +401,11 @@
             </div>
             <div class="col-sm-12 col-md-2">
               <span>
-                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyEndDateTime.sort" (change)="lookupSortChange(lookupOptions.warrantyEndDateTime)"> Sort
+                <input type="checkbox" [(ngModel)]="lookupOptions.warrantyEndDateTime.sort"
+                  (change)="lookupSortChange(lookupOptions.warrantyEndDateTime)"> Sort
               </span>
-              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyEndDateTime)" [(ngModel)]="lookupOptions.warrantyEndDateTime.order">
+              <select class="form-control d-inline w-50" (change)="lookupSortChange(lookupOptions.warrantyEndDateTime)"
+                [(ngModel)]="lookupOptions.warrantyEndDateTime.order">
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
               </select>
@@ -417,14 +448,16 @@
                 <td>
                   {{warranty.warrantyRenewalAmount}}
                 </td>
-                <td><span class="fa fa-plus btn btn-sm btn-outline-danger" (click)="addExistingWarrantyToAsset(warranty)"></span></td>
+                <td><span class="fa fa-plus btn btn-sm btn-outline-danger"
+                    (click)="addExistingWarrantyToAsset(warranty)"></span></td>
               </tr>
             </tbody>
           </table>
-          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10" (getPageData)="lookupWarranty($event)"></ng-pagination>
+          <ng-pagination *ngIf="lookupItems" [itemsCount]="lookupItems.totalRecords" [pageSize]="10"
+            (getPageData)="lookupWarranty($event)"></ng-pagination>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary float-right" (click)="lookupWarranty()">Search</button>
+          <button class="btn btn-primary float-right" (click)="lookupWarranty()">Search</button>
           <button type="button" (click)="initLookupParams()" class="btn btn-primary">Clear</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
