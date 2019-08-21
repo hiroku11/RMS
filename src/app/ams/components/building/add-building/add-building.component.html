@@ -37,21 +37,20 @@
       <label>Asset Category</label>
       <select class="form-control" [compareWith]="selectCompareFunction" disabled [(ngModel)]="building.assetCategory">
         <option [ngValue]="null"></option>
-        <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category">{{category.description}}</option>
+        <option *ngFor="let category of dropDownsData.assetCategoriesList" [ngValue]="category">{{category.description}}
+        </option>
       </select>
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Organization</label>
-      <select class="form-control" disabled [compareWith]="selectCompareFunction" [(ngModel)]="building && building.department && building.department.organization">
-        <option [ngValue]="null"></option>
-        <option *ngFor="let organization of dropDownsData.organizationList" [ngValue]="organization">{{organization.description}}</option>
-      </select>
+      <input class="form-control" disabled [(ngModel)]="building.organizationName" name="organizationName" />
     </div>
     <div class="col-sm-12 col-md-4">
       <label>Department</label>
       <select class="form-control" [compareWith]="selectCompareFunction" [(ngModel)]="building.department">
         <option [ngValue]="null"></option>
-        <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">{{department.description}}</option>
+        <option *ngFor="let department of dropDownsData.departmentList" [ngValue]="department">
+          {{department.description}}</option>
       </select>
     </div>
   </div>
@@ -74,13 +73,14 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Regulatory Authority</label>
-      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regulatoryAuthorityName"
-        name="regulatoryAuthorityName" />
+      <input class="form-control" [disabled]="building.regulatoryCompliance != 'Y'"
+        [(ngModel)]="building.regulatoryAuthorityName" name="regulatoryAuthorityName" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Compliance Obtained Date</label>
-      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="building.regulatoryCompliance != 'Y'"
-        [(ngModel)]="building.regCompObtainedDate" name="regCompObtainedDate" />
+      <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+        [disabled]="building.regulatoryCompliance != 'Y'" [(ngModel)]="building.regCompObtainedDate"
+        name="regCompObtainedDate" />
       <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
     </div>
     <div class="col-sm-12 col-md-3">
@@ -98,8 +98,8 @@
   <div class="row pb-2">
     <div class="col-sm-12 col-md-3">
       <label>Fire Exit Location(s)</label>
-      <input class="form-control" [disabled]="building.fireExits != 'Y'" [(ngModel)]="building.fireExitsLoc" name="fireExitsLoc"
-      />
+      <input class="form-control" [disabled]="building.fireExits != 'Y'" [(ngModel)]="building.fireExitsLoc"
+        name="fireExitsLoc" />
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Exitinguishers Present</label>
@@ -111,13 +111,15 @@
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher</label>
-      <ngx-select-dropdown [ngClass]="{'disabled':building.fireExtinguishers != 'Y'}" *ngIf="dropDownsData.fireExtinguisherTypeList"
-        [multiple]="true" [config]="multiselectConfig" [(value)]="building.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList"></ngx-select-dropdown>
+      <ngx-select-dropdown [ngClass]="{'disabled':building.fireExtinguishers != 'Y'}"
+        *ngIf="dropDownsData.fireExtinguisherTypeList" [multiple]="true" [config]="multiselectConfig"
+        [(value)]="building.fireExtinguisherTypes" [options]="dropDownsData.fireExtinguisherTypeList">
+      </ngx-select-dropdown>
     </div>
     <div class="col-sm-12 col-md-3">
       <label>Fire Extinguisher Location(s)</label>
-      <input class="form-control" [disabled]="building.fireExtinguishers != 'Y'" [(ngModel)]="building.fireExtinguisherLoc" name="fireExtinguisherLoc"
-      />
+      <input class="form-control" [disabled]="building.fireExtinguishers != 'Y'"
+        [(ngModel)]="building.fireExtinguisherLoc" name="fireExtinguisherLoc" />
     </div>
   </div>
 
@@ -196,13 +198,14 @@
       <label>Asset Condition</label>
       <select [compareWith]="selectCompareFunction" class="form-control" [(ngModel)]="building.assetCondition">
         <option [ngValue]="null"></option>
-        <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">{{condition.description}}</option>
+        <option *ngFor="let condition of dropDownsData.assetConditionList" [ngValue]="condition">
+          {{condition.description}}</option>
       </select>
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!building.assetCondition || building.assetCondition.id != 'OTHER'" [(ngModel)]="building.assetConditionOther"
-        name="assetConditionOther" />
+      <input class="form-control" [disabled]="!building.assetCondition || building.assetCondition.id != 'OTHER'"
+        [(ngModel)]="building.assetConditionOther" name="assetConditionOther" />
     </div>
   </div>
 
@@ -216,8 +219,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!building.assetStatus || building.assetStatus.id != 'OTHER'" [(ngModel)]="building.assetStatusOther"
-        name="assetStatusOther" />
+      <input class="form-control" [disabled]="!building.assetStatus || building.assetStatus.id != 'OTHER'"
+        [(ngModel)]="building.assetStatusOther" name="assetStatusOther" />
     </div>
   </div>
   <div class="row pb-2">
@@ -230,8 +233,8 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <label>If Other Specify</label>
-      <input class="form-control" [disabled]="!building.assetType || building.assetType.id != 'OTHER'" [(ngModel)]="building.assetTypeOther"
-        name="description" />
+      <input class="form-control" [disabled]="!building.assetType || building.assetType.id != 'OTHER'"
+        [(ngModel)]="building.assetTypeOther" name="description" />
     </div>
   </div>
   <div class="row pb-2">
@@ -368,8 +371,10 @@
 <app-license *ngIf="currentTab.tab==4" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-license>
 <app-loan *ngIf="currentTab.tab==5" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-loan>
 <app-policy *ngIf="currentTab.tab==6" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-policy>
-<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-rent-or-lease>
+<app-rent-or-lease *ngIf="currentTab.tab==7" [asset]="building" (addedToAsset)="addedToAsset($event)">
+</app-rent-or-lease>
 <app-service *ngIf="currentTab.tab==8" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-service>
 <app-warranty *ngIf="currentTab.tab==9" [asset]="building" (addedToAsset)="addedToAsset($event)"></app-warranty>
-<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="building" [addTo]="'building'"></app-supporting-documents>
+<app-supporting-documents *ngIf="currentTab.tab==10" (addedToAsset)="addedToAsset($event)" [docsObject]="building"
+  [addTo]="'building'"></app-supporting-documents>
 <asset-summary [asset]="building" *ngIf="currentTab.tab==11"></asset-summary>

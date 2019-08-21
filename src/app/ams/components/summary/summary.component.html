@@ -23,7 +23,7 @@
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
       </div>
       <div class="col-sm-12 col-md-4">
-        <label>Organization</label>: {{asset.department?.organization?.description}}
+        <label>Organization</label>: {{asset.department?.organization?.name || asset.organizationName}}
       </div>
       <div class="col-sm-12 col-md-4">
         <label>Department</label>: {{asset.department?.description}}
@@ -151,7 +151,7 @@
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
       </div>
       <div class="col-sm-12 col-md-3">
-        <label>Organization</label>: {{asset.department?.organization?.description}}
+        <label>Organization</label>: {{asset.department?.organization?.name || asset.organizationName}}
       </div>
       <div class="col-sm-12 col-md-3">
         <label>Department</label>: {{asset.department?.description}}
@@ -251,7 +251,8 @@
       <div class="col-sm-12 col-md-3">
         <label>Compliance Obtained Date</label>: {{asset.regCompObtainedDate | date:'dd/MM/yyyy'}}
       </div>
-      <div class="col-sm-12 col-md-3" *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
+      <div class="col-sm-12 col-md-3"
+        *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
         <label>Fire Exits</label>: {{asset.fireExits}}
       </div>
     </div>
@@ -259,7 +260,8 @@
 
 
     <div class="row pb-2">
-      <div class="col-sm-12 col-md-3" *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
+      <div class="col-sm-12 col-md-3"
+        *ngIf="asset.assetCategory.id !== 'VEHICLE' && asset.assetCategory.id !== 'EQUIPMENT'">
         <label>Fire Exit Location</label>: {{asset.fireExitsLoc}}
       </div>
       <div class="col-sm-12 col-md-3">
@@ -358,7 +360,7 @@
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
       </div>
       <div class="col-sm-12 col-md-3">
-        <label>Organization</label>: {{asset.department?.organization?.description}}
+        <label>Organization</label>: {{asset.department?.organization?.name || asset.organizationName}}
       </div>
       <div class="col-sm-12 col-md-3">
         <label>Department</label>: {{asset.department?.description}}
@@ -565,7 +567,7 @@
         <label>Asset Category</label>: {{asset.assetCategory?.description}}
       </div>
       <div class="col-sm-12 col-md-4">
-        <label>Organization</label>: {{asset.department?.organization?.description}}
+        <label>Organization</label>: {{asset.department?.organization?.name || asset.organizationName}}
       </div>
       <div class="col-sm-12 col-md-4">
         <label>Department</label>: {{asset.department?.description}}
